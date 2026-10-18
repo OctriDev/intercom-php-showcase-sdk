@@ -29,9 +29,7 @@ interface SearchRequestQuery {}
 /** A tagged union member whose tag names no branch this SDK knows, kept as received. */
 abstract class SdkUnknownMember implements \JsonSerializable
 {
-    final public function __construct(public readonly mixed $raw)
-    {
-    }
+    final public function __construct(public readonly mixed $raw) {}
 
     public function jsonSerialize(): mixed
     {
@@ -40,16 +38,10 @@ abstract class SdkUnknownMember implements \JsonSerializable
 }
 
 /** A `ContentSearchResult` whose tag names no branch this SDK knows, kept as received. */
-final class UnknownContentSearchResult extends SdkUnknownMember implements ContentSearchResult
-{
-}
+final class UnknownContentSearchResult extends SdkUnknownMember implements ContentSearchResult {}
 
 /** A `ConversationAttribute` whose tag names no branch this SDK knows, kept as received. */
-final class UnknownConversationAttribute extends SdkUnknownMember implements ConversationAttribute
-{
-}
+final class UnknownConversationAttribute extends SdkUnknownMember implements ConversationAttribute {}
 
 /** A `CreateConversationAttributeRequest` whose tag names no branch this SDK knows, kept as received. */
-final class UnknownCreateConversationAttributeRequest extends SdkUnknownMember implements CreateConversationAttributeRequest
-{
-}
+final class UnknownCreateConversationAttributeRequest extends SdkUnknownMember implements CreateConversationAttributeRequest {}

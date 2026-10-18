@@ -55,8 +55,12 @@ class TicketPartUpdatedAttributeData implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "attribute") || $data->attribute === null) { throw new SdkValidationError("attribute", 'required', "Required property 'attribute' is missing or null"); }
-        if (!property_exists($data, "value") || $data->value === null) { throw new SdkValidationError("value", 'required', "Required property 'value' is missing or null"); }
+        if (!property_exists($data, "attribute") || $data->attribute === null) {
+            throw new SdkValidationError("attribute", 'required', "Required property 'attribute' is missing or null");
+        }
+        if (!property_exists($data, "value") || $data->value === null) {
+            throw new SdkValidationError("value", 'required', "Required property 'value' is missing or null");
+        }
         return new self(
             attribute: SdkClient::hydrateClass($data->attribute, TicketPartUpdatedAttributeDataAttribute::class),
             value: SdkClient::hydrateClass($data->value, TicketPartUpdatedAttributeDataValue::class),
@@ -341,9 +345,24 @@ final readonly class TicketStateCategoryEnum implements SdkOpenEnum
     public const WAITING_ON_CUSTOMER = "waiting_on_customer";
     public const RESOLVED = "resolved";
     private function __construct(public string $value) {}
-    public static function from(string|int $value): static { return new self((string) $value); }
-    public static function tryFrom(string|int|null $value): ?static { return $value === null ? null : self::from($value); }
-    public function getValue(): string { return $this->value; }
-    public function jsonSerialize(): string { return $this->value; }
-    public function __toString(): string { return (string) $this->value; }
+    public static function from(string|int $value): static
+    {
+        return new self((string) $value);
+    }
+    public static function tryFrom(string|int|null $value): ?static
+    {
+        return $value === null ? null : self::from($value);
+    }
+    public function getValue(): string
+    {
+        return $this->value;
+    }
+    public function jsonSerialize(): string
+    {
+        return $this->value;
+    }
+    public function __toString(): string
+    {
+        return (string) $this->value;
+    }
 }

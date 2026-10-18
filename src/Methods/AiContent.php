@@ -11,11 +11,26 @@ final readonly class CreateContentImportSourceSyncBehavior implements SdkOpenEnu
 {
     public const API = "api";
     private function __construct(public string $value) {}
-    public static function from(string|int $value): static { return new self((string) $value); }
-    public static function tryFrom(string|int|null $value): ?static { return $value === null ? null : self::from($value); }
-    public function getValue(): string { return $this->value; }
-    public function jsonSerialize(): string { return $this->value; }
-    public function __toString(): string { return (string) $this->value; }
+    public static function from(string|int $value): static
+    {
+        return new self((string) $value);
+    }
+    public static function tryFrom(string|int|null $value): ?static
+    {
+        return $value === null ? null : self::from($value);
+    }
+    public function getValue(): string
+    {
+        return $this->value;
+    }
+    public function jsonSerialize(): string
+    {
+        return $this->value;
+    }
+    public function __toString(): string
+    {
+        return (string) $this->value;
+    }
 }
 
 final readonly class CreateContentImportSourceStatus implements SdkOpenEnum
@@ -23,11 +38,26 @@ final readonly class CreateContentImportSourceStatus implements SdkOpenEnum
     public const ACTIVE = "active";
     public const DEACTIVATED = "deactivated";
     private function __construct(public string $value) {}
-    public static function from(string|int $value): static { return new self((string) $value); }
-    public static function tryFrom(string|int|null $value): ?static { return $value === null ? null : self::from($value); }
-    public function getValue(): string { return $this->value; }
-    public function jsonSerialize(): string { return $this->value; }
-    public function __toString(): string { return (string) $this->value; }
+    public static function from(string|int $value): static
+    {
+        return new self((string) $value);
+    }
+    public static function tryFrom(string|int|null $value): ?static
+    {
+        return $value === null ? null : self::from($value);
+    }
+    public function getValue(): string
+    {
+        return $this->value;
+    }
+    public function jsonSerialize(): string
+    {
+        return $this->value;
+    }
+    public function __toString(): string
+    {
+        return (string) $this->value;
+    }
 }
 
 final readonly class UpdateContentImportSourceSyncBehavior implements SdkOpenEnum
@@ -36,11 +66,26 @@ final readonly class UpdateContentImportSourceSyncBehavior implements SdkOpenEnu
     public const AUTOMATED = "automated";
     public const MANUAL = "manual";
     private function __construct(public string $value) {}
-    public static function from(string|int $value): static { return new self((string) $value); }
-    public static function tryFrom(string|int|null $value): ?static { return $value === null ? null : self::from($value); }
-    public function getValue(): string { return $this->value; }
-    public function jsonSerialize(): string { return $this->value; }
-    public function __toString(): string { return (string) $this->value; }
+    public static function from(string|int $value): static
+    {
+        return new self((string) $value);
+    }
+    public static function tryFrom(string|int|null $value): ?static
+    {
+        return $value === null ? null : self::from($value);
+    }
+    public function getValue(): string
+    {
+        return $this->value;
+    }
+    public function jsonSerialize(): string
+    {
+        return $this->value;
+    }
+    public function __toString(): string
+    {
+        return (string) $this->value;
+    }
 }
 
 final readonly class UpdateContentImportSourceStatus implements SdkOpenEnum
@@ -48,33 +93,78 @@ final readonly class UpdateContentImportSourceStatus implements SdkOpenEnum
     public const ACTIVE = "active";
     public const DEACTIVATED = "deactivated";
     private function __construct(public string $value) {}
-    public static function from(string|int $value): static { return new self((string) $value); }
-    public static function tryFrom(string|int|null $value): ?static { return $value === null ? null : self::from($value); }
-    public function getValue(): string { return $this->value; }
-    public function jsonSerialize(): string { return $this->value; }
-    public function __toString(): string { return (string) $this->value; }
+    public static function from(string|int $value): static
+    {
+        return new self((string) $value);
+    }
+    public static function tryFrom(string|int|null $value): ?static
+    {
+        return $value === null ? null : self::from($value);
+    }
+    public function getValue(): string
+    {
+        return $this->value;
+    }
+    public function jsonSerialize(): string
+    {
+        return $this->value;
+    }
+    public function __toString(): string
+    {
+        return (string) $this->value;
+    }
 }
 
 final readonly class CreateExternalPageLocale implements SdkOpenEnum
 {
     public const EN = "en";
     private function __construct(public string $value) {}
-    public static function from(string|int $value): static { return new self((string) $value); }
-    public static function tryFrom(string|int|null $value): ?static { return $value === null ? null : self::from($value); }
-    public function getValue(): string { return $this->value; }
-    public function jsonSerialize(): string { return $this->value; }
-    public function __toString(): string { return (string) $this->value; }
+    public static function from(string|int $value): static
+    {
+        return new self((string) $value);
+    }
+    public static function tryFrom(string|int|null $value): ?static
+    {
+        return $value === null ? null : self::from($value);
+    }
+    public function getValue(): string
+    {
+        return $this->value;
+    }
+    public function jsonSerialize(): string
+    {
+        return $this->value;
+    }
+    public function __toString(): string
+    {
+        return (string) $this->value;
+    }
 }
 
 final readonly class UpdateExternalPageLocale implements SdkOpenEnum
 {
     public const EN = "en";
     private function __construct(public string $value) {}
-    public static function from(string|int $value): static { return new self((string) $value); }
-    public static function tryFrom(string|int|null $value): ?static { return $value === null ? null : self::from($value); }
-    public function getValue(): string { return $this->value; }
-    public function jsonSerialize(): string { return $this->value; }
-    public function __toString(): string { return (string) $this->value; }
+    public static function from(string|int $value): static
+    {
+        return new self((string) $value);
+    }
+    public static function tryFrom(string|int|null $value): ?static
+    {
+        return $value === null ? null : self::from($value);
+    }
+    public function getValue(): string
+    {
+        return $this->value;
+    }
+    public function jsonSerialize(): string
+    {
+        return $this->value;
+    }
+    public function __toString(): string
+    {
+        return (string) $this->value;
+    }
 }
 
 class AiContent
@@ -90,7 +180,7 @@ class AiContent
     public static function listContentImportSources(ClientConfig $clientConfig, IntercomVersion|SdkNotGiven $intercomVersion = SdkNotGiven::Value, ?RequestOptions $requestOptions = null): ContentImportSourcesList
     {
 
-        $sdkResponse = SdkClient::request('GET', "/ai/content_import_sources", $clientConfig, returnType: ContentImportSourcesList::class, decoder: 'json', operationId: 'listContentImportSources', extraHeaders: ["Intercom-Version" => SdkClient::headerValue($intercomVersion, false)], requestOptions: $requestOptions, errors: [401 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class)]);
+        $sdkResponse = SdkClient::request('GET', "/ai/content_import_sources", $clientConfig, returnType: ContentImportSourcesList::class, decoder: 'json', operationId: 'listContentImportSources', extraHeaders: ["Intercom-Version" => SdkClient::headerValue($intercomVersion, false)], requestOptions: $requestOptions, errors: [401 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => SdkClient::typedData($sdkResponse, ContentImportSourcesList::class));
     }
 
@@ -110,7 +200,7 @@ class AiContent
     public static function createContentImportSource(ClientConfig $clientConfig, CreateContentImportSourceSyncBehavior $syncBehavior, string $url, IntercomVersion|SdkNotGiven $intercomVersion = SdkNotGiven::Value, CreateContentImportSourceStatus|SdkNotGiven $status = SdkNotGiven::Value, int|array|null|SdkNotGiven $audienceIds = SdkNotGiven::Value, ?RequestOptions $requestOptions = null): ContentImportSource
     {
 
-        $sdkResponse = SdkClient::request('POST', "/ai/content_import_sources", $clientConfig, body: ['sync_behavior' => $syncBehavior, 'url' => $url, 'status' => $status, 'audience_ids' => $audienceIds], returnType: ContentImportSource::class, decoder: 'json', operationId: 'createContentImportSource', extraHeaders: ["Intercom-Version" => SdkClient::headerValue($intercomVersion, false)], requestOptions: $requestOptions, errors: [401 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class)]);
+        $sdkResponse = SdkClient::request('POST', "/ai/content_import_sources", $clientConfig, body: ['sync_behavior' => $syncBehavior, 'url' => $url, 'status' => $status, 'audience_ids' => $audienceIds], returnType: ContentImportSource::class, decoder: 'json', operationId: 'createContentImportSource', extraHeaders: ["Intercom-Version" => SdkClient::headerValue($intercomVersion, false)], requestOptions: $requestOptions, errors: [401 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => SdkClient::typedData($sdkResponse, ContentImportSource::class));
     }
 
@@ -126,7 +216,7 @@ class AiContent
     public static function deleteContentImportSource(ClientConfig $clientConfig, string $sourceId, IntercomVersion|SdkNotGiven $intercomVersion = SdkNotGiven::Value, ?RequestOptions $requestOptions = null): mixed
     {
 
-        return SdkClient::request('DELETE', "/ai/content_import_sources/" . SdkClient::encodePathSegment($sourceId) . "", $clientConfig, decoder: 'empty', operationId: 'deleteContentImportSource', extraHeaders: ["Intercom-Version" => SdkClient::headerValue($intercomVersion, false)], requestOptions: $requestOptions, errors: [401 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class)])->data;
+        return SdkClient::request('DELETE', "/ai/content_import_sources/" . SdkClient::encodePathSegment($sourceId) . "", $clientConfig, decoder: 'empty', operationId: 'deleteContentImportSource', extraHeaders: ["Intercom-Version" => SdkClient::headerValue($intercomVersion, false)], requestOptions: $requestOptions, errors: [401 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class)])->data;
     }
 
 
@@ -142,7 +232,7 @@ class AiContent
     public static function getContentImportSource(ClientConfig $clientConfig, string $sourceId, IntercomVersion|SdkNotGiven $intercomVersion = SdkNotGiven::Value, ?RequestOptions $requestOptions = null): ContentImportSource
     {
 
-        $sdkResponse = SdkClient::request('GET', "/ai/content_import_sources/" . SdkClient::encodePathSegment($sourceId) . "", $clientConfig, returnType: ContentImportSource::class, decoder: 'json', operationId: 'getContentImportSource', extraHeaders: ["Intercom-Version" => SdkClient::headerValue($intercomVersion, false)], requestOptions: $requestOptions, errors: [401 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class)]);
+        $sdkResponse = SdkClient::request('GET', "/ai/content_import_sources/" . SdkClient::encodePathSegment($sourceId) . "", $clientConfig, returnType: ContentImportSource::class, decoder: 'json', operationId: 'getContentImportSource', extraHeaders: ["Intercom-Version" => SdkClient::headerValue($intercomVersion, false)], requestOptions: $requestOptions, errors: [401 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => SdkClient::typedData($sdkResponse, ContentImportSource::class));
     }
 
@@ -164,7 +254,7 @@ class AiContent
     public static function updateContentImportSource(ClientConfig $clientConfig, string $sourceId, UpdateContentImportSourceSyncBehavior $syncBehavior, string $url, IntercomVersion|SdkNotGiven $intercomVersion = SdkNotGiven::Value, UpdateContentImportSourceStatus|SdkNotGiven $status = SdkNotGiven::Value, int|array|null|SdkNotGiven $audienceIds = SdkNotGiven::Value, bool|SdkNotGiven $applyAudienceToExistingContent = SdkNotGiven::Value, ?RequestOptions $requestOptions = null): ContentImportSource
     {
 
-        $sdkResponse = SdkClient::request('PUT', "/ai/content_import_sources/" . SdkClient::encodePathSegment($sourceId) . "", $clientConfig, body: ['sync_behavior' => $syncBehavior, 'url' => $url, 'status' => $status, 'audience_ids' => $audienceIds, 'apply_audience_to_existing_content' => $applyAudienceToExistingContent], returnType: ContentImportSource::class, decoder: 'json', operationId: 'updateContentImportSource', extraHeaders: ["Intercom-Version" => SdkClient::headerValue($intercomVersion, false)], requestOptions: $requestOptions, errors: [401 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class)]);
+        $sdkResponse = SdkClient::request('PUT', "/ai/content_import_sources/" . SdkClient::encodePathSegment($sourceId) . "", $clientConfig, body: ['sync_behavior' => $syncBehavior, 'url' => $url, 'status' => $status, 'audience_ids' => $audienceIds, 'apply_audience_to_existing_content' => $applyAudienceToExistingContent], returnType: ContentImportSource::class, decoder: 'json', operationId: 'updateContentImportSource', extraHeaders: ["Intercom-Version" => SdkClient::headerValue($intercomVersion, false)], requestOptions: $requestOptions, errors: [401 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => SdkClient::typedData($sdkResponse, ContentImportSource::class));
     }
 
@@ -180,7 +270,7 @@ class AiContent
     public static function listExternalPages(ClientConfig $clientConfig, IntercomVersion|SdkNotGiven $intercomVersion = SdkNotGiven::Value, ?RequestOptions $requestOptions = null): ExternalPagesList
     {
 
-        $sdkResponse = SdkClient::request('GET', "/ai/external_pages", $clientConfig, returnType: ExternalPagesList::class, decoder: 'json', operationId: 'listExternalPages', extraHeaders: ["Intercom-Version" => SdkClient::headerValue($intercomVersion, false)], requestOptions: $requestOptions, errors: [401 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class)]);
+        $sdkResponse = SdkClient::request('GET', "/ai/external_pages", $clientConfig, returnType: ExternalPagesList::class, decoder: 'json', operationId: 'listExternalPages', extraHeaders: ["Intercom-Version" => SdkClient::headerValue($intercomVersion, false)], requestOptions: $requestOptions, errors: [401 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => SdkClient::typedData($sdkResponse, ExternalPagesList::class));
     }
 
@@ -205,7 +295,7 @@ class AiContent
     public static function createExternalPage(ClientConfig $clientConfig, string $title, string $html, CreateExternalPageLocale $locale, int $sourceId, string $externalId, IntercomVersion|SdkNotGiven $intercomVersion = SdkNotGiven::Value, string|SdkNotGiven $url = SdkNotGiven::Value, bool|SdkNotGiven $aiAgentAvailability = SdkNotGiven::Value, bool|SdkNotGiven $aiCopilotAvailability = SdkNotGiven::Value, array|null|SdkNotGiven $audienceIds = SdkNotGiven::Value, ?RequestOptions $requestOptions = null): ExternalPage
     {
 
-        $sdkResponse = SdkClient::request('POST', "/ai/external_pages", $clientConfig, body: ['title' => $title, 'html' => $html, 'locale' => $locale, 'source_id' => $sourceId, 'external_id' => $externalId, 'url' => $url, 'ai_agent_availability' => $aiAgentAvailability, 'ai_copilot_availability' => $aiCopilotAvailability, 'audience_ids' => $audienceIds], returnType: ExternalPage::class, decoder: 'json', operationId: 'createExternalPage', extraHeaders: ["Intercom-Version" => SdkClient::headerValue($intercomVersion, false)], requestOptions: $requestOptions, errors: [401 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class)]);
+        $sdkResponse = SdkClient::request('POST', "/ai/external_pages", $clientConfig, body: ['title' => $title, 'html' => $html, 'locale' => $locale, 'source_id' => $sourceId, 'external_id' => $externalId, 'url' => $url, 'ai_agent_availability' => $aiAgentAvailability, 'ai_copilot_availability' => $aiCopilotAvailability, 'audience_ids' => $audienceIds], returnType: ExternalPage::class, decoder: 'json', operationId: 'createExternalPage', extraHeaders: ["Intercom-Version" => SdkClient::headerValue($intercomVersion, false)], requestOptions: $requestOptions, errors: [401 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => SdkClient::typedData($sdkResponse, ExternalPage::class));
     }
 
@@ -222,7 +312,7 @@ class AiContent
     public static function deleteExternalPage(ClientConfig $clientConfig, string $pageId, IntercomVersion|SdkNotGiven $intercomVersion = SdkNotGiven::Value, ?RequestOptions $requestOptions = null): ExternalPage
     {
 
-        $sdkResponse = SdkClient::request('DELETE', "/ai/external_pages/" . SdkClient::encodePathSegment($pageId) . "", $clientConfig, returnType: ExternalPage::class, decoder: 'json', operationId: 'deleteExternalPage', extraHeaders: ["Intercom-Version" => SdkClient::headerValue($intercomVersion, false)], requestOptions: $requestOptions, errors: [401 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class)]);
+        $sdkResponse = SdkClient::request('DELETE', "/ai/external_pages/" . SdkClient::encodePathSegment($pageId) . "", $clientConfig, returnType: ExternalPage::class, decoder: 'json', operationId: 'deleteExternalPage', extraHeaders: ["Intercom-Version" => SdkClient::headerValue($intercomVersion, false)], requestOptions: $requestOptions, errors: [401 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => SdkClient::typedData($sdkResponse, ExternalPage::class));
     }
 
@@ -239,7 +329,7 @@ class AiContent
     public static function getExternalPage(ClientConfig $clientConfig, string $pageId, IntercomVersion|SdkNotGiven $intercomVersion = SdkNotGiven::Value, ?RequestOptions $requestOptions = null): ExternalPage
     {
 
-        $sdkResponse = SdkClient::request('GET', "/ai/external_pages/" . SdkClient::encodePathSegment($pageId) . "", $clientConfig, returnType: ExternalPage::class, decoder: 'json', operationId: 'getExternalPage', extraHeaders: ["Intercom-Version" => SdkClient::headerValue($intercomVersion, false)], requestOptions: $requestOptions, errors: [401 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class)]);
+        $sdkResponse = SdkClient::request('GET', "/ai/external_pages/" . SdkClient::encodePathSegment($pageId) . "", $clientConfig, returnType: ExternalPage::class, decoder: 'json', operationId: 'getExternalPage', extraHeaders: ["Intercom-Version" => SdkClient::headerValue($intercomVersion, false)], requestOptions: $requestOptions, errors: [401 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => SdkClient::typedData($sdkResponse, ExternalPage::class));
     }
 
@@ -264,7 +354,7 @@ class AiContent
     public static function updateExternalPage(ClientConfig $clientConfig, string $pageId, string $title, string $html, string $url, UpdateExternalPageLocale $locale, int $sourceId, IntercomVersion|SdkNotGiven $intercomVersion = SdkNotGiven::Value, bool|SdkNotGiven $finAvailability = SdkNotGiven::Value, string|SdkNotGiven $externalId = SdkNotGiven::Value, array|null|SdkNotGiven $audienceIds = SdkNotGiven::Value, ?RequestOptions $requestOptions = null): ExternalPage
     {
 
-        $sdkResponse = SdkClient::request('PUT', "/ai/external_pages/" . SdkClient::encodePathSegment($pageId) . "", $clientConfig, body: ['title' => $title, 'html' => $html, 'url' => $url, 'locale' => $locale, 'source_id' => $sourceId, 'fin_availability' => $finAvailability, 'external_id' => $externalId, 'audience_ids' => $audienceIds], returnType: ExternalPage::class, decoder: 'json', operationId: 'updateExternalPage', extraHeaders: ["Intercom-Version" => SdkClient::headerValue($intercomVersion, false)], requestOptions: $requestOptions, errors: [401 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class)]);
+        $sdkResponse = SdkClient::request('PUT', "/ai/external_pages/" . SdkClient::encodePathSegment($pageId) . "", $clientConfig, body: ['title' => $title, 'html' => $html, 'url' => $url, 'locale' => $locale, 'source_id' => $sourceId, 'fin_availability' => $finAvailability, 'external_id' => $externalId, 'audience_ids' => $audienceIds], returnType: ExternalPage::class, decoder: 'json', operationId: 'updateExternalPage', extraHeaders: ["Intercom-Version" => SdkClient::headerValue($intercomVersion, false)], requestOptions: $requestOptions, errors: [401 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => SdkClient::typedData($sdkResponse, ExternalPage::class));
     }
 }

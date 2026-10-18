@@ -128,7 +128,9 @@ class ContactSearchRequest implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "query") || $data->query === null) { throw new SdkValidationError("query", 'required', "Required property 'query' is missing or null"); }
+        if (!property_exists($data, "query") || $data->query === null) {
+            throw new SdkValidationError("query", 'required', "Required property 'query' is missing or null");
+        }
         return new self(
             query: SdkClient::hydrateUnionAs($data->query, ContactSearchRequestQuery::class, [SingleFilterSearchRequest::class, MultipleFilterSearchRequest::class], null, []),
             pagination: (property_exists($data, "pagination") ? ($data->pagination === null ? null : SdkClient::hydrateClass($data->pagination, StartingAfterPaging::class)) : SdkNotGiven::Value),
@@ -144,11 +146,26 @@ final readonly class ContactSegmentsTypeEnum implements SdkOpenEnum
 {
     public const LIST = "list";
     private function __construct(public string $value) {}
-    public static function from(string|int $value): static { return new self((string) $value); }
-    public static function tryFrom(string|int|null $value): ?static { return $value === null ? null : self::from($value); }
-    public function getValue(): string { return $this->value; }
-    public function jsonSerialize(): string { return $this->value; }
-    public function __toString(): string { return (string) $this->value; }
+    public static function from(string|int $value): static
+    {
+        return new self((string) $value);
+    }
+    public static function tryFrom(string|int|null $value): ?static
+    {
+        return $value === null ? null : self::from($value);
+    }
+    public function getValue(): string
+    {
+        return $this->value;
+    }
+    public function jsonSerialize(): string
+    {
+        return $this->value;
+    }
+    public function __toString(): string
+    {
+        return (string) $this->value;
+    }
 }
 
 /**
@@ -217,11 +234,26 @@ final readonly class ContactUnarchivedTypeEnum implements SdkOpenEnum
 {
     public const CONTACT = "contact";
     private function __construct(public string $value) {}
-    public static function from(string|int $value): static { return new self((string) $value); }
-    public static function tryFrom(string|int|null $value): ?static { return $value === null ? null : self::from($value); }
-    public function getValue(): string { return $this->value; }
-    public function jsonSerialize(): string { return $this->value; }
-    public function __toString(): string { return (string) $this->value; }
+    public static function from(string|int $value): static
+    {
+        return new self((string) $value);
+    }
+    public static function tryFrom(string|int|null $value): ?static
+    {
+        return $value === null ? null : self::from($value);
+    }
+    public function getValue(): string
+    {
+        return $this->value;
+    }
+    public function jsonSerialize(): string
+    {
+        return $this->value;
+    }
+    public function __toString(): string
+    {
+        return (string) $this->value;
+    }
 }
 
 /**

@@ -21,7 +21,7 @@ class Macros
     public static function getMacro(ClientConfig $clientConfig, string $id, IntercomVersion|SdkNotGiven $intercomVersion = SdkNotGiven::Value, ?RequestOptions $requestOptions = null): Macro|null
     {
 
-        $sdkResponse = SdkClient::request('GET', "/macros/" . SdkClient::encodePathSegment($id) . "", $clientConfig, returnType: Macro::class, decoder: 'json', operationId: 'getMacro', extraHeaders: ["Intercom-Version" => SdkClient::headerValue($intercomVersion, false)], requestOptions: $requestOptions, errors: [401 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class), 403 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class), 404 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class)]);
+        $sdkResponse = SdkClient::request('GET', "/macros/" . SdkClient::encodePathSegment($id) . "", $clientConfig, returnType: Macro::class, decoder: 'json', operationId: 'getMacro', extraHeaders: ["Intercom-Version" => SdkClient::headerValue($intercomVersion, false)], requestOptions: $requestOptions, errors: [401 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class), 403 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class), 404 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => SdkClient::typedData($sdkResponse, Macro::class));
     }
 
@@ -44,7 +44,7 @@ class Macros
             Validation::validateRange('per_page', $perPage, min: 1, max: 150);
         }
 
-        $sdkResponse = SdkClient::request('GET', "/macros", $clientConfig, query: ['per_page' => new SdkQueryValue($perPage, "form", true), 'starting_after' => new SdkQueryValue($startingAfter, "form", true), 'updated_since' => new SdkQueryValue($updatedSince, "form", true)], returnType: MacroList::class, decoder: 'json', operationId: 'listMacros', extraHeaders: ["Intercom-Version" => SdkClient::headerValue($intercomVersion, false)], requestOptions: $requestOptions, errors: [400 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class), 401 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class), 403 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class)]);
+        $sdkResponse = SdkClient::request('GET', "/macros", $clientConfig, query: ['per_page' => new SdkQueryValue($perPage, "form", true), 'starting_after' => new SdkQueryValue($startingAfter, "form", true), 'updated_since' => new SdkQueryValue($updatedSince, "form", true)], returnType: MacroList::class, decoder: 'json', operationId: 'listMacros', extraHeaders: ["Intercom-Version" => SdkClient::headerValue($intercomVersion, false)], requestOptions: $requestOptions, errors: [400 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class), 401 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class), 403 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => SdkClient::typedData($sdkResponse, MacroList::class));
     }
 }

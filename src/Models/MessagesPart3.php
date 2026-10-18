@@ -77,9 +77,15 @@ class WhatsappMessageStatusListPages implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "type") || $data->type === null) { throw new SdkValidationError("type", 'required', "Required property 'type' is missing or null"); }
-        if (!property_exists($data, "per_page") || $data->per_page === null) { throw new SdkValidationError("per_page", 'required', "Required property 'per_page' is missing or null"); }
-        if (!property_exists($data, "total_pages") || $data->total_pages === null) { throw new SdkValidationError("total_pages", 'required', "Required property 'total_pages' is missing or null"); }
+        if (!property_exists($data, "type") || $data->type === null) {
+            throw new SdkValidationError("type", 'required', "Required property 'type' is missing or null");
+        }
+        if (!property_exists($data, "per_page") || $data->per_page === null) {
+            throw new SdkValidationError("per_page", 'required', "Required property 'per_page' is missing or null");
+        }
+        if (!property_exists($data, "total_pages") || $data->total_pages === null) {
+            throw new SdkValidationError("total_pages", 'required', "Required property 'total_pages' is missing or null");
+        }
         return new self(
             type: SdkClient::hydrateStringEnumOrString($data->type, WhatsappMessageStatusListPagesTypeEnum::class),
             perPage: SdkClient::intValue($data->per_page),
@@ -99,11 +105,26 @@ final readonly class WhatsappMessageStatusListEventsItemStatusEnum implements Sd
     public const READ = "read";
     public const FAILED = "failed";
     private function __construct(public string $value) {}
-    public static function from(string|int $value): static { return new self((string) $value); }
-    public static function tryFrom(string|int|null $value): ?static { return $value === null ? null : self::from($value); }
-    public function getValue(): string { return $this->value; }
-    public function jsonSerialize(): string { return $this->value; }
-    public function __toString(): string { return (string) $this->value; }
+    public static function from(string|int $value): static
+    {
+        return new self((string) $value);
+    }
+    public static function tryFrom(string|int|null $value): ?static
+    {
+        return $value === null ? null : self::from($value);
+    }
+    public function getValue(): string
+    {
+        return $this->value;
+    }
+    public function jsonSerialize(): string
+    {
+        return $this->value;
+    }
+    public function __toString(): string
+    {
+        return (string) $this->value;
+    }
 }
 
 /**
@@ -113,11 +134,26 @@ final readonly class WhatsappMessageStatusListEventsItemTypeEnum implements SdkO
 {
     public const BROADCAST_OUTBOUND = "broadcast_outbound";
     private function __construct(public string $value) {}
-    public static function from(string|int $value): static { return new self((string) $value); }
-    public static function tryFrom(string|int|null $value): ?static { return $value === null ? null : self::from($value); }
-    public function getValue(): string { return $this->value; }
-    public function jsonSerialize(): string { return $this->value; }
-    public function __toString(): string { return (string) $this->value; }
+    public static function from(string|int $value): static
+    {
+        return new self((string) $value);
+    }
+    public static function tryFrom(string|int|null $value): ?static
+    {
+        return $value === null ? null : self::from($value);
+    }
+    public function getValue(): string
+    {
+        return $this->value;
+    }
+    public function jsonSerialize(): string
+    {
+        return $this->value;
+    }
+    public function __toString(): string
+    {
+        return (string) $this->value;
+    }
 }
 
 /**
@@ -230,13 +266,27 @@ class WhatsappMessageStatusListEventsItem implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "id") || $data->id === null) { throw new SdkValidationError("id", 'required', "Required property 'id' is missing or null"); }
-        if (!property_exists($data, "conversation_id") || $data->conversation_id === null) { throw new SdkValidationError("conversation_id", 'required', "Required property 'conversation_id' is missing or null"); }
-        if (!property_exists($data, "status") || $data->status === null) { throw new SdkValidationError("status", 'required', "Required property 'status' is missing or null"); }
-        if (!property_exists($data, "type") || $data->type === null) { throw new SdkValidationError("type", 'required', "Required property 'type' is missing or null"); }
-        if (!property_exists($data, "created_at") || $data->created_at === null) { throw new SdkValidationError("created_at", 'required', "Required property 'created_at' is missing or null"); }
-        if (!property_exists($data, "updated_at") || $data->updated_at === null) { throw new SdkValidationError("updated_at", 'required', "Required property 'updated_at' is missing or null"); }
-        if (!property_exists($data, "whatsapp_message_id") || $data->whatsapp_message_id === null) { throw new SdkValidationError("whatsapp_message_id", 'required', "Required property 'whatsapp_message_id' is missing or null"); }
+        if (!property_exists($data, "id") || $data->id === null) {
+            throw new SdkValidationError("id", 'required', "Required property 'id' is missing or null");
+        }
+        if (!property_exists($data, "conversation_id") || $data->conversation_id === null) {
+            throw new SdkValidationError("conversation_id", 'required', "Required property 'conversation_id' is missing or null");
+        }
+        if (!property_exists($data, "status") || $data->status === null) {
+            throw new SdkValidationError("status", 'required', "Required property 'status' is missing or null");
+        }
+        if (!property_exists($data, "type") || $data->type === null) {
+            throw new SdkValidationError("type", 'required', "Required property 'type' is missing or null");
+        }
+        if (!property_exists($data, "created_at") || $data->created_at === null) {
+            throw new SdkValidationError("created_at", 'required', "Required property 'created_at' is missing or null");
+        }
+        if (!property_exists($data, "updated_at") || $data->updated_at === null) {
+            throw new SdkValidationError("updated_at", 'required', "Required property 'updated_at' is missing or null");
+        }
+        if (!property_exists($data, "whatsapp_message_id") || $data->whatsapp_message_id === null) {
+            throw new SdkValidationError("whatsapp_message_id", 'required', "Required property 'whatsapp_message_id' is missing or null");
+        }
         return new self(
             id: SdkClient::stringValue($data->id),
             conversationId: SdkClient::stringValue($data->conversation_id),
@@ -328,11 +378,21 @@ class WhatsappMessageStatusList implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "type") || $data->type === null) { throw new SdkValidationError("type", 'required', "Required property 'type' is missing or null"); }
-        if (!property_exists($data, "ruleset_id") || $data->ruleset_id === null) { throw new SdkValidationError("ruleset_id", 'required', "Required property 'ruleset_id' is missing or null"); }
-        if (!property_exists($data, "pages") || $data->pages === null) { throw new SdkValidationError("pages", 'required', "Required property 'pages' is missing or null"); }
-        if (!property_exists($data, "total_count") || $data->total_count === null) { throw new SdkValidationError("total_count", 'required', "Required property 'total_count' is missing or null"); }
-        if (!property_exists($data, "events") || $data->events === null) { throw new SdkValidationError("events", 'required', "Required property 'events' is missing or null"); }
+        if (!property_exists($data, "type") || $data->type === null) {
+            throw new SdkValidationError("type", 'required', "Required property 'type' is missing or null");
+        }
+        if (!property_exists($data, "ruleset_id") || $data->ruleset_id === null) {
+            throw new SdkValidationError("ruleset_id", 'required', "Required property 'ruleset_id' is missing or null");
+        }
+        if (!property_exists($data, "pages") || $data->pages === null) {
+            throw new SdkValidationError("pages", 'required', "Required property 'pages' is missing or null");
+        }
+        if (!property_exists($data, "total_count") || $data->total_count === null) {
+            throw new SdkValidationError("total_count", 'required', "Required property 'total_count' is missing or null");
+        }
+        if (!property_exists($data, "events") || $data->events === null) {
+            throw new SdkValidationError("events", 'required', "Required property 'events' is missing or null");
+        }
         return new self(
             type: SdkClient::hydrateStringEnumOrString($data->type, WhatsappMessageStatusListTypeEnum::class),
             rulesetId: SdkClient::stringValue($data->ruleset_id),

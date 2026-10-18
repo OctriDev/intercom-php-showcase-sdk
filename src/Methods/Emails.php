@@ -20,7 +20,7 @@ class Emails
     public static function listEmails(ClientConfig $clientConfig, IntercomVersion|SdkNotGiven $intercomVersion = SdkNotGiven::Value, ?RequestOptions $requestOptions = null): EmailList
     {
 
-        $sdkResponse = SdkClient::request('GET', "/emails", $clientConfig, returnType: EmailList::class, decoder: 'json', operationId: 'listEmails', extraHeaders: ["Intercom-Version" => SdkClient::headerValue($intercomVersion, false)], requestOptions: $requestOptions, errors: [401 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class)]);
+        $sdkResponse = SdkClient::request('GET', "/emails", $clientConfig, returnType: EmailList::class, decoder: 'json', operationId: 'listEmails', extraHeaders: ["Intercom-Version" => SdkClient::headerValue($intercomVersion, false)], requestOptions: $requestOptions, errors: [401 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => SdkClient::typedData($sdkResponse, EmailList::class));
     }
 
@@ -37,7 +37,7 @@ class Emails
     public static function retrieveEmail(ClientConfig $clientConfig, string $id, IntercomVersion|SdkNotGiven $intercomVersion = SdkNotGiven::Value, ?RequestOptions $requestOptions = null): EmailSetting
     {
 
-        $sdkResponse = SdkClient::request('GET', "/emails/" . SdkClient::encodePathSegment($id) . "", $clientConfig, returnType: EmailSetting::class, decoder: 'json', operationId: 'retrieveEmail', extraHeaders: ["Intercom-Version" => SdkClient::headerValue($intercomVersion, false)], requestOptions: $requestOptions, errors: [401 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class), 404 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class)]);
+        $sdkResponse = SdkClient::request('GET', "/emails/" . SdkClient::encodePathSegment($id) . "", $clientConfig, returnType: EmailSetting::class, decoder: 'json', operationId: 'retrieveEmail', extraHeaders: ["Intercom-Version" => SdkClient::headerValue($intercomVersion, false)], requestOptions: $requestOptions, errors: [401 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class), 404 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => SdkClient::typedData($sdkResponse, EmailSetting::class));
     }
 }
