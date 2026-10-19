@@ -55,12 +55,8 @@ class CreateDataExportsRequest implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "created_at_after") || $data->created_at_after === null) {
-            throw new SdkValidationError("created_at_after", 'required', "Required property 'created_at_after' is missing or null");
-        }
-        if (!property_exists($data, "created_at_before") || $data->created_at_before === null) {
-            throw new SdkValidationError("created_at_before", 'required', "Required property 'created_at_before' is missing or null");
-        }
+        if (!property_exists($data, "created_at_after") || $data->created_at_after === null) { throw new SdkValidationError("created_at_after", 'required', "Required property 'created_at_after' is missing or null"); }
+        if (!property_exists($data, "created_at_before") || $data->created_at_before === null) { throw new SdkValidationError("created_at_before", 'required', "Required property 'created_at_before' is missing or null"); }
         return new self(
             createdAtAfter: SdkClient::intValue($data->created_at_after),
             createdAtBefore: SdkClient::intValue($data->created_at_before),

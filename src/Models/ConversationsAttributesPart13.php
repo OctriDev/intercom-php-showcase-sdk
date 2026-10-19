@@ -57,9 +57,7 @@ class CreateConversationAttributeRelationshipRequestVariant1Reference implements
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "type") || $data->type === null) {
-            throw new SdkValidationError("type", 'required', "Required property 'type' is missing or null");
-        }
+        if (!property_exists($data, "type") || $data->type === null) { throw new SdkValidationError("type", 'required', "Required property 'type' is missing or null"); }
         return new self(
             type: SdkClient::hydrateStringEnumOrString($data->type, CreateConversationAttributeRelationshipRequestVariant1ReferenceTypeEnum::class),
             objectTypeId: (property_exists($data, "object_type_id") && $data->object_type_id !== null ? SdkClient::stringValue($data->object_type_id) : SdkNotGiven::Value),
@@ -132,26 +130,11 @@ final readonly class CreateConversationAttributeRelationshipRequestReferenceType
     public const ONE = "one";
     public const MANY = "many";
     private function __construct(public string $value) {}
-    public static function from(string|int $value): static
-    {
-        return new self((string) $value);
-    }
-    public static function tryFrom(string|int|null $value): ?static
-    {
-        return $value === null ? null : self::from($value);
-    }
-    public function getValue(): string
-    {
-        return $this->value;
-    }
-    public function jsonSerialize(): string
-    {
-        return $this->value;
-    }
-    public function __toString(): string
-    {
-        return (string) $this->value;
-    }
+    public static function from(string|int $value): static { return new self((string) $value); }
+    public static function tryFrom(string|int|null $value): ?static { return $value === null ? null : self::from($value); }
+    public function getValue(): string { return $this->value; }
+    public function jsonSerialize(): string { return $this->value; }
+    public function __toString(): string { return (string) $this->value; }
 }
 
 /**
@@ -204,9 +187,7 @@ class CreateConversationAttributeRelationshipRequestReference implements \JsonSe
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "type") || $data->type === null) {
-            throw new SdkValidationError("type", 'required', "Required property 'type' is missing or null");
-        }
+        if (!property_exists($data, "type") || $data->type === null) { throw new SdkValidationError("type", 'required', "Required property 'type' is missing or null"); }
         return new self(
             type: SdkClient::hydrateStringEnumOrString($data->type, CreateConversationAttributeRelationshipRequestReferenceTypeEnum::class),
             objectTypeId: (property_exists($data, "object_type_id") && $data->object_type_id !== null ? SdkClient::stringValue($data->object_type_id) : SdkNotGiven::Value),
@@ -306,12 +287,8 @@ class CreateConversationAttributeRelationshipRequest implements CreateConversati
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "name") || $data->name === null) {
-            throw new SdkValidationError("name", 'required', "Required property 'name' is missing or null");
-        }
-        if (!property_exists($data, "data_type") || $data->data_type === null) {
-            throw new SdkValidationError("data_type", 'required', "Required property 'data_type' is missing or null");
-        }
+        if (!property_exists($data, "name") || $data->name === null) { throw new SdkValidationError("name", 'required', "Required property 'name' is missing or null"); }
+        if (!property_exists($data, "data_type") || $data->data_type === null) { throw new SdkValidationError("data_type", 'required', "Required property 'data_type' is missing or null"); }
         return new self(
             name: SdkClient::stringValue($data->name),
             dataType: SdkClient::hydrateEnum($data->data_type, CreateConversationAttributeRelationshipRequestDataTypeEnum::class),

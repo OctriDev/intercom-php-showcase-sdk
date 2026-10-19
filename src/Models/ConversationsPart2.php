@@ -113,9 +113,7 @@ class AttachContactToConversationRequestCustomerVariant0 implements AttachContac
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "intercom_user_id") || $data->intercom_user_id === null) {
-            throw new SdkValidationError("intercom_user_id", 'required', "Required property 'intercom_user_id' is missing or null");
-        }
+        if (!property_exists($data, "intercom_user_id") || $data->intercom_user_id === null) { throw new SdkValidationError("intercom_user_id", 'required', "Required property 'intercom_user_id' is missing or null"); }
         return new self(
             intercomUserId: SdkClient::stringValue($data->intercom_user_id),
             customer: (property_exists($data, "customer") ? ($data->customer === null ? null : SdkClient::hydrateUnionAs($data->customer, CustomerRequest::class, [CustomerRequestVariant0::class, CustomerRequestVariant1::class, CustomerRequestVariant2::class], null, [])) : SdkNotGiven::Value),
@@ -170,9 +168,7 @@ class AttachContactToConversationRequestCustomerVariant1 implements AttachContac
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "user_id") || $data->user_id === null) {
-            throw new SdkValidationError("user_id", 'required', "Required property 'user_id' is missing or null");
-        }
+        if (!property_exists($data, "user_id") || $data->user_id === null) { throw new SdkValidationError("user_id", 'required', "Required property 'user_id' is missing or null"); }
         return new self(
             userId: SdkClient::stringValue($data->user_id),
             customer: (property_exists($data, "customer") ? ($data->customer === null ? null : SdkClient::hydrateUnionAs($data->customer, CustomerRequest::class, [CustomerRequestVariant0::class, CustomerRequestVariant1::class, CustomerRequestVariant2::class], null, [])) : SdkNotGiven::Value),
@@ -227,9 +223,7 @@ class AttachContactToConversationRequestCustomerVariant2 implements AttachContac
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "email") || $data->email === null) {
-            throw new SdkValidationError("email", 'required', "Required property 'email' is missing or null");
-        }
+        if (!property_exists($data, "email") || $data->email === null) { throw new SdkValidationError("email", 'required', "Required property 'email' is missing or null"); }
         return new self(
             email: SdkClient::stringValue($data->email),
             customer: (property_exists($data, "customer") ? ($data->customer === null ? null : SdkClient::hydrateUnionAs($data->customer, CustomerRequest::class, [CustomerRequestVariant0::class, CustomerRequestVariant1::class, CustomerRequestVariant2::class], null, [])) : SdkNotGiven::Value),
@@ -252,26 +246,11 @@ final readonly class CloseConversationRequestTypeEnum implements SdkOpenEnum
 {
     public const ADMIN = "admin";
     private function __construct(public string $value) {}
-    public static function from(string|int $value): static
-    {
-        return new self((string) $value);
-    }
-    public static function tryFrom(string|int|null $value): ?static
-    {
-        return $value === null ? null : self::from($value);
-    }
-    public function getValue(): string
-    {
-        return $this->value;
-    }
-    public function jsonSerialize(): string
-    {
-        return $this->value;
-    }
-    public function __toString(): string
-    {
-        return (string) $this->value;
-    }
+    public static function from(string|int $value): static { return new self((string) $value); }
+    public static function tryFrom(string|int|null $value): ?static { return $value === null ? null : self::from($value); }
+    public function getValue(): string { return $this->value; }
+    public function jsonSerialize(): string { return $this->value; }
+    public function __toString(): string { return (string) $this->value; }
 }
 
 /**
@@ -344,15 +323,9 @@ class CloseConversationRequest implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "message_type") || $data->message_type === null) {
-            throw new SdkValidationError("message_type", 'required', "Required property 'message_type' is missing or null");
-        }
-        if (!property_exists($data, "type") || $data->type === null) {
-            throw new SdkValidationError("type", 'required', "Required property 'type' is missing or null");
-        }
-        if (!property_exists($data, "admin_id") || $data->admin_id === null) {
-            throw new SdkValidationError("admin_id", 'required', "Required property 'admin_id' is missing or null");
-        }
+        if (!property_exists($data, "message_type") || $data->message_type === null) { throw new SdkValidationError("message_type", 'required', "Required property 'message_type' is missing or null"); }
+        if (!property_exists($data, "type") || $data->type === null) { throw new SdkValidationError("type", 'required', "Required property 'type' is missing or null"); }
+        if (!property_exists($data, "admin_id") || $data->admin_id === null) { throw new SdkValidationError("admin_id", 'required', "Required property 'admin_id' is missing or null"); }
         return new self(
             messageType: SdkClient::hydrateEnum($data->message_type, CloseConversationRequestMessageTypeEnum::class),
             type: SdkClient::hydrateStringEnumOrString($data->type, CloseConversationRequestTypeEnum::class),
@@ -369,24 +342,9 @@ final readonly class ContactReplyEmailRequestMessageTypeEnum implements SdkOpenE
 {
     public const COMMENT = "comment";
     private function __construct(public string $value) {}
-    public static function from(string|int $value): static
-    {
-        return new self((string) $value);
-    }
-    public static function tryFrom(string|int|null $value): ?static
-    {
-        return $value === null ? null : self::from($value);
-    }
-    public function getValue(): string
-    {
-        return $this->value;
-    }
-    public function jsonSerialize(): string
-    {
-        return $this->value;
-    }
-    public function __toString(): string
-    {
-        return (string) $this->value;
-    }
+    public static function from(string|int $value): static { return new self((string) $value); }
+    public static function tryFrom(string|int|null $value): ?static { return $value === null ? null : self::from($value); }
+    public function getValue(): string { return $this->value; }
+    public function jsonSerialize(): string { return $this->value; }
+    public function __toString(): string { return (string) $this->value; }
 }

@@ -21,7 +21,7 @@ trait ContactsMethodsPart1
     public static function listContactsCompanies(ClientConfig $clientConfig, string $contactId, IntercomVersion|SdkNotGiven $intercomVersion = SdkNotGiven::Value, ?RequestOptions $requestOptions = null): ContactAttachedCompanies
     {
 
-        $sdkResponse = SdkClient::request('GET', "/contacts/" . SdkClient::encodePathSegment($contactId) . "/companies", $clientConfig, returnType: ContactAttachedCompanies::class, decoder: 'json', operationId: 'listContactsCompanies', extraHeaders: ["Intercom-Version" => SdkClient::headerValue($intercomVersion, false)], requestOptions: $requestOptions, errors: [401 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class), 404 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class)]);
+        $sdkResponse = SdkClient::request('GET', "/contacts/" . SdkClient::encodePathSegment($contactId) . "/companies", $clientConfig, returnType: ContactAttachedCompanies::class, decoder: 'json', operationId: 'listContactsCompanies', extraHeaders: ["Intercom-Version" => SdkClient::headerValue($intercomVersion, false)], requestOptions: $requestOptions, errors: [401 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class), 404 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => SdkClient::typedData($sdkResponse, ContactAttachedCompanies::class));
     }
 
@@ -38,7 +38,7 @@ trait ContactsMethodsPart1
     public static function listContactsSegments(ClientConfig $clientConfig, string $contactId, IntercomVersion|SdkNotGiven $intercomVersion = SdkNotGiven::Value, ?RequestOptions $requestOptions = null): ContactSegments
     {
 
-        $sdkResponse = SdkClient::request('GET', "/contacts/" . SdkClient::encodePathSegment($contactId) . "/segments", $clientConfig, returnType: ContactSegments::class, decoder: 'json', operationId: 'listContactsSegments', extraHeaders: ["Intercom-Version" => SdkClient::headerValue($intercomVersion, false)], requestOptions: $requestOptions, errors: [401 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class), 404 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class)]);
+        $sdkResponse = SdkClient::request('GET', "/contacts/" . SdkClient::encodePathSegment($contactId) . "/segments", $clientConfig, returnType: ContactSegments::class, decoder: 'json', operationId: 'listContactsSegments', extraHeaders: ["Intercom-Version" => SdkClient::headerValue($intercomVersion, false)], requestOptions: $requestOptions, errors: [401 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class), 404 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => SdkClient::typedData($sdkResponse, ContactSegments::class));
     }
 
@@ -55,7 +55,7 @@ trait ContactsMethodsPart1
     public static function listContactsSubscriptions(ClientConfig $clientConfig, string $contactId, IntercomVersion|SdkNotGiven $intercomVersion = SdkNotGiven::Value, ?RequestOptions $requestOptions = null): SubscriptionTypeList
     {
 
-        $sdkResponse = SdkClient::request('GET', "/contacts/" . SdkClient::encodePathSegment($contactId) . "/subscriptions", $clientConfig, returnType: SubscriptionTypeList::class, decoder: 'json', operationId: 'listContactsSubscriptions', extraHeaders: ["Intercom-Version" => SdkClient::headerValue($intercomVersion, false)], requestOptions: $requestOptions, errors: [401 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class), 404 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class)]);
+        $sdkResponse = SdkClient::request('GET', "/contacts/" . SdkClient::encodePathSegment($contactId) . "/subscriptions", $clientConfig, returnType: SubscriptionTypeList::class, decoder: 'json', operationId: 'listContactsSubscriptions', extraHeaders: ["Intercom-Version" => SdkClient::headerValue($intercomVersion, false)], requestOptions: $requestOptions, errors: [401 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class), 404 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => SdkClient::typedData($sdkResponse, SubscriptionTypeList::class));
     }
 
@@ -72,7 +72,7 @@ trait ContactsMethodsPart1
     public static function listContactsTags(ClientConfig $clientConfig, string $contactId, IntercomVersion|SdkNotGiven $intercomVersion = SdkNotGiven::Value, ?RequestOptions $requestOptions = null): TagList
     {
 
-        $sdkResponse = SdkClient::request('GET', "/contacts/" . SdkClient::encodePathSegment($contactId) . "/tags", $clientConfig, returnType: TagList::class, decoder: 'json', operationId: 'listContactsTags', extraHeaders: ["Intercom-Version" => SdkClient::headerValue($intercomVersion, false)], requestOptions: $requestOptions, errors: [401 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class), 404 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class)]);
+        $sdkResponse = SdkClient::request('GET', "/contacts/" . SdkClient::encodePathSegment($contactId) . "/tags", $clientConfig, returnType: TagList::class, decoder: 'json', operationId: 'listContactsTags', extraHeaders: ["Intercom-Version" => SdkClient::headerValue($intercomVersion, false)], requestOptions: $requestOptions, errors: [401 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class), 404 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => SdkClient::typedData($sdkResponse, TagList::class));
     }
 
@@ -98,7 +98,7 @@ trait ContactsMethodsPart1
             Validation::validateRange('page', $page, min: 1);
         }
 
-        $sdkResponse = SdkClient::request('GET', "/contacts/deleted", $clientConfig, query: ['per_page' => new SdkQueryValue($perPage, "form", true), 'page' => new SdkQueryValue($page, "form", true)], returnType: DeletedContactList::class, decoder: 'json', operationId: 'listDeletedContacts', extraHeaders: ["Intercom-Version" => SdkClient::headerValue($intercomVersion, false)], requestOptions: $requestOptions, errors: [400 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class), 401 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class)]);
+        $sdkResponse = SdkClient::request('GET', "/contacts/deleted", $clientConfig, query: ['per_page' => new SdkQueryValue($perPage, "form", true), 'page' => new SdkQueryValue($page, "form", true)], returnType: DeletedContactList::class, decoder: 'json', operationId: 'listDeletedContacts', extraHeaders: ["Intercom-Version" => SdkClient::headerValue($intercomVersion, false)], requestOptions: $requestOptions, errors: [400 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class), 401 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => SdkClient::typedData($sdkResponse, DeletedContactList::class));
     }
 
@@ -117,7 +117,7 @@ trait ContactsMethodsPart1
     public static function updateContact(ClientConfig $clientConfig, string $contactId, bool|SdkNotGiven $includeMergeHistory = SdkNotGiven::Value, IntercomVersion|SdkNotGiven $intercomVersion = SdkNotGiven::Value, UpdateContactRequest|SdkNotGiven $body = SdkNotGiven::Value, ?RequestOptions $requestOptions = null): UpdateContactResponse
     {
 
-        $sdkResponse = SdkClient::request('PUT', "/contacts/" . SdkClient::encodePathSegment($contactId) . "", $clientConfig, query: ['include_merge_history' => new SdkQueryValue($includeMergeHistory, "form", true)], body: $body, returnType: UpdateContactResponse::class, decoder: 'json', operationId: 'updateContact', extraHeaders: ["Intercom-Version" => SdkClient::headerValue($intercomVersion, false)], requestOptions: $requestOptions, errors: [401 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class)]);
+        $sdkResponse = SdkClient::request('PUT', "/contacts/" . SdkClient::encodePathSegment($contactId) . "", $clientConfig, query: ['include_merge_history' => new SdkQueryValue($includeMergeHistory, "form", true)], body: $body, returnType: UpdateContactResponse::class, decoder: 'json', operationId: 'updateContact', extraHeaders: ["Intercom-Version" => SdkClient::headerValue($intercomVersion, false)], requestOptions: $requestOptions, errors: [401 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => SdkClient::typedData($sdkResponse, UpdateContactResponse::class));
     }
 
@@ -135,7 +135,7 @@ trait ContactsMethodsPart1
     public static function showContact(ClientConfig $clientConfig, string $contactId, bool|SdkNotGiven $includeMergeHistory = SdkNotGiven::Value, IntercomVersion|SdkNotGiven $intercomVersion = SdkNotGiven::Value, ?RequestOptions $requestOptions = null): ShowContactResponse
     {
 
-        $sdkResponse = SdkClient::request('GET', "/contacts/" . SdkClient::encodePathSegment($contactId) . "", $clientConfig, query: ['include_merge_history' => new SdkQueryValue($includeMergeHistory, "form", true)], returnType: ShowContactResponse::class, decoder: 'json', operationId: 'showContact', extraHeaders: ["Intercom-Version" => SdkClient::headerValue($intercomVersion, false)], requestOptions: $requestOptions, errors: [401 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class), 410 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class)]);
+        $sdkResponse = SdkClient::request('GET', "/contacts/" . SdkClient::encodePathSegment($contactId) . "", $clientConfig, query: ['include_merge_history' => new SdkQueryValue($includeMergeHistory, "form", true)], returnType: ShowContactResponse::class, decoder: 'json', operationId: 'showContact', extraHeaders: ["Intercom-Version" => SdkClient::headerValue($intercomVersion, false)], requestOptions: $requestOptions, errors: [401 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class), 410 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => SdkClient::typedData($sdkResponse, ShowContactResponse::class));
     }
 
@@ -152,7 +152,7 @@ trait ContactsMethodsPart1
     public static function deleteContact(ClientConfig $clientConfig, string $contactId, IntercomVersion|SdkNotGiven $intercomVersion = SdkNotGiven::Value, ?RequestOptions $requestOptions = null): ContactDeleted
     {
 
-        $sdkResponse = SdkClient::request('DELETE', "/contacts/" . SdkClient::encodePathSegment($contactId) . "", $clientConfig, returnType: ContactDeleted::class, decoder: 'json', operationId: 'deleteContact', extraHeaders: ["Intercom-Version" => SdkClient::headerValue($intercomVersion, false)], requestOptions: $requestOptions, errors: [401 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class)]);
+        $sdkResponse = SdkClient::request('DELETE', "/contacts/" . SdkClient::encodePathSegment($contactId) . "", $clientConfig, returnType: ContactDeleted::class, decoder: 'json', operationId: 'deleteContact', extraHeaders: ["Intercom-Version" => SdkClient::headerValue($intercomVersion, false)], requestOptions: $requestOptions, errors: [401 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => SdkClient::typedData($sdkResponse, ContactDeleted::class));
     }
 
@@ -172,7 +172,7 @@ trait ContactsMethodsPart1
     public static function mergeContact(ClientConfig $clientConfig, string $from, string $into, bool|SdkNotGiven $includeMergeHistory = SdkNotGiven::Value, IntercomVersion|SdkNotGiven $intercomVersion = SdkNotGiven::Value, bool|SdkNotGiven $skipDuplicateValidation = SdkNotGiven::Value, ?RequestOptions $requestOptions = null): MergeContactResponse
     {
 
-        $sdkResponse = SdkClient::request('POST', "/contacts/merge", $clientConfig, query: ['include_merge_history' => new SdkQueryValue($includeMergeHistory, "form", true)], body: ['from' => $from, 'into' => $into, 'skip_duplicate_validation' => $skipDuplicateValidation], returnType: MergeContactResponse::class, decoder: 'json', operationId: 'mergeContact', extraHeaders: ["Intercom-Version" => SdkClient::headerValue($intercomVersion, false)], requestOptions: $requestOptions, errors: [400 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class), 401 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class)]);
+        $sdkResponse = SdkClient::request('POST', "/contacts/merge", $clientConfig, query: ['include_merge_history' => new SdkQueryValue($includeMergeHistory, "form", true)], body: ['from' => $from, 'into' => $into, 'skip_duplicate_validation' => $skipDuplicateValidation], returnType: MergeContactResponse::class, decoder: 'json', operationId: 'mergeContact', extraHeaders: ["Intercom-Version" => SdkClient::headerValue($intercomVersion, false)], requestOptions: $requestOptions, errors: [400 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class), 401 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => SdkClient::typedData($sdkResponse, MergeContactResponse::class));
     }
 
@@ -192,7 +192,7 @@ trait ContactsMethodsPart1
     public static function previewMergeContact(ClientConfig $clientConfig, string $from, string $into, IntercomVersion|SdkNotGiven $intercomVersion = SdkNotGiven::Value, bool|SdkNotGiven $skipDuplicateValidation = SdkNotGiven::Value, array|SdkNotGiven $customAttributeNames = SdkNotGiven::Value, ?RequestOptions $requestOptions = null): MergePreviewResponse
     {
 
-        $sdkResponse = SdkClient::request('POST', "/contacts/merge/preview", $clientConfig, body: ['from' => $from, 'into' => $into, 'skip_duplicate_validation' => $skipDuplicateValidation, 'custom_attribute_names' => $customAttributeNames], decoder: 'json', operationId: 'previewMergeContact', extraHeaders: ["Intercom-Version" => SdkClient::headerValue($intercomVersion, false)], requestOptions: $requestOptions, errors: [401 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class)]);
+        $sdkResponse = SdkClient::request('POST', "/contacts/merge/preview", $clientConfig, body: ['from' => $from, 'into' => $into, 'skip_duplicate_validation' => $skipDuplicateValidation, 'custom_attribute_names' => $customAttributeNames], decoder: 'json', operationId: 'previewMergeContact', extraHeaders: ["Intercom-Version" => SdkClient::headerValue($intercomVersion, false)], requestOptions: $requestOptions, errors: [401 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => SdkClient::hydrateUnionAs($sdkResponse->data, MergePreviewResponse::class, [MergePreviewAllowed::class, MergePreviewBlocked::class], null, []));
     }
 
@@ -212,7 +212,7 @@ trait ContactsMethodsPart1
     public static function searchContacts(ClientConfig $clientConfig, ContactSearchRequestQuery $query, bool|SdkNotGiven $includeMergeHistory = SdkNotGiven::Value, IntercomVersion|SdkNotGiven $intercomVersion = SdkNotGiven::Value, StartingAfterPaging|null|SdkNotGiven $pagination = SdkNotGiven::Value, SearchContactsSort|SdkNotGiven $sort = SdkNotGiven::Value, ?RequestOptions $requestOptions = null): ContactList
     {
 
-        $sdkResponse = SdkClient::request('POST', "/contacts/search", $clientConfig, query: ['include_merge_history' => new SdkQueryValue($includeMergeHistory, "form", true)], body: ['query' => $query, 'pagination' => $pagination, 'sort' => $sort], returnType: ContactList::class, decoder: 'json', operationId: 'searchContacts', extraHeaders: ["Intercom-Version" => SdkClient::headerValue($intercomVersion, false)], requestOptions: $requestOptions, errors: [400 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class), 401 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class)]);
+        $sdkResponse = SdkClient::request('POST', "/contacts/search", $clientConfig, query: ['include_merge_history' => new SdkQueryValue($includeMergeHistory, "form", true)], body: ['query' => $query, 'pagination' => $pagination, 'sort' => $sort], returnType: ContactList::class, decoder: 'json', operationId: 'searchContacts', extraHeaders: ["Intercom-Version" => SdkClient::headerValue($intercomVersion, false)], requestOptions: $requestOptions, errors: [400 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class), 401 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => SdkClient::typedData($sdkResponse, ContactList::class));
     }
 
@@ -234,7 +234,7 @@ trait ContactsMethodsPart1
             Validation::validateRange('per_page', $perPage, min: 1, max: 150);
         }
 
-        $sdkResponse = SdkClient::request('GET', "/contacts/activities", $clientConfig, query: ['per_page' => new SdkQueryValue($perPage, "form", true), 'starting_after' => new SdkQueryValue($startingAfter, "form", true)], returnType: ContactActivityList::class, decoder: 'json', operationId: 'listContactActivities', extraHeaders: ["Intercom-Version" => SdkClient::headerValue($intercomVersion, false)], requestOptions: $requestOptions, errors: [401 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class)]);
+        $sdkResponse = SdkClient::request('GET', "/contacts/activities", $clientConfig, query: ['per_page' => new SdkQueryValue($perPage, "form", true), 'starting_after' => new SdkQueryValue($startingAfter, "form", true)], returnType: ContactActivityList::class, decoder: 'json', operationId: 'listContactActivities', extraHeaders: ["Intercom-Version" => SdkClient::headerValue($intercomVersion, false)], requestOptions: $requestOptions, errors: [401 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => SdkClient::typedData($sdkResponse, ContactActivityList::class));
     }
 
@@ -251,7 +251,7 @@ trait ContactsMethodsPart1
     public static function listContacts(ClientConfig $clientConfig, bool|SdkNotGiven $includeMergeHistory = SdkNotGiven::Value, IntercomVersion|SdkNotGiven $intercomVersion = SdkNotGiven::Value, ?RequestOptions $requestOptions = null): ContactList
     {
 
-        $sdkResponse = SdkClient::request('GET', "/contacts", $clientConfig, query: ['include_merge_history' => new SdkQueryValue($includeMergeHistory, "form", true)], returnType: ContactList::class, decoder: 'json', operationId: 'listContacts', extraHeaders: ["Intercom-Version" => SdkClient::headerValue($intercomVersion, false)], requestOptions: $requestOptions, errors: [401 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class)]);
+        $sdkResponse = SdkClient::request('GET', "/contacts", $clientConfig, query: ['include_merge_history' => new SdkQueryValue($includeMergeHistory, "form", true)], returnType: ContactList::class, decoder: 'json', operationId: 'listContacts', extraHeaders: ["Intercom-Version" => SdkClient::headerValue($intercomVersion, false)], requestOptions: $requestOptions, errors: [401 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => SdkClient::typedData($sdkResponse, ContactList::class));
     }
 
@@ -268,7 +268,7 @@ trait ContactsMethodsPart1
     public static function createContact(ClientConfig $clientConfig, IntercomVersion|SdkNotGiven $intercomVersion = SdkNotGiven::Value, CreateContactRequest|SdkNotGiven $body = SdkNotGiven::Value, ?RequestOptions $requestOptions = null): CreateContactResponse
     {
 
-        $sdkResponse = SdkClient::request('POST', "/contacts", $clientConfig, body: $body, returnType: CreateContactResponse::class, decoder: 'json', operationId: 'createContact', extraHeaders: ["Intercom-Version" => SdkClient::headerValue($intercomVersion, false)], requestOptions: $requestOptions, errors: [401 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class)]);
+        $sdkResponse = SdkClient::request('POST', "/contacts", $clientConfig, body: $body, returnType: CreateContactResponse::class, decoder: 'json', operationId: 'createContact', extraHeaders: ["Intercom-Version" => SdkClient::headerValue($intercomVersion, false)], requestOptions: $requestOptions, errors: [401 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => SdkClient::typedData($sdkResponse, CreateContactResponse::class));
     }
 
@@ -286,7 +286,7 @@ trait ContactsMethodsPart1
     public static function showContactByExternalId(ClientConfig $clientConfig, string $externalId, bool|SdkNotGiven $includeMergeHistory = SdkNotGiven::Value, IntercomVersion|SdkNotGiven $intercomVersion = SdkNotGiven::Value, ?RequestOptions $requestOptions = null): ShowContactByExternalIdResponse
     {
 
-        $sdkResponse = SdkClient::request('GET', "/contacts/find_by_external_id/" . SdkClient::encodePathSegment($externalId) . "", $clientConfig, query: ['include_merge_history' => new SdkQueryValue($includeMergeHistory, "form", true)], returnType: ShowContactByExternalIdResponse::class, decoder: 'json', operationId: 'showContactByExternalId', extraHeaders: ["Intercom-Version" => SdkClient::headerValue($intercomVersion, false)], requestOptions: $requestOptions, errors: [401 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class), 410 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class)]);
+        $sdkResponse = SdkClient::request('GET', "/contacts/find_by_external_id/" . SdkClient::encodePathSegment($externalId) . "", $clientConfig, query: ['include_merge_history' => new SdkQueryValue($includeMergeHistory, "form", true)], returnType: ShowContactByExternalIdResponse::class, decoder: 'json', operationId: 'showContactByExternalId', extraHeaders: ["Intercom-Version" => SdkClient::headerValue($intercomVersion, false)], requestOptions: $requestOptions, errors: [401 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class), 410 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => SdkClient::typedData($sdkResponse, ShowContactByExternalIdResponse::class));
     }
 

@@ -17,26 +17,11 @@ final readonly class CreateTicketTypeAttributeDataType implements SdkOpenEnum
     public const DATETIME = "datetime";
     public const FILES = "files";
     private function __construct(public string $value) {}
-    public static function from(string|int $value): static
-    {
-        return new self((string) $value);
-    }
-    public static function tryFrom(string|int|null $value): ?static
-    {
-        return $value === null ? null : self::from($value);
-    }
-    public function getValue(): string
-    {
-        return $this->value;
-    }
-    public function jsonSerialize(): string
-    {
-        return $this->value;
-    }
-    public function __toString(): string
-    {
-        return (string) $this->value;
-    }
+    public static function from(string|int $value): static { return new self((string) $value); }
+    public static function tryFrom(string|int|null $value): ?static { return $value === null ? null : self::from($value); }
+    public function getValue(): string { return $this->value; }
+    public function jsonSerialize(): string { return $this->value; }
+    public function __toString(): string { return (string) $this->value; }
 }
 
 class TicketTypeAttributes
@@ -63,7 +48,7 @@ class TicketTypeAttributes
     public static function createTicketTypeAttribute(ClientConfig $clientConfig, string $ticketTypeId, string $name, string $description, CreateTicketTypeAttributeDataType $dataType, IntercomVersion|SdkNotGiven $intercomVersion = SdkNotGiven::Value, bool|SdkNotGiven $requiredToCreate = SdkNotGiven::Value, bool|SdkNotGiven $requiredToCreateForContacts = SdkNotGiven::Value, bool|SdkNotGiven $visibleOnCreate = SdkNotGiven::Value, bool|SdkNotGiven $visibleToContacts = SdkNotGiven::Value, bool|SdkNotGiven $multiline = SdkNotGiven::Value, string|SdkNotGiven $listItems = SdkNotGiven::Value, bool|SdkNotGiven $allowMultipleValues = SdkNotGiven::Value, ?RequestOptions $requestOptions = null): TicketTypeAttribute|null
     {
 
-        $sdkResponse = SdkClient::request('POST', "/ticket_types/" . SdkClient::encodePathSegment($ticketTypeId) . "/attributes", $clientConfig, body: ['name' => $name, 'description' => $description, 'data_type' => $dataType, 'required_to_create' => $requiredToCreate, 'required_to_create_for_contacts' => $requiredToCreateForContacts, 'visible_on_create' => $visibleOnCreate, 'visible_to_contacts' => $visibleToContacts, 'multiline' => $multiline, 'list_items' => $listItems, 'allow_multiple_values' => $allowMultipleValues], returnType: TicketTypeAttribute::class, decoder: 'json', operationId: 'createTicketTypeAttribute', extraHeaders: ["Intercom-Version" => SdkClient::headerValue($intercomVersion, false)], requestOptions: $requestOptions, errors: [401 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class)]);
+        $sdkResponse = SdkClient::request('POST', "/ticket_types/" . SdkClient::encodePathSegment($ticketTypeId) . "/attributes", $clientConfig, body: ['name' => $name, 'description' => $description, 'data_type' => $dataType, 'required_to_create' => $requiredToCreate, 'required_to_create_for_contacts' => $requiredToCreateForContacts, 'visible_on_create' => $visibleOnCreate, 'visible_to_contacts' => $visibleToContacts, 'multiline' => $multiline, 'list_items' => $listItems, 'allow_multiple_values' => $allowMultipleValues], returnType: TicketTypeAttribute::class, decoder: 'json', operationId: 'createTicketTypeAttribute', extraHeaders: ["Intercom-Version" => SdkClient::headerValue($intercomVersion, false)], requestOptions: $requestOptions, errors: [401 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => SdkClient::typedData($sdkResponse, TicketTypeAttribute::class));
     }
 
@@ -91,7 +76,7 @@ class TicketTypeAttributes
     public static function updateTicketTypeAttribute(ClientConfig $clientConfig, string $ticketTypeId, string $attributeId, IntercomVersion|SdkNotGiven $intercomVersion = SdkNotGiven::Value, string|SdkNotGiven $name = SdkNotGiven::Value, string|SdkNotGiven $description = SdkNotGiven::Value, bool|SdkNotGiven $requiredToCreate = SdkNotGiven::Value, bool|SdkNotGiven $requiredToCreateForContacts = SdkNotGiven::Value, bool|SdkNotGiven $visibleOnCreate = SdkNotGiven::Value, bool|SdkNotGiven $visibleToContacts = SdkNotGiven::Value, bool|SdkNotGiven $multiline = SdkNotGiven::Value, string|SdkNotGiven $listItems = SdkNotGiven::Value, bool|SdkNotGiven $allowMultipleValues = SdkNotGiven::Value, bool|SdkNotGiven $archived = SdkNotGiven::Value, ?RequestOptions $requestOptions = null): TicketTypeAttribute|null
     {
 
-        $sdkResponse = SdkClient::request('PUT', "/ticket_types/" . SdkClient::encodePathSegment($ticketTypeId) . "/attributes/" . SdkClient::encodePathSegment($attributeId) . "", $clientConfig, body: ['name' => $name, 'description' => $description, 'required_to_create' => $requiredToCreate, 'required_to_create_for_contacts' => $requiredToCreateForContacts, 'visible_on_create' => $visibleOnCreate, 'visible_to_contacts' => $visibleToContacts, 'multiline' => $multiline, 'list_items' => $listItems, 'allow_multiple_values' => $allowMultipleValues, 'archived' => $archived], returnType: TicketTypeAttribute::class, decoder: 'json', operationId: 'updateTicketTypeAttribute', extraHeaders: ["Intercom-Version" => SdkClient::headerValue($intercomVersion, false)], requestOptions: $requestOptions, errors: [401 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class)]);
+        $sdkResponse = SdkClient::request('PUT', "/ticket_types/" . SdkClient::encodePathSegment($ticketTypeId) . "/attributes/" . SdkClient::encodePathSegment($attributeId) . "", $clientConfig, body: ['name' => $name, 'description' => $description, 'required_to_create' => $requiredToCreate, 'required_to_create_for_contacts' => $requiredToCreateForContacts, 'visible_on_create' => $visibleOnCreate, 'visible_to_contacts' => $visibleToContacts, 'multiline' => $multiline, 'list_items' => $listItems, 'allow_multiple_values' => $allowMultipleValues, 'archived' => $archived], returnType: TicketTypeAttribute::class, decoder: 'json', operationId: 'updateTicketTypeAttribute', extraHeaders: ["Intercom-Version" => SdkClient::headerValue($intercomVersion, false)], requestOptions: $requestOptions, errors: [401 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => SdkClient::typedData($sdkResponse, TicketTypeAttribute::class));
     }
 }

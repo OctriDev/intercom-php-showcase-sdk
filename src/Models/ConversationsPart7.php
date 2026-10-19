@@ -103,12 +103,8 @@ class CreateConversationRequest implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "from") || $data->from === null) {
-            throw new SdkValidationError("from", 'required', "Required property 'from' is missing or null");
-        }
-        if (!property_exists($data, "body") || $data->body === null) {
-            throw new SdkValidationError("body", 'required', "Required property 'body' is missing or null");
-        }
+        if (!property_exists($data, "from") || $data->from === null) { throw new SdkValidationError("from", 'required', "Required property 'from' is missing or null"); }
+        if (!property_exists($data, "body") || $data->body === null) { throw new SdkValidationError("body", 'required', "Required property 'body' is missing or null"); }
         return new self(
             from: SdkClient::hydrateClass($data->from, CreateConversationRequestFrom::class),
             body: SdkClient::stringValue($data->body),
@@ -155,9 +151,7 @@ class CustomerRequestVariant0 implements CustomerRequest, \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "intercom_user_id") || $data->intercom_user_id === null) {
-            throw new SdkValidationError("intercom_user_id", 'required', "Required property 'intercom_user_id' is missing or null");
-        }
+        if (!property_exists($data, "intercom_user_id") || $data->intercom_user_id === null) { throw new SdkValidationError("intercom_user_id", 'required', "Required property 'intercom_user_id' is missing or null"); }
         return new self(
             intercomUserId: SdkClient::stringValue($data->intercom_user_id),
         );
@@ -199,9 +193,7 @@ class CustomerRequestVariant1 implements CustomerRequest, \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "user_id") || $data->user_id === null) {
-            throw new SdkValidationError("user_id", 'required', "Required property 'user_id' is missing or null");
-        }
+        if (!property_exists($data, "user_id") || $data->user_id === null) { throw new SdkValidationError("user_id", 'required', "Required property 'user_id' is missing or null"); }
         return new self(
             userId: SdkClient::stringValue($data->user_id),
         );
@@ -243,9 +235,7 @@ class CustomerRequestVariant2 implements CustomerRequest, \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "email") || $data->email === null) {
-            throw new SdkValidationError("email", 'required', "Required property 'email' is missing or null");
-        }
+        if (!property_exists($data, "email") || $data->email === null) { throw new SdkValidationError("email", 'required', "Required property 'email' is missing or null"); }
         return new self(
             email: SdkClient::stringValue($data->email),
         );

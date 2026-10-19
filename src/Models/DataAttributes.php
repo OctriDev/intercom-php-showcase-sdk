@@ -11,26 +11,11 @@ final readonly class CreateDataAttributeRequestVariant0DataTypeEnum implements S
 {
     public const OPTIONS = "options";
     private function __construct(public string $value) {}
-    public static function from(string|int $value): static
-    {
-        return new self((string) $value);
-    }
-    public static function tryFrom(string|int|null $value): ?static
-    {
-        return $value === null ? null : self::from($value);
-    }
-    public function getValue(): string
-    {
-        return $this->value;
-    }
-    public function jsonSerialize(): string
-    {
-        return $this->value;
-    }
-    public function __toString(): string
-    {
-        return (string) $this->value;
-    }
+    public static function from(string|int $value): static { return new self((string) $value); }
+    public static function tryFrom(string|int|null $value): ?static { return $value === null ? null : self::from($value); }
+    public function getValue(): string { return $this->value; }
+    public function jsonSerialize(): string { return $this->value; }
+    public function __toString(): string { return (string) $this->value; }
 }
 
 class CreateDataAttributeRequestVariant0OptionsItem implements \JsonSerializable
@@ -115,9 +100,7 @@ class CreateDataAttributeRequestVariant0 implements CreateDataAttributeRequest, 
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "options") || $data->options === null) {
-            throw new SdkValidationError("options", 'required', "Required property 'options' is missing or null");
-        }
+        if (!property_exists($data, "options") || $data->options === null) { throw new SdkValidationError("options", 'required', "Required property 'options' is missing or null"); }
         return new self(
             options: array_values(array_map(static fn($item) => SdkClient::hydrateClass($item, CreateDataAttributeRequestVariant0OptionsItem::class), SdkClient::arrayValue($data->options))),
             dataType: (property_exists($data, "data_type") && $data->data_type !== null ? SdkClient::hydrateStringEnumOrString($data->data_type, CreateDataAttributeRequestVariant0DataTypeEnum::class) : SdkNotGiven::Value),
@@ -134,26 +117,11 @@ final readonly class CreateDataAttributeRequestVariant1DataTypeEnum implements S
     public const DATETIME = "datetime";
     public const DATE = "date";
     private function __construct(public string $value) {}
-    public static function from(string|int $value): static
-    {
-        return new self((string) $value);
-    }
-    public static function tryFrom(string|int|null $value): ?static
-    {
-        return $value === null ? null : self::from($value);
-    }
-    public function getValue(): string
-    {
-        return $this->value;
-    }
-    public function jsonSerialize(): string
-    {
-        return $this->value;
-    }
-    public function __toString(): string
-    {
-        return (string) $this->value;
-    }
+    public static function from(string|int $value): static { return new self((string) $value); }
+    public static function tryFrom(string|int|null $value): ?static { return $value === null ? null : self::from($value); }
+    public function getValue(): string { return $this->value; }
+    public function jsonSerialize(): string { return $this->value; }
+    public function __toString(): string { return (string) $this->value; }
 }
 
 class CreateDataAttributeRequestVariant1 implements CreateDataAttributeRequest, \JsonSerializable
@@ -202,26 +170,11 @@ final readonly class DataAttributeListTypeEnum implements SdkOpenEnum
 {
     public const LIST = "list";
     private function __construct(public string $value) {}
-    public static function from(string|int $value): static
-    {
-        return new self((string) $value);
-    }
-    public static function tryFrom(string|int|null $value): ?static
-    {
-        return $value === null ? null : self::from($value);
-    }
-    public function getValue(): string
-    {
-        return $this->value;
-    }
-    public function jsonSerialize(): string
-    {
-        return $this->value;
-    }
-    public function __toString(): string
-    {
-        return (string) $this->value;
-    }
+    public static function from(string|int $value): static { return new self((string) $value); }
+    public static function tryFrom(string|int|null $value): ?static { return $value === null ? null : self::from($value); }
+    public function getValue(): string { return $this->value; }
+    public function jsonSerialize(): string { return $this->value; }
+    public function __toString(): string { return (string) $this->value; }
 }
 
 /**

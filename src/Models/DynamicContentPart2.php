@@ -93,9 +93,7 @@ class DynamicContentVariationRequest implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "locale") || $data->locale === null) {
-            throw new SdkValidationError("locale", 'required', "Required property 'locale' is missing or null");
-        }
+        if (!property_exists($data, "locale") || $data->locale === null) { throw new SdkValidationError("locale", 'required', "Required property 'locale' is missing or null"); }
         return new self(
             locale: SdkClient::stringValue($data->locale),
             brandId: (property_exists($data, "brand_id") ? ($data->brand_id === null ? null : SdkClient::stringValue($data->brand_id)) : SdkNotGiven::Value),

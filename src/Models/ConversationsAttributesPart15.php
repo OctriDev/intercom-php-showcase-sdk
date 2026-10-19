@@ -57,9 +57,7 @@ class UpdateConversationAttributeRequestReference implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "type") || $data->type === null) {
-            throw new SdkValidationError("type", 'required', "Required property 'type' is missing or null");
-        }
+        if (!property_exists($data, "type") || $data->type === null) { throw new SdkValidationError("type", 'required', "Required property 'type' is missing or null"); }
         return new self(
             type: SdkClient::hydrateStringEnumOrString($data->type, UpdateConversationAttributeRequestReferenceTypeEnum::class),
             objectTypeId: (property_exists($data, "object_type_id") && $data->object_type_id !== null ? SdkClient::stringValue($data->object_type_id) : SdkNotGiven::Value),

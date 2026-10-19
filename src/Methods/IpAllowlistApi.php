@@ -20,7 +20,7 @@ class IpAllowlistApi
     public static function getIpAllowlist(ClientConfig $clientConfig, IntercomVersion|SdkNotGiven $intercomVersion = SdkNotGiven::Value, ?RequestOptions $requestOptions = null): IpAllowlist
     {
 
-        $sdkResponse = SdkClient::request('GET', "/ip_allowlist", $clientConfig, returnType: IpAllowlist::class, decoder: 'json', operationId: 'getIpAllowlist', extraHeaders: ["Intercom-Version" => SdkClient::headerValue($intercomVersion, false)], requestOptions: $requestOptions, errors: [401 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class)]);
+        $sdkResponse = SdkClient::request('GET', "/ip_allowlist", $clientConfig, returnType: IpAllowlist::class, decoder: 'json', operationId: 'getIpAllowlist', extraHeaders: ["Intercom-Version" => SdkClient::headerValue($intercomVersion, false)], requestOptions: $requestOptions, errors: [401 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => SdkClient::typedData($sdkResponse, IpAllowlist::class));
     }
 
@@ -39,7 +39,7 @@ class IpAllowlistApi
     public static function updateIpAllowlist(ClientConfig $clientConfig, IntercomVersion|SdkNotGiven $intercomVersion = SdkNotGiven::Value, string|SdkNotGiven $type = SdkNotGiven::Value, bool|SdkNotGiven $enabled = SdkNotGiven::Value, array|SdkNotGiven $ipAllowlist = SdkNotGiven::Value, ?RequestOptions $requestOptions = null): IpAllowlist
     {
 
-        $sdkResponse = SdkClient::request('PUT', "/ip_allowlist", $clientConfig, body: ['type' => $type, 'enabled' => $enabled, 'ip_allowlist' => $ipAllowlist], returnType: IpAllowlist::class, decoder: 'json', operationId: 'updateIpAllowlist', extraHeaders: ["Intercom-Version" => SdkClient::headerValue($intercomVersion, false)], requestOptions: $requestOptions, errors: [401 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class), 422 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class)]);
+        $sdkResponse = SdkClient::request('PUT', "/ip_allowlist", $clientConfig, body: ['type' => $type, 'enabled' => $enabled, 'ip_allowlist' => $ipAllowlist], returnType: IpAllowlist::class, decoder: 'json', operationId: 'updateIpAllowlist', extraHeaders: ["Intercom-Version" => SdkClient::headerValue($intercomVersion, false)], requestOptions: $requestOptions, errors: [401 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class), 422 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => SdkClient::typedData($sdkResponse, IpAllowlist::class));
     }
 }

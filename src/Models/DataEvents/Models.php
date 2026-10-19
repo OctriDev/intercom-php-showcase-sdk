@@ -14,26 +14,11 @@ final readonly class DataEventTypeEnum implements SdkOpenEnum
 {
     public const EVENT = "event";
     private function __construct(public string $value) {}
-    public static function from(string|int $value): static
-    {
-        return new self((string) $value);
-    }
-    public static function tryFrom(string|int|null $value): ?static
-    {
-        return $value === null ? null : self::from($value);
-    }
-    public function getValue(): string
-    {
-        return $this->value;
-    }
-    public function jsonSerialize(): string
-    {
-        return $this->value;
-    }
-    public function __toString(): string
-    {
-        return (string) $this->value;
-    }
+    public static function from(string|int $value): static { return new self((string) $value); }
+    public static function tryFrom(string|int|null $value): ?static { return $value === null ? null : self::from($value); }
+    public function getValue(): string { return $this->value; }
+    public function jsonSerialize(): string { return $this->value; }
+    public function __toString(): string { return (string) $this->value; }
 }
 
 /**
@@ -156,12 +141,8 @@ class DataEvent implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "event_name") || $data->event_name === null) {
-            throw new SdkValidationError("event_name", 'required', "Required property 'event_name' is missing or null");
-        }
-        if (!property_exists($data, "created_at") || $data->created_at === null) {
-            throw new SdkValidationError("created_at", 'required', "Required property 'created_at' is missing or null");
-        }
+        if (!property_exists($data, "event_name") || $data->event_name === null) { throw new SdkValidationError("event_name", 'required', "Required property 'event_name' is missing or null"); }
+        if (!property_exists($data, "created_at") || $data->created_at === null) { throw new SdkValidationError("created_at", 'required', "Required property 'created_at' is missing or null"); }
         return new self(
             eventName: SdkClient::stringValue($data->event_name),
             createdAt: SdkClient::intValue($data->created_at),

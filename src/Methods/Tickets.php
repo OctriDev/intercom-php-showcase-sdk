@@ -11,52 +11,22 @@ final readonly class CreateTicketChannel implements SdkOpenEnum
 {
     public const EMAIL = "email";
     private function __construct(public string $value) {}
-    public static function from(string|int $value): static
-    {
-        return new self((string) $value);
-    }
-    public static function tryFrom(string|int|null $value): ?static
-    {
-        return $value === null ? null : self::from($value);
-    }
-    public function getValue(): string
-    {
-        return $this->value;
-    }
-    public function jsonSerialize(): string
-    {
-        return $this->value;
-    }
-    public function __toString(): string
-    {
-        return (string) $this->value;
-    }
+    public static function from(string|int $value): static { return new self((string) $value); }
+    public static function tryFrom(string|int|null $value): ?static { return $value === null ? null : self::from($value); }
+    public function getValue(): string { return $this->value; }
+    public function jsonSerialize(): string { return $this->value; }
+    public function __toString(): string { return (string) $this->value; }
 }
 
 final readonly class EnqueueCreateTicketChannel implements SdkOpenEnum
 {
     public const EMAIL = "email";
     private function __construct(public string $value) {}
-    public static function from(string|int $value): static
-    {
-        return new self((string) $value);
-    }
-    public static function tryFrom(string|int|null $value): ?static
-    {
-        return $value === null ? null : self::from($value);
-    }
-    public function getValue(): string
-    {
-        return $this->value;
-    }
-    public function jsonSerialize(): string
-    {
-        return $this->value;
-    }
-    public function __toString(): string
-    {
-        return (string) $this->value;
-    }
+    public static function from(string|int $value): static { return new self((string) $value); }
+    public static function tryFrom(string|int|null $value): ?static { return $value === null ? null : self::from($value); }
+    public function getValue(): string { return $this->value; }
+    public function jsonSerialize(): string { return $this->value; }
+    public function __toString(): string { return (string) $this->value; }
 }
 
 /**
@@ -192,7 +162,7 @@ class Tickets
     public static function replyTicket(ClientConfig $clientConfig, string $ticketId, IntercomVersion|SdkNotGiven $intercomVersion = SdkNotGiven::Value, bool|SdkNotGiven $skipNotifications = SdkNotGiven::Value, ?RequestOptions $requestOptions = null): TicketReply
     {
 
-        $sdkResponse = SdkClient::request('POST', "/tickets/" . SdkClient::encodePathSegment($ticketId) . "/reply", $clientConfig, body: ['skip_notifications' => $skipNotifications], returnType: TicketReply::class, decoder: 'json', operationId: 'replyTicket', extraHeaders: ["Intercom-Version" => SdkClient::headerValue($intercomVersion, false)], requestOptions: $requestOptions, errors: [400 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class), 401 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class), 404 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class)]);
+        $sdkResponse = SdkClient::request('POST', "/tickets/" . SdkClient::encodePathSegment($ticketId) . "/reply", $clientConfig, body: ['skip_notifications' => $skipNotifications], returnType: TicketReply::class, decoder: 'json', operationId: 'replyTicket', extraHeaders: ["Intercom-Version" => SdkClient::headerValue($intercomVersion, false)], requestOptions: $requestOptions, errors: [400 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class), 401 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class), 404 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => SdkClient::typedData($sdkResponse, TicketReply::class));
     }
 
@@ -210,7 +180,7 @@ class Tickets
     public static function linkTicketsConversation(ClientConfig $clientConfig, string $ticketId, string $conversationId, IntercomVersion|SdkNotGiven $intercomVersion = SdkNotGiven::Value, ?RequestOptions $requestOptions = null): Conversation
     {
 
-        $sdkResponse = SdkClient::request('POST', "/tickets/" . SdkClient::encodePathSegment($ticketId) . "/linked_conversations", $clientConfig, body: ['conversation_id' => $conversationId], returnType: Conversation::class, decoder: 'json', operationId: 'linkTicketsConversation', extraHeaders: ["Intercom-Version" => SdkClient::headerValue($intercomVersion, false)], requestOptions: $requestOptions, errors: [400 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class), 401 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class), 404 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class)]);
+        $sdkResponse = SdkClient::request('POST', "/tickets/" . SdkClient::encodePathSegment($ticketId) . "/linked_conversations", $clientConfig, body: ['conversation_id' => $conversationId], returnType: Conversation::class, decoder: 'json', operationId: 'linkTicketsConversation', extraHeaders: ["Intercom-Version" => SdkClient::headerValue($intercomVersion, false)], requestOptions: $requestOptions, errors: [400 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class), 401 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class), 404 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => SdkClient::typedData($sdkResponse, Conversation::class));
     }
 
@@ -228,7 +198,7 @@ class Tickets
     public static function unlinkTicketsConversation(ClientConfig $clientConfig, string $ticketId, string $id, IntercomVersion|SdkNotGiven $intercomVersion = SdkNotGiven::Value, ?RequestOptions $requestOptions = null): Conversation
     {
 
-        $sdkResponse = SdkClient::request('DELETE', "/tickets/" . SdkClient::encodePathSegment($ticketId) . "/linked_conversations/" . SdkClient::encodePathSegment($id) . "", $clientConfig, returnType: Conversation::class, decoder: 'json', operationId: 'unlinkTicketsConversation', extraHeaders: ["Intercom-Version" => SdkClient::headerValue($intercomVersion, false)], requestOptions: $requestOptions, errors: [400 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class), 401 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class), 404 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class)]);
+        $sdkResponse = SdkClient::request('DELETE', "/tickets/" . SdkClient::encodePathSegment($ticketId) . "/linked_conversations/" . SdkClient::encodePathSegment($id) . "", $clientConfig, returnType: Conversation::class, decoder: 'json', operationId: 'unlinkTicketsConversation', extraHeaders: ["Intercom-Version" => SdkClient::headerValue($intercomVersion, false)], requestOptions: $requestOptions, errors: [400 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class), 401 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class), 404 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => SdkClient::typedData($sdkResponse, Conversation::class));
     }
 
@@ -253,7 +223,7 @@ class Tickets
     public static function createTicket(ClientConfig $clientConfig, string $ticketTypeId, array $contacts, IntercomVersion|SdkNotGiven $intercomVersion = SdkNotGiven::Value, string|SdkNotGiven $conversationToLinkId = SdkNotGiven::Value, string|SdkNotGiven $companyId = SdkNotGiven::Value, int|SdkNotGiven $createdAt = SdkNotGiven::Value, array|SdkNotGiven $ticketAttributes = SdkNotGiven::Value, CreateTicketAssignment|SdkNotGiven $assignment = SdkNotGiven::Value, CreateTicketChannel|SdkNotGiven $channel = SdkNotGiven::Value, bool|SdkNotGiven $skipNotifications = SdkNotGiven::Value, ?RequestOptions $requestOptions = null): Ticket|null
     {
 
-        $sdkResponse = SdkClient::request('POST', "/tickets", $clientConfig, body: ['ticket_type_id' => $ticketTypeId, 'contacts' => $contacts, 'conversation_to_link_id' => $conversationToLinkId, 'company_id' => $companyId, 'created_at' => $createdAt, 'ticket_attributes' => $ticketAttributes, 'assignment' => $assignment, 'channel' => $channel, 'skip_notifications' => $skipNotifications], returnType: Ticket::class, decoder: 'json', operationId: 'createTicket', extraHeaders: ["Intercom-Version" => SdkClient::headerValue($intercomVersion, false)], requestOptions: $requestOptions, errors: [401 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class)]);
+        $sdkResponse = SdkClient::request('POST', "/tickets", $clientConfig, body: ['ticket_type_id' => $ticketTypeId, 'contacts' => $contacts, 'conversation_to_link_id' => $conversationToLinkId, 'company_id' => $companyId, 'created_at' => $createdAt, 'ticket_attributes' => $ticketAttributes, 'assignment' => $assignment, 'channel' => $channel, 'skip_notifications' => $skipNotifications], returnType: Ticket::class, decoder: 'json', operationId: 'createTicket', extraHeaders: ["Intercom-Version" => SdkClient::headerValue($intercomVersion, false)], requestOptions: $requestOptions, errors: [401 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => SdkClient::typedData($sdkResponse, Ticket::class));
     }
 
@@ -278,7 +248,7 @@ class Tickets
     public static function enqueueCreateTicket(ClientConfig $clientConfig, string $ticketTypeId, array $contacts, IntercomVersion|SdkNotGiven $intercomVersion = SdkNotGiven::Value, string|SdkNotGiven $conversationToLinkId = SdkNotGiven::Value, string|SdkNotGiven $companyId = SdkNotGiven::Value, int|SdkNotGiven $createdAt = SdkNotGiven::Value, array|SdkNotGiven $ticketAttributes = SdkNotGiven::Value, EnqueueCreateTicketAssignment|SdkNotGiven $assignment = SdkNotGiven::Value, EnqueueCreateTicketChannel|SdkNotGiven $channel = SdkNotGiven::Value, bool|SdkNotGiven $skipNotifications = SdkNotGiven::Value, ?RequestOptions $requestOptions = null): Jobs
     {
 
-        $sdkResponse = SdkClient::request('POST', "/tickets/enqueue", $clientConfig, body: ['ticket_type_id' => $ticketTypeId, 'contacts' => $contacts, 'conversation_to_link_id' => $conversationToLinkId, 'company_id' => $companyId, 'created_at' => $createdAt, 'ticket_attributes' => $ticketAttributes, 'assignment' => $assignment, 'channel' => $channel, 'skip_notifications' => $skipNotifications], returnType: Jobs::class, decoder: 'json', operationId: 'enqueueCreateTicket', extraHeaders: ["Intercom-Version" => SdkClient::headerValue($intercomVersion, false)], requestOptions: $requestOptions, errors: [400 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class), 401 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class)]);
+        $sdkResponse = SdkClient::request('POST', "/tickets/enqueue", $clientConfig, body: ['ticket_type_id' => $ticketTypeId, 'contacts' => $contacts, 'conversation_to_link_id' => $conversationToLinkId, 'company_id' => $companyId, 'created_at' => $createdAt, 'ticket_attributes' => $ticketAttributes, 'assignment' => $assignment, 'channel' => $channel, 'skip_notifications' => $skipNotifications], returnType: Jobs::class, decoder: 'json', operationId: 'enqueueCreateTicket', extraHeaders: ["Intercom-Version" => SdkClient::headerValue($intercomVersion, false)], requestOptions: $requestOptions, errors: [400 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class), 401 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => SdkClient::typedData($sdkResponse, Jobs::class));
     }
 
@@ -304,7 +274,7 @@ class Tickets
     public static function updateTicket(ClientConfig $clientConfig, string $ticketId, IntercomVersion|SdkNotGiven $intercomVersion = SdkNotGiven::Value, array|SdkNotGiven $ticketAttributes = SdkNotGiven::Value, string|SdkNotGiven $ticketStateId = SdkNotGiven::Value, string|SdkNotGiven $companyId = SdkNotGiven::Value, bool|SdkNotGiven $open = SdkNotGiven::Value, bool|SdkNotGiven $isShared = SdkNotGiven::Value, int|SdkNotGiven $snoozedUntil = SdkNotGiven::Value, int|SdkNotGiven $adminId = SdkNotGiven::Value, string|SdkNotGiven $assigneeId = SdkNotGiven::Value, bool|SdkNotGiven $skipNotifications = SdkNotGiven::Value, ?RequestOptions $requestOptions = null): Ticket|null
     {
 
-        $sdkResponse = SdkClient::request('PUT', "/tickets/" . SdkClient::encodePathSegment($ticketId) . "", $clientConfig, body: ['ticket_attributes' => $ticketAttributes, 'ticket_state_id' => $ticketStateId, 'company_id' => $companyId, 'open' => $open, 'is_shared' => $isShared, 'snoozed_until' => $snoozedUntil, 'admin_id' => $adminId, 'assignee_id' => $assigneeId, 'skip_notifications' => $skipNotifications], returnType: Ticket::class, decoder: 'json', operationId: 'updateTicket', extraHeaders: ["Intercom-Version" => SdkClient::headerValue($intercomVersion, false)], requestOptions: $requestOptions, errors: [401 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class)]);
+        $sdkResponse = SdkClient::request('PUT', "/tickets/" . SdkClient::encodePathSegment($ticketId) . "", $clientConfig, body: ['ticket_attributes' => $ticketAttributes, 'ticket_state_id' => $ticketStateId, 'company_id' => $companyId, 'open' => $open, 'is_shared' => $isShared, 'snoozed_until' => $snoozedUntil, 'admin_id' => $adminId, 'assignee_id' => $assigneeId, 'skip_notifications' => $skipNotifications], returnType: Ticket::class, decoder: 'json', operationId: 'updateTicket', extraHeaders: ["Intercom-Version" => SdkClient::headerValue($intercomVersion, false)], requestOptions: $requestOptions, errors: [401 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => SdkClient::typedData($sdkResponse, Ticket::class));
     }
 
@@ -321,7 +291,7 @@ class Tickets
     public static function getTicket(ClientConfig $clientConfig, string $ticketId, IntercomVersion|SdkNotGiven $intercomVersion = SdkNotGiven::Value, ?RequestOptions $requestOptions = null): Ticket|null
     {
 
-        $sdkResponse = SdkClient::request('GET', "/tickets/" . SdkClient::encodePathSegment($ticketId) . "", $clientConfig, returnType: Ticket::class, decoder: 'json', operationId: 'getTicket', extraHeaders: ["Intercom-Version" => SdkClient::headerValue($intercomVersion, false)], requestOptions: $requestOptions, errors: [401 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class)]);
+        $sdkResponse = SdkClient::request('GET', "/tickets/" . SdkClient::encodePathSegment($ticketId) . "", $clientConfig, returnType: Ticket::class, decoder: 'json', operationId: 'getTicket', extraHeaders: ["Intercom-Version" => SdkClient::headerValue($intercomVersion, false)], requestOptions: $requestOptions, errors: [401 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => SdkClient::typedData($sdkResponse, Ticket::class));
     }
 
@@ -338,7 +308,7 @@ class Tickets
     public static function deleteTicket(ClientConfig $clientConfig, string $ticketId, IntercomVersion|SdkNotGiven $intercomVersion = SdkNotGiven::Value, ?RequestOptions $requestOptions = null): TicketDeleted
     {
 
-        $sdkResponse = SdkClient::request('DELETE', "/tickets/" . SdkClient::encodePathSegment($ticketId) . "", $clientConfig, returnType: TicketDeleted::class, decoder: 'json', operationId: 'deleteTicket', extraHeaders: ["Intercom-Version" => SdkClient::headerValue($intercomVersion, false)], requestOptions: $requestOptions, errors: [401 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class), 403 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class), 404 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class)]);
+        $sdkResponse = SdkClient::request('DELETE', "/tickets/" . SdkClient::encodePathSegment($ticketId) . "", $clientConfig, returnType: TicketDeleted::class, decoder: 'json', operationId: 'deleteTicket', extraHeaders: ["Intercom-Version" => SdkClient::headerValue($intercomVersion, false)], requestOptions: $requestOptions, errors: [401 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class), 403 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class), 404 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => SdkClient::typedData($sdkResponse, TicketDeleted::class));
     }
 
@@ -358,7 +328,7 @@ class Tickets
     public static function changeTicketType(ClientConfig $clientConfig, string $ticketId, string $ticketTypeId, string $ticketStateId, IntercomVersion|SdkNotGiven $intercomVersion = SdkNotGiven::Value, array|SdkNotGiven $ticketAttributes = SdkNotGiven::Value, ?RequestOptions $requestOptions = null): Ticket|null
     {
 
-        $sdkResponse = SdkClient::request('POST', "/tickets/" . SdkClient::encodePathSegment($ticketId) . "/change_type", $clientConfig, body: ['ticket_type_id' => $ticketTypeId, 'ticket_state_id' => $ticketStateId, 'ticket_attributes' => $ticketAttributes], returnType: Ticket::class, decoder: 'json', operationId: 'changeTicketType', extraHeaders: ["Intercom-Version" => SdkClient::headerValue($intercomVersion, false)], requestOptions: $requestOptions, errors: [400 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class), 401 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class), 404 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class)]);
+        $sdkResponse = SdkClient::request('POST', "/tickets/" . SdkClient::encodePathSegment($ticketId) . "/change_type", $clientConfig, body: ['ticket_type_id' => $ticketTypeId, 'ticket_state_id' => $ticketStateId, 'ticket_attributes' => $ticketAttributes], returnType: Ticket::class, decoder: 'json', operationId: 'changeTicketType', extraHeaders: ["Intercom-Version" => SdkClient::headerValue($intercomVersion, false)], requestOptions: $requestOptions, errors: [400 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class), 401 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class), 404 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => SdkClient::typedData($sdkResponse, Ticket::class));
     }
 

@@ -145,15 +145,9 @@ class SnoozeConversationRequest implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "message_type") || $data->message_type === null) {
-            throw new SdkValidationError("message_type", 'required', "Required property 'message_type' is missing or null");
-        }
-        if (!property_exists($data, "admin_id") || $data->admin_id === null) {
-            throw new SdkValidationError("admin_id", 'required', "Required property 'admin_id' is missing or null");
-        }
-        if (!property_exists($data, "snoozed_until") || $data->snoozed_until === null) {
-            throw new SdkValidationError("snoozed_until", 'required', "Required property 'snoozed_until' is missing or null");
-        }
+        if (!property_exists($data, "message_type") || $data->message_type === null) { throw new SdkValidationError("message_type", 'required', "Required property 'message_type' is missing or null"); }
+        if (!property_exists($data, "admin_id") || $data->admin_id === null) { throw new SdkValidationError("admin_id", 'required', "Required property 'admin_id' is missing or null"); }
+        if (!property_exists($data, "snoozed_until") || $data->snoozed_until === null) { throw new SdkValidationError("snoozed_until", 'required', "Required property 'snoozed_until' is missing or null"); }
         return new self(
             messageType: SdkClient::hydrateEnum($data->message_type, SnoozeConversationRequestMessageTypeEnum::class),
             adminId: SdkClient::stringValue($data->admin_id),
@@ -171,26 +165,11 @@ final readonly class TeammateReferenceTypeEnum implements SdkOpenEnum
     public const TEAM = "team";
     public const BOT = "bot";
     private function __construct(public string $value) {}
-    public static function from(string|int $value): static
-    {
-        return new self((string) $value);
-    }
-    public static function tryFrom(string|int|null $value): ?static
-    {
-        return $value === null ? null : self::from($value);
-    }
-    public function getValue(): string
-    {
-        return $this->value;
-    }
-    public function jsonSerialize(): string
-    {
-        return $this->value;
-    }
-    public function __toString(): string
-    {
-        return (string) $this->value;
-    }
+    public static function from(string|int $value): static { return new self((string) $value); }
+    public static function tryFrom(string|int|null $value): ?static { return $value === null ? null : self::from($value); }
+    public function getValue(): string { return $this->value; }
+    public function jsonSerialize(): string { return $this->value; }
+    public function __toString(): string { return (string) $this->value; }
 }
 
 /**
@@ -263,15 +242,9 @@ class TeammateReference implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "type") || $data->type === null) {
-            throw new SdkValidationError("type", 'required', "Required property 'type' is missing or null");
-        }
-        if (!property_exists($data, "id") || $data->id === null) {
-            throw new SdkValidationError("id", 'required', "Required property 'id' is missing or null");
-        }
-        if (!property_exists($data, "name") || $data->name === null) {
-            throw new SdkValidationError("name", 'required', "Required property 'name' is missing or null");
-        }
+        if (!property_exists($data, "type") || $data->type === null) { throw new SdkValidationError("type", 'required', "Required property 'type' is missing or null"); }
+        if (!property_exists($data, "id") || $data->id === null) { throw new SdkValidationError("id", 'required', "Required property 'id' is missing or null"); }
+        if (!property_exists($data, "name") || $data->name === null) { throw new SdkValidationError("name", 'required', "Required property 'name' is missing or null"); }
         return new self(
             type: SdkClient::hydrateStringEnumOrString($data->type, TeammateReferenceTypeEnum::class),
             id: SdkClient::intValue($data->id),

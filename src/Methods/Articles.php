@@ -12,26 +12,11 @@ final readonly class CreateArticleState implements SdkOpenEnum
     public const PUBLISHED = "published";
     public const DRAFT = "draft";
     private function __construct(public string $value) {}
-    public static function from(string|int $value): static
-    {
-        return new self((string) $value);
-    }
-    public static function tryFrom(string|int|null $value): ?static
-    {
-        return $value === null ? null : self::from($value);
-    }
-    public function getValue(): string
-    {
-        return $this->value;
-    }
-    public function jsonSerialize(): string
-    {
-        return $this->value;
-    }
-    public function __toString(): string
-    {
-        return (string) $this->value;
-    }
+    public static function from(string|int $value): static { return new self((string) $value); }
+    public static function tryFrom(string|int|null $value): ?static { return $value === null ? null : self::from($value); }
+    public function getValue(): string { return $this->value; }
+    public function jsonSerialize(): string { return $this->value; }
+    public function __toString(): string { return (string) $this->value; }
 }
 
 final readonly class UpdateArticleState implements SdkOpenEnum
@@ -39,26 +24,11 @@ final readonly class UpdateArticleState implements SdkOpenEnum
     public const PUBLISHED = "published";
     public const DRAFT = "draft";
     private function __construct(public string $value) {}
-    public static function from(string|int $value): static
-    {
-        return new self((string) $value);
-    }
-    public static function tryFrom(string|int|null $value): ?static
-    {
-        return $value === null ? null : self::from($value);
-    }
-    public function getValue(): string
-    {
-        return $this->value;
-    }
-    public function jsonSerialize(): string
-    {
-        return $this->value;
-    }
-    public function __toString(): string
-    {
-        return (string) $this->value;
-    }
+    public static function from(string|int $value): static { return new self((string) $value); }
+    public static function tryFrom(string|int|null $value): ?static { return $value === null ? null : self::from($value); }
+    public function getValue(): string { return $this->value; }
+    public function jsonSerialize(): string { return $this->value; }
+    public function __toString(): string { return (string) $this->value; }
 }
 
 final readonly class StageArticleDraftState implements SdkOpenEnum
@@ -66,26 +36,11 @@ final readonly class StageArticleDraftState implements SdkOpenEnum
     public const PUBLISHED = "published";
     public const DRAFT = "draft";
     private function __construct(public string $value) {}
-    public static function from(string|int $value): static
-    {
-        return new self((string) $value);
-    }
-    public static function tryFrom(string|int|null $value): ?static
-    {
-        return $value === null ? null : self::from($value);
-    }
-    public function getValue(): string
-    {
-        return $this->value;
-    }
-    public function jsonSerialize(): string
-    {
-        return $this->value;
-    }
-    public function __toString(): string
-    {
-        return (string) $this->value;
-    }
+    public static function from(string|int $value): static { return new self((string) $value); }
+    public static function tryFrom(string|int|null $value): ?static { return $value === null ? null : self::from($value); }
+    public function getValue(): string { return $this->value; }
+    public function jsonSerialize(): string { return $this->value; }
+    public function __toString(): string { return (string) $this->value; }
 }
 
 class Articles
@@ -101,7 +56,7 @@ class Articles
     public static function listArticles(ClientConfig $clientConfig, IntercomVersion|SdkNotGiven $intercomVersion = SdkNotGiven::Value, ?RequestOptions $requestOptions = null): ArticleList
     {
 
-        $sdkResponse = SdkClient::request('GET', "/articles", $clientConfig, returnType: ArticleList::class, decoder: 'json', operationId: 'listArticles', extraHeaders: ["Intercom-Version" => SdkClient::headerValue($intercomVersion, false)], requestOptions: $requestOptions, errors: [401 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class)]);
+        $sdkResponse = SdkClient::request('GET', "/articles", $clientConfig, returnType: ArticleList::class, decoder: 'json', operationId: 'listArticles', extraHeaders: ["Intercom-Version" => SdkClient::headerValue($intercomVersion, false)], requestOptions: $requestOptions, errors: [401 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => SdkClient::typedData($sdkResponse, ArticleList::class));
     }
 
@@ -141,7 +96,7 @@ class Articles
             Validation::validateDateTime('scheduled_unpublish_at', $scheduledUnpublishAt);
         }
 
-        $sdkResponse = SdkClient::request('POST', "/articles", $clientConfig, body: ['title' => $title, 'author_id' => $authorId, 'description' => $description, 'body' => $body, 'body_markdown' => $bodyMarkdown, 'state' => $state, 'parent_id' => $parentId, 'parent_type' => $parentType, 'translated_content' => $translatedContent, 'folder_id' => $folderId, 'audience_ids' => $audienceIds, 'ai_chatbot_availability' => $aiChatbotAvailability, 'ai_copilot_availability' => $aiCopilotAvailability, 'ai_sales_agent_availability' => $aiSalesAgentAvailability, 'scheduled_publish_at' => $scheduledPublishAt, 'scheduled_unpublish_at' => $scheduledUnpublishAt], returnType: Article::class, decoder: 'json', operationId: 'createArticle', extraHeaders: ["Intercom-Version" => SdkClient::headerValue($intercomVersion, false)], requestOptions: $requestOptions, errors: [400 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class), 401 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class)]);
+        $sdkResponse = SdkClient::request('POST', "/articles", $clientConfig, body: ['title' => $title, 'author_id' => $authorId, 'description' => $description, 'body' => $body, 'body_markdown' => $bodyMarkdown, 'state' => $state, 'parent_id' => $parentId, 'parent_type' => $parentType, 'translated_content' => $translatedContent, 'folder_id' => $folderId, 'audience_ids' => $audienceIds, 'ai_chatbot_availability' => $aiChatbotAvailability, 'ai_copilot_availability' => $aiCopilotAvailability, 'ai_sales_agent_availability' => $aiSalesAgentAvailability, 'scheduled_publish_at' => $scheduledPublishAt, 'scheduled_unpublish_at' => $scheduledUnpublishAt], returnType: Article::class, decoder: 'json', operationId: 'createArticle', extraHeaders: ["Intercom-Version" => SdkClient::headerValue($intercomVersion, false)], requestOptions: $requestOptions, errors: [400 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class), 401 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => SdkClient::typedData($sdkResponse, Article::class));
     }
 
@@ -158,7 +113,7 @@ class Articles
     public static function retrieveArticle(ClientConfig $clientConfig, int $articleId, IntercomVersion|SdkNotGiven $intercomVersion = SdkNotGiven::Value, ?RequestOptions $requestOptions = null): Article
     {
 
-        $sdkResponse = SdkClient::request('GET', "/articles/" . SdkClient::encodePathSegment($articleId) . "", $clientConfig, returnType: Article::class, decoder: 'json', operationId: 'retrieveArticle', extraHeaders: ["Intercom-Version" => SdkClient::headerValue($intercomVersion, false)], requestOptions: $requestOptions, errors: [401 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class), 404 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class)]);
+        $sdkResponse = SdkClient::request('GET', "/articles/" . SdkClient::encodePathSegment($articleId) . "", $clientConfig, returnType: Article::class, decoder: 'json', operationId: 'retrieveArticle', extraHeaders: ["Intercom-Version" => SdkClient::headerValue($intercomVersion, false)], requestOptions: $requestOptions, errors: [401 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class), 404 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => SdkClient::typedData($sdkResponse, Article::class));
     }
 
@@ -199,7 +154,7 @@ class Articles
             Validation::validateDateTime('scheduled_unpublish_at', $scheduledUnpublishAt);
         }
 
-        $sdkResponse = SdkClient::request('PUT', "/articles/" . SdkClient::encodePathSegment($articleId) . "", $clientConfig, body: ['title' => $title, 'description' => $description, 'body' => $body, 'body_markdown' => $bodyMarkdown, 'author_id' => $authorId, 'state' => $state, 'parent_id' => $parentId, 'parent_type' => $parentType, 'translated_content' => $translatedContent, 'folder_id' => $folderId, 'audience_ids' => $audienceIds, 'ai_chatbot_availability' => $aiChatbotAvailability, 'ai_copilot_availability' => $aiCopilotAvailability, 'ai_sales_agent_availability' => $aiSalesAgentAvailability, 'scheduled_publish_at' => $scheduledPublishAt, 'scheduled_unpublish_at' => $scheduledUnpublishAt], returnType: Article::class, decoder: 'json', operationId: 'updateArticle', extraHeaders: ["Intercom-Version" => SdkClient::headerValue($intercomVersion, false)], requestOptions: $requestOptions, errors: [401 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class), 404 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class)]);
+        $sdkResponse = SdkClient::request('PUT', "/articles/" . SdkClient::encodePathSegment($articleId) . "", $clientConfig, body: ['title' => $title, 'description' => $description, 'body' => $body, 'body_markdown' => $bodyMarkdown, 'author_id' => $authorId, 'state' => $state, 'parent_id' => $parentId, 'parent_type' => $parentType, 'translated_content' => $translatedContent, 'folder_id' => $folderId, 'audience_ids' => $audienceIds, 'ai_chatbot_availability' => $aiChatbotAvailability, 'ai_copilot_availability' => $aiCopilotAvailability, 'ai_sales_agent_availability' => $aiSalesAgentAvailability, 'scheduled_publish_at' => $scheduledPublishAt, 'scheduled_unpublish_at' => $scheduledUnpublishAt], returnType: Article::class, decoder: 'json', operationId: 'updateArticle', extraHeaders: ["Intercom-Version" => SdkClient::headerValue($intercomVersion, false)], requestOptions: $requestOptions, errors: [401 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class), 404 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => SdkClient::typedData($sdkResponse, Article::class));
     }
 
@@ -216,7 +171,7 @@ class Articles
     public static function deleteArticle(ClientConfig $clientConfig, int $articleId, IntercomVersion|SdkNotGiven $intercomVersion = SdkNotGiven::Value, ?RequestOptions $requestOptions = null): DeletedArticleObject
     {
 
-        $sdkResponse = SdkClient::request('DELETE', "/articles/" . SdkClient::encodePathSegment($articleId) . "", $clientConfig, returnType: DeletedArticleObject::class, decoder: 'json', operationId: 'deleteArticle', extraHeaders: ["Intercom-Version" => SdkClient::headerValue($intercomVersion, false)], requestOptions: $requestOptions, errors: [401 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class), 404 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class)]);
+        $sdkResponse = SdkClient::request('DELETE', "/articles/" . SdkClient::encodePathSegment($articleId) . "", $clientConfig, returnType: DeletedArticleObject::class, decoder: 'json', operationId: 'deleteArticle', extraHeaders: ["Intercom-Version" => SdkClient::headerValue($intercomVersion, false)], requestOptions: $requestOptions, errors: [401 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class), 404 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => SdkClient::typedData($sdkResponse, DeletedArticleObject::class));
     }
 
@@ -233,7 +188,7 @@ class Articles
     public static function retrieveArticleDraft(ClientConfig $clientConfig, int $id, IntercomVersion|SdkNotGiven $intercomVersion = SdkNotGiven::Value, ?RequestOptions $requestOptions = null): Article
     {
 
-        $sdkResponse = SdkClient::request('GET', "/articles/" . SdkClient::encodePathSegment($id) . "/draft", $clientConfig, returnType: Article::class, decoder: 'json', operationId: 'retrieveArticleDraft', extraHeaders: ["Intercom-Version" => SdkClient::headerValue($intercomVersion, false)], requestOptions: $requestOptions, errors: [401 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class), 404 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class)]);
+        $sdkResponse = SdkClient::request('GET', "/articles/" . SdkClient::encodePathSegment($id) . "/draft", $clientConfig, returnType: Article::class, decoder: 'json', operationId: 'retrieveArticleDraft', extraHeaders: ["Intercom-Version" => SdkClient::headerValue($intercomVersion, false)], requestOptions: $requestOptions, errors: [401 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class), 404 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => SdkClient::typedData($sdkResponse, Article::class));
     }
 
@@ -274,7 +229,7 @@ class Articles
             Validation::validateDateTime('scheduled_unpublish_at', $scheduledUnpublishAt);
         }
 
-        $sdkResponse = SdkClient::request('PUT', "/articles/" . SdkClient::encodePathSegment($id) . "/draft", $clientConfig, body: ['title' => $title, 'description' => $description, 'body' => $body, 'body_markdown' => $bodyMarkdown, 'author_id' => $authorId, 'state' => $state, 'parent_id' => $parentId, 'parent_type' => $parentType, 'translated_content' => $translatedContent, 'folder_id' => $folderId, 'audience_ids' => $audienceIds, 'ai_chatbot_availability' => $aiChatbotAvailability, 'ai_copilot_availability' => $aiCopilotAvailability, 'ai_sales_agent_availability' => $aiSalesAgentAvailability, 'scheduled_publish_at' => $scheduledPublishAt, 'scheduled_unpublish_at' => $scheduledUnpublishAt], returnType: Article::class, decoder: 'json', operationId: 'stageArticleDraft', extraHeaders: ["Intercom-Version" => SdkClient::headerValue($intercomVersion, false)], requestOptions: $requestOptions, errors: [401 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class), 404 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class), 422 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class)]);
+        $sdkResponse = SdkClient::request('PUT', "/articles/" . SdkClient::encodePathSegment($id) . "/draft", $clientConfig, body: ['title' => $title, 'description' => $description, 'body' => $body, 'body_markdown' => $bodyMarkdown, 'author_id' => $authorId, 'state' => $state, 'parent_id' => $parentId, 'parent_type' => $parentType, 'translated_content' => $translatedContent, 'folder_id' => $folderId, 'audience_ids' => $audienceIds, 'ai_chatbot_availability' => $aiChatbotAvailability, 'ai_copilot_availability' => $aiCopilotAvailability, 'ai_sales_agent_availability' => $aiSalesAgentAvailability, 'scheduled_publish_at' => $scheduledPublishAt, 'scheduled_unpublish_at' => $scheduledUnpublishAt], returnType: Article::class, decoder: 'json', operationId: 'stageArticleDraft', extraHeaders: ["Intercom-Version" => SdkClient::headerValue($intercomVersion, false)], requestOptions: $requestOptions, errors: [401 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class), 404 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class), 422 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => SdkClient::typedData($sdkResponse, Article::class));
     }
 
@@ -292,7 +247,7 @@ class Articles
     public static function publishArticleDraft(ClientConfig $clientConfig, int $id, IntercomVersion|SdkNotGiven $intercomVersion = SdkNotGiven::Value, array|SdkNotGiven $locales = SdkNotGiven::Value, ?RequestOptions $requestOptions = null): Article
     {
 
-        $sdkResponse = SdkClient::request('POST', "/articles/" . SdkClient::encodePathSegment($id) . "/draft/publish", $clientConfig, body: ['locales' => $locales], returnType: Article::class, decoder: 'json', operationId: 'publishArticleDraft', extraHeaders: ["Intercom-Version" => SdkClient::headerValue($intercomVersion, false)], requestOptions: $requestOptions, errors: [401 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class), 404 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class), 422 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class)]);
+        $sdkResponse = SdkClient::request('POST', "/articles/" . SdkClient::encodePathSegment($id) . "/draft/publish", $clientConfig, body: ['locales' => $locales], returnType: Article::class, decoder: 'json', operationId: 'publishArticleDraft', extraHeaders: ["Intercom-Version" => SdkClient::headerValue($intercomVersion, false)], requestOptions: $requestOptions, errors: [401 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class), 404 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class), 422 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => SdkClient::typedData($sdkResponse, Article::class));
     }
 
@@ -311,7 +266,7 @@ class Articles
     public static function attachArticlesTag(ClientConfig $clientConfig, int $articleId, string $id, IntercomVersion|SdkNotGiven $intercomVersion = SdkNotGiven::Value, string|null|SdkNotGiven $adminId = SdkNotGiven::Value, ?RequestOptions $requestOptions = null): Tag
     {
 
-        $sdkResponse = SdkClient::request('POST', "/articles/" . SdkClient::encodePathSegment($articleId) . "/tags", $clientConfig, body: ['id' => $id, 'admin_id' => $adminId], returnType: Tag::class, decoder: 'json', operationId: 'attachArticlesTag', extraHeaders: ["Intercom-Version" => SdkClient::headerValue($intercomVersion, false)], requestOptions: $requestOptions, errors: [401 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class), 403 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class), 404 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class)]);
+        $sdkResponse = SdkClient::request('POST', "/articles/" . SdkClient::encodePathSegment($articleId) . "/tags", $clientConfig, body: ['id' => $id, 'admin_id' => $adminId], returnType: Tag::class, decoder: 'json', operationId: 'attachArticlesTag', extraHeaders: ["Intercom-Version" => SdkClient::headerValue($intercomVersion, false)], requestOptions: $requestOptions, errors: [401 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class), 403 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class), 404 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => SdkClient::typedData($sdkResponse, Tag::class));
     }
 
@@ -329,7 +284,7 @@ class Articles
     public static function detachArticlesTag(ClientConfig $clientConfig, int $articleId, string $id, IntercomVersion|SdkNotGiven $intercomVersion = SdkNotGiven::Value, ?RequestOptions $requestOptions = null): Tag
     {
 
-        $sdkResponse = SdkClient::request('DELETE', "/articles/" . SdkClient::encodePathSegment($articleId) . "/tags/" . SdkClient::encodePathSegment($id) . "", $clientConfig, returnType: Tag::class, decoder: 'json', operationId: 'detachArticlesTag', extraHeaders: ["Intercom-Version" => SdkClient::headerValue($intercomVersion, false)], requestOptions: $requestOptions, errors: [401 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class), 403 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class), 404 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class)]);
+        $sdkResponse = SdkClient::request('DELETE', "/articles/" . SdkClient::encodePathSegment($articleId) . "/tags/" . SdkClient::encodePathSegment($id) . "", $clientConfig, returnType: Tag::class, decoder: 'json', operationId: 'detachArticlesTag', extraHeaders: ["Intercom-Version" => SdkClient::headerValue($intercomVersion, false)], requestOptions: $requestOptions, errors: [401 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class), 403 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class), 404 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => SdkClient::typedData($sdkResponse, Tag::class));
     }
 
@@ -349,7 +304,7 @@ class Articles
     public static function listArticleVersions(ClientConfig $clientConfig, int $articleId, int|SdkNotGiven $page = SdkNotGiven::Value, int|SdkNotGiven $perPage = SdkNotGiven::Value, string|SdkNotGiven $locale = SdkNotGiven::Value, IntercomVersion|SdkNotGiven $intercomVersion = SdkNotGiven::Value, ?RequestOptions $requestOptions = null): ArticleVersionList
     {
 
-        $sdkResponse = SdkClient::request('GET', "/articles/" . SdkClient::encodePathSegment($articleId) . "/versions", $clientConfig, query: ['page' => new SdkQueryValue($page, "form", true), 'per_page' => new SdkQueryValue($perPage, "form", true), 'locale' => new SdkQueryValue($locale, "form", true)], returnType: ArticleVersionList::class, decoder: 'json', operationId: 'listArticleVersions', extraHeaders: ["Intercom-Version" => SdkClient::headerValue($intercomVersion, false)], requestOptions: $requestOptions, errors: [400 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class), 401 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class), 404 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class)]);
+        $sdkResponse = SdkClient::request('GET', "/articles/" . SdkClient::encodePathSegment($articleId) . "/versions", $clientConfig, query: ['page' => new SdkQueryValue($page, "form", true), 'per_page' => new SdkQueryValue($perPage, "form", true), 'locale' => new SdkQueryValue($locale, "form", true)], returnType: ArticleVersionList::class, decoder: 'json', operationId: 'listArticleVersions', extraHeaders: ["Intercom-Version" => SdkClient::headerValue($intercomVersion, false)], requestOptions: $requestOptions, errors: [400 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class), 401 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class), 404 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => SdkClient::typedData($sdkResponse, ArticleVersionList::class));
     }
 
@@ -368,7 +323,7 @@ class Articles
     public static function retrieveArticleVersion(ClientConfig $clientConfig, int $articleId, string $id, string|SdkNotGiven $locale = SdkNotGiven::Value, IntercomVersion|SdkNotGiven $intercomVersion = SdkNotGiven::Value, ?RequestOptions $requestOptions = null): ArticleVersion
     {
 
-        $sdkResponse = SdkClient::request('GET', "/articles/" . SdkClient::encodePathSegment($articleId) . "/versions/" . SdkClient::encodePathSegment($id) . "", $clientConfig, query: ['locale' => new SdkQueryValue($locale, "form", true)], returnType: ArticleVersion::class, decoder: 'json', operationId: 'retrieveArticleVersion', extraHeaders: ["Intercom-Version" => SdkClient::headerValue($intercomVersion, false)], requestOptions: $requestOptions, errors: [400 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class), 401 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class), 404 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class)]);
+        $sdkResponse = SdkClient::request('GET', "/articles/" . SdkClient::encodePathSegment($articleId) . "/versions/" . SdkClient::encodePathSegment($id) . "", $clientConfig, query: ['locale' => new SdkQueryValue($locale, "form", true)], returnType: ArticleVersion::class, decoder: 'json', operationId: 'retrieveArticleVersion', extraHeaders: ["Intercom-Version" => SdkClient::headerValue($intercomVersion, false)], requestOptions: $requestOptions, errors: [400 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class), 401 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class), 404 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => SdkClient::typedData($sdkResponse, ArticleVersion::class));
     }
 
@@ -388,7 +343,7 @@ class Articles
     public static function searchArticles(ClientConfig $clientConfig, string|SdkNotGiven $phrase = SdkNotGiven::Value, string|SdkNotGiven $state = SdkNotGiven::Value, int|SdkNotGiven $helpCenterId = SdkNotGiven::Value, bool|SdkNotGiven $highlight = SdkNotGiven::Value, IntercomVersion|SdkNotGiven $intercomVersion = SdkNotGiven::Value, ?RequestOptions $requestOptions = null): ArticleSearchResponse
     {
 
-        $sdkResponse = SdkClient::request('GET', "/articles/search", $clientConfig, query: ['phrase' => new SdkQueryValue($phrase, "form", true), 'state' => new SdkQueryValue($state, "form", true), 'help_center_id' => new SdkQueryValue($helpCenterId, "form", true), 'highlight' => new SdkQueryValue($highlight, "form", true)], returnType: ArticleSearchResponse::class, decoder: 'json', operationId: 'searchArticles', extraHeaders: ["Intercom-Version" => SdkClient::headerValue($intercomVersion, false)], requestOptions: $requestOptions, errors: [401 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class)]);
+        $sdkResponse = SdkClient::request('GET', "/articles/search", $clientConfig, query: ['phrase' => new SdkQueryValue($phrase, "form", true), 'state' => new SdkQueryValue($state, "form", true), 'help_center_id' => new SdkQueryValue($helpCenterId, "form", true), 'highlight' => new SdkQueryValue($highlight, "form", true)], returnType: ArticleSearchResponse::class, decoder: 'json', operationId: 'searchArticles', extraHeaders: ["Intercom-Version" => SdkClient::headerValue($intercomVersion, false)], requestOptions: $requestOptions, errors: [401 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => SdkClient::typedData($sdkResponse, ArticleSearchResponse::class));
     }
 }

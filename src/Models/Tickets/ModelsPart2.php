@@ -76,26 +76,11 @@ final readonly class TicketPartPreviousTicketStateEnum implements SdkOpenEnum
     public const WAITING_ON_CUSTOMER = "waiting_on_customer";
     public const RESOLVED = "resolved";
     private function __construct(public string $value) {}
-    public static function from(string|int $value): static
-    {
-        return new self((string) $value);
-    }
-    public static function tryFrom(string|int|null $value): ?static
-    {
-        return $value === null ? null : self::from($value);
-    }
-    public function getValue(): string
-    {
-        return $this->value;
-    }
-    public function jsonSerialize(): string
-    {
-        return $this->value;
-    }
-    public function __toString(): string
-    {
-        return (string) $this->value;
-    }
+    public static function from(string|int $value): static { return new self((string) $value); }
+    public static function tryFrom(string|int|null $value): ?static { return $value === null ? null : self::from($value); }
+    public function getValue(): string { return $this->value; }
+    public function jsonSerialize(): string { return $this->value; }
+    public function __toString(): string { return (string) $this->value; }
 }
 
 /**
@@ -108,26 +93,11 @@ final readonly class TicketPartTicketStateEnum implements SdkOpenEnum
     public const WAITING_ON_CUSTOMER = "waiting_on_customer";
     public const RESOLVED = "resolved";
     private function __construct(public string $value) {}
-    public static function from(string|int $value): static
-    {
-        return new self((string) $value);
-    }
-    public static function tryFrom(string|int|null $value): ?static
-    {
-        return $value === null ? null : self::from($value);
-    }
-    public function getValue(): string
-    {
-        return $this->value;
-    }
-    public function jsonSerialize(): string
-    {
-        return $this->value;
-    }
-    public function __toString(): string
-    {
-        return (string) $this->value;
-    }
+    public static function from(string|int $value): static { return new self((string) $value); }
+    public static function tryFrom(string|int|null $value): ?static { return $value === null ? null : self::from($value); }
+    public function getValue(): string { return $this->value; }
+    public function jsonSerialize(): string { return $this->value; }
+    public function __toString(): string { return (string) $this->value; }
 }
 
 /**
@@ -174,9 +144,7 @@ class TicketPartTranslations implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "original") || $data->original === null) {
-            throw new SdkValidationError("original", 'required', "Required property 'original' is missing or null");
-        }
+        if (!property_exists($data, "original") || $data->original === null) { throw new SdkValidationError("original", 'required', "Required property 'original' is missing or null"); }
         return new self(
             original: SdkClient::stringValue($data->original),
             additionalProperties: array_diff_key(SdkClient::stringMapValue($data), array_flip(["original"])),
@@ -191,26 +159,11 @@ final readonly class TicketPartUpdatedAttributeDataAttributeTypeEnum implements 
 {
     public const ATTRIBUTE = "attribute";
     private function __construct(public string $value) {}
-    public static function from(string|int $value): static
-    {
-        return new self((string) $value);
-    }
-    public static function tryFrom(string|int|null $value): ?static
-    {
-        return $value === null ? null : self::from($value);
-    }
-    public function getValue(): string
-    {
-        return $this->value;
-    }
-    public function jsonSerialize(): string
-    {
-        return $this->value;
-    }
-    public function __toString(): string
-    {
-        return (string) $this->value;
-    }
+    public static function from(string|int $value): static { return new self((string) $value); }
+    public static function tryFrom(string|int|null $value): ?static { return $value === null ? null : self::from($value); }
+    public function getValue(): string { return $this->value; }
+    public function jsonSerialize(): string { return $this->value; }
+    public function __toString(): string { return (string) $this->value; }
 }
 
 /**
@@ -271,15 +224,9 @@ class TicketPartUpdatedAttributeDataAttribute implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "type") || $data->type === null) {
-            throw new SdkValidationError("type", 'required', "Required property 'type' is missing or null");
-        }
-        if (!property_exists($data, "id") || $data->id === null) {
-            throw new SdkValidationError("id", 'required', "Required property 'id' is missing or null");
-        }
-        if (!property_exists($data, "label") || $data->label === null) {
-            throw new SdkValidationError("label", 'required', "Required property 'label' is missing or null");
-        }
+        if (!property_exists($data, "type") || $data->type === null) { throw new SdkValidationError("type", 'required', "Required property 'type' is missing or null"); }
+        if (!property_exists($data, "id") || $data->id === null) { throw new SdkValidationError("id", 'required', "Required property 'id' is missing or null"); }
+        if (!property_exists($data, "label") || $data->label === null) { throw new SdkValidationError("label", 'required', "Required property 'label' is missing or null"); }
         return new self(
             type: SdkClient::hydrateStringEnumOrString($data->type, TicketPartUpdatedAttributeDataAttributeTypeEnum::class),
             id: SdkClient::stringValue($data->id),
@@ -295,26 +242,11 @@ final readonly class TicketPartUpdatedAttributeDataValueTypeEnum implements SdkO
 {
     public const VALUE = "value";
     private function __construct(public string $value) {}
-    public static function from(string|int $value): static
-    {
-        return new self((string) $value);
-    }
-    public static function tryFrom(string|int|null $value): ?static
-    {
-        return $value === null ? null : self::from($value);
-    }
-    public function getValue(): string
-    {
-        return $this->value;
-    }
-    public function jsonSerialize(): string
-    {
-        return $this->value;
-    }
-    public function __toString(): string
-    {
-        return (string) $this->value;
-    }
+    public static function from(string|int $value): static { return new self((string) $value); }
+    public static function tryFrom(string|int|null $value): ?static { return $value === null ? null : self::from($value); }
+    public function getValue(): string { return $this->value; }
+    public function jsonSerialize(): string { return $this->value; }
+    public function __toString(): string { return (string) $this->value; }
 }
 
 /**
@@ -375,15 +307,9 @@ class TicketPartUpdatedAttributeDataValue implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "type") || $data->type === null) {
-            throw new SdkValidationError("type", 'required', "Required property 'type' is missing or null");
-        }
-        if (!property_exists($data, "id")) {
-            throw new SdkValidationError("id", 'required', "Missing required property 'id'");
-        }
-        if (!property_exists($data, "label") || $data->label === null) {
-            throw new SdkValidationError("label", 'required', "Required property 'label' is missing or null");
-        }
+        if (!property_exists($data, "type") || $data->type === null) { throw new SdkValidationError("type", 'required', "Required property 'type' is missing or null"); }
+        if (!property_exists($data, "id")) { throw new SdkValidationError("id", 'required', "Missing required property 'id'"); }
+        if (!property_exists($data, "label") || $data->label === null) { throw new SdkValidationError("label", 'required', "Required property 'label' is missing or null"); }
         return new self(
             type: SdkClient::hydrateStringEnumOrString($data->type, TicketPartUpdatedAttributeDataValueTypeEnum::class),
             id: ($data->id === null ? null : (is_array($data->id) ? array_values(array_map(static fn($item) => SdkClient::intValue($item), SdkClient::arrayValue($data->id))) : SdkClient::stringValue($data->id))),

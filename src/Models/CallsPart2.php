@@ -79,12 +79,8 @@ class RegisterFinVoiceCallRequest implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "phone_number") || $data->phone_number === null) {
-            throw new SdkValidationError("phone_number", 'required', "Required property 'phone_number' is missing or null");
-        }
-        if (!property_exists($data, "call_id") || $data->call_id === null) {
-            throw new SdkValidationError("call_id", 'required', "Required property 'call_id' is missing or null");
-        }
+        if (!property_exists($data, "phone_number") || $data->phone_number === null) { throw new SdkValidationError("phone_number", 'required', "Required property 'phone_number' is missing or null"); }
+        if (!property_exists($data, "call_id") || $data->call_id === null) { throw new SdkValidationError("call_id", 'required', "Required property 'call_id' is missing or null"); }
         return new self(
             phoneNumber: SdkClient::stringValue($data->phone_number),
             callId: SdkClient::stringValue($data->call_id),

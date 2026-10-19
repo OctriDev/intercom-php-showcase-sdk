@@ -12,26 +12,11 @@ final readonly class UpdateOfficeHoursExceptionExceptionType implements SdkOpenE
     public const CLOSED = "closed";
     public const CUSTOM_HOURS = "custom_hours";
     private function __construct(public string $value) {}
-    public static function from(string|int $value): static
-    {
-        return new self((string) $value);
-    }
-    public static function tryFrom(string|int|null $value): ?static
-    {
-        return $value === null ? null : self::from($value);
-    }
-    public function getValue(): string
-    {
-        return $this->value;
-    }
-    public function jsonSerialize(): string
-    {
-        return $this->value;
-    }
-    public function __toString(): string
-    {
-        return (string) $this->value;
-    }
+    public static function from(string|int $value): static { return new self((string) $value); }
+    public static function tryFrom(string|int|null $value): ?static { return $value === null ? null : self::from($value); }
+    public function getValue(): string { return $this->value; }
+    public function jsonSerialize(): string { return $this->value; }
+    public function __toString(): string { return (string) $this->value; }
 }
 
 final readonly class CreateOfficeHoursExceptionExceptionType implements SdkOpenEnum
@@ -39,26 +24,11 @@ final readonly class CreateOfficeHoursExceptionExceptionType implements SdkOpenE
     public const CLOSED = "closed";
     public const CUSTOM_HOURS = "custom_hours";
     private function __construct(public string $value) {}
-    public static function from(string|int $value): static
-    {
-        return new self((string) $value);
-    }
-    public static function tryFrom(string|int|null $value): ?static
-    {
-        return $value === null ? null : self::from($value);
-    }
-    public function getValue(): string
-    {
-        return $this->value;
-    }
-    public function jsonSerialize(): string
-    {
-        return $this->value;
-    }
-    public function __toString(): string
-    {
-        return (string) $this->value;
-    }
+    public static function from(string|int $value): static { return new self((string) $value); }
+    public static function tryFrom(string|int|null $value): ?static { return $value === null ? null : self::from($value); }
+    public function getValue(): string { return $this->value; }
+    public function jsonSerialize(): string { return $this->value; }
+    public function __toString(): string { return (string) $this->value; }
 }
 
 class DeleteOfficeHoursExceptionResponse implements \JsonSerializable
@@ -190,7 +160,7 @@ class OfficeHours
     public static function getOfficeHoursException(ClientConfig $clientConfig, string $officeHoursScheduleId, string $id, IntercomVersion|SdkNotGiven $intercomVersion = SdkNotGiven::Value, ?RequestOptions $requestOptions = null): OfficeHoursException
     {
 
-        $sdkResponse = SdkClient::request('GET', "/office_hours_schedules/" . SdkClient::encodePathSegment($officeHoursScheduleId) . "/office_hours_exceptions/" . SdkClient::encodePathSegment($id) . "", $clientConfig, returnType: OfficeHoursException::class, decoder: 'json', operationId: 'getOfficeHoursException', extraHeaders: ["Intercom-Version" => SdkClient::headerValue($intercomVersion, false)], requestOptions: $requestOptions, errors: [401 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class), 404 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class)]);
+        $sdkResponse = SdkClient::request('GET', "/office_hours_schedules/" . SdkClient::encodePathSegment($officeHoursScheduleId) . "/office_hours_exceptions/" . SdkClient::encodePathSegment($id) . "", $clientConfig, returnType: OfficeHoursException::class, decoder: 'json', operationId: 'getOfficeHoursException', extraHeaders: ["Intercom-Version" => SdkClient::headerValue($intercomVersion, false)], requestOptions: $requestOptions, errors: [401 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class), 404 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => SdkClient::typedData($sdkResponse, OfficeHoursException::class));
     }
 
@@ -217,7 +187,7 @@ class OfficeHours
             Validation::validateDate('exception_date', $exceptionDate);
         }
 
-        $sdkResponse = SdkClient::request('PUT', "/office_hours_schedules/" . SdkClient::encodePathSegment($officeHoursScheduleId) . "/office_hours_exceptions/" . SdkClient::encodePathSegment($id) . "", $clientConfig, body: ['exception_date' => $exceptionDate, 'exception_type' => $exceptionType, 'name' => $name, 'time_intervals' => $timeIntervals, 'recurring_annually' => $recurringAnnually], returnType: OfficeHoursException::class, decoder: 'json', operationId: 'updateOfficeHoursException', extraHeaders: ["Intercom-Version" => SdkClient::headerValue($intercomVersion, false)], requestOptions: $requestOptions, errors: [401 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class), 404 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class), 422 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class)]);
+        $sdkResponse = SdkClient::request('PUT', "/office_hours_schedules/" . SdkClient::encodePathSegment($officeHoursScheduleId) . "/office_hours_exceptions/" . SdkClient::encodePathSegment($id) . "", $clientConfig, body: ['exception_date' => $exceptionDate, 'exception_type' => $exceptionType, 'name' => $name, 'time_intervals' => $timeIntervals, 'recurring_annually' => $recurringAnnually], returnType: OfficeHoursException::class, decoder: 'json', operationId: 'updateOfficeHoursException', extraHeaders: ["Intercom-Version" => SdkClient::headerValue($intercomVersion, false)], requestOptions: $requestOptions, errors: [401 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class), 404 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class), 422 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => SdkClient::typedData($sdkResponse, OfficeHoursException::class));
     }
 
@@ -235,7 +205,7 @@ class OfficeHours
     public static function deleteOfficeHoursException(ClientConfig $clientConfig, string $officeHoursScheduleId, string $id, IntercomVersion|SdkNotGiven $intercomVersion = SdkNotGiven::Value, ?RequestOptions $requestOptions = null): DeleteOfficeHoursExceptionResponse
     {
 
-        $sdkResponse = SdkClient::request('DELETE', "/office_hours_schedules/" . SdkClient::encodePathSegment($officeHoursScheduleId) . "/office_hours_exceptions/" . SdkClient::encodePathSegment($id) . "", $clientConfig, returnType: DeleteOfficeHoursExceptionResponse::class, decoder: 'json', operationId: 'deleteOfficeHoursException', extraHeaders: ["Intercom-Version" => SdkClient::headerValue($intercomVersion, false)], requestOptions: $requestOptions, errors: [401 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class), 404 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class)]);
+        $sdkResponse = SdkClient::request('DELETE', "/office_hours_schedules/" . SdkClient::encodePathSegment($officeHoursScheduleId) . "/office_hours_exceptions/" . SdkClient::encodePathSegment($id) . "", $clientConfig, returnType: DeleteOfficeHoursExceptionResponse::class, decoder: 'json', operationId: 'deleteOfficeHoursException', extraHeaders: ["Intercom-Version" => SdkClient::headerValue($intercomVersion, false)], requestOptions: $requestOptions, errors: [401 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class), 404 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => SdkClient::typedData($sdkResponse, DeleteOfficeHoursExceptionResponse::class));
     }
 
@@ -252,7 +222,7 @@ class OfficeHours
     public static function listOfficeHoursExceptions(ClientConfig $clientConfig, string $officeHoursScheduleId, IntercomVersion|SdkNotGiven $intercomVersion = SdkNotGiven::Value, ?RequestOptions $requestOptions = null): OfficeHoursExceptionList
     {
 
-        $sdkResponse = SdkClient::request('GET', "/office_hours_schedules/" . SdkClient::encodePathSegment($officeHoursScheduleId) . "/office_hours_exceptions", $clientConfig, returnType: OfficeHoursExceptionList::class, decoder: 'json', operationId: 'listOfficeHoursExceptions', extraHeaders: ["Intercom-Version" => SdkClient::headerValue($intercomVersion, false)], requestOptions: $requestOptions, errors: [401 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class), 404 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class)]);
+        $sdkResponse = SdkClient::request('GET', "/office_hours_schedules/" . SdkClient::encodePathSegment($officeHoursScheduleId) . "/office_hours_exceptions", $clientConfig, returnType: OfficeHoursExceptionList::class, decoder: 'json', operationId: 'listOfficeHoursExceptions', extraHeaders: ["Intercom-Version" => SdkClient::headerValue($intercomVersion, false)], requestOptions: $requestOptions, errors: [401 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class), 404 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => SdkClient::typedData($sdkResponse, OfficeHoursExceptionList::class));
     }
 
@@ -276,7 +246,7 @@ class OfficeHours
 
         Validation::validateDate('exception_date', $exceptionDate);
 
-        $sdkResponse = SdkClient::request('POST', "/office_hours_schedules/" . SdkClient::encodePathSegment($officeHoursScheduleId) . "/office_hours_exceptions", $clientConfig, body: ['exception_date' => $exceptionDate, 'exception_type' => $exceptionType, 'name' => $name, 'time_intervals' => $timeIntervals, 'recurring_annually' => $recurringAnnually], returnType: OfficeHoursException::class, decoder: 'json', operationId: 'createOfficeHoursException', extraHeaders: ["Intercom-Version" => SdkClient::headerValue($intercomVersion, false)], requestOptions: $requestOptions, errors: [401 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class), 404 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class), 422 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class)]);
+        $sdkResponse = SdkClient::request('POST', "/office_hours_schedules/" . SdkClient::encodePathSegment($officeHoursScheduleId) . "/office_hours_exceptions", $clientConfig, body: ['exception_date' => $exceptionDate, 'exception_type' => $exceptionType, 'name' => $name, 'time_intervals' => $timeIntervals, 'recurring_annually' => $recurringAnnually], returnType: OfficeHoursException::class, decoder: 'json', operationId: 'createOfficeHoursException', extraHeaders: ["Intercom-Version" => SdkClient::headerValue($intercomVersion, false)], requestOptions: $requestOptions, errors: [401 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class), 404 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class), 422 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => SdkClient::typedData($sdkResponse, OfficeHoursException::class));
     }
 
@@ -293,7 +263,7 @@ class OfficeHours
     public static function getOfficeHoursSchedule(ClientConfig $clientConfig, string $id, IntercomVersion|SdkNotGiven $intercomVersion = SdkNotGiven::Value, ?RequestOptions $requestOptions = null): OfficeHoursSchedule
     {
 
-        $sdkResponse = SdkClient::request('GET', "/office_hours_schedules/" . SdkClient::encodePathSegment($id) . "", $clientConfig, returnType: OfficeHoursSchedule::class, decoder: 'json', operationId: 'getOfficeHoursSchedule', extraHeaders: ["Intercom-Version" => SdkClient::headerValue($intercomVersion, false)], requestOptions: $requestOptions, errors: [401 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class), 404 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class)]);
+        $sdkResponse = SdkClient::request('GET', "/office_hours_schedules/" . SdkClient::encodePathSegment($id) . "", $clientConfig, returnType: OfficeHoursSchedule::class, decoder: 'json', operationId: 'getOfficeHoursSchedule', extraHeaders: ["Intercom-Version" => SdkClient::headerValue($intercomVersion, false)], requestOptions: $requestOptions, errors: [401 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class), 404 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => SdkClient::typedData($sdkResponse, OfficeHoursSchedule::class));
     }
 
@@ -313,7 +283,7 @@ class OfficeHours
     public static function updateOfficeHoursSchedule(ClientConfig $clientConfig, string $id, IntercomVersion|SdkNotGiven $intercomVersion = SdkNotGiven::Value, string|SdkNotGiven $name = SdkNotGiven::Value, string|SdkNotGiven $timeZoneName = SdkNotGiven::Value, array|SdkNotGiven $timeIntervals = SdkNotGiven::Value, ?RequestOptions $requestOptions = null): OfficeHoursSchedule
     {
 
-        $sdkResponse = SdkClient::request('PUT', "/office_hours_schedules/" . SdkClient::encodePathSegment($id) . "", $clientConfig, body: ['name' => $name, 'time_zone_name' => $timeZoneName, 'time_intervals' => $timeIntervals], returnType: OfficeHoursSchedule::class, decoder: 'json', operationId: 'updateOfficeHoursSchedule', extraHeaders: ["Intercom-Version" => SdkClient::headerValue($intercomVersion, false)], requestOptions: $requestOptions, errors: [401 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class), 404 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class), 422 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class)]);
+        $sdkResponse = SdkClient::request('PUT', "/office_hours_schedules/" . SdkClient::encodePathSegment($id) . "", $clientConfig, body: ['name' => $name, 'time_zone_name' => $timeZoneName, 'time_intervals' => $timeIntervals], returnType: OfficeHoursSchedule::class, decoder: 'json', operationId: 'updateOfficeHoursSchedule', extraHeaders: ["Intercom-Version" => SdkClient::headerValue($intercomVersion, false)], requestOptions: $requestOptions, errors: [401 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class), 404 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class), 422 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => SdkClient::typedData($sdkResponse, OfficeHoursSchedule::class));
     }
 
@@ -330,7 +300,7 @@ class OfficeHours
     public static function deleteOfficeHoursSchedule(ClientConfig $clientConfig, string $id, IntercomVersion|SdkNotGiven $intercomVersion = SdkNotGiven::Value, ?RequestOptions $requestOptions = null): DeleteOfficeHoursScheduleResponse
     {
 
-        $sdkResponse = SdkClient::request('DELETE', "/office_hours_schedules/" . SdkClient::encodePathSegment($id) . "", $clientConfig, returnType: DeleteOfficeHoursScheduleResponse::class, decoder: 'json', operationId: 'deleteOfficeHoursSchedule', extraHeaders: ["Intercom-Version" => SdkClient::headerValue($intercomVersion, false)], requestOptions: $requestOptions, errors: [401 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class), 404 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class)]);
+        $sdkResponse = SdkClient::request('DELETE', "/office_hours_schedules/" . SdkClient::encodePathSegment($id) . "", $clientConfig, returnType: DeleteOfficeHoursScheduleResponse::class, decoder: 'json', operationId: 'deleteOfficeHoursSchedule', extraHeaders: ["Intercom-Version" => SdkClient::headerValue($intercomVersion, false)], requestOptions: $requestOptions, errors: [401 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class), 404 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => SdkClient::typedData($sdkResponse, DeleteOfficeHoursScheduleResponse::class));
     }
 
@@ -346,7 +316,7 @@ class OfficeHours
     public static function listOfficeHoursSchedules(ClientConfig $clientConfig, IntercomVersion|SdkNotGiven $intercomVersion = SdkNotGiven::Value, ?RequestOptions $requestOptions = null): OfficeHoursScheduleList
     {
 
-        $sdkResponse = SdkClient::request('GET', "/office_hours_schedules", $clientConfig, returnType: OfficeHoursScheduleList::class, decoder: 'json', operationId: 'listOfficeHoursSchedules', extraHeaders: ["Intercom-Version" => SdkClient::headerValue($intercomVersion, false)], requestOptions: $requestOptions, errors: [401 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class)]);
+        $sdkResponse = SdkClient::request('GET', "/office_hours_schedules", $clientConfig, returnType: OfficeHoursScheduleList::class, decoder: 'json', operationId: 'listOfficeHoursSchedules', extraHeaders: ["Intercom-Version" => SdkClient::headerValue($intercomVersion, false)], requestOptions: $requestOptions, errors: [401 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => SdkClient::typedData($sdkResponse, OfficeHoursScheduleList::class));
     }
 
@@ -365,7 +335,7 @@ class OfficeHours
     public static function createOfficeHoursSchedule(ClientConfig $clientConfig, string $name, string $timeZoneName, array $timeIntervals, IntercomVersion|SdkNotGiven $intercomVersion = SdkNotGiven::Value, ?RequestOptions $requestOptions = null): OfficeHoursSchedule
     {
 
-        $sdkResponse = SdkClient::request('POST', "/office_hours_schedules", $clientConfig, body: ['name' => $name, 'time_zone_name' => $timeZoneName, 'time_intervals' => $timeIntervals], returnType: OfficeHoursSchedule::class, decoder: 'json', operationId: 'createOfficeHoursSchedule', extraHeaders: ["Intercom-Version" => SdkClient::headerValue($intercomVersion, false)], requestOptions: $requestOptions, errors: [401 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class), 422 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class)]);
+        $sdkResponse = SdkClient::request('POST', "/office_hours_schedules", $clientConfig, body: ['name' => $name, 'time_zone_name' => $timeZoneName, 'time_intervals' => $timeIntervals], returnType: OfficeHoursSchedule::class, decoder: 'json', operationId: 'createOfficeHoursSchedule', extraHeaders: ["Intercom-Version" => SdkClient::headerValue($intercomVersion, false)], requestOptions: $requestOptions, errors: [401 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class), 422 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => SdkClient::typedData($sdkResponse, OfficeHoursSchedule::class));
     }
 }

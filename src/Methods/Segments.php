@@ -21,7 +21,7 @@ class Segments
     public static function listSegments(ClientConfig $clientConfig, bool|SdkNotGiven $includeCount = SdkNotGiven::Value, IntercomVersion|SdkNotGiven $intercomVersion = SdkNotGiven::Value, ?RequestOptions $requestOptions = null): SegmentList
     {
 
-        $sdkResponse = SdkClient::request('GET', "/segments", $clientConfig, query: ['include_count' => new SdkQueryValue($includeCount, "form", true)], returnType: SegmentList::class, decoder: 'json', operationId: 'listSegments', extraHeaders: ["Intercom-Version" => SdkClient::headerValue($intercomVersion, false)], requestOptions: $requestOptions, errors: [401 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class)]);
+        $sdkResponse = SdkClient::request('GET', "/segments", $clientConfig, query: ['include_count' => new SdkQueryValue($includeCount, "form", true)], returnType: SegmentList::class, decoder: 'json', operationId: 'listSegments', extraHeaders: ["Intercom-Version" => SdkClient::headerValue($intercomVersion, false)], requestOptions: $requestOptions, errors: [401 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => SdkClient::typedData($sdkResponse, SegmentList::class));
     }
 
@@ -38,7 +38,7 @@ class Segments
     public static function retrieveSegment(ClientConfig $clientConfig, string $segmentId, IntercomVersion|SdkNotGiven $intercomVersion = SdkNotGiven::Value, ?RequestOptions $requestOptions = null): Segment
     {
 
-        $sdkResponse = SdkClient::request('GET', "/segments/" . SdkClient::encodePathSegment($segmentId) . "", $clientConfig, returnType: Segment::class, decoder: 'json', operationId: 'retrieveSegment', extraHeaders: ["Intercom-Version" => SdkClient::headerValue($intercomVersion, false)], requestOptions: $requestOptions, errors: [401 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class), 404 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class)]);
+        $sdkResponse = SdkClient::request('GET', "/segments/" . SdkClient::encodePathSegment($segmentId) . "", $clientConfig, returnType: Segment::class, decoder: 'json', operationId: 'retrieveSegment', extraHeaders: ["Intercom-Version" => SdkClient::headerValue($intercomVersion, false)], requestOptions: $requestOptions, errors: [401 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class), 404 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => SdkClient::typedData($sdkResponse, Segment::class));
     }
 }
