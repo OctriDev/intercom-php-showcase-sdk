@@ -20,7 +20,7 @@ class Teams
     public static function listTeams(ClientConfig $clientConfig, IntercomVersion|SdkNotGiven $intercomVersion = SdkNotGiven::Value, ?RequestOptions $requestOptions = null): TeamList
     {
 
-        $sdkResponse = SdkClient::request('GET', "/teams", $clientConfig, returnType: TeamList::class, decoder: 'json', operationId: 'listTeams', extraHeaders: ["Intercom-Version" => SdkClient::headerValue($intercomVersion, false)], requestOptions: $requestOptions, errors: [401 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class)]);
+        $sdkResponse = SdkClient::request('GET', "/teams", $clientConfig, returnType: TeamList::class, decoder: 'json', operationId: 'listTeams', extraHeaders: ["Intercom-Version" => SdkClient::headerValue($intercomVersion, false)], requestOptions: $requestOptions, errors: [401 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => SdkClient::typedData($sdkResponse, TeamList::class));
     }
 
@@ -37,7 +37,7 @@ class Teams
     public static function retrieveTeam(ClientConfig $clientConfig, string $teamId, IntercomVersion|SdkNotGiven $intercomVersion = SdkNotGiven::Value, ?RequestOptions $requestOptions = null): Team
     {
 
-        $sdkResponse = SdkClient::request('GET', "/teams/" . SdkClient::encodePathSegment($teamId) . "", $clientConfig, returnType: Team::class, decoder: 'json', operationId: 'retrieveTeam', extraHeaders: ["Intercom-Version" => SdkClient::headerValue($intercomVersion, false)], requestOptions: $requestOptions, errors: [401 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class), 404 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class)]);
+        $sdkResponse = SdkClient::request('GET', "/teams/" . SdkClient::encodePathSegment($teamId) . "", $clientConfig, returnType: Team::class, decoder: 'json', operationId: 'retrieveTeam', extraHeaders: ["Intercom-Version" => SdkClient::headerValue($intercomVersion, false)], requestOptions: $requestOptions, errors: [401 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class), 404 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => SdkClient::typedData($sdkResponse, Team::class));
     }
 
@@ -55,7 +55,7 @@ class Teams
     public static function getTeamMetrics(ClientConfig $clientConfig, string $teamId, int|SdkNotGiven $idleThreshold = SdkNotGiven::Value, IntercomVersion|SdkNotGiven $intercomVersion = SdkNotGiven::Value, ?RequestOptions $requestOptions = null): TeamMetricList
     {
 
-        $sdkResponse = SdkClient::request('GET', "/teams/" . SdkClient::encodePathSegment($teamId) . "/metrics", $clientConfig, query: ['idle_threshold' => new SdkQueryValue($idleThreshold, "form", true)], returnType: TeamMetricList::class, decoder: 'json', operationId: 'getTeamMetrics', extraHeaders: ["Intercom-Version" => SdkClient::headerValue($intercomVersion, false)], requestOptions: $requestOptions, errors: [401 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class), 403 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class), 404 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class)]);
+        $sdkResponse = SdkClient::request('GET', "/teams/" . SdkClient::encodePathSegment($teamId) . "/metrics", $clientConfig, query: ['idle_threshold' => new SdkQueryValue($idleThreshold, "form", true)], returnType: TeamMetricList::class, decoder: 'json', operationId: 'getTeamMetrics', extraHeaders: ["Intercom-Version" => SdkClient::headerValue($intercomVersion, false)], requestOptions: $requestOptions, errors: [401 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class), 403 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class), 404 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => SdkClient::typedData($sdkResponse, TeamMetricList::class));
     }
 }

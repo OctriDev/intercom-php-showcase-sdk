@@ -62,9 +62,15 @@ class RedactConversationRequestVariant0 implements RedactConversationRequest, \J
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "type") || $data->type === null) { throw new SdkValidationError("type", 'required', "Required property 'type' is missing or null"); }
-        if (!property_exists($data, "conversation_id") || $data->conversation_id === null) { throw new SdkValidationError("conversation_id", 'required', "Required property 'conversation_id' is missing or null"); }
-        if (!property_exists($data, "conversation_part_id") || $data->conversation_part_id === null) { throw new SdkValidationError("conversation_part_id", 'required', "Required property 'conversation_part_id' is missing or null"); }
+        if (!property_exists($data, "type") || $data->type === null) {
+            throw new SdkValidationError("type", 'required', "Required property 'type' is missing or null");
+        }
+        if (!property_exists($data, "conversation_id") || $data->conversation_id === null) {
+            throw new SdkValidationError("conversation_id", 'required', "Required property 'conversation_id' is missing or null");
+        }
+        if (!property_exists($data, "conversation_part_id") || $data->conversation_part_id === null) {
+            throw new SdkValidationError("conversation_part_id", 'required', "Required property 'conversation_part_id' is missing or null");
+        }
         return new self(
             type: SdkClient::hydrateEnum($data->type, RedactConversationRequestVariant0TypeEnum::class),
             conversationId: SdkClient::stringValue($data->conversation_id),
@@ -136,9 +142,15 @@ class RedactConversationRequestVariant1 implements RedactConversationRequest, \J
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "type") || $data->type === null) { throw new SdkValidationError("type", 'required', "Required property 'type' is missing or null"); }
-        if (!property_exists($data, "conversation_id") || $data->conversation_id === null) { throw new SdkValidationError("conversation_id", 'required', "Required property 'conversation_id' is missing or null"); }
-        if (!property_exists($data, "source_id") || $data->source_id === null) { throw new SdkValidationError("source_id", 'required', "Required property 'source_id' is missing or null"); }
+        if (!property_exists($data, "type") || $data->type === null) {
+            throw new SdkValidationError("type", 'required', "Required property 'type' is missing or null");
+        }
+        if (!property_exists($data, "conversation_id") || $data->conversation_id === null) {
+            throw new SdkValidationError("conversation_id", 'required', "Required property 'conversation_id' is missing or null");
+        }
+        if (!property_exists($data, "source_id") || $data->source_id === null) {
+            throw new SdkValidationError("source_id", 'required', "Required property 'source_id' is missing or null");
+        }
         return new self(
             type: SdkClient::hydrateEnum($data->type, RedactConversationRequestVariant1TypeEnum::class),
             conversationId: SdkClient::stringValue($data->conversation_id),
@@ -154,11 +166,26 @@ final readonly class SideConversationListTypeEnum implements SdkOpenEnum
 {
     public const SIDE_CONVERSATION_LIST = "side_conversation.list";
     private function __construct(public string $value) {}
-    public static function from(string|int $value): static { return new self((string) $value); }
-    public static function tryFrom(string|int|null $value): ?static { return $value === null ? null : self::from($value); }
-    public function getValue(): string { return $this->value; }
-    public function jsonSerialize(): string { return $this->value; }
-    public function __toString(): string { return (string) $this->value; }
+    public static function from(string|int $value): static
+    {
+        return new self((string) $value);
+    }
+    public static function tryFrom(string|int|null $value): ?static
+    {
+        return $value === null ? null : self::from($value);
+    }
+    public function getValue(): string
+    {
+        return $this->value;
+    }
+    public function jsonSerialize(): string
+    {
+        return $this->value;
+    }
+    public function __toString(): string
+    {
+        return (string) $this->value;
+    }
 }
 
 /**
@@ -168,11 +195,26 @@ final readonly class SideConversationListPagesTypeEnum implements SdkOpenEnum
 {
     public const PAGES = "pages";
     private function __construct(public string $value) {}
-    public static function from(string|int $value): static { return new self((string) $value); }
-    public static function tryFrom(string|int|null $value): ?static { return $value === null ? null : self::from($value); }
-    public function getValue(): string { return $this->value; }
-    public function jsonSerialize(): string { return $this->value; }
-    public function __toString(): string { return (string) $this->value; }
+    public static function from(string|int $value): static
+    {
+        return new self((string) $value);
+    }
+    public static function tryFrom(string|int|null $value): ?static
+    {
+        return $value === null ? null : self::from($value);
+    }
+    public function getValue(): string
+    {
+        return $this->value;
+    }
+    public function jsonSerialize(): string
+    {
+        return $this->value;
+    }
+    public function __toString(): string
+    {
+        return (string) $this->value;
+    }
 }
 
 /**

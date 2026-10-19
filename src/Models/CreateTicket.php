@@ -73,11 +73,26 @@ final readonly class CreateTicketRequestChannelEnum implements SdkOpenEnum
 {
     public const EMAIL = "email";
     private function __construct(public string $value) {}
-    public static function from(string|int $value): static { return new self((string) $value); }
-    public static function tryFrom(string|int|null $value): ?static { return $value === null ? null : self::from($value); }
-    public function getValue(): string { return $this->value; }
-    public function jsonSerialize(): string { return $this->value; }
-    public function __toString(): string { return (string) $this->value; }
+    public static function from(string|int $value): static
+    {
+        return new self((string) $value);
+    }
+    public static function tryFrom(string|int|null $value): ?static
+    {
+        return $value === null ? null : self::from($value);
+    }
+    public function getValue(): string
+    {
+        return $this->value;
+    }
+    public function jsonSerialize(): string
+    {
+        return $this->value;
+    }
+    public function __toString(): string
+    {
+        return (string) $this->value;
+    }
 }
 
 /**
@@ -200,8 +215,12 @@ class CreateTicketRequest implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "ticket_type_id") || $data->ticket_type_id === null) { throw new SdkValidationError("ticket_type_id", 'required', "Required property 'ticket_type_id' is missing or null"); }
-        if (!property_exists($data, "contacts") || $data->contacts === null) { throw new SdkValidationError("contacts", 'required', "Required property 'contacts' is missing or null"); }
+        if (!property_exists($data, "ticket_type_id") || $data->ticket_type_id === null) {
+            throw new SdkValidationError("ticket_type_id", 'required', "Required property 'ticket_type_id' is missing or null");
+        }
+        if (!property_exists($data, "contacts") || $data->contacts === null) {
+            throw new SdkValidationError("contacts", 'required', "Required property 'contacts' is missing or null");
+        }
         return new self(
             ticketTypeId: SdkClient::stringValue($data->ticket_type_id),
             contacts: array_values(array_map(static fn($item) => SdkClient::hydrateUnionAs($item, CreateTicketRequestContactsItem::class, [CreateTicketRequestContactsItemVariant0::class, CreateTicketRequestContactsItemVariant1::class, CreateTicketRequestContactsItemVariant2::class], null, []), SdkClient::arrayValue($data->contacts))),

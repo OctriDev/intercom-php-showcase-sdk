@@ -22,7 +22,7 @@ class SwitchResource
     public static function createPhoneSwitch(ClientConfig $clientConfig, string $phone, IntercomVersion|SdkNotGiven $intercomVersion = SdkNotGiven::Value, array|SdkNotGiven $customAttributes = SdkNotGiven::Value, ?RequestOptions $requestOptions = null): PhoneSwitch|null
     {
 
-        $sdkResponse = SdkClient::request('POST', "/phone_call_redirects", $clientConfig, body: ['phone' => $phone, 'custom_attributes' => $customAttributes], returnType: PhoneSwitch::class, decoder: 'json', operationId: 'createPhoneSwitch', extraHeaders: ["Intercom-Version" => SdkClient::headerValue($intercomVersion, false)], requestOptions: $requestOptions, errors: [401 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class)]);
+        $sdkResponse = SdkClient::request('POST', "/phone_call_redirects", $clientConfig, body: ['phone' => $phone, 'custom_attributes' => $customAttributes], returnType: PhoneSwitch::class, decoder: 'json', operationId: 'createPhoneSwitch', extraHeaders: ["Intercom-Version" => SdkClient::headerValue($intercomVersion, false)], requestOptions: $requestOptions, errors: [401 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => SdkClient::typedData($sdkResponse, PhoneSwitch::class));
     }
 }

@@ -138,11 +138,26 @@ final readonly class HitlEventListTypeEnum implements SdkOpenEnum
 {
     public const LIST = "list";
     private function __construct(public string $value) {}
-    public static function from(string|int $value): static { return new self((string) $value); }
-    public static function tryFrom(string|int|null $value): ?static { return $value === null ? null : self::from($value); }
-    public function getValue(): string { return $this->value; }
-    public function jsonSerialize(): string { return $this->value; }
-    public function __toString(): string { return (string) $this->value; }
+    public static function from(string|int $value): static
+    {
+        return new self((string) $value);
+    }
+    public static function tryFrom(string|int|null $value): ?static
+    {
+        return $value === null ? null : self::from($value);
+    }
+    public function getValue(): string
+    {
+        return $this->value;
+    }
+    public function jsonSerialize(): string
+    {
+        return $this->value;
+    }
+    public function __toString(): string
+    {
+        return (string) $this->value;
+    }
 }
 
 /**
@@ -260,8 +275,12 @@ class OpenConversationRequest implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "message_type") || $data->message_type === null) { throw new SdkValidationError("message_type", 'required', "Required property 'message_type' is missing or null"); }
-        if (!property_exists($data, "admin_id") || $data->admin_id === null) { throw new SdkValidationError("admin_id", 'required', "Required property 'admin_id' is missing or null"); }
+        if (!property_exists($data, "message_type") || $data->message_type === null) {
+            throw new SdkValidationError("message_type", 'required', "Required property 'message_type' is missing or null");
+        }
+        if (!property_exists($data, "admin_id") || $data->admin_id === null) {
+            throw new SdkValidationError("admin_id", 'required', "Required property 'admin_id' is missing or null");
+        }
         return new self(
             messageType: SdkClient::hydrateEnum($data->message_type, OpenConversationRequestMessageTypeEnum::class),
             adminId: SdkClient::stringValue($data->admin_id),
@@ -317,8 +336,12 @@ class QuickReplyOption implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "text") || $data->text === null) { throw new SdkValidationError("text", 'required', "Required property 'text' is missing or null"); }
-        if (!property_exists($data, "uuid") || $data->uuid === null) { throw new SdkValidationError("uuid", 'required', "Required property 'uuid' is missing or null"); }
+        if (!property_exists($data, "text") || $data->text === null) {
+            throw new SdkValidationError("text", 'required', "Required property 'text' is missing or null");
+        }
+        if (!property_exists($data, "uuid") || $data->uuid === null) {
+            throw new SdkValidationError("uuid", 'required', "Required property 'uuid' is missing or null");
+        }
         return new self(
             text: SdkClient::stringValue($data->text),
             uuid: SdkClient::stringValue($data->uuid),

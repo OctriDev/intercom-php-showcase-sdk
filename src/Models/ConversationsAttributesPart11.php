@@ -87,8 +87,12 @@ class CreateConversationAttributeDecimalRequest implements CreateConversationAtt
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "name") || $data->name === null) { throw new SdkValidationError("name", 'required', "Required property 'name' is missing or null"); }
-        if (!property_exists($data, "data_type") || $data->data_type === null) { throw new SdkValidationError("data_type", 'required', "Required property 'data_type' is missing or null"); }
+        if (!property_exists($data, "name") || $data->name === null) {
+            throw new SdkValidationError("name", 'required', "Required property 'name' is missing or null");
+        }
+        if (!property_exists($data, "data_type") || $data->data_type === null) {
+            throw new SdkValidationError("data_type", 'required', "Required property 'data_type' is missing or null");
+        }
         return new self(
             name: SdkClient::stringValue($data->name),
             dataType: SdkClient::hydrateEnum($data->data_type, CreateConversationAttributeDecimalRequestDataTypeEnum::class),
@@ -228,8 +232,12 @@ class CreateConversationAttributeFilesRequest implements CreateConversationAttri
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "name") || $data->name === null) { throw new SdkValidationError("name", 'required', "Required property 'name' is missing or null"); }
-        if (!property_exists($data, "data_type") || $data->data_type === null) { throw new SdkValidationError("data_type", 'required', "Required property 'data_type' is missing or null"); }
+        if (!property_exists($data, "name") || $data->name === null) {
+            throw new SdkValidationError("name", 'required', "Required property 'name' is missing or null");
+        }
+        if (!property_exists($data, "data_type") || $data->data_type === null) {
+            throw new SdkValidationError("data_type", 'required', "Required property 'data_type' is missing or null");
+        }
         return new self(
             name: SdkClient::stringValue($data->name),
             dataType: SdkClient::hydrateEnum($data->data_type, CreateConversationAttributeFilesRequestDataTypeEnum::class),

@@ -30,7 +30,7 @@ trait FinAgentMethodsPart1
             Validation::validateItems('attachments', $attachments, max: 10);
         }
 
-        $sdkResponse = SdkClient::request('POST', "/fin/start", $clientConfig, body: ['conversation_id' => $conversationId, 'message' => $message, 'user' => $user, 'attachments' => $attachments, 'conversation_metadata' => $conversationMetadata, 'environment' => $environment], returnType: StartFinConversationResponse::class, decoder: 'json', operationId: 'startFinConversation', extraHeaders: ["Intercom-Version" => SdkClient::headerValue($intercomVersion, false)], requestOptions: $requestOptions, errors: [400 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class), 401 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class)]);
+        $sdkResponse = SdkClient::request('POST', "/fin/start", $clientConfig, body: ['conversation_id' => $conversationId, 'message' => $message, 'user' => $user, 'attachments' => $attachments, 'conversation_metadata' => $conversationMetadata, 'environment' => $environment], returnType: StartFinConversationResponse::class, decoder: 'json', operationId: 'startFinConversation', extraHeaders: ["Intercom-Version" => SdkClient::headerValue($intercomVersion, false)], requestOptions: $requestOptions, errors: [400 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class), 401 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => SdkClient::typedData($sdkResponse, StartFinConversationResponse::class));
     }
 
@@ -54,7 +54,7 @@ trait FinAgentMethodsPart1
             Validation::validateItems('attachments', $attachments, max: 10);
         }
 
-        $sdkResponse = SdkClient::request('POST', "/fin/reply", $clientConfig, body: ['conversation_id' => $conversationId, 'message' => $message, 'user' => $user, 'attachments' => $attachments], returnType: ReplyToFinResponse::class, decoder: 'json', operationId: 'replyToFin', extraHeaders: ["Intercom-Version" => SdkClient::headerValue($intercomVersion, false)], requestOptions: $requestOptions, errors: [400 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class), 401 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class)]);
+        $sdkResponse = SdkClient::request('POST', "/fin/reply", $clientConfig, body: ['conversation_id' => $conversationId, 'message' => $message, 'user' => $user, 'attachments' => $attachments], returnType: ReplyToFinResponse::class, decoder: 'json', operationId: 'replyToFin', extraHeaders: ["Intercom-Version" => SdkClient::headerValue($intercomVersion, false)], requestOptions: $requestOptions, errors: [400 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class), 401 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => SdkClient::typedData($sdkResponse, ReplyToFinResponse::class));
     }
 
@@ -73,7 +73,7 @@ trait FinAgentMethodsPart1
     public static function submitFinCsat(ClientConfig $clientConfig, string $conversationId, SubmitFinCsatRating $rating, IntercomVersion|SdkNotGiven $intercomVersion = SdkNotGiven::Value, string|SdkNotGiven $remark = SdkNotGiven::Value, ?RequestOptions $requestOptions = null): SubmitFinCsatResponse
     {
 
-        $sdkResponse = SdkClient::request('POST', "/fin/csat", $clientConfig, body: ['conversation_id' => $conversationId, 'rating' => $rating, 'remark' => $remark], returnType: SubmitFinCsatResponse::class, decoder: 'json', operationId: 'submitFinCsat', extraHeaders: ["Intercom-Version" => SdkClient::headerValue($intercomVersion, false)], requestOptions: $requestOptions, errors: [401 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class)]);
+        $sdkResponse = SdkClient::request('POST', "/fin/csat", $clientConfig, body: ['conversation_id' => $conversationId, 'rating' => $rating, 'remark' => $remark], returnType: SubmitFinCsatResponse::class, decoder: 'json', operationId: 'submitFinCsat', extraHeaders: ["Intercom-Version" => SdkClient::headerValue($intercomVersion, false)], requestOptions: $requestOptions, errors: [401 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => SdkClient::typedData($sdkResponse, SubmitFinCsatResponse::class));
     }
 
@@ -90,7 +90,7 @@ trait FinAgentMethodsPart1
     public static function listFinCapabilities(ClientConfig $clientConfig, FinAgentUser $user, IntercomVersion|SdkNotGiven $intercomVersion = SdkNotGiven::Value, ?RequestOptions $requestOptions = null): ListFinCapabilitiesResponse
     {
 
-        $sdkResponse = SdkClient::request('POST', "/fin/capabilities", $clientConfig, body: ['user' => $user], returnType: ListFinCapabilitiesResponse::class, decoder: 'json', operationId: 'listFinCapabilities', extraHeaders: ["Intercom-Version" => SdkClient::headerValue($intercomVersion, false)], requestOptions: $requestOptions, errors: [400 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class), 401 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class)]);
+        $sdkResponse = SdkClient::request('POST', "/fin/capabilities", $clientConfig, body: ['user' => $user], returnType: ListFinCapabilitiesResponse::class, decoder: 'json', operationId: 'listFinCapabilities', extraHeaders: ["Intercom-Version" => SdkClient::headerValue($intercomVersion, false)], requestOptions: $requestOptions, errors: [400 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class), 401 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => SdkClient::typedData($sdkResponse, ListFinCapabilitiesResponse::class));
     }
 
@@ -116,7 +116,7 @@ trait FinAgentMethodsPart1
             Validation::validateItems('attachments', $attachments, max: 10);
         }
 
-        $sdkResponse = SdkClient::request('POST', "/fin/ask", $clientConfig, body: ['conversation_id' => $conversationId, 'message' => $message, 'user' => $user, 'conversation_metadata' => $conversationMetadata, 'attachments' => $attachments, 'environment' => $environment], returnType: AskFinResponse::class, decoder: 'json', operationId: 'askFin', extraHeaders: ["Intercom-Version" => SdkClient::headerValue($intercomVersion, false)], requestOptions: $requestOptions, errors: [400 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class), 401 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class)]);
+        $sdkResponse = SdkClient::request('POST', "/fin/ask", $clientConfig, body: ['conversation_id' => $conversationId, 'message' => $message, 'user' => $user, 'conversation_metadata' => $conversationMetadata, 'attachments' => $attachments, 'environment' => $environment], returnType: AskFinResponse::class, decoder: 'json', operationId: 'askFin', extraHeaders: ["Intercom-Version" => SdkClient::headerValue($intercomVersion, false)], requestOptions: $requestOptions, errors: [400 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class), 401 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => SdkClient::typedData($sdkResponse, AskFinResponse::class));
     }
 
@@ -138,7 +138,7 @@ trait FinAgentMethodsPart1
     public static function runFinProcedure(ClientConfig $clientConfig, string $procedureId, string $conversationId, FinAgentUser $user, IntercomVersion|SdkNotGiven $intercomVersion = SdkNotGiven::Value, FinAgentMessage|SdkNotGiven $message = SdkNotGiven::Value, RunFinProcedureConversationMetadata|SdkNotGiven $conversationMetadata = SdkNotGiven::Value, string|SdkNotGiven $environment = SdkNotGiven::Value, ?RequestOptions $requestOptions = null): RunFinProcedureResponse
     {
 
-        $sdkResponse = SdkClient::request('POST', "/fin/procedures/" . SdkClient::encodePathSegment($procedureId) . "/run", $clientConfig, body: ['conversation_id' => $conversationId, 'user' => $user, 'message' => $message, 'conversation_metadata' => $conversationMetadata, 'environment' => $environment], returnType: RunFinProcedureResponse::class, decoder: 'json', operationId: 'runFinProcedure', extraHeaders: ["Intercom-Version" => SdkClient::headerValue($intercomVersion, false)], requestOptions: $requestOptions, errors: [400 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class), 401 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class)]);
+        $sdkResponse = SdkClient::request('POST', "/fin/procedures/" . SdkClient::encodePathSegment($procedureId) . "/run", $clientConfig, body: ['conversation_id' => $conversationId, 'user' => $user, 'message' => $message, 'conversation_metadata' => $conversationMetadata, 'environment' => $environment], returnType: RunFinProcedureResponse::class, decoder: 'json', operationId: 'runFinProcedure', extraHeaders: ["Intercom-Version" => SdkClient::headerValue($intercomVersion, false)], requestOptions: $requestOptions, errors: [400 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class), 401 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => SdkClient::typedData($sdkResponse, RunFinProcedureResponse::class));
     }
 
@@ -161,7 +161,7 @@ trait FinAgentMethodsPart1
             Validation::validateLength('context', $context, max: 10000);
         }
 
-        $sdkResponse = SdkClient::request('POST', "/fin/escalate", $clientConfig, body: ['conversation_id' => $conversationId, 'user' => $user, 'context' => $context], returnType: EscalateFinConversationResponse::class, decoder: 'json', operationId: 'escalateFinConversation', extraHeaders: ["Intercom-Version" => SdkClient::headerValue($intercomVersion, false)], requestOptions: $requestOptions, errors: [400 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class), 401 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class)]);
+        $sdkResponse = SdkClient::request('POST', "/fin/escalate", $clientConfig, body: ['conversation_id' => $conversationId, 'user' => $user, 'context' => $context], returnType: EscalateFinConversationResponse::class, decoder: 'json', operationId: 'escalateFinConversation', extraHeaders: ["Intercom-Version" => SdkClient::headerValue($intercomVersion, false)], requestOptions: $requestOptions, errors: [400 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class), 401 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => SdkClient::typedData($sdkResponse, EscalateFinConversationResponse::class));
     }
 }

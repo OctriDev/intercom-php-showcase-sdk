@@ -22,7 +22,7 @@ class TagsApi
     public static function attachTagToContact(ClientConfig $clientConfig, string $contactId, string $id, IntercomVersion|SdkNotGiven $intercomVersion = SdkNotGiven::Value, ?RequestOptions $requestOptions = null): Tag
     {
 
-        $sdkResponse = SdkClient::request('POST', "/contacts/" . SdkClient::encodePathSegment($contactId) . "/tags", $clientConfig, body: ['id' => $id], returnType: Tag::class, decoder: 'json', operationId: 'attachTagToContact', extraHeaders: ["Intercom-Version" => SdkClient::headerValue($intercomVersion, false)], requestOptions: $requestOptions, errors: [401 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class), 404 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class)]);
+        $sdkResponse = SdkClient::request('POST', "/contacts/" . SdkClient::encodePathSegment($contactId) . "/tags", $clientConfig, body: ['id' => $id], returnType: Tag::class, decoder: 'json', operationId: 'attachTagToContact', extraHeaders: ["Intercom-Version" => SdkClient::headerValue($intercomVersion, false)], requestOptions: $requestOptions, errors: [401 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class), 404 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => SdkClient::typedData($sdkResponse, Tag::class));
     }
 
@@ -40,7 +40,7 @@ class TagsApi
     public static function detachTagFromContact(ClientConfig $clientConfig, string $contactId, string $tagId, IntercomVersion|SdkNotGiven $intercomVersion = SdkNotGiven::Value, ?RequestOptions $requestOptions = null): Tag
     {
 
-        $sdkResponse = SdkClient::request('DELETE', "/contacts/" . SdkClient::encodePathSegment($contactId) . "/tags/" . SdkClient::encodePathSegment($tagId) . "", $clientConfig, returnType: Tag::class, decoder: 'json', operationId: 'detachTagFromContact', extraHeaders: ["Intercom-Version" => SdkClient::headerValue($intercomVersion, false)], requestOptions: $requestOptions, errors: [401 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class), 404 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class)]);
+        $sdkResponse = SdkClient::request('DELETE', "/contacts/" . SdkClient::encodePathSegment($contactId) . "/tags/" . SdkClient::encodePathSegment($tagId) . "", $clientConfig, returnType: Tag::class, decoder: 'json', operationId: 'detachTagFromContact', extraHeaders: ["Intercom-Version" => SdkClient::headerValue($intercomVersion, false)], requestOptions: $requestOptions, errors: [401 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class), 404 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => SdkClient::typedData($sdkResponse, Tag::class));
     }
 
@@ -59,7 +59,7 @@ class TagsApi
     public static function attachTagToConversation(ClientConfig $clientConfig, string $conversationId, string $id, string $adminId, IntercomVersion|SdkNotGiven $intercomVersion = SdkNotGiven::Value, ?RequestOptions $requestOptions = null): Tag
     {
 
-        $sdkResponse = SdkClient::request('POST', "/conversations/" . SdkClient::encodePathSegment($conversationId) . "/tags", $clientConfig, body: ['id' => $id, 'admin_id' => $adminId], returnType: Tag::class, decoder: 'json', operationId: 'attachTagToConversation', extraHeaders: ["Intercom-Version" => SdkClient::headerValue($intercomVersion, false)], requestOptions: $requestOptions, errors: [401 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class), 404 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class)]);
+        $sdkResponse = SdkClient::request('POST', "/conversations/" . SdkClient::encodePathSegment($conversationId) . "/tags", $clientConfig, body: ['id' => $id, 'admin_id' => $adminId], returnType: Tag::class, decoder: 'json', operationId: 'attachTagToConversation', extraHeaders: ["Intercom-Version" => SdkClient::headerValue($intercomVersion, false)], requestOptions: $requestOptions, errors: [401 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class), 404 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => SdkClient::typedData($sdkResponse, Tag::class));
     }
 
@@ -78,7 +78,7 @@ class TagsApi
     public static function detachTagFromConversation(ClientConfig $clientConfig, string $conversationId, string $tagId, string $adminId, IntercomVersion|SdkNotGiven $intercomVersion = SdkNotGiven::Value, ?RequestOptions $requestOptions = null): Tag
     {
 
-        $sdkResponse = SdkClient::request('DELETE', "/conversations/" . SdkClient::encodePathSegment($conversationId) . "/tags/" . SdkClient::encodePathSegment($tagId) . "", $clientConfig, body: ['admin_id' => $adminId], returnType: Tag::class, decoder: 'json', operationId: 'detachTagFromConversation', extraHeaders: ["Intercom-Version" => SdkClient::headerValue($intercomVersion, false)], requestOptions: $requestOptions, errors: [401 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class), 404 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class)]);
+        $sdkResponse = SdkClient::request('DELETE', "/conversations/" . SdkClient::encodePathSegment($conversationId) . "/tags/" . SdkClient::encodePathSegment($tagId) . "", $clientConfig, body: ['admin_id' => $adminId], returnType: Tag::class, decoder: 'json', operationId: 'detachTagFromConversation', extraHeaders: ["Intercom-Version" => SdkClient::headerValue($intercomVersion, false)], requestOptions: $requestOptions, errors: [401 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class), 404 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => SdkClient::typedData($sdkResponse, Tag::class));
     }
 
@@ -94,7 +94,7 @@ class TagsApi
     public static function listTags(ClientConfig $clientConfig, IntercomVersion|SdkNotGiven $intercomVersion = SdkNotGiven::Value, ?RequestOptions $requestOptions = null): TagList
     {
 
-        $sdkResponse = SdkClient::request('GET', "/tags", $clientConfig, returnType: TagList::class, decoder: 'json', operationId: 'listTags', extraHeaders: ["Intercom-Version" => SdkClient::headerValue($intercomVersion, false)], requestOptions: $requestOptions, errors: [401 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class)]);
+        $sdkResponse = SdkClient::request('GET', "/tags", $clientConfig, returnType: TagList::class, decoder: 'json', operationId: 'listTags', extraHeaders: ["Intercom-Version" => SdkClient::headerValue($intercomVersion, false)], requestOptions: $requestOptions, errors: [401 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => SdkClient::typedData($sdkResponse, TagList::class));
     }
 
@@ -111,7 +111,7 @@ class TagsApi
     public static function createTag(ClientConfig $clientConfig, IntercomVersion|SdkNotGiven $intercomVersion = SdkNotGiven::Value, CreateOrUpdateTagRequest|TagCompanyRequest|UntagCompanyRequest|TagMultipleUsersRequest|SdkNotGiven $body = SdkNotGiven::Value, ?RequestOptions $requestOptions = null): TagCreateResponse
     {
 
-        $sdkResponse = SdkClient::request('POST', "/tags", $clientConfig, body: $body, returnType: TagCreateResponse::class, decoder: 'json', operationId: 'createTag', extraHeaders: ["Intercom-Version" => SdkClient::headerValue($intercomVersion, false)], requestOptions: $requestOptions, errors: [400 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class), 401 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class)]);
+        $sdkResponse = SdkClient::request('POST', "/tags", $clientConfig, body: $body, returnType: TagCreateResponse::class, decoder: 'json', operationId: 'createTag', extraHeaders: ["Intercom-Version" => SdkClient::headerValue($intercomVersion, false)], requestOptions: $requestOptions, errors: [400 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class), 401 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => SdkClient::typedData($sdkResponse, TagCreateResponse::class));
     }
 
@@ -128,7 +128,7 @@ class TagsApi
     public static function findTag(ClientConfig $clientConfig, string $tagId, IntercomVersion|SdkNotGiven $intercomVersion = SdkNotGiven::Value, ?RequestOptions $requestOptions = null): TagBasic
     {
 
-        $sdkResponse = SdkClient::request('GET', "/tags/" . SdkClient::encodePathSegment($tagId) . "", $clientConfig, returnType: TagBasic::class, decoder: 'json', operationId: 'findTag', extraHeaders: ["Intercom-Version" => SdkClient::headerValue($intercomVersion, false)], requestOptions: $requestOptions, errors: [401 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class), 404 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class)]);
+        $sdkResponse = SdkClient::request('GET', "/tags/" . SdkClient::encodePathSegment($tagId) . "", $clientConfig, returnType: TagBasic::class, decoder: 'json', operationId: 'findTag', extraHeaders: ["Intercom-Version" => SdkClient::headerValue($intercomVersion, false)], requestOptions: $requestOptions, errors: [401 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class), 404 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => SdkClient::typedData($sdkResponse, TagBasic::class));
     }
 
@@ -144,7 +144,7 @@ class TagsApi
     public static function deleteTag(ClientConfig $clientConfig, string $tagId, IntercomVersion|SdkNotGiven $intercomVersion = SdkNotGiven::Value, ?RequestOptions $requestOptions = null): mixed
     {
 
-        return SdkClient::request('DELETE', "/tags/" . SdkClient::encodePathSegment($tagId) . "", $clientConfig, decoder: 'empty', operationId: 'deleteTag', extraHeaders: ["Intercom-Version" => SdkClient::headerValue($intercomVersion, false)], requestOptions: $requestOptions, errors: [400 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class), 401 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class), 404 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class)])->data;
+        return SdkClient::request('DELETE', "/tags/" . SdkClient::encodePathSegment($tagId) . "", $clientConfig, decoder: 'empty', operationId: 'deleteTag', extraHeaders: ["Intercom-Version" => SdkClient::headerValue($intercomVersion, false)], requestOptions: $requestOptions, errors: [400 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class), 401 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class), 404 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class)])->data;
     }
 
 
@@ -162,7 +162,7 @@ class TagsApi
     public static function attachTagToTicket(ClientConfig $clientConfig, string $ticketId, string $id, string $adminId, IntercomVersion|SdkNotGiven $intercomVersion = SdkNotGiven::Value, ?RequestOptions $requestOptions = null): Tag
     {
 
-        $sdkResponse = SdkClient::request('POST', "/tickets/" . SdkClient::encodePathSegment($ticketId) . "/tags", $clientConfig, body: ['id' => $id, 'admin_id' => $adminId], returnType: Tag::class, decoder: 'json', operationId: 'attachTagToTicket', extraHeaders: ["Intercom-Version" => SdkClient::headerValue($intercomVersion, false)], requestOptions: $requestOptions, errors: [401 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class), 404 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class)]);
+        $sdkResponse = SdkClient::request('POST', "/tickets/" . SdkClient::encodePathSegment($ticketId) . "/tags", $clientConfig, body: ['id' => $id, 'admin_id' => $adminId], returnType: Tag::class, decoder: 'json', operationId: 'attachTagToTicket', extraHeaders: ["Intercom-Version" => SdkClient::headerValue($intercomVersion, false)], requestOptions: $requestOptions, errors: [401 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class), 404 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => SdkClient::typedData($sdkResponse, Tag::class));
     }
 
@@ -181,7 +181,7 @@ class TagsApi
     public static function detachTagFromTicket(ClientConfig $clientConfig, string $ticketId, string $tagId, string $adminId, IntercomVersion|SdkNotGiven $intercomVersion = SdkNotGiven::Value, ?RequestOptions $requestOptions = null): Tag
     {
 
-        $sdkResponse = SdkClient::request('DELETE', "/tickets/" . SdkClient::encodePathSegment($ticketId) . "/tags/" . SdkClient::encodePathSegment($tagId) . "", $clientConfig, body: ['admin_id' => $adminId], returnType: Tag::class, decoder: 'json', operationId: 'detachTagFromTicket', extraHeaders: ["Intercom-Version" => SdkClient::headerValue($intercomVersion, false)], requestOptions: $requestOptions, errors: [401 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class), 404 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class)]);
+        $sdkResponse = SdkClient::request('DELETE', "/tickets/" . SdkClient::encodePathSegment($ticketId) . "/tags/" . SdkClient::encodePathSegment($tagId) . "", $clientConfig, body: ['admin_id' => $adminId], returnType: Tag::class, decoder: 'json', operationId: 'detachTagFromTicket', extraHeaders: ["Intercom-Version" => SdkClient::headerValue($intercomVersion, false)], requestOptions: $requestOptions, errors: [401 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class), 404 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => SdkClient::typedData($sdkResponse, Tag::class));
     }
 }

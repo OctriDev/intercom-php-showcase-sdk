@@ -343,7 +343,9 @@ class BulkUpdateContactsContactsItemCompaniesItem implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "company_id") || $data->company_id === null) { throw new SdkValidationError("company_id", 'required', "Required property 'company_id' is missing or null"); }
+        if (!property_exists($data, "company_id") || $data->company_id === null) {
+            throw new SdkValidationError("company_id", 'required', "Required property 'company_id' is missing or null");
+        }
         return new self(
             companyId: SdkClient::stringValue($data->company_id),
             name: (property_exists($data, "name") && $data->name !== null ? SdkClient::stringValue($data->name) : SdkNotGiven::Value),
