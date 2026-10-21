@@ -38,7 +38,9 @@ class ListDataEventsFilterUserIdQueryParameter implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "user_id") || $data->user_id === null) { throw new SdkValidationError("user_id", 'required', "Required property 'user_id' is missing or null"); }
+        if (!property_exists($data, "user_id") || $data->user_id === null) {
+            throw new SdkValidationError("user_id", 'required', "Required property 'user_id' is missing or null");
+        }
         return new self(
             userId: SdkClient::stringValue($data->user_id),
         );
@@ -76,7 +78,9 @@ class ListDataEventsFilterIntercomUserIdQueryParameter implements \JsonSerializa
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "intercom_user_id") || $data->intercom_user_id === null) { throw new SdkValidationError("intercom_user_id", 'required', "Required property 'intercom_user_id' is missing or null"); }
+        if (!property_exists($data, "intercom_user_id") || $data->intercom_user_id === null) {
+            throw new SdkValidationError("intercom_user_id", 'required', "Required property 'intercom_user_id' is missing or null");
+        }
         return new self(
             intercomUserId: SdkClient::stringValue($data->intercom_user_id),
         );
@@ -114,7 +118,9 @@ class ListDataEventsFilterEmailQueryParameter implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "email") || $data->email === null) { throw new SdkValidationError("email", 'required', "Required property 'email' is missing or null"); }
+        if (!property_exists($data, "email") || $data->email === null) {
+            throw new SdkValidationError("email", 'required', "Required property 'email' is missing or null");
+        }
         return new self(
             email: SdkClient::stringValue($data->email),
         );
@@ -224,7 +230,7 @@ class DataEvents
     public static function createDataEvent(ClientConfig $clientConfig, IntercomVersion|SdkNotGiven $intercomVersion = SdkNotGiven::Value, string|SdkNotGiven $eventName = SdkNotGiven::Value, int|SdkNotGiven $createdAt = SdkNotGiven::Value, string|SdkNotGiven $userId = SdkNotGiven::Value, string|SdkNotGiven $id = SdkNotGiven::Value, string|SdkNotGiven $email = SdkNotGiven::Value, array|SdkNotGiven $metadata = SdkNotGiven::Value, ?RequestOptions $requestOptions = null): mixed
     {
 
-        return SdkClient::request('POST', "/events", $clientConfig, body: ['event_name' => $eventName, 'created_at' => $createdAt, 'user_id' => $userId, 'id' => $id, 'email' => $email, 'metadata' => $metadata], decoder: 'empty', operationId: 'createDataEvent', extraHeaders: ["Intercom-Version" => SdkClient::headerValue($intercomVersion, false)], requestOptions: $requestOptions, errors: [401 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class)])->data;
+        return SdkClient::request('POST', "/events", $clientConfig, body: ['event_name' => $eventName, 'created_at' => $createdAt, 'user_id' => $userId, 'id' => $id, 'email' => $email, 'metadata' => $metadata], decoder: 'empty', operationId: 'createDataEvent', extraHeaders: ["Intercom-Version" => SdkClient::headerValue($intercomVersion, false)], requestOptions: $requestOptions, errors: [401 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class)])->data;
     }
 
 
@@ -242,7 +248,7 @@ class DataEvents
     public static function listDataEvents(ClientConfig $clientConfig, ListDataEventsFilterUserIdQueryParameter|ListDataEventsFilterIntercomUserIdQueryParameter|ListDataEventsFilterEmailQueryParameter $filter, string $type, bool|SdkNotGiven $summary = SdkNotGiven::Value, IntercomVersion|SdkNotGiven $intercomVersion = SdkNotGiven::Value, ?RequestOptions $requestOptions = null): DataEventSummary
     {
 
-        $sdkResponse = SdkClient::request('GET', "/events", $clientConfig, query: ['filter' => new SdkQueryValue($filter, "form", true), 'type' => new SdkQueryValue($type, "form", true), 'summary' => new SdkQueryValue($summary, "form", true)], returnType: DataEventSummary::class, decoder: 'json', operationId: 'listDataEvents', extraHeaders: ["Intercom-Version" => SdkClient::headerValue($intercomVersion, false)], requestOptions: $requestOptions, errors: [401 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class)]);
+        $sdkResponse = SdkClient::request('GET', "/events", $clientConfig, query: ['filter' => new SdkQueryValue($filter, "form", true), 'type' => new SdkQueryValue($type, "form", true), 'summary' => new SdkQueryValue($summary, "form", true)], returnType: DataEventSummary::class, decoder: 'json', operationId: 'listDataEvents', extraHeaders: ["Intercom-Version" => SdkClient::headerValue($intercomVersion, false)], requestOptions: $requestOptions, errors: [401 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => SdkClient::typedData($sdkResponse, DataEventSummary::class));
     }
 
@@ -259,6 +265,6 @@ class DataEvents
     public static function dataEventSummaries(ClientConfig $clientConfig, IntercomVersion|SdkNotGiven $intercomVersion = SdkNotGiven::Value, string|SdkNotGiven $userId = SdkNotGiven::Value, DataEventSummariesEventSummaries|SdkNotGiven $eventSummaries = SdkNotGiven::Value, ?RequestOptions $requestOptions = null): mixed
     {
 
-        return SdkClient::request('POST', "/events/summaries", $clientConfig, body: ['user_id' => $userId, 'event_summaries' => $eventSummaries], decoder: 'empty', operationId: 'dataEventSummaries', extraHeaders: ["Intercom-Version" => SdkClient::headerValue($intercomVersion, false)], requestOptions: $requestOptions, errors: [401 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class)])->data;
+        return SdkClient::request('POST', "/events/summaries", $clientConfig, body: ['user_id' => $userId, 'event_summaries' => $eventSummaries], decoder: 'empty', operationId: 'dataEventSummaries', extraHeaders: ["Intercom-Version" => SdkClient::headerValue($intercomVersion, false)], requestOptions: $requestOptions, errors: [401 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class)])->data;
     }
 }

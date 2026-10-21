@@ -113,7 +113,9 @@ class AttachContactToConversationRequestCustomerVariant0 implements AttachContac
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "intercom_user_id") || $data->intercom_user_id === null) { throw new SdkValidationError("intercom_user_id", 'required', "Required property 'intercom_user_id' is missing or null"); }
+        if (!property_exists($data, "intercom_user_id") || $data->intercom_user_id === null) {
+            throw new SdkValidationError("intercom_user_id", 'required', "Required property 'intercom_user_id' is missing or null");
+        }
         return new self(
             intercomUserId: SdkClient::stringValue($data->intercom_user_id),
             customer: (property_exists($data, "customer") ? ($data->customer === null ? null : SdkClient::hydrateUnionAs($data->customer, CustomerRequest::class, [CustomerRequestVariant0::class, CustomerRequestVariant1::class, CustomerRequestVariant2::class], null, [])) : SdkNotGiven::Value),
@@ -168,7 +170,9 @@ class AttachContactToConversationRequestCustomerVariant1 implements AttachContac
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "user_id") || $data->user_id === null) { throw new SdkValidationError("user_id", 'required', "Required property 'user_id' is missing or null"); }
+        if (!property_exists($data, "user_id") || $data->user_id === null) {
+            throw new SdkValidationError("user_id", 'required', "Required property 'user_id' is missing or null");
+        }
         return new self(
             userId: SdkClient::stringValue($data->user_id),
             customer: (property_exists($data, "customer") ? ($data->customer === null ? null : SdkClient::hydrateUnionAs($data->customer, CustomerRequest::class, [CustomerRequestVariant0::class, CustomerRequestVariant1::class, CustomerRequestVariant2::class], null, [])) : SdkNotGiven::Value),
@@ -223,7 +227,9 @@ class AttachContactToConversationRequestCustomerVariant2 implements AttachContac
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "email") || $data->email === null) { throw new SdkValidationError("email", 'required', "Required property 'email' is missing or null"); }
+        if (!property_exists($data, "email") || $data->email === null) {
+            throw new SdkValidationError("email", 'required', "Required property 'email' is missing or null");
+        }
         return new self(
             email: SdkClient::stringValue($data->email),
             customer: (property_exists($data, "customer") ? ($data->customer === null ? null : SdkClient::hydrateUnionAs($data->customer, CustomerRequest::class, [CustomerRequestVariant0::class, CustomerRequestVariant1::class, CustomerRequestVariant2::class], null, [])) : SdkNotGiven::Value),
@@ -266,7 +272,9 @@ class CustomerRequestVariant0 implements CustomerRequest, \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "intercom_user_id") || $data->intercom_user_id === null) { throw new SdkValidationError("intercom_user_id", 'required', "Required property 'intercom_user_id' is missing or null"); }
+        if (!property_exists($data, "intercom_user_id") || $data->intercom_user_id === null) {
+            throw new SdkValidationError("intercom_user_id", 'required', "Required property 'intercom_user_id' is missing or null");
+        }
         return new self(
             intercomUserId: SdkClient::stringValue($data->intercom_user_id),
         );
@@ -308,7 +316,9 @@ class CustomerRequestVariant1 implements CustomerRequest, \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "user_id") || $data->user_id === null) { throw new SdkValidationError("user_id", 'required', "Required property 'user_id' is missing or null"); }
+        if (!property_exists($data, "user_id") || $data->user_id === null) {
+            throw new SdkValidationError("user_id", 'required', "Required property 'user_id' is missing or null");
+        }
         return new self(
             userId: SdkClient::stringValue($data->user_id),
         );

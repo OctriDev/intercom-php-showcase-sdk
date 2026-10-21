@@ -149,9 +149,15 @@ class CreateInternalArticleRequest implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "title") || $data->title === null) { throw new SdkValidationError("title", 'required', "Required property 'title' is missing or null"); }
-        if (!property_exists($data, "author_id") || $data->author_id === null) { throw new SdkValidationError("author_id", 'required', "Required property 'author_id' is missing or null"); }
-        if (!property_exists($data, "owner_id") || $data->owner_id === null) { throw new SdkValidationError("owner_id", 'required', "Required property 'owner_id' is missing or null"); }
+        if (!property_exists($data, "title") || $data->title === null) {
+            throw new SdkValidationError("title", 'required', "Required property 'title' is missing or null");
+        }
+        if (!property_exists($data, "author_id") || $data->author_id === null) {
+            throw new SdkValidationError("author_id", 'required', "Required property 'author_id' is missing or null");
+        }
+        if (!property_exists($data, "owner_id") || $data->owner_id === null) {
+            throw new SdkValidationError("owner_id", 'required', "Required property 'owner_id' is missing or null");
+        }
         return new self(
             title: SdkClient::stringValue($data->title),
             authorId: SdkClient::intValue($data->author_id),
@@ -174,11 +180,26 @@ final readonly class DeletedInternalArticleObjectObjectEnum implements SdkOpenEn
 {
     public const INTERNAL_ARTICLE = "internal_article";
     private function __construct(public string $value) {}
-    public static function from(string|int $value): static { return new self((string) $value); }
-    public static function tryFrom(string|int|null $value): ?static { return $value === null ? null : self::from($value); }
-    public function getValue(): string { return $this->value; }
-    public function jsonSerialize(): string { return $this->value; }
-    public function __toString(): string { return (string) $this->value; }
+    public static function from(string|int $value): static
+    {
+        return new self((string) $value);
+    }
+    public static function tryFrom(string|int|null $value): ?static
+    {
+        return $value === null ? null : self::from($value);
+    }
+    public function getValue(): string
+    {
+        return $this->value;
+    }
+    public function jsonSerialize(): string
+    {
+        return $this->value;
+    }
+    public function __toString(): string
+    {
+        return (string) $this->value;
+    }
 }
 
 /**
@@ -260,11 +281,26 @@ final readonly class InternalArticleListTypeEnum implements SdkOpenEnum
 {
     public const LIST = "list";
     private function __construct(public string $value) {}
-    public static function from(string|int $value): static { return new self((string) $value); }
-    public static function tryFrom(string|int|null $value): ?static { return $value === null ? null : self::from($value); }
-    public function getValue(): string { return $this->value; }
-    public function jsonSerialize(): string { return $this->value; }
-    public function __toString(): string { return (string) $this->value; }
+    public static function from(string|int $value): static
+    {
+        return new self((string) $value);
+    }
+    public static function tryFrom(string|int|null $value): ?static
+    {
+        return $value === null ? null : self::from($value);
+    }
+    public function getValue(): string
+    {
+        return $this->value;
+    }
+    public function jsonSerialize(): string
+    {
+        return $this->value;
+    }
+    public function __toString(): string
+    {
+        return (string) $this->value;
+    }
 }
 
 /**

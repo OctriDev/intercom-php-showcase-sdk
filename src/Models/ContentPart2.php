@@ -91,8 +91,12 @@ class ContentBulkActionRequest implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "action") || $data->action === null) { throw new SdkValidationError("action", 'required', "Required property 'action' is missing or null"); }
-        if (!property_exists($data, "content_ids") || $data->content_ids === null) { throw new SdkValidationError("content_ids", 'required', "Required property 'content_ids' is missing or null"); }
+        if (!property_exists($data, "action") || $data->action === null) {
+            throw new SdkValidationError("action", 'required', "Required property 'action' is missing or null");
+        }
+        if (!property_exists($data, "content_ids") || $data->content_ids === null) {
+            throw new SdkValidationError("content_ids", 'required', "Required property 'content_ids' is missing or null");
+        }
         return new self(
             action: SdkClient::hydrateStringEnumOrString($data->action, ContentBulkActionRequestActionEnum::class),
             contentIds: array_values(array_map(static fn($item) => SdkClient::hydrateClass($item, ContentBulkActionRequestContentIdsItem::class), SdkClient::arrayValue($data->content_ids))),
@@ -169,11 +173,26 @@ final readonly class ContentSearchArticleContentItemTypeEnum implements SdkOpenE
 {
     public const ARTICLE_CONTENT = "article_content";
     private function __construct(public string $value) {}
-    public static function from(string|int $value): static { return new self((string) $value); }
-    public static function tryFrom(string|int|null $value): ?static { return $value === null ? null : self::from($value); }
-    public function getValue(): string { return $this->value; }
-    public function jsonSerialize(): string { return $this->value; }
-    public function __toString(): string { return (string) $this->value; }
+    public static function from(string|int $value): static
+    {
+        return new self((string) $value);
+    }
+    public static function tryFrom(string|int|null $value): ?static
+    {
+        return $value === null ? null : self::from($value);
+    }
+    public function getValue(): string
+    {
+        return $this->value;
+    }
+    public function jsonSerialize(): string
+    {
+        return $this->value;
+    }
+    public function __toString(): string
+    {
+        return (string) $this->value;
+    }
 }
 
 /**
@@ -343,7 +362,9 @@ class ContentSearchArticleItem implements ContentSearchResult, \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "type") || $data->type === null) { throw new SdkValidationError("type", 'required', "Required property 'type' is missing or null"); }
+        if (!property_exists($data, "type") || $data->type === null) {
+            throw new SdkValidationError("type", 'required', "Required property 'type' is missing or null");
+        }
         return new self(
             type: SdkClient::hydrateEnum($data->type, ContentSearchArticleItemTypeEnum::class),
             id: (property_exists($data, "id") && $data->id !== null ? SdkClient::stringValue($data->id) : SdkNotGiven::Value),

@@ -127,8 +127,12 @@ class UntagCompanyRequest implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "name") || $data->name === null) { throw new SdkValidationError("name", 'required', "Required property 'name' is missing or null"); }
-        if (!property_exists($data, "companies") || $data->companies === null) { throw new SdkValidationError("companies", 'required', "Required property 'companies' is missing or null"); }
+        if (!property_exists($data, "name") || $data->name === null) {
+            throw new SdkValidationError("name", 'required', "Required property 'name' is missing or null");
+        }
+        if (!property_exists($data, "companies") || $data->companies === null) {
+            throw new SdkValidationError("companies", 'required', "Required property 'companies' is missing or null");
+        }
         return new self(
             name: SdkClient::stringValue($data->name),
             companies: array_values(array_map(static fn($item) => SdkClient::hydrateClass($item, UntagCompanyRequestCompaniesItem::class), SdkClient::arrayValue($data->companies))),

@@ -85,11 +85,21 @@ class WhatsappMessageStatusList implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "type") || $data->type === null) { throw new SdkValidationError("type", 'required', "Required property 'type' is missing or null"); }
-        if (!property_exists($data, "ruleset_id") || $data->ruleset_id === null) { throw new SdkValidationError("ruleset_id", 'required', "Required property 'ruleset_id' is missing or null"); }
-        if (!property_exists($data, "pages") || $data->pages === null) { throw new SdkValidationError("pages", 'required', "Required property 'pages' is missing or null"); }
-        if (!property_exists($data, "total_count") || $data->total_count === null) { throw new SdkValidationError("total_count", 'required', "Required property 'total_count' is missing or null"); }
-        if (!property_exists($data, "events") || $data->events === null) { throw new SdkValidationError("events", 'required', "Required property 'events' is missing or null"); }
+        if (!property_exists($data, "type") || $data->type === null) {
+            throw new SdkValidationError("type", 'required', "Required property 'type' is missing or null");
+        }
+        if (!property_exists($data, "ruleset_id") || $data->ruleset_id === null) {
+            throw new SdkValidationError("ruleset_id", 'required', "Required property 'ruleset_id' is missing or null");
+        }
+        if (!property_exists($data, "pages") || $data->pages === null) {
+            throw new SdkValidationError("pages", 'required', "Required property 'pages' is missing or null");
+        }
+        if (!property_exists($data, "total_count") || $data->total_count === null) {
+            throw new SdkValidationError("total_count", 'required', "Required property 'total_count' is missing or null");
+        }
+        if (!property_exists($data, "events") || $data->events === null) {
+            throw new SdkValidationError("events", 'required', "Required property 'events' is missing or null");
+        }
         return new self(
             type: SdkClient::hydrateStringEnumOrString($data->type, WhatsappMessageStatusListTypeEnum::class),
             rulesetId: SdkClient::stringValue($data->ruleset_id),

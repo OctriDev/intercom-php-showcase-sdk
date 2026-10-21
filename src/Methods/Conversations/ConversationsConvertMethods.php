@@ -24,7 +24,7 @@ trait ConversationsConvertMethods
     public static function convertConversationToTicket(ClientConfig $clientConfig, int $conversationId, string $ticketTypeId, IntercomVersion|SdkNotGiven $intercomVersion = SdkNotGiven::Value, string|SdkNotGiven $ticketStateId = SdkNotGiven::Value, array|SdkNotGiven $attributes = SdkNotGiven::Value, ?RequestOptions $requestOptions = null): Ticket|null
     {
 
-        $sdkResponse = SdkClient::request('POST', "/conversations/" . SdkClient::encodePathSegment($conversationId) . "/convert", $clientConfig, body: ['ticket_type_id' => $ticketTypeId, 'ticket_state_id' => $ticketStateId, 'attributes' => $attributes], returnType: Ticket::class, decoder: 'json', operationId: 'convertConversationToTicket', extraHeaders: ["Intercom-Version" => SdkClient::headerValue($intercomVersion, false)], requestOptions: $requestOptions, errors: [400 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class)]);
+        $sdkResponse = SdkClient::request('POST', "/conversations/" . SdkClient::encodePathSegment($conversationId) . "/convert", $clientConfig, body: ['ticket_type_id' => $ticketTypeId, 'ticket_state_id' => $ticketStateId, 'attributes' => $attributes], returnType: Ticket::class, decoder: 'json', operationId: 'convertConversationToTicket', extraHeaders: ["Intercom-Version" => SdkClient::headerValue($intercomVersion, false)], requestOptions: $requestOptions, errors: [400 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => SdkClient::typedData($sdkResponse, Ticket::class));
     }
 }

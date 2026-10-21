@@ -67,8 +67,12 @@ class ChangeTicketTypeRequest implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "ticket_type_id") || $data->ticket_type_id === null) { throw new SdkValidationError("ticket_type_id", 'required', "Required property 'ticket_type_id' is missing or null"); }
-        if (!property_exists($data, "ticket_state_id") || $data->ticket_state_id === null) { throw new SdkValidationError("ticket_state_id", 'required', "Required property 'ticket_state_id' is missing or null"); }
+        if (!property_exists($data, "ticket_type_id") || $data->ticket_type_id === null) {
+            throw new SdkValidationError("ticket_type_id", 'required', "Required property 'ticket_type_id' is missing or null");
+        }
+        if (!property_exists($data, "ticket_state_id") || $data->ticket_state_id === null) {
+            throw new SdkValidationError("ticket_state_id", 'required', "Required property 'ticket_state_id' is missing or null");
+        }
         return new self(
             ticketTypeId: SdkClient::stringValue($data->ticket_type_id),
             ticketStateId: SdkClient::stringValue($data->ticket_state_id),

@@ -27,7 +27,7 @@ trait ConversationsDeletedMethods
             Validation::validateRange('per_page', $perPage, max: 60);
         }
 
-        $sdkResponse = SdkClient::request('GET', "/conversations/deleted", $clientConfig, query: ['page' => new SdkQueryValue($page, "form", true), 'per_page' => new SdkQueryValue($perPage, "form", true), 'order' => new SdkQueryValue($order, "form", true)], returnType: DeletedConversationList::class, decoder: 'json', operationId: 'listDeletedConversationIds', extraHeaders: ["Intercom-Version" => SdkClient::headerValue($intercomVersion, false)], requestOptions: $requestOptions, errors: [400 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class), 401 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class)]);
+        $sdkResponse = SdkClient::request('GET', "/conversations/deleted", $clientConfig, query: ['page' => new SdkQueryValue($page, "form", true), 'per_page' => new SdkQueryValue($perPage, "form", true), 'order' => new SdkQueryValue($order, "form", true)], returnType: DeletedConversationList::class, decoder: 'json', operationId: 'listDeletedConversationIds', extraHeaders: ["Intercom-Version" => SdkClient::headerValue($intercomVersion, false)], requestOptions: $requestOptions, errors: [400 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class), 401 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => SdkClient::typedData($sdkResponse, DeletedConversationList::class));
     }
 }

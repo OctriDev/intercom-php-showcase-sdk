@@ -22,7 +22,7 @@ trait ConversationsReplyMethods
     public static function replyConversation(ClientConfig $clientConfig, string $conversationId, IntercomVersion|SdkNotGiven $intercomVersion = SdkNotGiven::Value, ReplyConversationRequest|SdkNotGiven $body = SdkNotGiven::Value, ?RequestOptions $requestOptions = null): Conversation
     {
 
-        $sdkResponse = SdkClient::request('POST', "/conversations/" . SdkClient::encodePathSegment($conversationId) . "/reply", $clientConfig, body: $body, returnType: Conversation::class, decoder: 'json', operationId: 'replyConversation', extraHeaders: ["Intercom-Version" => SdkClient::headerValue($intercomVersion, false)], requestOptions: $requestOptions, errors: [401 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class), 403 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class), 404 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class)]);
+        $sdkResponse = SdkClient::request('POST', "/conversations/" . SdkClient::encodePathSegment($conversationId) . "/reply", $clientConfig, body: $body, returnType: Conversation::class, decoder: 'json', operationId: 'replyConversation', extraHeaders: ["Intercom-Version" => SdkClient::headerValue($intercomVersion, false)], requestOptions: $requestOptions, errors: [401 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class), 403 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class), 404 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => SdkClient::typedData($sdkResponse, Conversation::class));
     }
 }

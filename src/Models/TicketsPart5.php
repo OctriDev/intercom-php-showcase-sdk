@@ -51,7 +51,9 @@ class TicketReplyTranslations implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "original") || $data->original === null) { throw new SdkValidationError("original", 'required', "Required property 'original' is missing or null"); }
+        if (!property_exists($data, "original") || $data->original === null) {
+            throw new SdkValidationError("original", 'required', "Required property 'original' is missing or null");
+        }
         return new self(
             original: SdkClient::stringValue($data->original),
             additionalProperties: array_diff_key(SdkClient::stringMapValue($data), array_flip(["original"])),

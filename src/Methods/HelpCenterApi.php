@@ -12,11 +12,26 @@ final readonly class CreateHelpCenterRedirectTargetType implements SdkOpenEnum
     public const ARTICLE = "article";
     public const COLLECTION = "collection";
     private function __construct(public string $value) {}
-    public static function from(string|int $value): static { return new self((string) $value); }
-    public static function tryFrom(string|int|null $value): ?static { return $value === null ? null : self::from($value); }
-    public function getValue(): string { return $this->value; }
-    public function jsonSerialize(): string { return $this->value; }
-    public function __toString(): string { return (string) $this->value; }
+    public static function from(string|int $value): static
+    {
+        return new self((string) $value);
+    }
+    public static function tryFrom(string|int|null $value): ?static
+    {
+        return $value === null ? null : self::from($value);
+    }
+    public function getValue(): string
+    {
+        return $this->value;
+    }
+    public function jsonSerialize(): string
+    {
+        return $this->value;
+    }
+    public function __toString(): string
+    {
+        return (string) $this->value;
+    }
 }
 
 class HelpCenterApi
@@ -35,7 +50,7 @@ class HelpCenterApi
     public static function listHelpCenterRedirects(ClientConfig $clientConfig, string $helpCenterId, int|SdkNotGiven $page = SdkNotGiven::Value, int|SdkNotGiven $perPage = SdkNotGiven::Value, IntercomVersion|SdkNotGiven $intercomVersion = SdkNotGiven::Value, ?RequestOptions $requestOptions = null): HelpCenterRedirectList
     {
 
-        $sdkResponse = SdkClient::request('GET', "/help_center/help_centers/" . SdkClient::encodePathSegment($helpCenterId) . "/redirects", $clientConfig, query: ['page' => new SdkQueryValue($page, "form", true), 'per_page' => new SdkQueryValue($perPage, "form", true)], returnType: HelpCenterRedirectList::class, decoder: 'json', operationId: 'listHelpCenterRedirects', extraHeaders: ["Intercom-Version" => SdkClient::headerValue($intercomVersion, false)], requestOptions: $requestOptions, errors: [401 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class), 404 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class)]);
+        $sdkResponse = SdkClient::request('GET', "/help_center/help_centers/" . SdkClient::encodePathSegment($helpCenterId) . "/redirects", $clientConfig, query: ['page' => new SdkQueryValue($page, "form", true), 'per_page' => new SdkQueryValue($perPage, "form", true)], returnType: HelpCenterRedirectList::class, decoder: 'json', operationId: 'listHelpCenterRedirects', extraHeaders: ["Intercom-Version" => SdkClient::headerValue($intercomVersion, false)], requestOptions: $requestOptions, errors: [401 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class), 404 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => SdkClient::typedData($sdkResponse, HelpCenterRedirectList::class));
     }
 
@@ -56,7 +71,7 @@ class HelpCenterApi
     public static function createHelpCenterRedirect(ClientConfig $clientConfig, string $helpCenterId, string $fromUrl, string $locale, CreateHelpCenterRedirectTargetType $targetType, string $targetId, IntercomVersion|SdkNotGiven $intercomVersion = SdkNotGiven::Value, ?RequestOptions $requestOptions = null): HelpCenterRedirect
     {
 
-        $sdkResponse = SdkClient::request('POST', "/help_center/help_centers/" . SdkClient::encodePathSegment($helpCenterId) . "/redirects", $clientConfig, body: ['from_url' => $fromUrl, 'locale' => $locale, 'target_type' => $targetType, 'target_id' => $targetId], returnType: HelpCenterRedirect::class, decoder: 'json', operationId: 'createHelpCenterRedirect', extraHeaders: ["Intercom-Version" => SdkClient::headerValue($intercomVersion, false)], requestOptions: $requestOptions, errors: [400 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class), 401 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class), 404 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class), 409 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class), 422 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class)]);
+        $sdkResponse = SdkClient::request('POST', "/help_center/help_centers/" . SdkClient::encodePathSegment($helpCenterId) . "/redirects", $clientConfig, body: ['from_url' => $fromUrl, 'locale' => $locale, 'target_type' => $targetType, 'target_id' => $targetId], returnType: HelpCenterRedirect::class, decoder: 'json', operationId: 'createHelpCenterRedirect', extraHeaders: ["Intercom-Version" => SdkClient::headerValue($intercomVersion, false)], requestOptions: $requestOptions, errors: [400 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class), 401 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class), 404 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class), 409 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class), 422 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => SdkClient::typedData($sdkResponse, HelpCenterRedirect::class));
     }
 
@@ -74,7 +89,7 @@ class HelpCenterApi
     public static function retrieveHelpCenterRedirect(ClientConfig $clientConfig, string $helpCenterId, string $id, IntercomVersion|SdkNotGiven $intercomVersion = SdkNotGiven::Value, ?RequestOptions $requestOptions = null): HelpCenterRedirect
     {
 
-        $sdkResponse = SdkClient::request('GET', "/help_center/help_centers/" . SdkClient::encodePathSegment($helpCenterId) . "/redirects/" . SdkClient::encodePathSegment($id) . "", $clientConfig, returnType: HelpCenterRedirect::class, decoder: 'json', operationId: 'retrieveHelpCenterRedirect', extraHeaders: ["Intercom-Version" => SdkClient::headerValue($intercomVersion, false)], requestOptions: $requestOptions, errors: [401 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class), 404 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class)]);
+        $sdkResponse = SdkClient::request('GET', "/help_center/help_centers/" . SdkClient::encodePathSegment($helpCenterId) . "/redirects/" . SdkClient::encodePathSegment($id) . "", $clientConfig, returnType: HelpCenterRedirect::class, decoder: 'json', operationId: 'retrieveHelpCenterRedirect', extraHeaders: ["Intercom-Version" => SdkClient::headerValue($intercomVersion, false)], requestOptions: $requestOptions, errors: [401 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class), 404 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => SdkClient::typedData($sdkResponse, HelpCenterRedirect::class));
     }
 
@@ -92,7 +107,7 @@ class HelpCenterApi
     public static function deleteHelpCenterRedirect(ClientConfig $clientConfig, string $helpCenterId, string $id, IntercomVersion|SdkNotGiven $intercomVersion = SdkNotGiven::Value, ?RequestOptions $requestOptions = null): DeletedHelpCenterRedirectObject
     {
 
-        $sdkResponse = SdkClient::request('DELETE', "/help_center/help_centers/" . SdkClient::encodePathSegment($helpCenterId) . "/redirects/" . SdkClient::encodePathSegment($id) . "", $clientConfig, returnType: DeletedHelpCenterRedirectObject::class, decoder: 'json', operationId: 'deleteHelpCenterRedirect', extraHeaders: ["Intercom-Version" => SdkClient::headerValue($intercomVersion, false)], requestOptions: $requestOptions, errors: [401 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class), 404 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class)]);
+        $sdkResponse = SdkClient::request('DELETE', "/help_center/help_centers/" . SdkClient::encodePathSegment($helpCenterId) . "/redirects/" . SdkClient::encodePathSegment($id) . "", $clientConfig, returnType: DeletedHelpCenterRedirectObject::class, decoder: 'json', operationId: 'deleteHelpCenterRedirect', extraHeaders: ["Intercom-Version" => SdkClient::headerValue($intercomVersion, false)], requestOptions: $requestOptions, errors: [401 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class), 404 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => SdkClient::typedData($sdkResponse, DeletedHelpCenterRedirectObject::class));
     }
 
@@ -108,7 +123,7 @@ class HelpCenterApi
     public static function listAllCollections(ClientConfig $clientConfig, IntercomVersion|SdkNotGiven $intercomVersion = SdkNotGiven::Value, ?RequestOptions $requestOptions = null): CollectionList
     {
 
-        $sdkResponse = SdkClient::request('GET', "/help_center/collections", $clientConfig, returnType: CollectionList::class, decoder: 'json', operationId: 'listAllCollections', extraHeaders: ["Intercom-Version" => SdkClient::headerValue($intercomVersion, false)], requestOptions: $requestOptions, errors: [401 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class)]);
+        $sdkResponse = SdkClient::request('GET', "/help_center/collections", $clientConfig, returnType: CollectionList::class, decoder: 'json', operationId: 'listAllCollections', extraHeaders: ["Intercom-Version" => SdkClient::headerValue($intercomVersion, false)], requestOptions: $requestOptions, errors: [401 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => SdkClient::typedData($sdkResponse, CollectionList::class));
     }
 
@@ -129,7 +144,7 @@ class HelpCenterApi
     public static function createCollection(ClientConfig $clientConfig, string $name, IntercomVersion|SdkNotGiven $intercomVersion = SdkNotGiven::Value, string|SdkNotGiven $description = SdkNotGiven::Value, GroupTranslatedContent|null|SdkNotGiven $translatedContent = SdkNotGiven::Value, string|null|SdkNotGiven $parentId = SdkNotGiven::Value, int|null|SdkNotGiven $helpCenterId = SdkNotGiven::Value, ?RequestOptions $requestOptions = null): Collection
     {
 
-        $sdkResponse = SdkClient::request('POST', "/help_center/collections", $clientConfig, body: ['name' => $name, 'description' => $description, 'translated_content' => $translatedContent, 'parent_id' => $parentId, 'help_center_id' => $helpCenterId], returnType: Collection::class, decoder: 'json', operationId: 'createCollection', extraHeaders: ["Intercom-Version" => SdkClient::headerValue($intercomVersion, false)], requestOptions: $requestOptions, errors: [400 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class), 401 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class)]);
+        $sdkResponse = SdkClient::request('POST', "/help_center/collections", $clientConfig, body: ['name' => $name, 'description' => $description, 'translated_content' => $translatedContent, 'parent_id' => $parentId, 'help_center_id' => $helpCenterId], returnType: Collection::class, decoder: 'json', operationId: 'createCollection', extraHeaders: ["Intercom-Version" => SdkClient::headerValue($intercomVersion, false)], requestOptions: $requestOptions, errors: [400 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class), 401 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => SdkClient::typedData($sdkResponse, Collection::class));
     }
 
@@ -146,7 +161,7 @@ class HelpCenterApi
     public static function retrieveCollection(ClientConfig $clientConfig, int $collectionId, IntercomVersion|SdkNotGiven $intercomVersion = SdkNotGiven::Value, ?RequestOptions $requestOptions = null): Collection
     {
 
-        $sdkResponse = SdkClient::request('GET', "/help_center/collections/" . SdkClient::encodePathSegment($collectionId) . "", $clientConfig, returnType: Collection::class, decoder: 'json', operationId: 'retrieveCollection', extraHeaders: ["Intercom-Version" => SdkClient::headerValue($intercomVersion, false)], requestOptions: $requestOptions, errors: [401 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class), 404 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class)]);
+        $sdkResponse = SdkClient::request('GET', "/help_center/collections/" . SdkClient::encodePathSegment($collectionId) . "", $clientConfig, returnType: Collection::class, decoder: 'json', operationId: 'retrieveCollection', extraHeaders: ["Intercom-Version" => SdkClient::headerValue($intercomVersion, false)], requestOptions: $requestOptions, errors: [401 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class), 404 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => SdkClient::typedData($sdkResponse, Collection::class));
     }
 
@@ -167,7 +182,7 @@ class HelpCenterApi
     public static function updateCollection(ClientConfig $clientConfig, int $collectionId, IntercomVersion|SdkNotGiven $intercomVersion = SdkNotGiven::Value, string|SdkNotGiven $name = SdkNotGiven::Value, string|SdkNotGiven $description = SdkNotGiven::Value, GroupTranslatedContent|null|SdkNotGiven $translatedContent = SdkNotGiven::Value, string|null|SdkNotGiven $parentId = SdkNotGiven::Value, ?RequestOptions $requestOptions = null): Collection
     {
 
-        $sdkResponse = SdkClient::request('PUT', "/help_center/collections/" . SdkClient::encodePathSegment($collectionId) . "", $clientConfig, body: ['name' => $name, 'description' => $description, 'translated_content' => $translatedContent, 'parent_id' => $parentId], returnType: Collection::class, decoder: 'json', operationId: 'updateCollection', extraHeaders: ["Intercom-Version" => SdkClient::headerValue($intercomVersion, false)], requestOptions: $requestOptions, errors: [401 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class), 404 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class)]);
+        $sdkResponse = SdkClient::request('PUT', "/help_center/collections/" . SdkClient::encodePathSegment($collectionId) . "", $clientConfig, body: ['name' => $name, 'description' => $description, 'translated_content' => $translatedContent, 'parent_id' => $parentId], returnType: Collection::class, decoder: 'json', operationId: 'updateCollection', extraHeaders: ["Intercom-Version" => SdkClient::headerValue($intercomVersion, false)], requestOptions: $requestOptions, errors: [401 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class), 404 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => SdkClient::typedData($sdkResponse, Collection::class));
     }
 
@@ -184,7 +199,7 @@ class HelpCenterApi
     public static function deleteCollection(ClientConfig $clientConfig, int $collectionId, IntercomVersion|SdkNotGiven $intercomVersion = SdkNotGiven::Value, ?RequestOptions $requestOptions = null): DeletedCollectionObject
     {
 
-        $sdkResponse = SdkClient::request('DELETE', "/help_center/collections/" . SdkClient::encodePathSegment($collectionId) . "", $clientConfig, returnType: DeletedCollectionObject::class, decoder: 'json', operationId: 'deleteCollection', extraHeaders: ["Intercom-Version" => SdkClient::headerValue($intercomVersion, false)], requestOptions: $requestOptions, errors: [401 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class), 404 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class)]);
+        $sdkResponse = SdkClient::request('DELETE', "/help_center/collections/" . SdkClient::encodePathSegment($collectionId) . "", $clientConfig, returnType: DeletedCollectionObject::class, decoder: 'json', operationId: 'deleteCollection', extraHeaders: ["Intercom-Version" => SdkClient::headerValue($intercomVersion, false)], requestOptions: $requestOptions, errors: [401 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class), 404 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => SdkClient::typedData($sdkResponse, DeletedCollectionObject::class));
     }
 
@@ -201,7 +216,7 @@ class HelpCenterApi
     public static function retrieveHelpCenter(ClientConfig $clientConfig, int $helpCenterId, IntercomVersion|SdkNotGiven $intercomVersion = SdkNotGiven::Value, ?RequestOptions $requestOptions = null): HelpCenter
     {
 
-        $sdkResponse = SdkClient::request('GET', "/help_center/help_centers/" . SdkClient::encodePathSegment($helpCenterId) . "", $clientConfig, returnType: HelpCenter::class, decoder: 'json', operationId: 'retrieveHelpCenter', extraHeaders: ["Intercom-Version" => SdkClient::headerValue($intercomVersion, false)], requestOptions: $requestOptions, errors: [401 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class), 404 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class)]);
+        $sdkResponse = SdkClient::request('GET', "/help_center/help_centers/" . SdkClient::encodePathSegment($helpCenterId) . "", $clientConfig, returnType: HelpCenter::class, decoder: 'json', operationId: 'retrieveHelpCenter', extraHeaders: ["Intercom-Version" => SdkClient::headerValue($intercomVersion, false)], requestOptions: $requestOptions, errors: [401 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class), 404 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => SdkClient::typedData($sdkResponse, HelpCenter::class));
     }
 
@@ -217,7 +232,7 @@ class HelpCenterApi
     public static function listHelpCenters(ClientConfig $clientConfig, IntercomVersion|SdkNotGiven $intercomVersion = SdkNotGiven::Value, ?RequestOptions $requestOptions = null): HelpCenterList
     {
 
-        $sdkResponse = SdkClient::request('GET', "/help_center/help_centers", $clientConfig, returnType: HelpCenterList::class, decoder: 'json', operationId: 'listHelpCenters', extraHeaders: ["Intercom-Version" => SdkClient::headerValue($intercomVersion, false)], requestOptions: $requestOptions, errors: [401 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class)]);
+        $sdkResponse = SdkClient::request('GET', "/help_center/help_centers", $clientConfig, returnType: HelpCenterList::class, decoder: 'json', operationId: 'listHelpCenters', extraHeaders: ["Intercom-Version" => SdkClient::headerValue($intercomVersion, false)], requestOptions: $requestOptions, errors: [401 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => SdkClient::typedData($sdkResponse, HelpCenterList::class));
     }
 }

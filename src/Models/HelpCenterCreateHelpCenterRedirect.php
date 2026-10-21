@@ -15,11 +15,26 @@ final readonly class CreateHelpCenterRedirectRequestTargetTypeEnum implements Sd
     public const ARTICLE = "article";
     public const COLLECTION = "collection";
     private function __construct(public string $value) {}
-    public static function from(string|int $value): static { return new self((string) $value); }
-    public static function tryFrom(string|int|null $value): ?static { return $value === null ? null : self::from($value); }
-    public function getValue(): string { return $this->value; }
-    public function jsonSerialize(): string { return $this->value; }
-    public function __toString(): string { return (string) $this->value; }
+    public static function from(string|int $value): static
+    {
+        return new self((string) $value);
+    }
+    public static function tryFrom(string|int|null $value): ?static
+    {
+        return $value === null ? null : self::from($value);
+    }
+    public function getValue(): string
+    {
+        return $this->value;
+    }
+    public function jsonSerialize(): string
+    {
+        return $this->value;
+    }
+    public function __toString(): string
+    {
+        return (string) $this->value;
+    }
 }
 
 /**
@@ -90,10 +105,18 @@ class CreateHelpCenterRedirectRequest implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "from_url") || $data->from_url === null) { throw new SdkValidationError("from_url", 'required', "Required property 'from_url' is missing or null"); }
-        if (!property_exists($data, "locale") || $data->locale === null) { throw new SdkValidationError("locale", 'required', "Required property 'locale' is missing or null"); }
-        if (!property_exists($data, "target_type") || $data->target_type === null) { throw new SdkValidationError("target_type", 'required', "Required property 'target_type' is missing or null"); }
-        if (!property_exists($data, "target_id") || $data->target_id === null) { throw new SdkValidationError("target_id", 'required', "Required property 'target_id' is missing or null"); }
+        if (!property_exists($data, "from_url") || $data->from_url === null) {
+            throw new SdkValidationError("from_url", 'required', "Required property 'from_url' is missing or null");
+        }
+        if (!property_exists($data, "locale") || $data->locale === null) {
+            throw new SdkValidationError("locale", 'required', "Required property 'locale' is missing or null");
+        }
+        if (!property_exists($data, "target_type") || $data->target_type === null) {
+            throw new SdkValidationError("target_type", 'required', "Required property 'target_type' is missing or null");
+        }
+        if (!property_exists($data, "target_id") || $data->target_id === null) {
+            throw new SdkValidationError("target_id", 'required', "Required property 'target_id' is missing or null");
+        }
         return new self(
             fromUrl: SdkClient::stringValue($data->from_url),
             locale: SdkClient::stringValue($data->locale),

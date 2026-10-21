@@ -14,11 +14,26 @@ final readonly class FinAgentRepliedEventMessageAuthorEnum implements SdkOpenEnu
 {
     public const FIN = "fin";
     private function __construct(public string $value) {}
-    public static function from(string|int $value): static { return new self((string) $value); }
-    public static function tryFrom(string|int|null $value): ?static { return $value === null ? null : self::from($value); }
-    public function getValue(): string { return $this->value; }
-    public function jsonSerialize(): string { return $this->value; }
-    public function __toString(): string { return (string) $this->value; }
+    public static function from(string|int $value): static
+    {
+        return new self((string) $value);
+    }
+    public static function tryFrom(string|int|null $value): ?static
+    {
+        return $value === null ? null : self::from($value);
+    }
+    public function getValue(): string
+    {
+        return $this->value;
+    }
+    public function jsonSerialize(): string
+    {
+        return $this->value;
+    }
+    public function __toString(): string
+    {
+        return (string) $this->value;
+    }
 }
 
 /**
@@ -29,11 +44,26 @@ final readonly class FinAgentRepliedEventMessageSourcesItemTypeEnum implements S
     public const ARTICLE = "article";
     public const EXTERNAL = "external";
     private function __construct(public string $value) {}
-    public static function from(string|int $value): static { return new self((string) $value); }
-    public static function tryFrom(string|int|null $value): ?static { return $value === null ? null : self::from($value); }
-    public function getValue(): string { return $this->value; }
-    public function jsonSerialize(): string { return $this->value; }
-    public function __toString(): string { return (string) $this->value; }
+    public static function from(string|int $value): static
+    {
+        return new self((string) $value);
+    }
+    public static function tryFrom(string|int|null $value): ?static
+    {
+        return $value === null ? null : self::from($value);
+    }
+    public function getValue(): string
+    {
+        return $this->value;
+    }
+    public function jsonSerialize(): string
+    {
+        return $this->value;
+    }
+    public function __toString(): string
+    {
+        return (string) $this->value;
+    }
 }
 
 /**
@@ -94,9 +124,15 @@ class FinAgentRepliedEventMessageSourcesItem implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "title") || $data->title === null) { throw new SdkValidationError("title", 'required', "Required property 'title' is missing or null"); }
-        if (!property_exists($data, "type") || $data->type === null) { throw new SdkValidationError("type", 'required', "Required property 'type' is missing or null"); }
-        if (!property_exists($data, "url") || $data->url === null) { throw new SdkValidationError("url", 'required', "Required property 'url' is missing or null"); }
+        if (!property_exists($data, "title") || $data->title === null) {
+            throw new SdkValidationError("title", 'required', "Required property 'title' is missing or null");
+        }
+        if (!property_exists($data, "type") || $data->type === null) {
+            throw new SdkValidationError("type", 'required', "Required property 'type' is missing or null");
+        }
+        if (!property_exists($data, "url") || $data->url === null) {
+            throw new SdkValidationError("url", 'required', "Required property 'url' is missing or null");
+        }
         return new self(
             title: SdkClient::stringValue($data->title),
             type: SdkClient::hydrateStringEnumOrString($data->type, FinAgentRepliedEventMessageSourcesItemTypeEnum::class),
@@ -187,9 +223,15 @@ class FinAgentRepliedEventMessage implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "author") || $data->author === null) { throw new SdkValidationError("author", 'required', "Required property 'author' is missing or null"); }
-        if (!property_exists($data, "body") || $data->body === null) { throw new SdkValidationError("body", 'required', "Required property 'body' is missing or null"); }
-        if (!property_exists($data, "timestamp_ms") || $data->timestamp_ms === null) { throw new SdkValidationError("timestamp_ms", 'required', "Required property 'timestamp_ms' is missing or null"); }
+        if (!property_exists($data, "author") || $data->author === null) {
+            throw new SdkValidationError("author", 'required', "Required property 'author' is missing or null");
+        }
+        if (!property_exists($data, "body") || $data->body === null) {
+            throw new SdkValidationError("body", 'required', "Required property 'body' is missing or null");
+        }
+        if (!property_exists($data, "timestamp_ms") || $data->timestamp_ms === null) {
+            throw new SdkValidationError("timestamp_ms", 'required', "Required property 'timestamp_ms' is missing or null");
+        }
         return new self(
             author: SdkClient::hydrateStringEnumOrString($data->author, FinAgentRepliedEventMessageAuthorEnum::class),
             body: SdkClient::stringValue($data->body),
@@ -208,11 +250,26 @@ final readonly class FinAgentRepliedEventStatusEnum implements SdkOpenEnum
     public const REPLYING = "replying";
     public const AWAITING_USER_REPLY = "awaiting_user_reply";
     private function __construct(public string $value) {}
-    public static function from(string|int $value): static { return new self((string) $value); }
-    public static function tryFrom(string|int|null $value): ?static { return $value === null ? null : self::from($value); }
-    public function getValue(): string { return $this->value; }
-    public function jsonSerialize(): string { return $this->value; }
-    public function __toString(): string { return (string) $this->value; }
+    public static function from(string|int $value): static
+    {
+        return new self((string) $value);
+    }
+    public static function tryFrom(string|int|null $value): ?static
+    {
+        return $value === null ? null : self::from($value);
+    }
+    public function getValue(): string
+    {
+        return $this->value;
+    }
+    public function jsonSerialize(): string
+    {
+        return $this->value;
+    }
+    public function __toString(): string
+    {
+        return (string) $this->value;
+    }
 }
 
 /**
@@ -315,12 +372,24 @@ class FinAgentRepliedEvent implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "event_name") || $data->event_name === null) { throw new SdkValidationError("event_name", 'required', "Required property 'event_name' is missing or null"); }
-        if (!property_exists($data, "conversation_id") || $data->conversation_id === null) { throw new SdkValidationError("conversation_id", 'required', "Required property 'conversation_id' is missing or null"); }
-        if (!property_exists($data, "user_id") || $data->user_id === null) { throw new SdkValidationError("user_id", 'required', "Required property 'user_id' is missing or null"); }
-        if (!property_exists($data, "message") || $data->message === null) { throw new SdkValidationError("message", 'required', "Required property 'message' is missing or null"); }
-        if (!property_exists($data, "status") || $data->status === null) { throw new SdkValidationError("status", 'required', "Required property 'status' is missing or null"); }
-        if (!property_exists($data, "created_at_ms") || $data->created_at_ms === null) { throw new SdkValidationError("created_at_ms", 'required', "Required property 'created_at_ms' is missing or null"); }
+        if (!property_exists($data, "event_name") || $data->event_name === null) {
+            throw new SdkValidationError("event_name", 'required', "Required property 'event_name' is missing or null");
+        }
+        if (!property_exists($data, "conversation_id") || $data->conversation_id === null) {
+            throw new SdkValidationError("conversation_id", 'required', "Required property 'conversation_id' is missing or null");
+        }
+        if (!property_exists($data, "user_id") || $data->user_id === null) {
+            throw new SdkValidationError("user_id", 'required', "Required property 'user_id' is missing or null");
+        }
+        if (!property_exists($data, "message") || $data->message === null) {
+            throw new SdkValidationError("message", 'required', "Required property 'message' is missing or null");
+        }
+        if (!property_exists($data, "status") || $data->status === null) {
+            throw new SdkValidationError("status", 'required', "Required property 'status' is missing or null");
+        }
+        if (!property_exists($data, "created_at_ms") || $data->created_at_ms === null) {
+            throw new SdkValidationError("created_at_ms", 'required', "Required property 'created_at_ms' is missing or null");
+        }
         return new self(
             eventName: SdkClient::hydrateStringEnumOrString($data->event_name, FinAgentRepliedEventEventNameEnum::class),
             conversationId: SdkClient::stringValue($data->conversation_id),
@@ -340,9 +409,24 @@ final readonly class FinAgentReplyChunkEventEventNameEnum implements SdkOpenEnum
 {
     public const FIN_REPLY_CHUNK = "fin_reply_chunk";
     private function __construct(public string $value) {}
-    public static function from(string|int $value): static { return new self((string) $value); }
-    public static function tryFrom(string|int|null $value): ?static { return $value === null ? null : self::from($value); }
-    public function getValue(): string { return $this->value; }
-    public function jsonSerialize(): string { return $this->value; }
-    public function __toString(): string { return (string) $this->value; }
+    public static function from(string|int $value): static
+    {
+        return new self((string) $value);
+    }
+    public static function tryFrom(string|int|null $value): ?static
+    {
+        return $value === null ? null : self::from($value);
+    }
+    public function getValue(): string
+    {
+        return $this->value;
+    }
+    public function jsonSerialize(): string
+    {
+        return $this->value;
+    }
+    public function __toString(): string
+    {
+        return (string) $this->value;
+    }
 }

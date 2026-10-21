@@ -223,7 +223,9 @@ class Error2ErrorsItem implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "code") || $data->code === null) { throw new SdkValidationError("code", 'required', "Required property 'code' is missing or null"); }
+        if (!property_exists($data, "code") || $data->code === null) {
+            throw new SdkValidationError("code", 'required', "Required property 'code' is missing or null");
+        }
         return new self(
             code: SdkClient::stringValue($data->code),
             message: (property_exists($data, "message") ? ($data->message === null ? null : SdkClient::stringValue($data->message)) : SdkNotGiven::Value),
@@ -292,8 +294,12 @@ class Error2 implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "type") || $data->type === null) { throw new SdkValidationError("type", 'required', "Required property 'type' is missing or null"); }
-        if (!property_exists($data, "errors") || $data->errors === null) { throw new SdkValidationError("errors", 'required', "Required property 'errors' is missing or null"); }
+        if (!property_exists($data, "type") || $data->type === null) {
+            throw new SdkValidationError("type", 'required', "Required property 'type' is missing or null");
+        }
+        if (!property_exists($data, "errors") || $data->errors === null) {
+            throw new SdkValidationError("errors", 'required', "Required property 'errors' is missing or null");
+        }
         return new self(
             type: SdkClient::stringValue($data->type),
             errors: array_values(array_map(static fn($item) => SdkClient::hydrateClass($item, Error2ErrorsItem::class), SdkClient::arrayValue($data->errors))),
