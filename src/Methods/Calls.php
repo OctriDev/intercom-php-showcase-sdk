@@ -9,5 +9,5 @@ namespace octridev_intercom;
 
 class Calls
 {
-    use CallsMethodsPart1;
+    use CallsMethods;
 }

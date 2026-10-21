@@ -9,6 +9,16 @@ namespace octridev_intercom;
 
 class Conversations
 {
-    use ConversationsMethodsPart1;
-    use ConversationsMethodsPart2;
+    use ConversationsMethods;
+    use ConversationsSearchMethods;
+    use ConversationsReplyMethods;
+    use ConversationsPartsMethods;
+    use ConversationsCustomersMethods;
+    use ConversationsHandlingEventsMethods;
+    use ConversationsHitlEventsMethods;
+    use ConversationsSideConversationsMethods;
+    use ConversationsRedactMethods;
+    use ConversationsMergeMethods;
+    use ConversationsConvertMethods;
+    use ConversationsDeletedMethods;
 }

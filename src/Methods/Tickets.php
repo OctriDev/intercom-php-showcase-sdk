@@ -195,10 +195,10 @@ class Tickets
      * @param IntercomVersion|SdkNotGiven $intercomVersion
      * @return Conversation
      */
-    public static function unlinkTicketsConversation(ClientConfig $clientConfig, string $ticketId, string $id, IntercomVersion|SdkNotGiven $intercomVersion = SdkNotGiven::Value, ?RequestOptions $requestOptions = null): Conversation
+    public static function unlinkTicketConversation(ClientConfig $clientConfig, string $ticketId, string $id, IntercomVersion|SdkNotGiven $intercomVersion = SdkNotGiven::Value, ?RequestOptions $requestOptions = null): Conversation
     {
 
-        $sdkResponse = SdkClient::request('DELETE', "/tickets/" . SdkClient::encodePathSegment($ticketId) . "/linked_conversations/" . SdkClient::encodePathSegment($id) . "", $clientConfig, returnType: Conversation::class, decoder: 'json', operationId: 'unlinkTicketsConversation', extraHeaders: ["Intercom-Version" => SdkClient::headerValue($intercomVersion, false)], requestOptions: $requestOptions, errors: [400 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class), 401 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class), 404 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class)]);
+        $sdkResponse = SdkClient::request('DELETE', "/tickets/" . SdkClient::encodePathSegment($ticketId) . "/linked_conversations/" . SdkClient::encodePathSegment($id) . "", $clientConfig, returnType: Conversation::class, decoder: 'json', operationId: 'unlinkTicketConversation', extraHeaders: ["Intercom-Version" => SdkClient::headerValue($intercomVersion, false)], requestOptions: $requestOptions, errors: [400 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class), 401 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class), 404 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => SdkClient::typedData($sdkResponse, Conversation::class));
     }
 

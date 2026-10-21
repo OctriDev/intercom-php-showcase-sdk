@@ -9,5 +9,5 @@ namespace octridev_intercom;
 
 class DataConnectors
 {
-    use DataConnectorsMethodsPart1;
+    use DataConnectorsMethods;
 }

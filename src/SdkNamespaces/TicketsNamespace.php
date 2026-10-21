@@ -54,7 +54,7 @@ class TicketsNamespace
      */
     public function unlinkConversation(string $ticketId, string $id, IntercomVersion|SdkNotGiven $intercomVersion = SdkNotGiven::Value, ?RequestOptions $requestOptions = null): Conversation
     {
-        return Tickets::unlinkTicketsConversation($this->clientConfig, $ticketId, $id, $intercomVersion, $requestOptions);
+        return Tickets::unlinkTicketConversation($this->clientConfig, $ticketId, $id, $intercomVersion, $requestOptions);
     }
     /**
      * Creates a ticket using a ticket type and one or more affected contacts. Supply `ticket_type_id` and `contacts`; you can also provide ticket attributes, assignment details, or a conversation to link. A 200 response returns the created ticket and its current state.
