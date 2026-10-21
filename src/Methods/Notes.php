@@ -21,7 +21,7 @@ class Notes
     public static function listCompanyNotes(ClientConfig $clientConfig, string $companyId, IntercomVersion|SdkNotGiven $intercomVersion = SdkNotGiven::Value, ?RequestOptions $requestOptions = null): NoteList
     {
 
-        $sdkResponse = SdkClient::request('GET', "/companies/" . SdkClient::encodePathSegment($companyId) . "/notes", $clientConfig, returnType: NoteList::class, decoder: 'json', operationId: 'listCompanyNotes', extraHeaders: ["Intercom-Version" => SdkClient::headerValue($intercomVersion, false)], requestOptions: $requestOptions, errors: [404 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class)]);
+        $sdkResponse = SdkClient::request('GET', "/companies/" . SdkClient::encodePathSegment($companyId) . "/notes", $clientConfig, returnType: NoteList::class, decoder: 'json', operationId: 'listCompanyNotes', extraHeaders: ["Intercom-Version" => SdkClient::headerValue($intercomVersion, false)], requestOptions: $requestOptions, errors: [404 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => SdkClient::typedData($sdkResponse, NoteList::class));
     }
 
@@ -40,7 +40,7 @@ class Notes
     public static function createCompanyNote(ClientConfig $clientConfig, string $companyId, string $body, IntercomVersion|SdkNotGiven $intercomVersion = SdkNotGiven::Value, string|SdkNotGiven $adminId = SdkNotGiven::Value, ?RequestOptions $requestOptions = null): Note
     {
 
-        $sdkResponse = SdkClient::request('POST', "/companies/" . SdkClient::encodePathSegment($companyId) . "/notes", $clientConfig, body: ['body' => $body, 'admin_id' => $adminId], returnType: Note::class, decoder: 'json', operationId: 'createCompanyNote', extraHeaders: ["Intercom-Version" => SdkClient::headerValue($intercomVersion, false)], requestOptions: $requestOptions, errors: [401 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class), 404 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class)]);
+        $sdkResponse = SdkClient::request('POST', "/companies/" . SdkClient::encodePathSegment($companyId) . "/notes", $clientConfig, body: ['body' => $body, 'admin_id' => $adminId], returnType: Note::class, decoder: 'json', operationId: 'createCompanyNote', extraHeaders: ["Intercom-Version" => SdkClient::headerValue($intercomVersion, false)], requestOptions: $requestOptions, errors: [401 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class), 404 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => SdkClient::typedData($sdkResponse, Note::class));
     }
 
@@ -57,7 +57,7 @@ class Notes
     public static function listNotes(ClientConfig $clientConfig, string $contactId, IntercomVersion|SdkNotGiven $intercomVersion = SdkNotGiven::Value, ?RequestOptions $requestOptions = null): NoteList
     {
 
-        $sdkResponse = SdkClient::request('GET', "/contacts/" . SdkClient::encodePathSegment($contactId) . "/notes", $clientConfig, returnType: NoteList::class, decoder: 'json', operationId: 'listNotes', extraHeaders: ["Intercom-Version" => SdkClient::headerValue($intercomVersion, false)], requestOptions: $requestOptions, errors: [404 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class)]);
+        $sdkResponse = SdkClient::request('GET', "/contacts/" . SdkClient::encodePathSegment($contactId) . "/notes", $clientConfig, returnType: NoteList::class, decoder: 'json', operationId: 'listNotes', extraHeaders: ["Intercom-Version" => SdkClient::headerValue($intercomVersion, false)], requestOptions: $requestOptions, errors: [404 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => SdkClient::typedData($sdkResponse, NoteList::class));
     }
 
@@ -76,7 +76,7 @@ class Notes
     public static function createNote(ClientConfig $clientConfig, int $contactId, string $body, IntercomVersion|SdkNotGiven $intercomVersion = SdkNotGiven::Value, string|SdkNotGiven $adminId = SdkNotGiven::Value, ?RequestOptions $requestOptions = null): Note
     {
 
-        $sdkResponse = SdkClient::request('POST', "/contacts/" . SdkClient::encodePathSegment($contactId) . "/notes", $clientConfig, body: ['body' => $body, 'admin_id' => $adminId], returnType: Note::class, decoder: 'json', operationId: 'createNote', extraHeaders: ["Intercom-Version" => SdkClient::headerValue($intercomVersion, false)], requestOptions: $requestOptions, errors: [404 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class)]);
+        $sdkResponse = SdkClient::request('POST', "/contacts/" . SdkClient::encodePathSegment($contactId) . "/notes", $clientConfig, body: ['body' => $body, 'admin_id' => $adminId], returnType: Note::class, decoder: 'json', operationId: 'createNote', extraHeaders: ["Intercom-Version" => SdkClient::headerValue($intercomVersion, false)], requestOptions: $requestOptions, errors: [404 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => SdkClient::typedData($sdkResponse, Note::class));
     }
 
@@ -93,7 +93,7 @@ class Notes
     public static function retrieveNote(ClientConfig $clientConfig, int $noteId, IntercomVersion|SdkNotGiven $intercomVersion = SdkNotGiven::Value, ?RequestOptions $requestOptions = null): Note
     {
 
-        $sdkResponse = SdkClient::request('GET', "/notes/" . SdkClient::encodePathSegment($noteId) . "", $clientConfig, returnType: Note::class, decoder: 'json', operationId: 'retrieveNote', extraHeaders: ["Intercom-Version" => SdkClient::headerValue($intercomVersion, false)], requestOptions: $requestOptions, errors: [401 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class), 404 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class)]);
+        $sdkResponse = SdkClient::request('GET', "/notes/" . SdkClient::encodePathSegment($noteId) . "", $clientConfig, returnType: Note::class, decoder: 'json', operationId: 'retrieveNote', extraHeaders: ["Intercom-Version" => SdkClient::headerValue($intercomVersion, false)], requestOptions: $requestOptions, errors: [401 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class), 404 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => SdkClient::typedData($sdkResponse, Note::class));
     }
 
@@ -110,7 +110,7 @@ class Notes
     public static function deleteNote(ClientConfig $clientConfig, int $noteId, IntercomVersion|SdkNotGiven $intercomVersion = SdkNotGiven::Value, ?RequestOptions $requestOptions = null): DeletedNoteObject
     {
 
-        $sdkResponse = SdkClient::request('DELETE', "/notes/" . SdkClient::encodePathSegment($noteId) . "", $clientConfig, returnType: DeletedNoteObject::class, decoder: 'json', operationId: 'deleteNote', extraHeaders: ["Intercom-Version" => SdkClient::headerValue($intercomVersion, false)], requestOptions: $requestOptions, errors: [400 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class), 401 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class), 404 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class)]);
+        $sdkResponse = SdkClient::request('DELETE', "/notes/" . SdkClient::encodePathSegment($noteId) . "", $clientConfig, returnType: DeletedNoteObject::class, decoder: 'json', operationId: 'deleteNote', extraHeaders: ["Intercom-Version" => SdkClient::headerValue($intercomVersion, false)], requestOptions: $requestOptions, errors: [400 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class), 401 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class), 404 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => SdkClient::typedData($sdkResponse, DeletedNoteObject::class));
     }
 }

@@ -24,7 +24,7 @@ trait ContactsMergeMethods
     public static function mergeContact(ClientConfig $clientConfig, string $from, string $into, bool|SdkNotGiven $includeMergeHistory = SdkNotGiven::Value, IntercomVersion|SdkNotGiven $intercomVersion = SdkNotGiven::Value, bool|SdkNotGiven $skipDuplicateValidation = SdkNotGiven::Value, ?RequestOptions $requestOptions = null): MergeContactResponse
     {
 
-        $sdkResponse = SdkClient::request('POST', "/contacts/merge", $clientConfig, query: ['include_merge_history' => new SdkQueryValue($includeMergeHistory, "form", true)], body: ['from' => $from, 'into' => $into, 'skip_duplicate_validation' => $skipDuplicateValidation], returnType: MergeContactResponse::class, decoder: 'json', operationId: 'mergeContact', extraHeaders: ["Intercom-Version" => SdkClient::headerValue($intercomVersion, false)], requestOptions: $requestOptions, errors: [400 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class), 401 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class)]);
+        $sdkResponse = SdkClient::request('POST', "/contacts/merge", $clientConfig, query: ['include_merge_history' => new SdkQueryValue($includeMergeHistory, "form", true)], body: ['from' => $from, 'into' => $into, 'skip_duplicate_validation' => $skipDuplicateValidation], returnType: MergeContactResponse::class, decoder: 'json', operationId: 'mergeContact', extraHeaders: ["Intercom-Version" => SdkClient::headerValue($intercomVersion, false)], requestOptions: $requestOptions, errors: [400 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class), 401 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => SdkClient::typedData($sdkResponse, MergeContactResponse::class));
     }
 
@@ -44,7 +44,7 @@ trait ContactsMergeMethods
     public static function previewMergeContact(ClientConfig $clientConfig, string $from, string $into, IntercomVersion|SdkNotGiven $intercomVersion = SdkNotGiven::Value, bool|SdkNotGiven $skipDuplicateValidation = SdkNotGiven::Value, array|SdkNotGiven $customAttributeNames = SdkNotGiven::Value, ?RequestOptions $requestOptions = null): MergePreviewResponse
     {
 
-        $sdkResponse = SdkClient::request('POST', "/contacts/merge/preview", $clientConfig, body: ['from' => $from, 'into' => $into, 'skip_duplicate_validation' => $skipDuplicateValidation, 'custom_attribute_names' => $customAttributeNames], decoder: 'json', operationId: 'previewMergeContact', extraHeaders: ["Intercom-Version" => SdkClient::headerValue($intercomVersion, false)], requestOptions: $requestOptions, errors: [401 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class)]);
+        $sdkResponse = SdkClient::request('POST', "/contacts/merge/preview", $clientConfig, body: ['from' => $from, 'into' => $into, 'skip_duplicate_validation' => $skipDuplicateValidation, 'custom_attribute_names' => $customAttributeNames], decoder: 'json', operationId: 'previewMergeContact', extraHeaders: ["Intercom-Version" => SdkClient::headerValue($intercomVersion, false)], requestOptions: $requestOptions, errors: [401 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => SdkClient::hydrateUnionAs($sdkResponse->data, MergePreviewResponse::class, [MergePreviewAllowed::class, MergePreviewBlocked::class], null, []));
     }
 }

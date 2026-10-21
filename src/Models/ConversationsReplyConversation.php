@@ -16,26 +16,11 @@ final readonly class AdminReplyConversationRequestMessageTypeEnum implements Sdk
     public const NOTE = "note";
     public const QUICK_REPLY = "quick_reply";
     private function __construct(public string $value) {}
-    public static function from(string|int $value): static
-    {
-        return new self((string) $value);
-    }
-    public static function tryFrom(string|int|null $value): ?static
-    {
-        return $value === null ? null : self::from($value);
-    }
-    public function getValue(): string
-    {
-        return $this->value;
-    }
-    public function jsonSerialize(): string
-    {
-        return $this->value;
-    }
-    public function __toString(): string
-    {
-        return (string) $this->value;
-    }
+    public static function from(string|int $value): static { return new self((string) $value); }
+    public static function tryFrom(string|int|null $value): ?static { return $value === null ? null : self::from($value); }
+    public function getValue(): string { return $this->value; }
+    public function jsonSerialize(): string { return $this->value; }
+    public function __toString(): string { return (string) $this->value; }
 }
 
 /**
@@ -45,26 +30,11 @@ final readonly class AdminReplyConversationRequestTypeEnum implements SdkOpenEnu
 {
     public const ADMIN = "admin";
     private function __construct(public string $value) {}
-    public static function from(string|int $value): static
-    {
-        return new self((string) $value);
-    }
-    public static function tryFrom(string|int|null $value): ?static
-    {
-        return $value === null ? null : self::from($value);
-    }
-    public function getValue(): string
-    {
-        return $this->value;
-    }
-    public function jsonSerialize(): string
-    {
-        return $this->value;
-    }
-    public function __toString(): string
-    {
-        return (string) $this->value;
-    }
+    public static function from(string|int $value): static { return new self((string) $value); }
+    public static function tryFrom(string|int|null $value): ?static { return $value === null ? null : self::from($value); }
+    public function getValue(): string { return $this->value; }
+    public function jsonSerialize(): string { return $this->value; }
+    public function __toString(): string { return (string) $this->value; }
 }
 
 /**
@@ -197,15 +167,9 @@ class AdminReplyConversationRequest implements ReplyConversationRequest, \JsonSe
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "message_type") || $data->message_type === null) {
-            throw new SdkValidationError("message_type", 'required', "Required property 'message_type' is missing or null");
-        }
-        if (!property_exists($data, "type") || $data->type === null) {
-            throw new SdkValidationError("type", 'required', "Required property 'type' is missing or null");
-        }
-        if (!property_exists($data, "admin_id") || $data->admin_id === null) {
-            throw new SdkValidationError("admin_id", 'required', "Required property 'admin_id' is missing or null");
-        }
+        if (!property_exists($data, "message_type") || $data->message_type === null) { throw new SdkValidationError("message_type", 'required', "Required property 'message_type' is missing or null"); }
+        if (!property_exists($data, "type") || $data->type === null) { throw new SdkValidationError("type", 'required', "Required property 'type' is missing or null"); }
+        if (!property_exists($data, "admin_id") || $data->admin_id === null) { throw new SdkValidationError("admin_id", 'required', "Required property 'admin_id' is missing or null"); }
         return new self(
             messageType: SdkClient::hydrateStringEnumOrString($data->message_type, AdminReplyConversationRequestMessageTypeEnum::class),
             type: SdkClient::hydrateStringEnumOrString($data->type, AdminReplyConversationRequestTypeEnum::class),
@@ -227,26 +191,11 @@ final readonly class ContactReplyEmailRequestMessageTypeEnum implements SdkOpenE
 {
     public const COMMENT = "comment";
     private function __construct(public string $value) {}
-    public static function from(string|int $value): static
-    {
-        return new self((string) $value);
-    }
-    public static function tryFrom(string|int|null $value): ?static
-    {
-        return $value === null ? null : self::from($value);
-    }
-    public function getValue(): string
-    {
-        return $this->value;
-    }
-    public function jsonSerialize(): string
-    {
-        return $this->value;
-    }
-    public function __toString(): string
-    {
-        return (string) $this->value;
-    }
+    public static function from(string|int $value): static { return new self((string) $value); }
+    public static function tryFrom(string|int|null $value): ?static { return $value === null ? null : self::from($value); }
+    public function getValue(): string { return $this->value; }
+    public function jsonSerialize(): string { return $this->value; }
+    public function __toString(): string { return (string) $this->value; }
 }
 
 /**
@@ -256,26 +205,11 @@ final readonly class ContactReplyEmailRequestTypeEnum implements SdkOpenEnum
 {
     public const USER = "user";
     private function __construct(public string $value) {}
-    public static function from(string|int $value): static
-    {
-        return new self((string) $value);
-    }
-    public static function tryFrom(string|int|null $value): ?static
-    {
-        return $value === null ? null : self::from($value);
-    }
-    public function getValue(): string
-    {
-        return $this->value;
-    }
-    public function jsonSerialize(): string
-    {
-        return $this->value;
-    }
-    public function __toString(): string
-    {
-        return (string) $this->value;
-    }
+    public static function from(string|int $value): static { return new self((string) $value); }
+    public static function tryFrom(string|int|null $value): ?static { return $value === null ? null : self::from($value); }
+    public function getValue(): string { return $this->value; }
+    public function jsonSerialize(): string { return $this->value; }
+    public function __toString(): string { return (string) $this->value; }
 }
 
 /**
@@ -326,12 +260,8 @@ class ContactReplyEmailRequestReplyOptionsItem implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "text") || $data->text === null) {
-            throw new SdkValidationError("text", 'required', "Required property 'text' is missing or null");
-        }
-        if (!property_exists($data, "uuid") || $data->uuid === null) {
-            throw new SdkValidationError("uuid", 'required', "Required property 'uuid' is missing or null");
-        }
+        if (!property_exists($data, "text") || $data->text === null) { throw new SdkValidationError("text", 'required', "Required property 'text' is missing or null"); }
+        if (!property_exists($data, "uuid") || $data->uuid === null) { throw new SdkValidationError("uuid", 'required', "Required property 'uuid' is missing or null"); }
         return new self(
             text: SdkClient::stringValue($data->text),
             uuid: SdkClient::stringValue($data->uuid),

@@ -15,26 +15,11 @@ final readonly class SearchCompaniesSortOrderEnum implements SdkOpenEnum
     public const ASCENDING = "ascending";
     public const DESCENDING = "descending";
     private function __construct(public string $value) {}
-    public static function from(string|int $value): static
-    {
-        return new self((string) $value);
-    }
-    public static function tryFrom(string|int|null $value): ?static
-    {
-        return $value === null ? null : self::from($value);
-    }
-    public function getValue(): string
-    {
-        return $this->value;
-    }
-    public function jsonSerialize(): string
-    {
-        return $this->value;
-    }
-    public function __toString(): string
-    {
-        return (string) $this->value;
-    }
+    public static function from(string|int $value): static { return new self((string) $value); }
+    public static function tryFrom(string|int|null $value): ?static { return $value === null ? null : self::from($value); }
+    public function getValue(): string { return $this->value; }
+    public function jsonSerialize(): string { return $this->value; }
+    public function __toString(): string { return (string) $this->value; }
 }
 
 /**
@@ -119,7 +104,7 @@ class Companies
     public static function createOrUpdateCompany(ClientConfig $clientConfig, IntercomVersion|SdkNotGiven $intercomVersion = SdkNotGiven::Value, string|SdkNotGiven $name = SdkNotGiven::Value, string|SdkNotGiven $companyId = SdkNotGiven::Value, string|SdkNotGiven $plan = SdkNotGiven::Value, int|SdkNotGiven $size = SdkNotGiven::Value, string|SdkNotGiven $website = SdkNotGiven::Value, string|SdkNotGiven $industry = SdkNotGiven::Value, array|SdkNotGiven $customAttributes = SdkNotGiven::Value, int|SdkNotGiven $remoteCreatedAt = SdkNotGiven::Value, bool|SdkNotGiven $updateLastRequestAt = SdkNotGiven::Value, int|SdkNotGiven $monthlySpend = SdkNotGiven::Value, ?RequestOptions $requestOptions = null): Company
     {
 
-        $sdkResponse = SdkClient::request('POST', "/companies", $clientConfig, body: ['name' => $name, 'company_id' => $companyId, 'plan' => $plan, 'size' => $size, 'website' => $website, 'industry' => $industry, 'custom_attributes' => $customAttributes, 'remote_created_at' => $remoteCreatedAt, 'update_last_request_at' => $updateLastRequestAt, 'monthly_spend' => $monthlySpend], returnType: Company::class, decoder: 'json', operationId: 'createOrUpdateCompany', extraHeaders: ["Intercom-Version" => SdkClient::headerValue($intercomVersion, false)], requestOptions: $requestOptions, errors: [400 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class), 401 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class)]);
+        $sdkResponse = SdkClient::request('POST', "/companies", $clientConfig, body: ['name' => $name, 'company_id' => $companyId, 'plan' => $plan, 'size' => $size, 'website' => $website, 'industry' => $industry, 'custom_attributes' => $customAttributes, 'remote_created_at' => $remoteCreatedAt, 'update_last_request_at' => $updateLastRequestAt, 'monthly_spend' => $monthlySpend], returnType: Company::class, decoder: 'json', operationId: 'createOrUpdateCompany', extraHeaders: ["Intercom-Version" => SdkClient::headerValue($intercomVersion, false)], requestOptions: $requestOptions, errors: [400 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class), 401 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => SdkClient::typedData($sdkResponse, Company::class));
     }
 
@@ -141,7 +126,7 @@ class Companies
     public static function retrieveCompany(ClientConfig $clientConfig, string|SdkNotGiven $name = SdkNotGiven::Value, string|SdkNotGiven $companyId = SdkNotGiven::Value, string|SdkNotGiven $tagId = SdkNotGiven::Value, string|SdkNotGiven $segmentId = SdkNotGiven::Value, int|SdkNotGiven $page = SdkNotGiven::Value, int|SdkNotGiven $perPage = SdkNotGiven::Value, IntercomVersion|SdkNotGiven $intercomVersion = SdkNotGiven::Value, ?RequestOptions $requestOptions = null): CompanyList
     {
 
-        $sdkResponse = SdkClient::request('GET', "/companies", $clientConfig, query: ['name' => new SdkQueryValue($name, "form", true), 'company_id' => new SdkQueryValue($companyId, "form", true), 'tag_id' => new SdkQueryValue($tagId, "form", true), 'segment_id' => new SdkQueryValue($segmentId, "form", true), 'page' => new SdkQueryValue($page, "form", true), 'per_page' => new SdkQueryValue($perPage, "form", true)], returnType: CompanyList::class, decoder: 'json', operationId: 'retrieveCompany', extraHeaders: ["Intercom-Version" => SdkClient::headerValue($intercomVersion, false)], requestOptions: $requestOptions, errors: [401 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class), 404 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class)]);
+        $sdkResponse = SdkClient::request('GET', "/companies", $clientConfig, query: ['name' => new SdkQueryValue($name, "form", true), 'company_id' => new SdkQueryValue($companyId, "form", true), 'tag_id' => new SdkQueryValue($tagId, "form", true), 'segment_id' => new SdkQueryValue($segmentId, "form", true), 'page' => new SdkQueryValue($page, "form", true), 'per_page' => new SdkQueryValue($perPage, "form", true)], returnType: CompanyList::class, decoder: 'json', operationId: 'retrieveCompany', extraHeaders: ["Intercom-Version" => SdkClient::headerValue($intercomVersion, false)], requestOptions: $requestOptions, errors: [401 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class), 404 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => SdkClient::typedData($sdkResponse, CompanyList::class));
     }
 
@@ -158,7 +143,7 @@ class Companies
     public static function retrieveCompaniesById(ClientConfig $clientConfig, string $companyId, IntercomVersion|SdkNotGiven $intercomVersion = SdkNotGiven::Value, ?RequestOptions $requestOptions = null): Company
     {
 
-        $sdkResponse = SdkClient::request('GET', "/companies/" . SdkClient::encodePathSegment($companyId) . "", $clientConfig, returnType: Company::class, decoder: 'json', operationId: 'retrieveCompaniesById', extraHeaders: ["Intercom-Version" => SdkClient::headerValue($intercomVersion, false)], requestOptions: $requestOptions, errors: [401 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class), 404 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class)]);
+        $sdkResponse = SdkClient::request('GET', "/companies/" . SdkClient::encodePathSegment($companyId) . "", $clientConfig, returnType: Company::class, decoder: 'json', operationId: 'retrieveCompaniesById', extraHeaders: ["Intercom-Version" => SdkClient::headerValue($intercomVersion, false)], requestOptions: $requestOptions, errors: [401 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class), 404 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => SdkClient::typedData($sdkResponse, Company::class));
     }
 
@@ -182,7 +167,7 @@ class Companies
     public static function updateCompany(ClientConfig $clientConfig, string $companyId, IntercomVersion|SdkNotGiven $intercomVersion = SdkNotGiven::Value, string|SdkNotGiven $name = SdkNotGiven::Value, string|SdkNotGiven $plan = SdkNotGiven::Value, int|SdkNotGiven $size = SdkNotGiven::Value, string|SdkNotGiven $website = SdkNotGiven::Value, string|SdkNotGiven $industry = SdkNotGiven::Value, array|SdkNotGiven $customAttributes = SdkNotGiven::Value, int|SdkNotGiven $monthlySpend = SdkNotGiven::Value, ?RequestOptions $requestOptions = null): Company
     {
 
-        $sdkResponse = SdkClient::request('PUT', "/companies/" . SdkClient::encodePathSegment($companyId) . "", $clientConfig, body: ['name' => $name, 'plan' => $plan, 'size' => $size, 'website' => $website, 'industry' => $industry, 'custom_attributes' => $customAttributes, 'monthly_spend' => $monthlySpend], returnType: Company::class, decoder: 'json', operationId: 'updateCompany', extraHeaders: ["Intercom-Version" => SdkClient::headerValue($intercomVersion, false)], requestOptions: $requestOptions, errors: [401 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class), 404 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class)]);
+        $sdkResponse = SdkClient::request('PUT', "/companies/" . SdkClient::encodePathSegment($companyId) . "", $clientConfig, body: ['name' => $name, 'plan' => $plan, 'size' => $size, 'website' => $website, 'industry' => $industry, 'custom_attributes' => $customAttributes, 'monthly_spend' => $monthlySpend], returnType: Company::class, decoder: 'json', operationId: 'updateCompany', extraHeaders: ["Intercom-Version" => SdkClient::headerValue($intercomVersion, false)], requestOptions: $requestOptions, errors: [401 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class), 404 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => SdkClient::typedData($sdkResponse, Company::class));
     }
 
@@ -199,7 +184,7 @@ class Companies
     public static function deleteCompany(ClientConfig $clientConfig, string $companyId, IntercomVersion|SdkNotGiven $intercomVersion = SdkNotGiven::Value, ?RequestOptions $requestOptions = null): DeletedCompanyObject
     {
 
-        $sdkResponse = SdkClient::request('DELETE', "/companies/" . SdkClient::encodePathSegment($companyId) . "", $clientConfig, returnType: DeletedCompanyObject::class, decoder: 'json', operationId: 'deleteCompany', extraHeaders: ["Intercom-Version" => SdkClient::headerValue($intercomVersion, false)], requestOptions: $requestOptions, errors: [401 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class), 404 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class)]);
+        $sdkResponse = SdkClient::request('DELETE', "/companies/" . SdkClient::encodePathSegment($companyId) . "", $clientConfig, returnType: DeletedCompanyObject::class, decoder: 'json', operationId: 'deleteCompany', extraHeaders: ["Intercom-Version" => SdkClient::headerValue($intercomVersion, false)], requestOptions: $requestOptions, errors: [401 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class), 404 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => SdkClient::typedData($sdkResponse, DeletedCompanyObject::class));
     }
 
@@ -216,7 +201,7 @@ class Companies
     public static function listAttachedContacts(ClientConfig $clientConfig, string $companyId, IntercomVersion|SdkNotGiven $intercomVersion = SdkNotGiven::Value, ?RequestOptions $requestOptions = null): CompanyAttachedContacts
     {
 
-        $sdkResponse = SdkClient::request('GET', "/companies/" . SdkClient::encodePathSegment($companyId) . "/contacts", $clientConfig, returnType: CompanyAttachedContacts::class, decoder: 'json', operationId: 'listAttachedContacts', extraHeaders: ["Intercom-Version" => SdkClient::headerValue($intercomVersion, false)], requestOptions: $requestOptions, errors: [401 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class), 404 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class)]);
+        $sdkResponse = SdkClient::request('GET', "/companies/" . SdkClient::encodePathSegment($companyId) . "/contacts", $clientConfig, returnType: CompanyAttachedContacts::class, decoder: 'json', operationId: 'listAttachedContacts', extraHeaders: ["Intercom-Version" => SdkClient::headerValue($intercomVersion, false)], requestOptions: $requestOptions, errors: [401 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class), 404 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => SdkClient::typedData($sdkResponse, CompanyAttachedContacts::class));
     }
 
@@ -233,7 +218,7 @@ class Companies
     public static function listCompaniesAttachedSegments(ClientConfig $clientConfig, string $companyId, IntercomVersion|SdkNotGiven $intercomVersion = SdkNotGiven::Value, ?RequestOptions $requestOptions = null): CompanyAttachedSegments
     {
 
-        $sdkResponse = SdkClient::request('GET', "/companies/" . SdkClient::encodePathSegment($companyId) . "/segments", $clientConfig, returnType: CompanyAttachedSegments::class, decoder: 'json', operationId: 'listCompaniesAttachedSegments', extraHeaders: ["Intercom-Version" => SdkClient::headerValue($intercomVersion, false)], requestOptions: $requestOptions, errors: [401 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class), 404 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class)]);
+        $sdkResponse = SdkClient::request('GET', "/companies/" . SdkClient::encodePathSegment($companyId) . "/segments", $clientConfig, returnType: CompanyAttachedSegments::class, decoder: 'json', operationId: 'listCompaniesAttachedSegments', extraHeaders: ["Intercom-Version" => SdkClient::headerValue($intercomVersion, false)], requestOptions: $requestOptions, errors: [401 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class), 404 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => SdkClient::typedData($sdkResponse, CompanyAttachedSegments::class));
     }
 
@@ -252,7 +237,7 @@ class Companies
     public static function searchCompanies(ClientConfig $clientConfig, CompanySearchRequestQuery $query, IntercomVersion|SdkNotGiven $intercomVersion = SdkNotGiven::Value, StartingAfterPaging|null|SdkNotGiven $pagination = SdkNotGiven::Value, SearchCompaniesSort|SdkNotGiven $sort = SdkNotGiven::Value, ?RequestOptions $requestOptions = null): CompanyList
     {
 
-        $sdkResponse = SdkClient::request('POST', "/companies/search", $clientConfig, body: ['query' => $query, 'pagination' => $pagination, 'sort' => $sort], returnType: CompanyList::class, decoder: 'json', operationId: 'searchCompanies', extraHeaders: ["Intercom-Version" => SdkClient::headerValue($intercomVersion, false)], requestOptions: $requestOptions, errors: [400 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class), 401 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class)]);
+        $sdkResponse = SdkClient::request('POST', "/companies/search", $clientConfig, body: ['query' => $query, 'pagination' => $pagination, 'sort' => $sort], returnType: CompanyList::class, decoder: 'json', operationId: 'searchCompanies', extraHeaders: ["Intercom-Version" => SdkClient::headerValue($intercomVersion, false)], requestOptions: $requestOptions, errors: [400 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class), 401 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => SdkClient::typedData($sdkResponse, CompanyList::class));
     }
 
@@ -271,7 +256,7 @@ class Companies
     public static function listAllCompanies(ClientConfig $clientConfig, int|SdkNotGiven $page = SdkNotGiven::Value, int|SdkNotGiven $perPage = SdkNotGiven::Value, string|SdkNotGiven $order = SdkNotGiven::Value, IntercomVersion|SdkNotGiven $intercomVersion = SdkNotGiven::Value, ?RequestOptions $requestOptions = null): CompanyList
     {
 
-        $sdkResponse = SdkClient::request('POST', "/companies/list", $clientConfig, query: ['page' => new SdkQueryValue($page, "form", true), 'per_page' => new SdkQueryValue($perPage, "form", true), 'order' => new SdkQueryValue($order, "form", true)], returnType: CompanyList::class, decoder: 'json', operationId: 'listAllCompanies', extraHeaders: ["Intercom-Version" => SdkClient::headerValue($intercomVersion, false)], requestOptions: $requestOptions, errors: [401 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class)]);
+        $sdkResponse = SdkClient::request('POST', "/companies/list", $clientConfig, query: ['page' => new SdkQueryValue($page, "form", true), 'per_page' => new SdkQueryValue($perPage, "form", true), 'order' => new SdkQueryValue($order, "form", true)], returnType: CompanyList::class, decoder: 'json', operationId: 'listAllCompanies', extraHeaders: ["Intercom-Version" => SdkClient::headerValue($intercomVersion, false)], requestOptions: $requestOptions, errors: [401 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => SdkClient::typedData($sdkResponse, CompanyList::class));
     }
 
@@ -288,7 +273,7 @@ class Companies
     public static function scrollOverAllCompanies(ClientConfig $clientConfig, string|SdkNotGiven $scrollParam = SdkNotGiven::Value, IntercomVersion|SdkNotGiven $intercomVersion = SdkNotGiven::Value, ?RequestOptions $requestOptions = null): CompanyScroll|null
     {
 
-        $sdkResponse = SdkClient::request('GET', "/companies/scroll", $clientConfig, query: ['scroll_param' => new SdkQueryValue($scrollParam, "form", true)], returnType: CompanyScroll::class, decoder: 'json', operationId: 'scrollOverAllCompanies', extraHeaders: ["Intercom-Version" => SdkClient::headerValue($intercomVersion, false)], requestOptions: $requestOptions, errors: [401 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class)]);
+        $sdkResponse = SdkClient::request('GET', "/companies/scroll", $clientConfig, query: ['scroll_param' => new SdkQueryValue($scrollParam, "form", true)], returnType: CompanyScroll::class, decoder: 'json', operationId: 'scrollOverAllCompanies', extraHeaders: ["Intercom-Version" => SdkClient::headerValue($intercomVersion, false)], requestOptions: $requestOptions, errors: [401 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => SdkClient::typedData($sdkResponse, CompanyScroll::class));
     }
 
@@ -306,7 +291,7 @@ class Companies
     public static function attachCompaniesContact(ClientConfig $clientConfig, string $contactId, string $id, IntercomVersion|SdkNotGiven $intercomVersion = SdkNotGiven::Value, ?RequestOptions $requestOptions = null): Company
     {
 
-        $sdkResponse = SdkClient::request('POST', "/contacts/" . SdkClient::encodePathSegment($contactId) . "/companies", $clientConfig, body: ['id' => $id], returnType: Company::class, decoder: 'json', operationId: 'attachCompaniesContact', extraHeaders: ["Intercom-Version" => SdkClient::headerValue($intercomVersion, false)], requestOptions: $requestOptions, errors: [400 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class), 401 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class), 404 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class)]);
+        $sdkResponse = SdkClient::request('POST', "/contacts/" . SdkClient::encodePathSegment($contactId) . "/companies", $clientConfig, body: ['id' => $id], returnType: Company::class, decoder: 'json', operationId: 'attachCompaniesContact', extraHeaders: ["Intercom-Version" => SdkClient::headerValue($intercomVersion, false)], requestOptions: $requestOptions, errors: [400 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class), 401 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class), 404 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => SdkClient::typedData($sdkResponse, Company::class));
     }
 
@@ -324,7 +309,7 @@ class Companies
     public static function detachCompaniesContact(ClientConfig $clientConfig, string $contactId, string $companyId, IntercomVersion|SdkNotGiven $intercomVersion = SdkNotGiven::Value, ?RequestOptions $requestOptions = null): Company
     {
 
-        $sdkResponse = SdkClient::request('DELETE', "/contacts/" . SdkClient::encodePathSegment($contactId) . "/companies/" . SdkClient::encodePathSegment($companyId) . "", $clientConfig, returnType: Company::class, decoder: 'json', operationId: 'detachCompaniesContact', extraHeaders: ["Intercom-Version" => SdkClient::headerValue($intercomVersion, false)], requestOptions: $requestOptions, errors: [401 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class), 404 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class)]);
+        $sdkResponse = SdkClient::request('DELETE', "/contacts/" . SdkClient::encodePathSegment($contactId) . "/companies/" . SdkClient::encodePathSegment($companyId) . "", $clientConfig, returnType: Company::class, decoder: 'json', operationId: 'detachCompaniesContact', extraHeaders: ["Intercom-Version" => SdkClient::headerValue($intercomVersion, false)], requestOptions: $requestOptions, errors: [401 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class), 404 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => SdkClient::typedData($sdkResponse, Company::class));
     }
 }

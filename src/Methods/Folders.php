@@ -11,26 +11,11 @@ final readonly class ListFoldersResponseTypeEnum implements SdkOpenEnum
 {
     public const LIST = "list";
     private function __construct(public string $value) {}
-    public static function from(string|int $value): static
-    {
-        return new self((string) $value);
-    }
-    public static function tryFrom(string|int|null $value): ?static
-    {
-        return $value === null ? null : self::from($value);
-    }
-    public function getValue(): string
-    {
-        return $this->value;
-    }
-    public function jsonSerialize(): string
-    {
-        return $this->value;
-    }
-    public function __toString(): string
-    {
-        return (string) $this->value;
-    }
+    public static function from(string|int $value): static { return new self((string) $value); }
+    public static function tryFrom(string|int|null $value): ?static { return $value === null ? null : self::from($value); }
+    public function getValue(): string { return $this->value; }
+    public function jsonSerialize(): string { return $this->value; }
+    public function __toString(): string { return (string) $this->value; }
 }
 
 class ListFoldersResponse implements \JsonSerializable
@@ -178,9 +163,7 @@ class CreateFolderFolder implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "name") || $data->name === null) {
-            throw new SdkValidationError("name", 'required', "Required property 'name' is missing or null");
-        }
+        if (!property_exists($data, "name") || $data->name === null) { throw new SdkValidationError("name", 'required', "Required property 'name' is missing or null"); }
         return new self(
             name: SdkClient::stringValue($data->name),
             description: (property_exists($data, "description") && $data->description !== null ? SdkClient::stringValue($data->description) : SdkNotGiven::Value),
@@ -288,7 +271,7 @@ class Folders
     public static function listFolders(ClientConfig $clientConfig, int|SdkNotGiven $page = SdkNotGiven::Value, int|SdkNotGiven $perPage = SdkNotGiven::Value, int|SdkNotGiven $parentFolderId = SdkNotGiven::Value, IntercomVersion|SdkNotGiven $intercomVersion = SdkNotGiven::Value, ?RequestOptions $requestOptions = null): ListFoldersResponse
     {
 
-        $sdkResponse = SdkClient::request('GET', "/folders", $clientConfig, query: ['page' => new SdkQueryValue($page, "form", true), 'per_page' => new SdkQueryValue($perPage, "form", true), 'parent_folder_id' => new SdkQueryValue($parentFolderId, "form", true)], returnType: ListFoldersResponse::class, decoder: 'json', operationId: 'listFolders', extraHeaders: ["Intercom-Version" => SdkClient::headerValue($intercomVersion, false)], requestOptions: $requestOptions, errors: [401 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class)]);
+        $sdkResponse = SdkClient::request('GET', "/folders", $clientConfig, query: ['page' => new SdkQueryValue($page, "form", true), 'per_page' => new SdkQueryValue($perPage, "form", true), 'parent_folder_id' => new SdkQueryValue($parentFolderId, "form", true)], returnType: ListFoldersResponse::class, decoder: 'json', operationId: 'listFolders', extraHeaders: ["Intercom-Version" => SdkClient::headerValue($intercomVersion, false)], requestOptions: $requestOptions, errors: [401 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => SdkClient::typedData($sdkResponse, ListFoldersResponse::class));
     }
 
@@ -305,7 +288,7 @@ class Folders
     public static function createFolder(ClientConfig $clientConfig, CreateFolderFolder $folder, IntercomVersion|SdkNotGiven $intercomVersion = SdkNotGiven::Value, ?RequestOptions $requestOptions = null): Folder
     {
 
-        $sdkResponse = SdkClient::request('POST', "/folders", $clientConfig, body: ['folder' => $folder], returnType: Folder::class, decoder: 'json', operationId: 'createFolder', extraHeaders: ["Intercom-Version" => SdkClient::headerValue($intercomVersion, false)], requestOptions: $requestOptions, errors: [400 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class), 401 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class)]);
+        $sdkResponse = SdkClient::request('POST', "/folders", $clientConfig, body: ['folder' => $folder], returnType: Folder::class, decoder: 'json', operationId: 'createFolder', extraHeaders: ["Intercom-Version" => SdkClient::headerValue($intercomVersion, false)], requestOptions: $requestOptions, errors: [400 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class), 401 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => SdkClient::typedData($sdkResponse, Folder::class));
     }
 
@@ -322,7 +305,7 @@ class Folders
     public static function retrieveFolder(ClientConfig $clientConfig, int $id, IntercomVersion|SdkNotGiven $intercomVersion = SdkNotGiven::Value, ?RequestOptions $requestOptions = null): Folder
     {
 
-        $sdkResponse = SdkClient::request('GET', "/folders/" . SdkClient::encodePathSegment($id) . "", $clientConfig, returnType: Folder::class, decoder: 'json', operationId: 'retrieveFolder', extraHeaders: ["Intercom-Version" => SdkClient::headerValue($intercomVersion, false)], requestOptions: $requestOptions, errors: [401 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class), 404 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class)]);
+        $sdkResponse = SdkClient::request('GET', "/folders/" . SdkClient::encodePathSegment($id) . "", $clientConfig, returnType: Folder::class, decoder: 'json', operationId: 'retrieveFolder', extraHeaders: ["Intercom-Version" => SdkClient::headerValue($intercomVersion, false)], requestOptions: $requestOptions, errors: [401 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class), 404 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => SdkClient::typedData($sdkResponse, Folder::class));
     }
 
@@ -340,7 +323,7 @@ class Folders
     public static function updateFolder(ClientConfig $clientConfig, int $id, UpdateFolderFolder $folder, IntercomVersion|SdkNotGiven $intercomVersion = SdkNotGiven::Value, ?RequestOptions $requestOptions = null): Folder
     {
 
-        $sdkResponse = SdkClient::request('PUT', "/folders/" . SdkClient::encodePathSegment($id) . "", $clientConfig, body: ['folder' => $folder], returnType: Folder::class, decoder: 'json', operationId: 'updateFolder', extraHeaders: ["Intercom-Version" => SdkClient::headerValue($intercomVersion, false)], requestOptions: $requestOptions, errors: [400 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class), 401 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class), 404 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class)]);
+        $sdkResponse = SdkClient::request('PUT', "/folders/" . SdkClient::encodePathSegment($id) . "", $clientConfig, body: ['folder' => $folder], returnType: Folder::class, decoder: 'json', operationId: 'updateFolder', extraHeaders: ["Intercom-Version" => SdkClient::headerValue($intercomVersion, false)], requestOptions: $requestOptions, errors: [400 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class), 401 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class), 404 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => SdkClient::typedData($sdkResponse, Folder::class));
     }
 
@@ -357,7 +340,7 @@ class Folders
     public static function deleteFolder(ClientConfig $clientConfig, int $id, IntercomVersion|SdkNotGiven $intercomVersion = SdkNotGiven::Value, ?RequestOptions $requestOptions = null): DeletedFolderObject
     {
 
-        $sdkResponse = SdkClient::request('DELETE', "/folders/" . SdkClient::encodePathSegment($id) . "", $clientConfig, returnType: DeletedFolderObject::class, decoder: 'json', operationId: 'deleteFolder', extraHeaders: ["Intercom-Version" => SdkClient::headerValue($intercomVersion, false)], requestOptions: $requestOptions, errors: [401 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class), 404 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class), 422 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class)]);
+        $sdkResponse = SdkClient::request('DELETE', "/folders/" . SdkClient::encodePathSegment($id) . "", $clientConfig, returnType: DeletedFolderObject::class, decoder: 'json', operationId: 'deleteFolder', extraHeaders: ["Intercom-Version" => SdkClient::headerValue($intercomVersion, false)], requestOptions: $requestOptions, errors: [401 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class), 404 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class), 422 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => SdkClient::typedData($sdkResponse, DeletedFolderObject::class));
     }
 }

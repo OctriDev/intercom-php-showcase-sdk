@@ -42,9 +42,7 @@ class CreateTicketRequestContactsItemVariant0 implements CreateTicketRequestCont
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "id") || $data->id === null) {
-            throw new SdkValidationError("id", 'required', "Required property 'id' is missing or null");
-        }
+        if (!property_exists($data, "id") || $data->id === null) { throw new SdkValidationError("id", 'required', "Required property 'id' is missing or null"); }
         return new self(
             id: SdkClient::stringValue($data->id),
         );
@@ -86,9 +84,7 @@ class CreateTicketRequestContactsItemVariant1 implements CreateTicketRequestCont
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "external_id") || $data->external_id === null) {
-            throw new SdkValidationError("external_id", 'required', "Required property 'external_id' is missing or null");
-        }
+        if (!property_exists($data, "external_id") || $data->external_id === null) { throw new SdkValidationError("external_id", 'required', "Required property 'external_id' is missing or null"); }
         return new self(
             externalId: SdkClient::stringValue($data->external_id),
         );
@@ -130,9 +126,7 @@ class CreateTicketRequestContactsItemVariant2 implements CreateTicketRequestCont
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "email") || $data->email === null) {
-            throw new SdkValidationError("email", 'required', "Required property 'email' is missing or null");
-        }
+        if (!property_exists($data, "email") || $data->email === null) { throw new SdkValidationError("email", 'required', "Required property 'email' is missing or null"); }
         return new self(
             email: SdkClient::stringValue($data->email),
         );

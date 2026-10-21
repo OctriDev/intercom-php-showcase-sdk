@@ -45,9 +45,7 @@ class UpdateDataConnectorVersionRequest implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "note")) {
-            throw new SdkValidationError("note", 'required', "Missing required property 'note'");
-        }
+        if (!property_exists($data, "note")) { throw new SdkValidationError("note", 'required', "Missing required property 'note'"); }
         return new self(
             note: ($data->note === null ? null : SdkClient::stringValue($data->note)),
         );

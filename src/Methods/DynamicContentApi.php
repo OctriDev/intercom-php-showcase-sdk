@@ -12,26 +12,11 @@ final readonly class CreateDynamicContentContentType implements SdkOpenEnum
     public const INLINE = "inline";
     public const BLOCK = "block";
     private function __construct(public string $value) {}
-    public static function from(string|int $value): static
-    {
-        return new self((string) $value);
-    }
-    public static function tryFrom(string|int|null $value): ?static
-    {
-        return $value === null ? null : self::from($value);
-    }
-    public function getValue(): string
-    {
-        return $this->value;
-    }
-    public function jsonSerialize(): string
-    {
-        return $this->value;
-    }
-    public function __toString(): string
-    {
-        return (string) $this->value;
-    }
+    public static function from(string|int $value): static { return new self((string) $value); }
+    public static function tryFrom(string|int|null $value): ?static { return $value === null ? null : self::from($value); }
+    public function getValue(): string { return $this->value; }
+    public function jsonSerialize(): string { return $this->value; }
+    public function __toString(): string { return (string) $this->value; }
 }
 
 class DynamicContentApi
@@ -49,7 +34,7 @@ class DynamicContentApi
     public static function listDynamicContents(ClientConfig $clientConfig, int|SdkNotGiven $page = SdkNotGiven::Value, int|SdkNotGiven $perPage = SdkNotGiven::Value, IntercomVersion|SdkNotGiven $intercomVersion = SdkNotGiven::Value, ?RequestOptions $requestOptions = null): DynamicContentList
     {
 
-        $sdkResponse = SdkClient::request('GET', "/dynamic_contents", $clientConfig, query: ['page' => new SdkQueryValue($page, "form", true), 'per_page' => new SdkQueryValue($perPage, "form", true)], returnType: DynamicContentList::class, decoder: 'json', operationId: 'listDynamicContents', extraHeaders: ["Intercom-Version" => SdkClient::headerValue($intercomVersion, false)], requestOptions: $requestOptions, errors: [401 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class), 403 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class)]);
+        $sdkResponse = SdkClient::request('GET', "/dynamic_contents", $clientConfig, query: ['page' => new SdkQueryValue($page, "form", true), 'per_page' => new SdkQueryValue($perPage, "form", true)], returnType: DynamicContentList::class, decoder: 'json', operationId: 'listDynamicContents', extraHeaders: ["Intercom-Version" => SdkClient::headerValue($intercomVersion, false)], requestOptions: $requestOptions, errors: [401 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class), 403 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => SdkClient::typedData($sdkResponse, DynamicContentList::class));
     }
 
@@ -140,7 +125,7 @@ class DynamicContentApi
 
         Validation::validateItems('variations', $variations, min: 1);
 
-        $sdkResponse = SdkClient::request('POST', "/dynamic_contents", $clientConfig, body: ['name' => $name, 'content_type' => $contentType, 'default_locale' => $defaultLocale, 'variations' => $variations], returnType: DynamicContent::class, decoder: 'json', operationId: 'createDynamicContent', extraHeaders: ["Intercom-Version" => SdkClient::headerValue($intercomVersion, false)], requestOptions: $requestOptions, errors: [401 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class), 403 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class), 422 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class)]);
+        $sdkResponse = SdkClient::request('POST', "/dynamic_contents", $clientConfig, body: ['name' => $name, 'content_type' => $contentType, 'default_locale' => $defaultLocale, 'variations' => $variations], returnType: DynamicContent::class, decoder: 'json', operationId: 'createDynamicContent', extraHeaders: ["Intercom-Version" => SdkClient::headerValue($intercomVersion, false)], requestOptions: $requestOptions, errors: [401 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class), 403 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class), 422 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => SdkClient::typedData($sdkResponse, DynamicContent::class));
     }
 
@@ -157,7 +142,7 @@ class DynamicContentApi
     public static function getDynamicContent(ClientConfig $clientConfig, string $id, IntercomVersion|SdkNotGiven $intercomVersion = SdkNotGiven::Value, ?RequestOptions $requestOptions = null): DynamicContent
     {
 
-        $sdkResponse = SdkClient::request('GET', "/dynamic_contents/" . SdkClient::encodePathSegment($id) . "", $clientConfig, returnType: DynamicContent::class, decoder: 'json', operationId: 'getDynamicContent', extraHeaders: ["Intercom-Version" => SdkClient::headerValue($intercomVersion, false)], requestOptions: $requestOptions, errors: [401 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class), 403 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class), 404 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class)]);
+        $sdkResponse = SdkClient::request('GET', "/dynamic_contents/" . SdkClient::encodePathSegment($id) . "", $clientConfig, returnType: DynamicContent::class, decoder: 'json', operationId: 'getDynamicContent', extraHeaders: ["Intercom-Version" => SdkClient::headerValue($intercomVersion, false)], requestOptions: $requestOptions, errors: [401 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class), 403 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class), 404 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => SdkClient::typedData($sdkResponse, DynamicContent::class));
     }
 
@@ -185,7 +170,7 @@ class DynamicContentApi
             Validation::validateItems('variations', $variations, min: 1);
         }
 
-        $sdkResponse = SdkClient::request('PUT', "/dynamic_contents/" . SdkClient::encodePathSegment($id) . "", $clientConfig, body: ['name' => $name, 'default_locale' => $defaultLocale, 'variations' => $variations], returnType: DynamicContent::class, decoder: 'json', operationId: 'updateDynamicContent', extraHeaders: ["Intercom-Version" => SdkClient::headerValue($intercomVersion, false)], requestOptions: $requestOptions, errors: [401 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class), 403 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class), 404 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class), 422 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class)]);
+        $sdkResponse = SdkClient::request('PUT', "/dynamic_contents/" . SdkClient::encodePathSegment($id) . "", $clientConfig, body: ['name' => $name, 'default_locale' => $defaultLocale, 'variations' => $variations], returnType: DynamicContent::class, decoder: 'json', operationId: 'updateDynamicContent', extraHeaders: ["Intercom-Version" => SdkClient::headerValue($intercomVersion, false)], requestOptions: $requestOptions, errors: [401 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class), 403 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class), 404 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class), 422 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => SdkClient::typedData($sdkResponse, DynamicContent::class));
     }
 
@@ -201,6 +186,6 @@ class DynamicContentApi
     public static function deleteDynamicContent(ClientConfig $clientConfig, string $id, IntercomVersion|SdkNotGiven $intercomVersion = SdkNotGiven::Value, ?RequestOptions $requestOptions = null): mixed
     {
 
-        return SdkClient::request('DELETE', "/dynamic_contents/" . SdkClient::encodePathSegment($id) . "", $clientConfig, decoder: 'empty', operationId: 'deleteDynamicContent', extraHeaders: ["Intercom-Version" => SdkClient::headerValue($intercomVersion, false)], requestOptions: $requestOptions, errors: [401 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class), 403 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class), 404 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class), 422 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class)])->data;
+        return SdkClient::request('DELETE', "/dynamic_contents/" . SdkClient::encodePathSegment($id) . "", $clientConfig, decoder: 'empty', operationId: 'deleteDynamicContent', extraHeaders: ["Intercom-Version" => SdkClient::headerValue($intercomVersion, false)], requestOptions: $requestOptions, errors: [401 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class), 403 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class), 404 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class), 422 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class)])->data;
     }
 }

@@ -16,26 +16,11 @@ final readonly class CreateConversationFromTypeEnum implements SdkOpenEnum
     public const USER = "user";
     public const CONTACT = "contact";
     private function __construct(public string $value) {}
-    public static function from(string|int $value): static
-    {
-        return new self((string) $value);
-    }
-    public static function tryFrom(string|int|null $value): ?static
-    {
-        return $value === null ? null : self::from($value);
-    }
-    public function getValue(): string
-    {
-        return $this->value;
-    }
-    public function jsonSerialize(): string
-    {
-        return $this->value;
-    }
-    public function __toString(): string
-    {
-        return (string) $this->value;
-    }
+    public static function from(string|int $value): static { return new self((string) $value); }
+    public static function tryFrom(string|int|null $value): ?static { return $value === null ? null : self::from($value); }
+    public function getValue(): string { return $this->value; }
+    public function jsonSerialize(): string { return $this->value; }
+    public function __toString(): string { return (string) $this->value; }
 }
 
 /**
@@ -86,12 +71,8 @@ class CreateConversationFrom implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "type") || $data->type === null) {
-            throw new SdkValidationError("type", 'required', "Required property 'type' is missing or null");
-        }
-        if (!property_exists($data, "id") || $data->id === null) {
-            throw new SdkValidationError("id", 'required', "Required property 'id' is missing or null");
-        }
+        if (!property_exists($data, "type") || $data->type === null) { throw new SdkValidationError("type", 'required', "Required property 'type' is missing or null"); }
+        if (!property_exists($data, "id") || $data->id === null) { throw new SdkValidationError("id", 'required', "Required property 'id' is missing or null"); }
         return new self(
             type: SdkClient::hydrateStringEnumOrString($data->type, CreateConversationFromTypeEnum::class),
             id: SdkClient::stringValue($data->id),
@@ -109,26 +90,11 @@ final readonly class CreateConversationResponseMessageTypeEnum implements SdkOpe
     public const FACEBOOK = "facebook";
     public const TWITTER = "twitter";
     private function __construct(public string $value) {}
-    public static function from(string|int $value): static
-    {
-        return new self((string) $value);
-    }
-    public static function tryFrom(string|int|null $value): ?static
-    {
-        return $value === null ? null : self::from($value);
-    }
-    public function getValue(): string
-    {
-        return $this->value;
-    }
-    public function jsonSerialize(): string
-    {
-        return $this->value;
-    }
-    public function __toString(): string
-    {
-        return (string) $this->value;
-    }
+    public static function from(string|int $value): static { return new self((string) $value); }
+    public static function tryFrom(string|int|null $value): ?static { return $value === null ? null : self::from($value); }
+    public function getValue(): string { return $this->value; }
+    public function jsonSerialize(): string { return $this->value; }
+    public function __toString(): string { return (string) $this->value; }
 }
 
 class CreateConversationResponse implements \JsonSerializable
@@ -228,24 +194,12 @@ class CreateConversationResponse implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "type") || $data->type === null) {
-            throw new SdkValidationError("type", 'required', "Required property 'type' is missing or null");
-        }
-        if (!property_exists($data, "id") || $data->id === null) {
-            throw new SdkValidationError("id", 'required', "Required property 'id' is missing or null");
-        }
-        if (!property_exists($data, "created_at") || $data->created_at === null) {
-            throw new SdkValidationError("created_at", 'required', "Required property 'created_at' is missing or null");
-        }
-        if (!property_exists($data, "body") || $data->body === null) {
-            throw new SdkValidationError("body", 'required', "Required property 'body' is missing or null");
-        }
-        if (!property_exists($data, "message_type") || $data->message_type === null) {
-            throw new SdkValidationError("message_type", 'required', "Required property 'message_type' is missing or null");
-        }
-        if (!property_exists($data, "conversation_id") || $data->conversation_id === null) {
-            throw new SdkValidationError("conversation_id", 'required', "Required property 'conversation_id' is missing or null");
-        }
+        if (!property_exists($data, "type") || $data->type === null) { throw new SdkValidationError("type", 'required', "Required property 'type' is missing or null"); }
+        if (!property_exists($data, "id") || $data->id === null) { throw new SdkValidationError("id", 'required', "Required property 'id' is missing or null"); }
+        if (!property_exists($data, "created_at") || $data->created_at === null) { throw new SdkValidationError("created_at", 'required', "Required property 'created_at' is missing or null"); }
+        if (!property_exists($data, "body") || $data->body === null) { throw new SdkValidationError("body", 'required', "Required property 'body' is missing or null"); }
+        if (!property_exists($data, "message_type") || $data->message_type === null) { throw new SdkValidationError("message_type", 'required', "Required property 'message_type' is missing or null"); }
+        if (!property_exists($data, "conversation_id") || $data->conversation_id === null) { throw new SdkValidationError("conversation_id", 'required', "Required property 'conversation_id' is missing or null"); }
         return new self(
             type: SdkClient::stringValue($data->type),
             id: SdkClient::stringValue($data->id),

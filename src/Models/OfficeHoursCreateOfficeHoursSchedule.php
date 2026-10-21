@@ -65,15 +65,9 @@ class CreateOfficeHoursScheduleRequestRequest implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "name") || $data->name === null) {
-            throw new SdkValidationError("name", 'required', "Required property 'name' is missing or null");
-        }
-        if (!property_exists($data, "time_zone_name") || $data->time_zone_name === null) {
-            throw new SdkValidationError("time_zone_name", 'required', "Required property 'time_zone_name' is missing or null");
-        }
-        if (!property_exists($data, "time_intervals") || $data->time_intervals === null) {
-            throw new SdkValidationError("time_intervals", 'required', "Required property 'time_intervals' is missing or null");
-        }
+        if (!property_exists($data, "name") || $data->name === null) { throw new SdkValidationError("name", 'required', "Required property 'name' is missing or null"); }
+        if (!property_exists($data, "time_zone_name") || $data->time_zone_name === null) { throw new SdkValidationError("time_zone_name", 'required', "Required property 'time_zone_name' is missing or null"); }
+        if (!property_exists($data, "time_intervals") || $data->time_intervals === null) { throw new SdkValidationError("time_intervals", 'required', "Required property 'time_intervals' is missing or null"); }
         return new self(
             name: SdkClient::stringValue($data->name),
             timeZoneName: SdkClient::stringValue($data->time_zone_name),

@@ -57,9 +57,7 @@ class SearchRequest implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "query") || $data->query === null) {
-            throw new SdkValidationError("query", 'required', "Required property 'query' is missing or null");
-        }
+        if (!property_exists($data, "query") || $data->query === null) { throw new SdkValidationError("query", 'required', "Required property 'query' is missing or null"); }
         return new self(
             query: SdkClient::hydrateUnionAs($data->query, SearchRequestQuery::class, [SingleFilterSearchRequest::class, MultipleFilterSearchRequest::class], null, []),
             pagination: (property_exists($data, "pagination") ? ($data->pagination === null ? null : SdkClient::hydrateClass($data->pagination, StartingAfterPaging::class)) : SdkNotGiven::Value),

@@ -40,7 +40,7 @@ class Admins
     public static function setAwayAdmin(ClientConfig $clientConfig, int $adminId, bool $awayModeEnabled, bool $awayModeReassign, IntercomVersion|SdkNotGiven $intercomVersion = SdkNotGiven::Value, int|SdkNotGiven $awayStatusReasonId = SdkNotGiven::Value, ?RequestOptions $requestOptions = null): Admin|null
     {
 
-        $sdkResponse = SdkClient::request('PUT', "/admins/" . SdkClient::encodePathSegment($adminId) . "/away", $clientConfig, body: ['away_mode_enabled' => $awayModeEnabled, 'away_mode_reassign' => $awayModeReassign, 'away_status_reason_id' => $awayStatusReasonId], returnType: Admin::class, decoder: 'json', operationId: 'setAwayAdmin', extraHeaders: ["Intercom-Version" => SdkClient::headerValue($intercomVersion, false)], requestOptions: $requestOptions, errors: [401 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class), 404 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class)]);
+        $sdkResponse = SdkClient::request('PUT', "/admins/" . SdkClient::encodePathSegment($adminId) . "/away", $clientConfig, body: ['away_mode_enabled' => $awayModeEnabled, 'away_mode_reassign' => $awayModeReassign, 'away_status_reason_id' => $awayStatusReasonId], returnType: Admin::class, decoder: 'json', operationId: 'setAwayAdmin', extraHeaders: ["Intercom-Version" => SdkClient::headerValue($intercomVersion, false)], requestOptions: $requestOptions, errors: [401 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class), 404 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => SdkClient::typedData($sdkResponse, Admin::class));
     }
 
@@ -58,7 +58,7 @@ class Admins
     public static function listActivityLogs(ClientConfig $clientConfig, string $createdAtAfter, string|SdkNotGiven $createdAtBefore = SdkNotGiven::Value, IntercomVersion|SdkNotGiven $intercomVersion = SdkNotGiven::Value, ?RequestOptions $requestOptions = null): ActivityLogList
     {
 
-        $sdkResponse = SdkClient::request('GET', "/admins/activity_logs", $clientConfig, query: ['created_at_after' => new SdkQueryValue($createdAtAfter, "form", true), 'created_at_before' => new SdkQueryValue($createdAtBefore, "form", true)], returnType: ActivityLogList::class, decoder: 'json', operationId: 'listActivityLogs', extraHeaders: ["Intercom-Version" => SdkClient::headerValue($intercomVersion, false)], requestOptions: $requestOptions, errors: [401 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class)]);
+        $sdkResponse = SdkClient::request('GET', "/admins/activity_logs", $clientConfig, query: ['created_at_after' => new SdkQueryValue($createdAtAfter, "form", true), 'created_at_before' => new SdkQueryValue($createdAtBefore, "form", true)], returnType: ActivityLogList::class, decoder: 'json', operationId: 'listActivityLogs', extraHeaders: ["Intercom-Version" => SdkClient::headerValue($intercomVersion, false)], requestOptions: $requestOptions, errors: [401 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => SdkClient::typedData($sdkResponse, ActivityLogList::class));
     }
 
@@ -83,7 +83,7 @@ class Admins
             Validation::validateRange('per_page', $perPage, min: 1, max: 250);
         }
 
-        $sdkResponse = SdkClient::request('POST', "/admins/activity_logs/search", $clientConfig, body: ['created_at_after' => $createdAtAfter, 'created_at_before' => $createdAtBefore, 'event_types' => $eventTypes, 'page' => $page, 'per_page' => $perPage], returnType: ActivityLogList::class, decoder: 'json', operationId: 'searchActivityLogs', extraHeaders: ["Intercom-Version" => SdkClient::headerValue($intercomVersion, false)], requestOptions: $requestOptions, errors: [401 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class)]);
+        $sdkResponse = SdkClient::request('POST', "/admins/activity_logs/search", $clientConfig, body: ['created_at_after' => $createdAtAfter, 'created_at_before' => $createdAtBefore, 'event_types' => $eventTypes, 'page' => $page, 'per_page' => $perPage], returnType: ActivityLogList::class, decoder: 'json', operationId: 'searchActivityLogs', extraHeaders: ["Intercom-Version" => SdkClient::headerValue($intercomVersion, false)], requestOptions: $requestOptions, errors: [401 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => SdkClient::typedData($sdkResponse, ActivityLogList::class));
     }
 
@@ -99,7 +99,7 @@ class Admins
     public static function listActivityLogEventTypes(ClientConfig $clientConfig, IntercomVersion|SdkNotGiven $intercomVersion = SdkNotGiven::Value, ?RequestOptions $requestOptions = null): ActivityLogEventTypeList
     {
 
-        $sdkResponse = SdkClient::request('GET', "/admins/activity_log_event_types", $clientConfig, returnType: ActivityLogEventTypeList::class, decoder: 'json', operationId: 'listActivityLogEventTypes', extraHeaders: ["Intercom-Version" => SdkClient::headerValue($intercomVersion, false)], requestOptions: $requestOptions, errors: [401 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class)]);
+        $sdkResponse = SdkClient::request('GET', "/admins/activity_log_event_types", $clientConfig, returnType: ActivityLogEventTypeList::class, decoder: 'json', operationId: 'listActivityLogEventTypes', extraHeaders: ["Intercom-Version" => SdkClient::headerValue($intercomVersion, false)], requestOptions: $requestOptions, errors: [401 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => SdkClient::typedData($sdkResponse, ActivityLogEventTypeList::class));
     }
 
@@ -116,7 +116,7 @@ class Admins
     public static function listAdmins(ClientConfig $clientConfig, bool|SdkNotGiven $displayAvatar = SdkNotGiven::Value, IntercomVersion|SdkNotGiven $intercomVersion = SdkNotGiven::Value, ?RequestOptions $requestOptions = null): AdminList
     {
 
-        $sdkResponse = SdkClient::request('GET', "/admins", $clientConfig, query: ['display_avatar' => new SdkQueryValue($displayAvatar, "form", true)], returnType: AdminList::class, decoder: 'json', operationId: 'listAdmins', extraHeaders: ["Intercom-Version" => SdkClient::headerValue($intercomVersion, false)], requestOptions: $requestOptions, errors: [401 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class)]);
+        $sdkResponse = SdkClient::request('GET', "/admins", $clientConfig, query: ['display_avatar' => new SdkQueryValue($displayAvatar, "form", true)], returnType: AdminList::class, decoder: 'json', operationId: 'listAdmins', extraHeaders: ["Intercom-Version" => SdkClient::headerValue($intercomVersion, false)], requestOptions: $requestOptions, errors: [401 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => SdkClient::typedData($sdkResponse, AdminList::class));
     }
 
@@ -133,7 +133,7 @@ class Admins
     public static function retrieveAdmin(ClientConfig $clientConfig, int $adminId, IntercomVersion|SdkNotGiven $intercomVersion = SdkNotGiven::Value, ?RequestOptions $requestOptions = null): Admin|null
     {
 
-        $sdkResponse = SdkClient::request('GET', "/admins/" . SdkClient::encodePathSegment($adminId) . "", $clientConfig, returnType: Admin::class, decoder: 'json', operationId: 'retrieveAdmin', extraHeaders: ["Intercom-Version" => SdkClient::headerValue($intercomVersion, false)], requestOptions: $requestOptions, errors: [401 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class), 404 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class)]);
+        $sdkResponse = SdkClient::request('GET', "/admins/" . SdkClient::encodePathSegment($adminId) . "", $clientConfig, returnType: Admin::class, decoder: 'json', operationId: 'retrieveAdmin', extraHeaders: ["Intercom-Version" => SdkClient::headerValue($intercomVersion, false)], requestOptions: $requestOptions, errors: [401 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class), 404 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => SdkClient::typedData($sdkResponse, Admin::class));
     }
 }

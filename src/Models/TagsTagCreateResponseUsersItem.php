@@ -311,12 +311,8 @@ class TagMultipleUsersRequest implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "name") || $data->name === null) {
-            throw new SdkValidationError("name", 'required', "Required property 'name' is missing or null");
-        }
-        if (!property_exists($data, "users") || $data->users === null) {
-            throw new SdkValidationError("users", 'required', "Required property 'users' is missing or null");
-        }
+        if (!property_exists($data, "name") || $data->name === null) { throw new SdkValidationError("name", 'required', "Required property 'name' is missing or null"); }
+        if (!property_exists($data, "users") || $data->users === null) { throw new SdkValidationError("users", 'required', "Required property 'users' is missing or null"); }
         return new self(
             name: SdkClient::stringValue($data->name),
             users: array_values(array_map(static fn($item) => SdkClient::hydrateClass($item, TagMultipleUsersRequestUsersItem::class), SdkClient::arrayValue($data->users))),

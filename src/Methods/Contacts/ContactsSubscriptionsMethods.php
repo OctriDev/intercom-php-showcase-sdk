@@ -21,7 +21,7 @@ trait ContactsSubscriptionsMethods
     public static function listContactsSubscriptions(ClientConfig $clientConfig, string $contactId, IntercomVersion|SdkNotGiven $intercomVersion = SdkNotGiven::Value, ?RequestOptions $requestOptions = null): SubscriptionTypeList
     {
 
-        $sdkResponse = SdkClient::request('GET', "/contacts/" . SdkClient::encodePathSegment($contactId) . "/subscriptions", $clientConfig, returnType: SubscriptionTypeList::class, decoder: 'json', operationId: 'listContactsSubscriptions', extraHeaders: ["Intercom-Version" => SdkClient::headerValue($intercomVersion, false)], requestOptions: $requestOptions, errors: [401 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class), 404 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class)]);
+        $sdkResponse = SdkClient::request('GET', "/contacts/" . SdkClient::encodePathSegment($contactId) . "/subscriptions", $clientConfig, returnType: SubscriptionTypeList::class, decoder: 'json', operationId: 'listContactsSubscriptions', extraHeaders: ["Intercom-Version" => SdkClient::headerValue($intercomVersion, false)], requestOptions: $requestOptions, errors: [401 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class), 404 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => SdkClient::typedData($sdkResponse, SubscriptionTypeList::class));
     }
 }

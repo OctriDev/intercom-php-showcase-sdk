@@ -20,7 +20,7 @@ class AwayStatusReasons
     public static function listAwayStatusReasons(ClientConfig $clientConfig, IntercomVersion|SdkNotGiven $intercomVersion = SdkNotGiven::Value, ?RequestOptions $requestOptions = null): AwayStatusReasonList
     {
 
-        $sdkResponse = SdkClient::request('GET', "/away_status_reasons", $clientConfig, returnType: AwayStatusReasonList::class, decoder: 'json', operationId: 'listAwayStatusReasons', extraHeaders: ["Intercom-Version" => SdkClient::headerValue($intercomVersion, false)], requestOptions: $requestOptions, errors: [401 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class)]);
+        $sdkResponse = SdkClient::request('GET', "/away_status_reasons", $clientConfig, returnType: AwayStatusReasonList::class, decoder: 'json', operationId: 'listAwayStatusReasons', extraHeaders: ["Intercom-Version" => SdkClient::headerValue($intercomVersion, false)], requestOptions: $requestOptions, errors: [401 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => SdkClient::typedData($sdkResponse, AwayStatusReasonList::class));
     }
 }

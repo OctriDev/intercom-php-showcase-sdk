@@ -27,7 +27,7 @@ trait ConversationsSideConversationsMethods
             Validation::validateRange('per_page', $perPage, max: 50);
         }
 
-        $sdkResponse = SdkClient::request('GET', "/conversations/" . SdkClient::encodePathSegment($id) . "/side_conversations", $clientConfig, query: ['page' => new SdkQueryValue($page, "form", true), 'per_page' => new SdkQueryValue($perPage, "form", true)], returnType: SideConversationList::class, decoder: 'json', operationId: 'listSideConversations', extraHeaders: ["Intercom-Version" => SdkClient::headerValue($intercomVersion, false)], requestOptions: $requestOptions, errors: [401 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class), 404 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class)]);
+        $sdkResponse = SdkClient::request('GET', "/conversations/" . SdkClient::encodePathSegment($id) . "/side_conversations", $clientConfig, query: ['page' => new SdkQueryValue($page, "form", true), 'per_page' => new SdkQueryValue($perPage, "form", true)], returnType: SideConversationList::class, decoder: 'json', operationId: 'listSideConversations', extraHeaders: ["Intercom-Version" => SdkClient::headerValue($intercomVersion, false)], requestOptions: $requestOptions, errors: [401 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class), 404 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => SdkClient::typedData($sdkResponse, SideConversationList::class));
     }
 }

@@ -114,12 +114,8 @@ class MergePreviewReassignmentsConversations implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "from") || $data->from === null) {
-            throw new SdkValidationError("from", 'required', "Required property 'from' is missing or null");
-        }
-        if (!property_exists($data, "into") || $data->into === null) {
-            throw new SdkValidationError("into", 'required', "Required property 'into' is missing or null");
-        }
+        if (!property_exists($data, "from") || $data->from === null) { throw new SdkValidationError("from", 'required', "Required property 'from' is missing or null"); }
+        if (!property_exists($data, "into") || $data->into === null) { throw new SdkValidationError("into", 'required', "Required property 'into' is missing or null"); }
         return new self(
             from: SdkClient::intValue($data->from),
             into: SdkClient::intValue($data->into),
@@ -175,12 +171,8 @@ class MergePreviewReassignmentsTickets implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "from") || $data->from === null) {
-            throw new SdkValidationError("from", 'required', "Required property 'from' is missing or null");
-        }
-        if (!property_exists($data, "into") || $data->into === null) {
-            throw new SdkValidationError("into", 'required', "Required property 'into' is missing or null");
-        }
+        if (!property_exists($data, "from") || $data->from === null) { throw new SdkValidationError("from", 'required', "Required property 'from' is missing or null"); }
+        if (!property_exists($data, "into") || $data->into === null) { throw new SdkValidationError("into", 'required', "Required property 'into' is missing or null"); }
         return new self(
             from: SdkClient::intValue($data->from),
             into: SdkClient::intValue($data->into),
@@ -236,12 +228,8 @@ class MergePreviewReassignmentsPhoneCalls implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "from") || $data->from === null) {
-            throw new SdkValidationError("from", 'required', "Required property 'from' is missing or null");
-        }
-        if (!property_exists($data, "into") || $data->into === null) {
-            throw new SdkValidationError("into", 'required', "Required property 'into' is missing or null");
-        }
+        if (!property_exists($data, "from") || $data->from === null) { throw new SdkValidationError("from", 'required', "Required property 'from' is missing or null"); }
+        if (!property_exists($data, "into") || $data->into === null) { throw new SdkValidationError("into", 'required', "Required property 'into' is missing or null"); }
         return new self(
             from: SdkClient::intValue($data->from),
             into: SdkClient::intValue($data->into),
@@ -297,12 +285,8 @@ class MergePreviewReassignmentsTags implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "from") || $data->from === null) {
-            throw new SdkValidationError("from", 'required', "Required property 'from' is missing or null");
-        }
-        if (!property_exists($data, "into") || $data->into === null) {
-            throw new SdkValidationError("into", 'required', "Required property 'into' is missing or null");
-        }
+        if (!property_exists($data, "from") || $data->from === null) { throw new SdkValidationError("from", 'required', "Required property 'from' is missing or null"); }
+        if (!property_exists($data, "into") || $data->into === null) { throw new SdkValidationError("into", 'required', "Required property 'into' is missing or null"); }
         return new self(
             from: SdkClient::intValue($data->from),
             into: SdkClient::intValue($data->into),
@@ -358,12 +342,8 @@ class MergePreviewReassignmentsNotes implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "from") || $data->from === null) {
-            throw new SdkValidationError("from", 'required', "Required property 'from' is missing or null");
-        }
-        if (!property_exists($data, "into") || $data->into === null) {
-            throw new SdkValidationError("into", 'required', "Required property 'into' is missing or null");
-        }
+        if (!property_exists($data, "from") || $data->from === null) { throw new SdkValidationError("from", 'required', "Required property 'from' is missing or null"); }
+        if (!property_exists($data, "into") || $data->into === null) { throw new SdkValidationError("into", 'required', "Required property 'into' is missing or null"); }
         return new self(
             from: SdkClient::intValue($data->from),
             into: SdkClient::intValue($data->into),

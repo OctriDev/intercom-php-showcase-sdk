@@ -21,7 +21,7 @@ class JobsApi
     public static function jobsStatus(ClientConfig $clientConfig, string $jobId, IntercomVersion|SdkNotGiven $intercomVersion = SdkNotGiven::Value, ?RequestOptions $requestOptions = null): Jobs
     {
 
-        $sdkResponse = SdkClient::request('GET', "/jobs/status/" . SdkClient::encodePathSegment($jobId) . "", $clientConfig, returnType: Jobs::class, decoder: 'json', operationId: 'jobsStatus', extraHeaders: ["Intercom-Version" => SdkClient::headerValue($intercomVersion, false)], requestOptions: $requestOptions, errors: [401 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class), 404 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class)]);
+        $sdkResponse = SdkClient::request('GET', "/jobs/status/" . SdkClient::encodePathSegment($jobId) . "", $clientConfig, returnType: Jobs::class, decoder: 'json', operationId: 'jobsStatus', extraHeaders: ["Intercom-Version" => SdkClient::headerValue($intercomVersion, false)], requestOptions: $requestOptions, errors: [401 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class), 404 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => SdkClient::typedData($sdkResponse, Jobs::class));
     }
 }

@@ -91,12 +91,8 @@ class ContentBulkActionRequest implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "action") || $data->action === null) {
-            throw new SdkValidationError("action", 'required', "Required property 'action' is missing or null");
-        }
-        if (!property_exists($data, "content_ids") || $data->content_ids === null) {
-            throw new SdkValidationError("content_ids", 'required', "Required property 'content_ids' is missing or null");
-        }
+        if (!property_exists($data, "action") || $data->action === null) { throw new SdkValidationError("action", 'required', "Required property 'action' is missing or null"); }
+        if (!property_exists($data, "content_ids") || $data->content_ids === null) { throw new SdkValidationError("content_ids", 'required', "Required property 'content_ids' is missing or null"); }
         return new self(
             action: SdkClient::hydrateStringEnumOrString($data->action, ContentBulkActionRequestActionEnum::class),
             contentIds: array_values(array_map(static fn($item) => SdkClient::hydrateClass($item, ContentBulkActionRequestContentIdsItem::class), SdkClient::arrayValue($data->content_ids))),

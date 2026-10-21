@@ -168,7 +168,7 @@ class Visitors
     public static function updateVisitor(ClientConfig $clientConfig, IntercomVersion|SdkNotGiven $intercomVersion = SdkNotGiven::Value, string|SdkNotGiven $id = SdkNotGiven::Value, string|SdkNotGiven $userId = SdkNotGiven::Value, string|SdkNotGiven $name = SdkNotGiven::Value, array|SdkNotGiven $customAttributes = SdkNotGiven::Value, ?RequestOptions $requestOptions = null): Visitor|null
     {
 
-        $sdkResponse = SdkClient::request('PUT', "/visitors", $clientConfig, body: ['id' => $id, 'user_id' => $userId, 'name' => $name, 'custom_attributes' => $customAttributes], returnType: Visitor::class, decoder: 'json', operationId: 'updateVisitor', extraHeaders: ["Intercom-Version" => SdkClient::headerValue($intercomVersion, false)], requestOptions: $requestOptions, errors: [401 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class), 404 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class)]);
+        $sdkResponse = SdkClient::request('PUT', "/visitors", $clientConfig, body: ['id' => $id, 'user_id' => $userId, 'name' => $name, 'custom_attributes' => $customAttributes], returnType: Visitor::class, decoder: 'json', operationId: 'updateVisitor', extraHeaders: ["Intercom-Version" => SdkClient::headerValue($intercomVersion, false)], requestOptions: $requestOptions, errors: [401 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class), 404 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => SdkClient::typedData($sdkResponse, Visitor::class));
     }
 
@@ -185,7 +185,7 @@ class Visitors
     public static function retrieveVisitorWithUserId(ClientConfig $clientConfig, string $userId, IntercomVersion|SdkNotGiven $intercomVersion = SdkNotGiven::Value, ?RequestOptions $requestOptions = null): Visitor|null
     {
 
-        $sdkResponse = SdkClient::request('GET', "/visitors", $clientConfig, query: ['user_id' => new SdkQueryValue($userId, "form", true)], returnType: Visitor::class, decoder: 'json', operationId: 'retrieveVisitorWithUserId', extraHeaders: ["Intercom-Version" => SdkClient::headerValue($intercomVersion, false)], requestOptions: $requestOptions, errors: [401 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class), 404 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class)]);
+        $sdkResponse = SdkClient::request('GET', "/visitors", $clientConfig, query: ['user_id' => new SdkQueryValue($userId, "form", true)], returnType: Visitor::class, decoder: 'json', operationId: 'retrieveVisitorWithUserId', extraHeaders: ["Intercom-Version" => SdkClient::headerValue($intercomVersion, false)], requestOptions: $requestOptions, errors: [401 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class), 404 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => SdkClient::typedData($sdkResponse, Visitor::class));
     }
 
@@ -204,7 +204,7 @@ class Visitors
     public static function convertVisitor(ClientConfig $clientConfig, string $type, ConvertVisitorUser $user, ConvertVisitorVisitor $visitor, IntercomVersion|SdkNotGiven $intercomVersion = SdkNotGiven::Value, ?RequestOptions $requestOptions = null): Contact
     {
 
-        $sdkResponse = SdkClient::request('POST', "/visitors/convert", $clientConfig, body: ['type' => $type, 'user' => $user, 'visitor' => $visitor], returnType: Contact::class, decoder: 'json', operationId: 'convertVisitor', extraHeaders: ["Intercom-Version" => SdkClient::headerValue($intercomVersion, false)], requestOptions: $requestOptions, errors: [401 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class)]);
+        $sdkResponse = SdkClient::request('POST', "/visitors/convert", $clientConfig, body: ['type' => $type, 'user' => $user, 'visitor' => $visitor], returnType: Contact::class, decoder: 'json', operationId: 'convertVisitor', extraHeaders: ["Intercom-Version" => SdkClient::headerValue($intercomVersion, false)], requestOptions: $requestOptions, errors: [401 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => SdkClient::typedData($sdkResponse, Contact::class));
     }
 }

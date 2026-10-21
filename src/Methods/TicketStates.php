@@ -20,7 +20,7 @@ class TicketStates
     public static function listTicketStates(ClientConfig $clientConfig, IntercomVersion|SdkNotGiven $intercomVersion = SdkNotGiven::Value, ?RequestOptions $requestOptions = null): TicketStateList
     {
 
-        $sdkResponse = SdkClient::request('GET', "/ticket_states", $clientConfig, returnType: TicketStateList::class, decoder: 'json', operationId: 'listTicketStates', extraHeaders: ["Intercom-Version" => SdkClient::headerValue($intercomVersion, false)], requestOptions: $requestOptions, errors: [401 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class)]);
+        $sdkResponse = SdkClient::request('GET', "/ticket_states", $clientConfig, returnType: TicketStateList::class, decoder: 'json', operationId: 'listTicketStates', extraHeaders: ["Intercom-Version" => SdkClient::headerValue($intercomVersion, false)], requestOptions: $requestOptions, errors: [401 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => SdkClient::typedData($sdkResponse, TicketStateList::class));
     }
 }

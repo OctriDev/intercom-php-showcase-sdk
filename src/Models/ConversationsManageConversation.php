@@ -23,26 +23,11 @@ final readonly class AssignConversationRequestTypeEnum implements SdkOpenEnum
     public const ADMIN = "admin";
     public const TEAM = "team";
     private function __construct(public string $value) {}
-    public static function from(string|int $value): static
-    {
-        return new self((string) $value);
-    }
-    public static function tryFrom(string|int|null $value): ?static
-    {
-        return $value === null ? null : self::from($value);
-    }
-    public function getValue(): string
-    {
-        return $this->value;
-    }
-    public function jsonSerialize(): string
-    {
-        return $this->value;
-    }
-    public function __toString(): string
-    {
-        return (string) $this->value;
-    }
+    public static function from(string|int $value): static { return new self((string) $value); }
+    public static function tryFrom(string|int|null $value): ?static { return $value === null ? null : self::from($value); }
+    public function getValue(): string { return $this->value; }
+    public function jsonSerialize(): string { return $this->value; }
+    public function __toString(): string { return (string) $this->value; }
 }
 
 /**
@@ -137,18 +122,10 @@ class AssignConversationRequest implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "message_type") || $data->message_type === null) {
-            throw new SdkValidationError("message_type", 'required', "Required property 'message_type' is missing or null");
-        }
-        if (!property_exists($data, "type") || $data->type === null) {
-            throw new SdkValidationError("type", 'required', "Required property 'type' is missing or null");
-        }
-        if (!property_exists($data, "admin_id") || $data->admin_id === null) {
-            throw new SdkValidationError("admin_id", 'required', "Required property 'admin_id' is missing or null");
-        }
-        if (!property_exists($data, "assignee_id") || $data->assignee_id === null) {
-            throw new SdkValidationError("assignee_id", 'required', "Required property 'assignee_id' is missing or null");
-        }
+        if (!property_exists($data, "message_type") || $data->message_type === null) { throw new SdkValidationError("message_type", 'required', "Required property 'message_type' is missing or null"); }
+        if (!property_exists($data, "type") || $data->type === null) { throw new SdkValidationError("type", 'required', "Required property 'type' is missing or null"); }
+        if (!property_exists($data, "admin_id") || $data->admin_id === null) { throw new SdkValidationError("admin_id", 'required', "Required property 'admin_id' is missing or null"); }
+        if (!property_exists($data, "assignee_id") || $data->assignee_id === null) { throw new SdkValidationError("assignee_id", 'required', "Required property 'assignee_id' is missing or null"); }
         return new self(
             messageType: SdkClient::hydrateEnum($data->message_type, AssignConversationRequestMessageTypeEnum::class),
             type: SdkClient::hydrateStringEnumOrString($data->type, AssignConversationRequestTypeEnum::class),
@@ -175,26 +152,11 @@ final readonly class CloseConversationRequestTypeEnum implements SdkOpenEnum
 {
     public const ADMIN = "admin";
     private function __construct(public string $value) {}
-    public static function from(string|int $value): static
-    {
-        return new self((string) $value);
-    }
-    public static function tryFrom(string|int|null $value): ?static
-    {
-        return $value === null ? null : self::from($value);
-    }
-    public function getValue(): string
-    {
-        return $this->value;
-    }
-    public function jsonSerialize(): string
-    {
-        return $this->value;
-    }
-    public function __toString(): string
-    {
-        return (string) $this->value;
-    }
+    public static function from(string|int $value): static { return new self((string) $value); }
+    public static function tryFrom(string|int|null $value): ?static { return $value === null ? null : self::from($value); }
+    public function getValue(): string { return $this->value; }
+    public function jsonSerialize(): string { return $this->value; }
+    public function __toString(): string { return (string) $this->value; }
 }
 
 /**
@@ -267,15 +229,9 @@ class CloseConversationRequest implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "message_type") || $data->message_type === null) {
-            throw new SdkValidationError("message_type", 'required', "Required property 'message_type' is missing or null");
-        }
-        if (!property_exists($data, "type") || $data->type === null) {
-            throw new SdkValidationError("type", 'required', "Required property 'type' is missing or null");
-        }
-        if (!property_exists($data, "admin_id") || $data->admin_id === null) {
-            throw new SdkValidationError("admin_id", 'required', "Required property 'admin_id' is missing or null");
-        }
+        if (!property_exists($data, "message_type") || $data->message_type === null) { throw new SdkValidationError("message_type", 'required', "Required property 'message_type' is missing or null"); }
+        if (!property_exists($data, "type") || $data->type === null) { throw new SdkValidationError("type", 'required', "Required property 'type' is missing or null"); }
+        if (!property_exists($data, "admin_id") || $data->admin_id === null) { throw new SdkValidationError("admin_id", 'required', "Required property 'admin_id' is missing or null"); }
         return new self(
             messageType: SdkClient::hydrateEnum($data->message_type, CloseConversationRequestMessageTypeEnum::class),
             type: SdkClient::hydrateStringEnumOrString($data->type, CloseConversationRequestTypeEnum::class),
@@ -341,12 +297,8 @@ class OpenConversationRequest implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "message_type") || $data->message_type === null) {
-            throw new SdkValidationError("message_type", 'required', "Required property 'message_type' is missing or null");
-        }
-        if (!property_exists($data, "admin_id") || $data->admin_id === null) {
-            throw new SdkValidationError("admin_id", 'required', "Required property 'admin_id' is missing or null");
-        }
+        if (!property_exists($data, "message_type") || $data->message_type === null) { throw new SdkValidationError("message_type", 'required', "Required property 'message_type' is missing or null"); }
+        if (!property_exists($data, "admin_id") || $data->admin_id === null) { throw new SdkValidationError("admin_id", 'required', "Required property 'admin_id' is missing or null"); }
         return new self(
             messageType: SdkClient::hydrateEnum($data->message_type, OpenConversationRequestMessageTypeEnum::class),
             adminId: SdkClient::stringValue($data->admin_id),

@@ -18,26 +18,11 @@ final readonly class FinAgentCsatRequestedEventCsatOptionsItemKeyEnum implements
     public const GOOD = "good";
     public const AMAZING = "amazing";
     private function __construct(public string $value) {}
-    public static function from(string|int $value): static
-    {
-        return new self((string) $value);
-    }
-    public static function tryFrom(string|int|null $value): ?static
-    {
-        return $value === null ? null : self::from($value);
-    }
-    public function getValue(): string
-    {
-        return $this->value;
-    }
-    public function jsonSerialize(): string
-    {
-        return $this->value;
-    }
-    public function __toString(): string
-    {
-        return (string) $this->value;
-    }
+    public static function from(string|int $value): static { return new self((string) $value); }
+    public static function tryFrom(string|int|null $value): ?static { return $value === null ? null : self::from($value); }
+    public function getValue(): string { return $this->value; }
+    public function jsonSerialize(): string { return $this->value; }
+    public function __toString(): string { return (string) $this->value; }
 }
 
 /**
@@ -98,15 +83,9 @@ class FinAgentCsatRequestedEventCsatOptionsItem implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "key") || $data->key === null) {
-            throw new SdkValidationError("key", 'required', "Required property 'key' is missing or null");
-        }
-        if (!property_exists($data, "emoji") || $data->emoji === null) {
-            throw new SdkValidationError("emoji", 'required', "Required property 'emoji' is missing or null");
-        }
-        if (!property_exists($data, "label") || $data->label === null) {
-            throw new SdkValidationError("label", 'required', "Required property 'label' is missing or null");
-        }
+        if (!property_exists($data, "key") || $data->key === null) { throw new SdkValidationError("key", 'required', "Required property 'key' is missing or null"); }
+        if (!property_exists($data, "emoji") || $data->emoji === null) { throw new SdkValidationError("emoji", 'required', "Required property 'emoji' is missing or null"); }
+        if (!property_exists($data, "label") || $data->label === null) { throw new SdkValidationError("label", 'required', "Required property 'label' is missing or null"); }
         return new self(
             key: SdkClient::hydrateStringEnumOrString($data->key, FinAgentCsatRequestedEventCsatOptionsItemKeyEnum::class),
             emoji: SdkClient::stringValue($data->emoji),
@@ -153,9 +132,7 @@ class FinAgentCsatRequestedEventCsat implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "options") || $data->options === null) {
-            throw new SdkValidationError("options", 'required', "Required property 'options' is missing or null");
-        }
+        if (!property_exists($data, "options") || $data->options === null) { throw new SdkValidationError("options", 'required', "Required property 'options' is missing or null"); }
         return new self(
             options: array_values(array_map(static fn($item) => SdkClient::hydrateClass($item, FinAgentCsatRequestedEventCsatOptionsItem::class), SdkClient::arrayValue($data->options))),
         );
@@ -240,21 +217,11 @@ class FinAgentCsatRequestedEvent implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "event_name") || $data->event_name === null) {
-            throw new SdkValidationError("event_name", 'required', "Required property 'event_name' is missing or null");
-        }
-        if (!property_exists($data, "conversation_id") || $data->conversation_id === null) {
-            throw new SdkValidationError("conversation_id", 'required', "Required property 'conversation_id' is missing or null");
-        }
-        if (!property_exists($data, "user_id") || $data->user_id === null) {
-            throw new SdkValidationError("user_id", 'required', "Required property 'user_id' is missing or null");
-        }
-        if (!property_exists($data, "csat") || $data->csat === null) {
-            throw new SdkValidationError("csat", 'required', "Required property 'csat' is missing or null");
-        }
-        if (!property_exists($data, "created_at_ms") || $data->created_at_ms === null) {
-            throw new SdkValidationError("created_at_ms", 'required', "Required property 'created_at_ms' is missing or null");
-        }
+        if (!property_exists($data, "event_name") || $data->event_name === null) { throw new SdkValidationError("event_name", 'required', "Required property 'event_name' is missing or null"); }
+        if (!property_exists($data, "conversation_id") || $data->conversation_id === null) { throw new SdkValidationError("conversation_id", 'required', "Required property 'conversation_id' is missing or null"); }
+        if (!property_exists($data, "user_id") || $data->user_id === null) { throw new SdkValidationError("user_id", 'required', "Required property 'user_id' is missing or null"); }
+        if (!property_exists($data, "csat") || $data->csat === null) { throw new SdkValidationError("csat", 'required', "Required property 'csat' is missing or null"); }
+        if (!property_exists($data, "created_at_ms") || $data->created_at_ms === null) { throw new SdkValidationError("created_at_ms", 'required', "Required property 'created_at_ms' is missing or null"); }
         return new self(
             eventName: SdkClient::hydrateStringEnumOrString($data->event_name, FinAgentCsatRequestedEventEventNameEnum::class),
             conversationId: SdkClient::stringValue($data->conversation_id),
@@ -274,26 +241,11 @@ final readonly class FinAgentMessageAuthorEnum implements SdkOpenEnum
     public const AGENT = "agent";
     public const FIN = "fin";
     private function __construct(public string $value) {}
-    public static function from(string|int $value): static
-    {
-        return new self((string) $value);
-    }
-    public static function tryFrom(string|int|null $value): ?static
-    {
-        return $value === null ? null : self::from($value);
-    }
-    public function getValue(): string
-    {
-        return $this->value;
-    }
-    public function jsonSerialize(): string
-    {
-        return $this->value;
-    }
-    public function __toString(): string
-    {
-        return (string) $this->value;
-    }
+    public static function from(string|int $value): static { return new self((string) $value); }
+    public static function tryFrom(string|int|null $value): ?static { return $value === null ? null : self::from($value); }
+    public function getValue(): string { return $this->value; }
+    public function jsonSerialize(): string { return $this->value; }
+    public function __toString(): string { return (string) $this->value; }
 }
 
 /**
@@ -366,15 +318,9 @@ class FinAgentMessage implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "author") || $data->author === null) {
-            throw new SdkValidationError("author", 'required', "Required property 'author' is missing or null");
-        }
-        if (!property_exists($data, "body") || $data->body === null) {
-            throw new SdkValidationError("body", 'required', "Required property 'body' is missing or null");
-        }
-        if (!property_exists($data, "timestamp") || $data->timestamp === null) {
-            throw new SdkValidationError("timestamp", 'required', "Required property 'timestamp' is missing or null");
-        }
+        if (!property_exists($data, "author") || $data->author === null) { throw new SdkValidationError("author", 'required', "Required property 'author' is missing or null"); }
+        if (!property_exists($data, "body") || $data->body === null) { throw new SdkValidationError("body", 'required', "Required property 'body' is missing or null"); }
+        if (!property_exists($data, "timestamp") || $data->timestamp === null) { throw new SdkValidationError("timestamp", 'required', "Required property 'timestamp' is missing or null"); }
         return new self(
             author: SdkClient::hydrateStringEnumOrString($data->author, FinAgentMessageAuthorEnum::class),
             body: SdkClient::stringValue($data->body),
@@ -391,24 +337,9 @@ final readonly class FinAgentRepliedEventEventNameEnum implements SdkOpenEnum
 {
     public const FIN_REPLIED = "fin_replied";
     private function __construct(public string $value) {}
-    public static function from(string|int $value): static
-    {
-        return new self((string) $value);
-    }
-    public static function tryFrom(string|int|null $value): ?static
-    {
-        return $value === null ? null : self::from($value);
-    }
-    public function getValue(): string
-    {
-        return $this->value;
-    }
-    public function jsonSerialize(): string
-    {
-        return $this->value;
-    }
-    public function __toString(): string
-    {
-        return (string) $this->value;
-    }
+    public static function from(string|int $value): static { return new self((string) $value); }
+    public static function tryFrom(string|int|null $value): ?static { return $value === null ? null : self::from($value); }
+    public function getValue(): string { return $this->value; }
+    public function jsonSerialize(): string { return $this->value; }
+    public function __toString(): string { return (string) $this->value; }
 }

@@ -123,18 +123,10 @@ class ContactReplyUserIdRequest implements ContactReplyConversationRequest, Repl
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "message_type") || $data->message_type === null) {
-            throw new SdkValidationError("message_type", 'required', "Required property 'message_type' is missing or null");
-        }
-        if (!property_exists($data, "type") || $data->type === null) {
-            throw new SdkValidationError("type", 'required', "Required property 'type' is missing or null");
-        }
-        if (!property_exists($data, "body") || $data->body === null) {
-            throw new SdkValidationError("body", 'required', "Required property 'body' is missing or null");
-        }
-        if (!property_exists($data, "user_id") || $data->user_id === null) {
-            throw new SdkValidationError("user_id", 'required', "Required property 'user_id' is missing or null");
-        }
+        if (!property_exists($data, "message_type") || $data->message_type === null) { throw new SdkValidationError("message_type", 'required', "Required property 'message_type' is missing or null"); }
+        if (!property_exists($data, "type") || $data->type === null) { throw new SdkValidationError("type", 'required', "Required property 'type' is missing or null"); }
+        if (!property_exists($data, "body") || $data->body === null) { throw new SdkValidationError("body", 'required', "Required property 'body' is missing or null"); }
+        if (!property_exists($data, "user_id") || $data->user_id === null) { throw new SdkValidationError("user_id", 'required', "Required property 'user_id' is missing or null"); }
         return new self(
             messageType: SdkClient::hydrateStringEnumOrString($data->message_type, ContactReplyUserIdRequestMessageTypeEnum::class),
             type: SdkClient::hydrateStringEnumOrString($data->type, ContactReplyUserIdRequestTypeEnum::class),
@@ -196,12 +188,8 @@ class QuickReplyOption implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "text") || $data->text === null) {
-            throw new SdkValidationError("text", 'required', "Required property 'text' is missing or null");
-        }
-        if (!property_exists($data, "uuid") || $data->uuid === null) {
-            throw new SdkValidationError("uuid", 'required', "Required property 'uuid' is missing or null");
-        }
+        if (!property_exists($data, "text") || $data->text === null) { throw new SdkValidationError("text", 'required', "Required property 'text' is missing or null"); }
+        if (!property_exists($data, "uuid") || $data->uuid === null) { throw new SdkValidationError("uuid", 'required', "Required property 'uuid' is missing or null"); }
         return new self(
             text: SdkClient::stringValue($data->text),
             uuid: SdkClient::stringValue($data->uuid),

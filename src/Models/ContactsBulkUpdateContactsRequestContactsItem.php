@@ -189,9 +189,7 @@ class BulkUpdateContactsRequestContactsItem implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "id") || $data->id === null) {
-            throw new SdkValidationError("id", 'required', "Required property 'id' is missing or null");
-        }
+        if (!property_exists($data, "id") || $data->id === null) { throw new SdkValidationError("id", 'required', "Required property 'id' is missing or null"); }
         return new self(
             id: SdkClient::stringValue($data->id),
             externalId: (property_exists($data, "external_id") && $data->external_id !== null ? SdkClient::stringValue($data->external_id) : SdkNotGiven::Value),
@@ -306,9 +304,7 @@ class BulkUpdateContactsRequest implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "contacts") || $data->contacts === null) {
-            throw new SdkValidationError("contacts", 'required', "Required property 'contacts' is missing or null");
-        }
+        if (!property_exists($data, "contacts") || $data->contacts === null) { throw new SdkValidationError("contacts", 'required', "Required property 'contacts' is missing or null"); }
         return new self(
             contacts: array_values(array_map(static fn($item) => SdkClient::hydrateClass($item, BulkUpdateContactsRequestContactsItem::class), SdkClient::arrayValue($data->contacts))),
             job: (property_exists($data, "job") && $data->job !== null ? SdkClient::hydrateClass($data->job, BulkUpdateContactsRequestJob::class) : SdkNotGiven::Value),

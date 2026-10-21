@@ -129,9 +129,7 @@ class ContentSnippetCreateRequest implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "title") || $data->title === null) {
-            throw new SdkValidationError("title", 'required', "Required property 'title' is missing or null");
-        }
+        if (!property_exists($data, "title") || $data->title === null) { throw new SdkValidationError("title", 'required', "Required property 'title' is missing or null"); }
         return new self(
             title: SdkClient::stringValue($data->title),
             jsonBlocks: (property_exists($data, "json_blocks") && $data->json_blocks !== null ? array_values(array_map(static fn($item) => SdkClient::stringMapValue($item), SdkClient::arrayValue($data->json_blocks))) : SdkNotGiven::Value),

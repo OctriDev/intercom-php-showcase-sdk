@@ -23,7 +23,7 @@ class SubscriptionTypes
     public static function attachSubscriptionTypeToContact(ClientConfig $clientConfig, string $contactId, string $id, string $consentType, IntercomVersion|SdkNotGiven $intercomVersion = SdkNotGiven::Value, ?RequestOptions $requestOptions = null): SubscriptionType
     {
 
-        $sdkResponse = SdkClient::request('POST', "/contacts/" . SdkClient::encodePathSegment($contactId) . "/subscriptions", $clientConfig, body: ['id' => $id, 'consent_type' => $consentType], returnType: SubscriptionType::class, decoder: 'json', operationId: 'attachSubscriptionTypeToContact', extraHeaders: ["Intercom-Version" => SdkClient::headerValue($intercomVersion, false)], requestOptions: $requestOptions, errors: [401 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class), 404 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class)]);
+        $sdkResponse = SdkClient::request('POST', "/contacts/" . SdkClient::encodePathSegment($contactId) . "/subscriptions", $clientConfig, body: ['id' => $id, 'consent_type' => $consentType], returnType: SubscriptionType::class, decoder: 'json', operationId: 'attachSubscriptionTypeToContact', extraHeaders: ["Intercom-Version" => SdkClient::headerValue($intercomVersion, false)], requestOptions: $requestOptions, errors: [401 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class), 404 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => SdkClient::typedData($sdkResponse, SubscriptionType::class));
     }
 
@@ -41,7 +41,7 @@ class SubscriptionTypes
     public static function detachSubscriptionTypeToContact(ClientConfig $clientConfig, string $contactId, string $subscriptionId, IntercomVersion|SdkNotGiven $intercomVersion = SdkNotGiven::Value, ?RequestOptions $requestOptions = null): SubscriptionType
     {
 
-        $sdkResponse = SdkClient::request('DELETE', "/contacts/" . SdkClient::encodePathSegment($contactId) . "/subscriptions/" . SdkClient::encodePathSegment($subscriptionId) . "", $clientConfig, returnType: SubscriptionType::class, decoder: 'json', operationId: 'detachSubscriptionTypeToContact', extraHeaders: ["Intercom-Version" => SdkClient::headerValue($intercomVersion, false)], requestOptions: $requestOptions, errors: [401 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class), 404 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class)]);
+        $sdkResponse = SdkClient::request('DELETE', "/contacts/" . SdkClient::encodePathSegment($contactId) . "/subscriptions/" . SdkClient::encodePathSegment($subscriptionId) . "", $clientConfig, returnType: SubscriptionType::class, decoder: 'json', operationId: 'detachSubscriptionTypeToContact', extraHeaders: ["Intercom-Version" => SdkClient::headerValue($intercomVersion, false)], requestOptions: $requestOptions, errors: [401 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class), 404 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => SdkClient::typedData($sdkResponse, SubscriptionType::class));
     }
 
@@ -57,7 +57,7 @@ class SubscriptionTypes
     public static function listSubscriptionTypes(ClientConfig $clientConfig, IntercomVersion|SdkNotGiven $intercomVersion = SdkNotGiven::Value, ?RequestOptions $requestOptions = null): SubscriptionTypeList
     {
 
-        $sdkResponse = SdkClient::request('GET', "/subscription_types", $clientConfig, returnType: SubscriptionTypeList::class, decoder: 'json', operationId: 'listSubscriptionTypes', extraHeaders: ["Intercom-Version" => SdkClient::headerValue($intercomVersion, false)], requestOptions: $requestOptions, errors: [401 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class)]);
+        $sdkResponse = SdkClient::request('GET', "/subscription_types", $clientConfig, returnType: SubscriptionTypeList::class, decoder: 'json', operationId: 'listSubscriptionTypes', extraHeaders: ["Intercom-Version" => SdkClient::headerValue($intercomVersion, false)], requestOptions: $requestOptions, errors: [401 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => SdkClient::typedData($sdkResponse, SubscriptionTypeList::class));
     }
 }

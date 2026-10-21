@@ -69,9 +69,7 @@ class CreateAudienceRequest implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "name") || $data->name === null) {
-            throw new SdkValidationError("name", 'required', "Required property 'name' is missing or null");
-        }
+        if (!property_exists($data, "name") || $data->name === null) { throw new SdkValidationError("name", 'required', "Required property 'name' is missing or null"); }
         return new self(
             name: SdkClient::stringValue($data->name),
             predicates: (property_exists($data, "predicates") && $data->predicates !== null ? array_values(array_map(static fn($item) => SdkClient::hydrateClass($item, Predicate::class), SdkClient::arrayValue($data->predicates))) : SdkNotGiven::Value),

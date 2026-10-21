@@ -22,7 +22,7 @@ trait CallsMethods
     public static function listCalls(ClientConfig $clientConfig, int|SdkNotGiven $page = SdkNotGiven::Value, int|SdkNotGiven $perPage = SdkNotGiven::Value, IntercomVersion|SdkNotGiven $intercomVersion = SdkNotGiven::Value, ?RequestOptions $requestOptions = null): CallList
     {
 
-        $sdkResponse = SdkClient::request('GET', "/calls", $clientConfig, query: ['page' => new SdkQueryValue($page, "form", true), 'per_page' => new SdkQueryValue($perPage, "form", true)], returnType: CallList::class, decoder: 'json', operationId: 'listCalls', extraHeaders: ["Intercom-Version" => SdkClient::headerValue($intercomVersion, false)], requestOptions: $requestOptions, errors: [401 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class)]);
+        $sdkResponse = SdkClient::request('GET', "/calls", $clientConfig, query: ['page' => new SdkQueryValue($page, "form", true), 'per_page' => new SdkQueryValue($perPage, "form", true)], returnType: CallList::class, decoder: 'json', operationId: 'listCalls', extraHeaders: ["Intercom-Version" => SdkClient::headerValue($intercomVersion, false)], requestOptions: $requestOptions, errors: [401 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => SdkClient::typedData($sdkResponse, CallList::class));
     }
 
@@ -39,7 +39,7 @@ trait CallsMethods
     public static function showCall(ClientConfig $clientConfig, string $callId, IntercomVersion|SdkNotGiven $intercomVersion = SdkNotGiven::Value, ?RequestOptions $requestOptions = null): Call
     {
 
-        $sdkResponse = SdkClient::request('GET', "/calls/" . SdkClient::encodePathSegment($callId) . "", $clientConfig, returnType: Call::class, decoder: 'json', operationId: 'showCall', extraHeaders: ["Intercom-Version" => SdkClient::headerValue($intercomVersion, false)], requestOptions: $requestOptions, errors: [401 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class), 404 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class)]);
+        $sdkResponse = SdkClient::request('GET', "/calls/" . SdkClient::encodePathSegment($callId) . "", $clientConfig, returnType: Call::class, decoder: 'json', operationId: 'showCall', extraHeaders: ["Intercom-Version" => SdkClient::headerValue($intercomVersion, false)], requestOptions: $requestOptions, errors: [401 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class), 404 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => SdkClient::typedData($sdkResponse, Call::class));
     }
 
@@ -55,7 +55,7 @@ trait CallsMethods
     public static function showCallRecording(ClientConfig $clientConfig, string $callId, IntercomVersion|SdkNotGiven $intercomVersion = SdkNotGiven::Value, ?RequestOptions $requestOptions = null): mixed
     {
 
-        return SdkClient::request('GET', "/calls/" . SdkClient::encodePathSegment($callId) . "/recording", $clientConfig, decoder: 'empty', operationId: 'showCallRecording', extraHeaders: ["Intercom-Version" => SdkClient::headerValue($intercomVersion, false)], requestOptions: $requestOptions, errors: [401 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class), 404 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class)])->data;
+        return SdkClient::request('GET', "/calls/" . SdkClient::encodePathSegment($callId) . "/recording", $clientConfig, decoder: 'empty', operationId: 'showCallRecording', extraHeaders: ["Intercom-Version" => SdkClient::headerValue($intercomVersion, false)], requestOptions: $requestOptions, errors: [401 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class), 404 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class)])->data;
     }
 
 
@@ -71,7 +71,7 @@ trait CallsMethods
     public static function showCallTranscript(ClientConfig $clientConfig, string $callId, IntercomVersion|SdkNotGiven $intercomVersion = SdkNotGiven::Value, ?RequestOptions $requestOptions = null): string
     {
 
-        $sdkResponse = SdkClient::request('GET', "/calls/" . SdkClient::encodePathSegment($callId) . "/transcript", $clientConfig, decoder: 'text', operationId: 'showCallTranscript', extraHeaders: ["Intercom-Version" => SdkClient::headerValue($intercomVersion, false)], requestOptions: $requestOptions, errors: [404 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class)]);
+        $sdkResponse = SdkClient::request('GET', "/calls/" . SdkClient::encodePathSegment($callId) . "/transcript", $clientConfig, decoder: 'text', operationId: 'showCallTranscript', extraHeaders: ["Intercom-Version" => SdkClient::headerValue($intercomVersion, false)], requestOptions: $requestOptions, errors: [404 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => SdkClient::stringValue($sdkResponse->data));
     }
 
@@ -90,7 +90,7 @@ trait CallsMethods
 
         Validation::validateItems('conversation_ids', $conversationIds, min: 1, max: 20);
 
-        $sdkResponse = SdkClient::request('POST', "/calls/search", $clientConfig, body: ['conversation_ids' => $conversationIds], returnType: ListCallsWithTranscriptsResponse::class, decoder: 'json', operationId: 'listCallsWithTranscripts', extraHeaders: ["Intercom-Version" => SdkClient::headerValue($intercomVersion, false)], requestOptions: $requestOptions, errors: [400 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class), 401 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class)]);
+        $sdkResponse = SdkClient::request('POST', "/calls/search", $clientConfig, body: ['conversation_ids' => $conversationIds], returnType: ListCallsWithTranscriptsResponse::class, decoder: 'json', operationId: 'listCallsWithTranscripts', extraHeaders: ["Intercom-Version" => SdkClient::headerValue($intercomVersion, false)], requestOptions: $requestOptions, errors: [400 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class), 401 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => SdkClient::typedData($sdkResponse, ListCallsWithTranscriptsResponse::class));
     }
 
@@ -109,7 +109,7 @@ trait CallsMethods
     public static function registerFinVoiceCall(ClientConfig $clientConfig, string $phoneNumber, string $callId, RegisterFinVoiceCallSource|SdkNotGiven $source = SdkNotGiven::Value, array|null|SdkNotGiven $data = SdkNotGiven::Value, ?RequestOptions $requestOptions = null): AiCallResponse
     {
 
-        $sdkResponse = SdkClient::request('POST', "/fin_voice/register", $clientConfig, body: ['phone_number' => $phoneNumber, 'call_id' => $callId, 'source' => $source, 'data' => $data], returnType: AiCallResponse::class, decoder: 'json', operationId: 'registerFinVoiceCall', requestOptions: $requestOptions, errors: [400 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class), 409 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class), "default" => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class)]);
+        $sdkResponse = SdkClient::request('POST', "/fin_voice/register", $clientConfig, body: ['phone_number' => $phoneNumber, 'call_id' => $callId, 'source' => $source, 'data' => $data], returnType: AiCallResponse::class, decoder: 'json', operationId: 'registerFinVoiceCall', requestOptions: $requestOptions, errors: [400 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class), 409 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class), "default" => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => SdkClient::typedData($sdkResponse, AiCallResponse::class));
     }
 
@@ -125,7 +125,7 @@ trait CallsMethods
     public static function collectFinVoiceCallById(ClientConfig $clientConfig, int $id, ?RequestOptions $requestOptions = null): AiCallResponse
     {
 
-        $sdkResponse = SdkClient::request('GET', "/fin_voice/collect/" . SdkClient::encodePathSegment($id) . "", $clientConfig, returnType: AiCallResponse::class, decoder: 'json', operationId: 'collectFinVoiceCallById', requestOptions: $requestOptions, errors: [404 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class), "default" => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class)]);
+        $sdkResponse = SdkClient::request('GET', "/fin_voice/collect/" . SdkClient::encodePathSegment($id) . "", $clientConfig, returnType: AiCallResponse::class, decoder: 'json', operationId: 'collectFinVoiceCallById', requestOptions: $requestOptions, errors: [404 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class), "default" => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => SdkClient::typedData($sdkResponse, AiCallResponse::class));
     }
 
@@ -141,7 +141,7 @@ trait CallsMethods
     public static function collectFinVoiceCallByExternalId(ClientConfig $clientConfig, string $externalId, ?RequestOptions $requestOptions = null): AiCallResponse
     {
 
-        $sdkResponse = SdkClient::request('GET', "/fin_voice/external_id/" . SdkClient::encodePathSegment($externalId) . "", $clientConfig, returnType: AiCallResponse::class, decoder: 'json', operationId: 'collectFinVoiceCallByExternalId', requestOptions: $requestOptions, errors: [404 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class), "default" => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class)]);
+        $sdkResponse = SdkClient::request('GET', "/fin_voice/external_id/" . SdkClient::encodePathSegment($externalId) . "", $clientConfig, returnType: AiCallResponse::class, decoder: 'json', operationId: 'collectFinVoiceCallByExternalId', requestOptions: $requestOptions, errors: [404 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class), "default" => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => SdkClient::typedData($sdkResponse, AiCallResponse::class));
     }
 
@@ -157,7 +157,7 @@ trait CallsMethods
     public static function collectFinVoiceCallByPhoneNumber(ClientConfig $clientConfig, string $phoneNumber, ?RequestOptions $requestOptions = null): AiCallResponse
     {
 
-        $sdkResponse = SdkClient::request('GET', "/fin_voice/phone_number/" . SdkClient::encodePathSegment($phoneNumber) . "", $clientConfig, returnType: AiCallResponse::class, decoder: 'json', operationId: 'collectFinVoiceCallByPhoneNumber', requestOptions: $requestOptions, errors: [401 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class), 404 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class), "default" => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class)]);
+        $sdkResponse = SdkClient::request('GET', "/fin_voice/phone_number/" . SdkClient::encodePathSegment($phoneNumber) . "", $clientConfig, returnType: AiCallResponse::class, decoder: 'json', operationId: 'collectFinVoiceCallByPhoneNumber', requestOptions: $requestOptions, errors: [401 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class), 404 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class), "default" => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => SdkClient::typedData($sdkResponse, AiCallResponse::class));
     }
 
@@ -173,7 +173,7 @@ trait CallsMethods
     public static function collectFinVoiceCallsByConversationId(ClientConfig $clientConfig, string $conversationId, ?RequestOptions $requestOptions = null): array
     {
 
-        $sdkResponse = SdkClient::request('GET', "/fin_voice/conversation/" . SdkClient::encodePathSegment($conversationId) . "", $clientConfig, decoder: 'json', operationId: 'collectFinVoiceCallsByConversationId', requestOptions: $requestOptions, errors: [401 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class), "default" => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class)]);
+        $sdkResponse = SdkClient::request('GET', "/fin_voice/conversation/" . SdkClient::encodePathSegment($conversationId) . "", $clientConfig, decoder: 'json', operationId: 'collectFinVoiceCallsByConversationId', requestOptions: $requestOptions, errors: [401 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class), "default" => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => array_values(array_map(static fn($item) => SdkClient::hydrateClass($item, AiCallResponse::class), SdkClient::arrayValue($sdkResponse->data))));
     }
 }

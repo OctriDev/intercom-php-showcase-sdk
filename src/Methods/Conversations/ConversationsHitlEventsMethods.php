@@ -21,7 +21,7 @@ trait ConversationsHitlEventsMethods
     public static function listHitlEvents(ClientConfig $clientConfig, string $id, IntercomVersion|SdkNotGiven $intercomVersion = SdkNotGiven::Value, ?RequestOptions $requestOptions = null): HitlEventList
     {
 
-        $sdkResponse = SdkClient::request('GET', "/conversations/" . SdkClient::encodePathSegment($id) . "/hitl_events", $clientConfig, returnType: HitlEventList::class, decoder: 'json', operationId: 'listHitlEvents', extraHeaders: ["Intercom-Version" => SdkClient::headerValue($intercomVersion, false)], requestOptions: $requestOptions, errors: [401 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class), 404 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class)]);
+        $sdkResponse = SdkClient::request('GET', "/conversations/" . SdkClient::encodePathSegment($id) . "/hitl_events", $clientConfig, returnType: HitlEventList::class, decoder: 'json', operationId: 'listHitlEvents', extraHeaders: ["Intercom-Version" => SdkClient::headerValue($intercomVersion, false)], requestOptions: $requestOptions, errors: [401 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class), 404 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => SdkClient::typedData($sdkResponse, HitlEventList::class));
     }
 }

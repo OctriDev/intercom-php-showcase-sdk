@@ -16,26 +16,11 @@ final readonly class RegisterFinVoiceCallRequestSourceEnum implements SdkOpenEnu
     public const ZOOM_PHONE = "zoom_phone";
     public const AWS_CONNECT = "aws_connect";
     private function __construct(public string $value) {}
-    public static function from(string|int $value): static
-    {
-        return new self((string) $value);
-    }
-    public static function tryFrom(string|int|null $value): ?static
-    {
-        return $value === null ? null : self::from($value);
-    }
-    public function getValue(): string
-    {
-        return $this->value;
-    }
-    public function jsonSerialize(): string
-    {
-        return $this->value;
-    }
-    public function __toString(): string
-    {
-        return (string) $this->value;
-    }
+    public static function from(string|int $value): static { return new self((string) $value); }
+    public static function tryFrom(string|int|null $value): ?static { return $value === null ? null : self::from($value); }
+    public function getValue(): string { return $this->value; }
+    public function jsonSerialize(): string { return $this->value; }
+    public function __toString(): string { return (string) $this->value; }
 }
 
 /**
@@ -110,12 +95,8 @@ class RegisterFinVoiceCallRequest implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "phone_number") || $data->phone_number === null) {
-            throw new SdkValidationError("phone_number", 'required', "Required property 'phone_number' is missing or null");
-        }
-        if (!property_exists($data, "call_id") || $data->call_id === null) {
-            throw new SdkValidationError("call_id", 'required', "Required property 'call_id' is missing or null");
-        }
+        if (!property_exists($data, "phone_number") || $data->phone_number === null) { throw new SdkValidationError("phone_number", 'required', "Required property 'phone_number' is missing or null"); }
+        if (!property_exists($data, "call_id") || $data->call_id === null) { throw new SdkValidationError("call_id", 'required', "Required property 'call_id' is missing or null"); }
         return new self(
             phoneNumber: SdkClient::stringValue($data->phone_number),
             callId: SdkClient::stringValue($data->call_id),
