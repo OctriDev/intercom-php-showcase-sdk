@@ -149,9 +149,15 @@ class CreateInternalArticleRequest implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "title") || $data->title === null) { throw new SdkValidationError("title", 'required', "Required property 'title' is missing or null"); }
-        if (!property_exists($data, "author_id") || $data->author_id === null) { throw new SdkValidationError("author_id", 'required', "Required property 'author_id' is missing or null"); }
-        if (!property_exists($data, "owner_id") || $data->owner_id === null) { throw new SdkValidationError("owner_id", 'required', "Required property 'owner_id' is missing or null"); }
+        if (!property_exists($data, "title") || $data->title === null) {
+            throw new SdkValidationError("title", 'required', "Required property 'title' is missing or null");
+        }
+        if (!property_exists($data, "author_id") || $data->author_id === null) {
+            throw new SdkValidationError("author_id", 'required', "Required property 'author_id' is missing or null");
+        }
+        if (!property_exists($data, "owner_id") || $data->owner_id === null) {
+            throw new SdkValidationError("owner_id", 'required', "Required property 'owner_id' is missing or null");
+        }
         return new self(
             title: SdkClient::stringValue($data->title),
             authorId: SdkClient::intValue($data->author_id),

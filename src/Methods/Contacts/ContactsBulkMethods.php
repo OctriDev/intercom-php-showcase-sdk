@@ -24,7 +24,7 @@ trait ContactsBulkMethods
 
         Validation::validateItems('contacts', $contacts, max: 100);
 
-        $sdkResponse = SdkClient::request('POST', "/contacts/bulk", $clientConfig, body: ['contacts' => $contacts, 'job' => $job], returnType: ContactsBulkJob::class, decoder: 'json', operationId: 'bulkCreateContacts', extraHeaders: ["Intercom-Version" => SdkClient::headerValue($intercomVersion, false)], requestOptions: $requestOptions, errors: [401 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class), 403 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class), 404 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class), 422 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class)]);
+        $sdkResponse = SdkClient::request('POST', "/contacts/bulk", $clientConfig, body: ['contacts' => $contacts, 'job' => $job], returnType: ContactsBulkJob::class, decoder: 'json', operationId: 'bulkCreateContacts', extraHeaders: ["Intercom-Version" => SdkClient::headerValue($intercomVersion, false)], requestOptions: $requestOptions, errors: [401 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class), 403 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class), 404 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class), 422 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => SdkClient::typedData($sdkResponse, ContactsBulkJob::class));
     }
 
@@ -44,7 +44,7 @@ trait ContactsBulkMethods
 
         Validation::validateItems('contacts', $contacts, max: 100);
 
-        $sdkResponse = SdkClient::request('PUT', "/contacts/bulk", $clientConfig, body: ['contacts' => $contacts, 'job' => $job], returnType: ContactsBulkJob::class, decoder: 'json', operationId: 'bulkUpdateContacts', extraHeaders: ["Intercom-Version" => SdkClient::headerValue($intercomVersion, false)], requestOptions: $requestOptions, errors: [401 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class), 403 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class), 404 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class), 422 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class)]);
+        $sdkResponse = SdkClient::request('PUT', "/contacts/bulk", $clientConfig, body: ['contacts' => $contacts, 'job' => $job], returnType: ContactsBulkJob::class, decoder: 'json', operationId: 'bulkUpdateContacts', extraHeaders: ["Intercom-Version" => SdkClient::headerValue($intercomVersion, false)], requestOptions: $requestOptions, errors: [401 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class), 403 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class), 404 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class), 422 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => SdkClient::typedData($sdkResponse, ContactsBulkJob::class));
     }
 
@@ -64,7 +64,7 @@ trait ContactsBulkMethods
 
         Validation::validateItems('contacts', $contacts, max: 100);
 
-        $sdkResponse = SdkClient::request('POST', "/contacts/bulk/delete", $clientConfig, body: ['contacts' => $contacts, 'job' => $job], returnType: ContactsBulkJob::class, decoder: 'json', operationId: 'bulkDeleteContacts', extraHeaders: ["Intercom-Version" => SdkClient::headerValue($intercomVersion, false)], requestOptions: $requestOptions, errors: [401 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class), 403 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class), 404 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class), 422 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class)]);
+        $sdkResponse = SdkClient::request('POST', "/contacts/bulk/delete", $clientConfig, body: ['contacts' => $contacts, 'job' => $job], returnType: ContactsBulkJob::class, decoder: 'json', operationId: 'bulkDeleteContacts', extraHeaders: ["Intercom-Version" => SdkClient::headerValue($intercomVersion, false)], requestOptions: $requestOptions, errors: [401 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class), 403 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class), 404 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class), 422 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => SdkClient::typedData($sdkResponse, ContactsBulkJob::class));
     }
 
@@ -81,7 +81,7 @@ trait ContactsBulkMethods
     public static function showBulkUpdateContactsJob(ClientConfig $clientConfig, string $id, IntercomVersion|SdkNotGiven $intercomVersion = SdkNotGiven::Value, ?RequestOptions $requestOptions = null): ContactsBulkJob
     {
 
-        $sdkResponse = SdkClient::request('GET', "/contacts/bulk/" . SdkClient::encodePathSegment($id) . "", $clientConfig, returnType: ContactsBulkJob::class, decoder: 'json', operationId: 'showBulkUpdateContactsJob', extraHeaders: ["Intercom-Version" => SdkClient::headerValue($intercomVersion, false)], requestOptions: $requestOptions, errors: [401 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class)]);
+        $sdkResponse = SdkClient::request('GET', "/contacts/bulk/" . SdkClient::encodePathSegment($id) . "", $clientConfig, returnType: ContactsBulkJob::class, decoder: 'json', operationId: 'showBulkUpdateContactsJob', extraHeaders: ["Intercom-Version" => SdkClient::headerValue($intercomVersion, false)], requestOptions: $requestOptions, errors: [401 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => SdkClient::typedData($sdkResponse, ContactsBulkJob::class));
     }
 }

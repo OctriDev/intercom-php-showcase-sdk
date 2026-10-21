@@ -26,7 +26,7 @@ class Audiences
             Validation::validateRange('per_page', $perPage, max: 50);
         }
 
-        $sdkResponse = SdkClient::request('GET', "/audiences", $clientConfig, query: ['page' => new SdkQueryValue($page, "form", true), 'per_page' => new SdkQueryValue($perPage, "form", true)], returnType: AudienceList::class, decoder: 'json', operationId: 'listAudiences', extraHeaders: ["Intercom-Version" => SdkClient::headerValue($intercomVersion, false)], requestOptions: $requestOptions, errors: [401 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class)]);
+        $sdkResponse = SdkClient::request('GET', "/audiences", $clientConfig, query: ['page' => new SdkQueryValue($page, "form", true), 'per_page' => new SdkQueryValue($perPage, "form", true)], returnType: AudienceList::class, decoder: 'json', operationId: 'listAudiences', extraHeaders: ["Intercom-Version" => SdkClient::headerValue($intercomVersion, false)], requestOptions: $requestOptions, errors: [401 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => SdkClient::typedData($sdkResponse, AudienceList::class));
     }
 
@@ -112,7 +112,7 @@ class Audiences
     public static function createAudience(ClientConfig $clientConfig, string $name, IntercomVersion|SdkNotGiven $intercomVersion = SdkNotGiven::Value, array|SdkNotGiven $predicates = SdkNotGiven::Value, array|SdkNotGiven $rolePredicates = SdkNotGiven::Value, ?RequestOptions $requestOptions = null): Audience
     {
 
-        $sdkResponse = SdkClient::request('POST', "/audiences", $clientConfig, body: ['name' => $name, 'predicates' => $predicates, 'role_predicates' => $rolePredicates], returnType: Audience::class, decoder: 'json', operationId: 'createAudience', extraHeaders: ["Intercom-Version" => SdkClient::headerValue($intercomVersion, false)], requestOptions: $requestOptions, errors: [401 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class), 422 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class)]);
+        $sdkResponse = SdkClient::request('POST', "/audiences", $clientConfig, body: ['name' => $name, 'predicates' => $predicates, 'role_predicates' => $rolePredicates], returnType: Audience::class, decoder: 'json', operationId: 'createAudience', extraHeaders: ["Intercom-Version" => SdkClient::headerValue($intercomVersion, false)], requestOptions: $requestOptions, errors: [401 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class), 422 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => SdkClient::typedData($sdkResponse, Audience::class));
     }
 
@@ -129,7 +129,7 @@ class Audiences
     public static function retrieveAudience(ClientConfig $clientConfig, string $id, IntercomVersion|SdkNotGiven $intercomVersion = SdkNotGiven::Value, ?RequestOptions $requestOptions = null): Audience
     {
 
-        $sdkResponse = SdkClient::request('GET', "/audiences/" . SdkClient::encodePathSegment($id) . "", $clientConfig, returnType: Audience::class, decoder: 'json', operationId: 'retrieveAudience', extraHeaders: ["Intercom-Version" => SdkClient::headerValue($intercomVersion, false)], requestOptions: $requestOptions, errors: [401 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class), 404 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class)]);
+        $sdkResponse = SdkClient::request('GET', "/audiences/" . SdkClient::encodePathSegment($id) . "", $clientConfig, returnType: Audience::class, decoder: 'json', operationId: 'retrieveAudience', extraHeaders: ["Intercom-Version" => SdkClient::headerValue($intercomVersion, false)], requestOptions: $requestOptions, errors: [401 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class), 404 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => SdkClient::typedData($sdkResponse, Audience::class));
     }
 
@@ -149,7 +149,7 @@ class Audiences
     public static function updateAudience(ClientConfig $clientConfig, string $id, IntercomVersion|SdkNotGiven $intercomVersion = SdkNotGiven::Value, string|SdkNotGiven $name = SdkNotGiven::Value, array|SdkNotGiven $predicates = SdkNotGiven::Value, array|SdkNotGiven $rolePredicates = SdkNotGiven::Value, ?RequestOptions $requestOptions = null): Audience
     {
 
-        $sdkResponse = SdkClient::request('PUT', "/audiences/" . SdkClient::encodePathSegment($id) . "", $clientConfig, body: ['name' => $name, 'predicates' => $predicates, 'role_predicates' => $rolePredicates], returnType: Audience::class, decoder: 'json', operationId: 'updateAudience', extraHeaders: ["Intercom-Version" => SdkClient::headerValue($intercomVersion, false)], requestOptions: $requestOptions, errors: [401 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class), 404 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class), 422 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class)]);
+        $sdkResponse = SdkClient::request('PUT', "/audiences/" . SdkClient::encodePathSegment($id) . "", $clientConfig, body: ['name' => $name, 'predicates' => $predicates, 'role_predicates' => $rolePredicates], returnType: Audience::class, decoder: 'json', operationId: 'updateAudience', extraHeaders: ["Intercom-Version" => SdkClient::headerValue($intercomVersion, false)], requestOptions: $requestOptions, errors: [401 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class), 404 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class), 422 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => SdkClient::typedData($sdkResponse, Audience::class));
     }
 
@@ -165,6 +165,6 @@ class Audiences
     public static function deleteAudience(ClientConfig $clientConfig, string $id, IntercomVersion|SdkNotGiven $intercomVersion = SdkNotGiven::Value, ?RequestOptions $requestOptions = null): mixed
     {
 
-        return SdkClient::request('DELETE', "/audiences/" . SdkClient::encodePathSegment($id) . "", $clientConfig, decoder: 'empty', operationId: 'deleteAudience', extraHeaders: ["Intercom-Version" => SdkClient::headerValue($intercomVersion, false)], requestOptions: $requestOptions, errors: [401 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class), 404 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class)])->data;
+        return SdkClient::request('DELETE', "/audiences/" . SdkClient::encodePathSegment($id) . "", $clientConfig, decoder: 'empty', operationId: 'deleteAudience', extraHeaders: ["Intercom-Version" => SdkClient::headerValue($intercomVersion, false)], requestOptions: $requestOptions, errors: [401 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class), 404 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class)])->data;
     }
 }

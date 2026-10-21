@@ -331,7 +331,9 @@ class BulkCreateContactsRequest implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "contacts") || $data->contacts === null) { throw new SdkValidationError("contacts", 'required', "Required property 'contacts' is missing or null"); }
+        if (!property_exists($data, "contacts") || $data->contacts === null) {
+            throw new SdkValidationError("contacts", 'required', "Required property 'contacts' is missing or null");
+        }
         return new self(
             contacts: array_values(array_map(static fn($item) => SdkClient::hydrateClass($item, BulkCreateContactsRequestContactsItem::class), SdkClient::arrayValue($data->contacts))),
             job: (property_exists($data, "job") && $data->job !== null ? SdkClient::hydrateClass($data->job, BulkCreateContactsRequestJob::class) : SdkNotGiven::Value),

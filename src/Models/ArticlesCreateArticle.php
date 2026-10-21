@@ -15,11 +15,26 @@ final readonly class CreateArticleRequestRequestStateEnum implements SdkOpenEnum
     public const PUBLISHED = "published";
     public const DRAFT = "draft";
     private function __construct(public string $value) {}
-    public static function from(string|int $value): static { return new self((string) $value); }
-    public static function tryFrom(string|int|null $value): ?static { return $value === null ? null : self::from($value); }
-    public function getValue(): string { return $this->value; }
-    public function jsonSerialize(): string { return $this->value; }
-    public function __toString(): string { return (string) $this->value; }
+    public static function from(string|int $value): static
+    {
+        return new self((string) $value);
+    }
+    public static function tryFrom(string|int|null $value): ?static
+    {
+        return $value === null ? null : self::from($value);
+    }
+    public function getValue(): string
+    {
+        return $this->value;
+    }
+    public function jsonSerialize(): string
+    {
+        return $this->value;
+    }
+    public function __toString(): string
+    {
+        return (string) $this->value;
+    }
 }
 
 /**
@@ -238,8 +253,12 @@ class CreateArticleRequestRequest implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "title") || $data->title === null) { throw new SdkValidationError("title", 'required', "Required property 'title' is missing or null"); }
-        if (!property_exists($data, "author_id") || $data->author_id === null) { throw new SdkValidationError("author_id", 'required', "Required property 'author_id' is missing or null"); }
+        if (!property_exists($data, "title") || $data->title === null) {
+            throw new SdkValidationError("title", 'required', "Required property 'title' is missing or null");
+        }
+        if (!property_exists($data, "author_id") || $data->author_id === null) {
+            throw new SdkValidationError("author_id", 'required', "Required property 'author_id' is missing or null");
+        }
         return new self(
             title: SdkClient::stringValue($data->title),
             authorId: SdkClient::intValue($data->author_id),

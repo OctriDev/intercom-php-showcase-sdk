@@ -45,7 +45,9 @@ class DetachContactFromConversationRequest implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "admin_id") || $data->admin_id === null) { throw new SdkValidationError("admin_id", 'required', "Required property 'admin_id' is missing or null"); }
+        if (!property_exists($data, "admin_id") || $data->admin_id === null) {
+            throw new SdkValidationError("admin_id", 'required', "Required property 'admin_id' is missing or null");
+        }
         return new self(
             adminId: SdkClient::stringValue($data->admin_id),
         );

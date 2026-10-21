@@ -12,11 +12,26 @@ final readonly class CreateNewsItemState implements SdkOpenEnum
     public const DRAFT = "draft";
     public const LIVE = "live";
     private function __construct(public string $value) {}
-    public static function from(string|int $value): static { return new self((string) $value); }
-    public static function tryFrom(string|int|null $value): ?static { return $value === null ? null : self::from($value); }
-    public function getValue(): string { return $this->value; }
-    public function jsonSerialize(): string { return $this->value; }
-    public function __toString(): string { return (string) $this->value; }
+    public static function from(string|int $value): static
+    {
+        return new self((string) $value);
+    }
+    public static function tryFrom(string|int|null $value): ?static
+    {
+        return $value === null ? null : self::from($value);
+    }
+    public function getValue(): string
+    {
+        return $this->value;
+    }
+    public function jsonSerialize(): string
+    {
+        return $this->value;
+    }
+    public function __toString(): string
+    {
+        return (string) $this->value;
+    }
 }
 
 final readonly class UpdateNewsItemState implements SdkOpenEnum
@@ -24,11 +39,26 @@ final readonly class UpdateNewsItemState implements SdkOpenEnum
     public const DRAFT = "draft";
     public const LIVE = "live";
     private function __construct(public string $value) {}
-    public static function from(string|int $value): static { return new self((string) $value); }
-    public static function tryFrom(string|int|null $value): ?static { return $value === null ? null : self::from($value); }
-    public function getValue(): string { return $this->value; }
-    public function jsonSerialize(): string { return $this->value; }
-    public function __toString(): string { return (string) $this->value; }
+    public static function from(string|int $value): static
+    {
+        return new self((string) $value);
+    }
+    public static function tryFrom(string|int|null $value): ?static
+    {
+        return $value === null ? null : self::from($value);
+    }
+    public function getValue(): string
+    {
+        return $this->value;
+    }
+    public function jsonSerialize(): string
+    {
+        return $this->value;
+    }
+    public function __toString(): string
+    {
+        return (string) $this->value;
+    }
 }
 
 class News
@@ -44,7 +74,7 @@ class News
     public static function listNewsItems(ClientConfig $clientConfig, IntercomVersion|SdkNotGiven $intercomVersion = SdkNotGiven::Value, ?RequestOptions $requestOptions = null): PaginatedResponse
     {
 
-        $sdkResponse = SdkClient::request('GET', "/news/news_items", $clientConfig, returnType: PaginatedResponse::class, decoder: 'json', operationId: 'listNewsItems', extraHeaders: ["Intercom-Version" => SdkClient::headerValue($intercomVersion, false)], requestOptions: $requestOptions, errors: [401 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class)]);
+        $sdkResponse = SdkClient::request('GET', "/news/news_items", $clientConfig, returnType: PaginatedResponse::class, decoder: 'json', operationId: 'listNewsItems', extraHeaders: ["Intercom-Version" => SdkClient::headerValue($intercomVersion, false)], requestOptions: $requestOptions, errors: [401 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => SdkClient::typedData($sdkResponse, PaginatedResponse::class));
     }
 
@@ -68,7 +98,7 @@ class News
     public static function createNewsItem(ClientConfig $clientConfig, string $title, int $senderId, IntercomVersion|SdkNotGiven $intercomVersion = SdkNotGiven::Value, string|SdkNotGiven $body = SdkNotGiven::Value, CreateNewsItemState|SdkNotGiven $state = SdkNotGiven::Value, bool|SdkNotGiven $deliverSilently = SdkNotGiven::Value, array|SdkNotGiven $labels = SdkNotGiven::Value, array|SdkNotGiven $reactions = SdkNotGiven::Value, array|SdkNotGiven $newsfeedAssignments = SdkNotGiven::Value, ?RequestOptions $requestOptions = null): NewsItem
     {
 
-        $sdkResponse = SdkClient::request('POST', "/news/news_items", $clientConfig, body: ['title' => $title, 'sender_id' => $senderId, 'body' => $body, 'state' => $state, 'deliver_silently' => $deliverSilently, 'labels' => $labels, 'reactions' => $reactions, 'newsfeed_assignments' => $newsfeedAssignments], returnType: NewsItem::class, decoder: 'json', operationId: 'createNewsItem', extraHeaders: ["Intercom-Version" => SdkClient::headerValue($intercomVersion, false)], requestOptions: $requestOptions, errors: [401 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class)]);
+        $sdkResponse = SdkClient::request('POST', "/news/news_items", $clientConfig, body: ['title' => $title, 'sender_id' => $senderId, 'body' => $body, 'state' => $state, 'deliver_silently' => $deliverSilently, 'labels' => $labels, 'reactions' => $reactions, 'newsfeed_assignments' => $newsfeedAssignments], returnType: NewsItem::class, decoder: 'json', operationId: 'createNewsItem', extraHeaders: ["Intercom-Version" => SdkClient::headerValue($intercomVersion, false)], requestOptions: $requestOptions, errors: [401 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => SdkClient::typedData($sdkResponse, NewsItem::class));
     }
 
@@ -85,7 +115,7 @@ class News
     public static function retrieveNewsItem(ClientConfig $clientConfig, int $newsItemId, IntercomVersion|SdkNotGiven $intercomVersion = SdkNotGiven::Value, ?RequestOptions $requestOptions = null): NewsItem
     {
 
-        $sdkResponse = SdkClient::request('GET', "/news/news_items/" . SdkClient::encodePathSegment($newsItemId) . "", $clientConfig, returnType: NewsItem::class, decoder: 'json', operationId: 'retrieveNewsItem', extraHeaders: ["Intercom-Version" => SdkClient::headerValue($intercomVersion, false)], requestOptions: $requestOptions, errors: [401 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class), 404 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class)]);
+        $sdkResponse = SdkClient::request('GET', "/news/news_items/" . SdkClient::encodePathSegment($newsItemId) . "", $clientConfig, returnType: NewsItem::class, decoder: 'json', operationId: 'retrieveNewsItem', extraHeaders: ["Intercom-Version" => SdkClient::headerValue($intercomVersion, false)], requestOptions: $requestOptions, errors: [401 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class), 404 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => SdkClient::typedData($sdkResponse, NewsItem::class));
     }
 
@@ -110,7 +140,7 @@ class News
     public static function updateNewsItem(ClientConfig $clientConfig, int $newsItemId, string $title, int $senderId, IntercomVersion|SdkNotGiven $intercomVersion = SdkNotGiven::Value, string|SdkNotGiven $body = SdkNotGiven::Value, UpdateNewsItemState|SdkNotGiven $state = SdkNotGiven::Value, bool|SdkNotGiven $deliverSilently = SdkNotGiven::Value, array|SdkNotGiven $labels = SdkNotGiven::Value, array|SdkNotGiven $reactions = SdkNotGiven::Value, array|SdkNotGiven $newsfeedAssignments = SdkNotGiven::Value, ?RequestOptions $requestOptions = null): NewsItem
     {
 
-        $sdkResponse = SdkClient::request('PUT', "/news/news_items/" . SdkClient::encodePathSegment($newsItemId) . "", $clientConfig, body: ['title' => $title, 'sender_id' => $senderId, 'body' => $body, 'state' => $state, 'deliver_silently' => $deliverSilently, 'labels' => $labels, 'reactions' => $reactions, 'newsfeed_assignments' => $newsfeedAssignments], returnType: NewsItem::class, decoder: 'json', operationId: 'updateNewsItem', extraHeaders: ["Intercom-Version" => SdkClient::headerValue($intercomVersion, false)], requestOptions: $requestOptions, errors: [401 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class), 404 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class)]);
+        $sdkResponse = SdkClient::request('PUT', "/news/news_items/" . SdkClient::encodePathSegment($newsItemId) . "", $clientConfig, body: ['title' => $title, 'sender_id' => $senderId, 'body' => $body, 'state' => $state, 'deliver_silently' => $deliverSilently, 'labels' => $labels, 'reactions' => $reactions, 'newsfeed_assignments' => $newsfeedAssignments], returnType: NewsItem::class, decoder: 'json', operationId: 'updateNewsItem', extraHeaders: ["Intercom-Version" => SdkClient::headerValue($intercomVersion, false)], requestOptions: $requestOptions, errors: [401 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class), 404 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => SdkClient::typedData($sdkResponse, NewsItem::class));
     }
 
@@ -127,7 +157,7 @@ class News
     public static function deleteNewsItem(ClientConfig $clientConfig, int $newsItemId, IntercomVersion|SdkNotGiven $intercomVersion = SdkNotGiven::Value, ?RequestOptions $requestOptions = null): DeletedObject
     {
 
-        $sdkResponse = SdkClient::request('DELETE', "/news/news_items/" . SdkClient::encodePathSegment($newsItemId) . "", $clientConfig, returnType: DeletedObject::class, decoder: 'json', operationId: 'deleteNewsItem', extraHeaders: ["Intercom-Version" => SdkClient::headerValue($intercomVersion, false)], requestOptions: $requestOptions, errors: [401 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class), 404 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class)]);
+        $sdkResponse = SdkClient::request('DELETE', "/news/news_items/" . SdkClient::encodePathSegment($newsItemId) . "", $clientConfig, returnType: DeletedObject::class, decoder: 'json', operationId: 'deleteNewsItem', extraHeaders: ["Intercom-Version" => SdkClient::headerValue($intercomVersion, false)], requestOptions: $requestOptions, errors: [401 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class), 404 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => SdkClient::typedData($sdkResponse, DeletedObject::class));
     }
 
@@ -144,7 +174,7 @@ class News
     public static function listLiveNewsfeedItems(ClientConfig $clientConfig, string $newsfeedId, IntercomVersion|SdkNotGiven $intercomVersion = SdkNotGiven::Value, ?RequestOptions $requestOptions = null): PaginatedResponse
     {
 
-        $sdkResponse = SdkClient::request('GET', "/news/newsfeeds/" . SdkClient::encodePathSegment($newsfeedId) . "/items", $clientConfig, returnType: PaginatedResponse::class, decoder: 'json', operationId: 'listLiveNewsfeedItems', extraHeaders: ["Intercom-Version" => SdkClient::headerValue($intercomVersion, false)], requestOptions: $requestOptions, errors: [401 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class)]);
+        $sdkResponse = SdkClient::request('GET', "/news/newsfeeds/" . SdkClient::encodePathSegment($newsfeedId) . "/items", $clientConfig, returnType: PaginatedResponse::class, decoder: 'json', operationId: 'listLiveNewsfeedItems', extraHeaders: ["Intercom-Version" => SdkClient::headerValue($intercomVersion, false)], requestOptions: $requestOptions, errors: [401 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => SdkClient::typedData($sdkResponse, PaginatedResponse::class));
     }
 
@@ -160,7 +190,7 @@ class News
     public static function listNewsfeeds(ClientConfig $clientConfig, IntercomVersion|SdkNotGiven $intercomVersion = SdkNotGiven::Value, ?RequestOptions $requestOptions = null): PaginatedResponse
     {
 
-        $sdkResponse = SdkClient::request('GET', "/news/newsfeeds", $clientConfig, returnType: PaginatedResponse::class, decoder: 'json', operationId: 'listNewsfeeds', extraHeaders: ["Intercom-Version" => SdkClient::headerValue($intercomVersion, false)], requestOptions: $requestOptions, errors: [401 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class)]);
+        $sdkResponse = SdkClient::request('GET', "/news/newsfeeds", $clientConfig, returnType: PaginatedResponse::class, decoder: 'json', operationId: 'listNewsfeeds', extraHeaders: ["Intercom-Version" => SdkClient::headerValue($intercomVersion, false)], requestOptions: $requestOptions, errors: [401 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => SdkClient::typedData($sdkResponse, PaginatedResponse::class));
     }
 
@@ -177,7 +207,7 @@ class News
     public static function retrieveNewsfeed(ClientConfig $clientConfig, string $newsfeedId, IntercomVersion|SdkNotGiven $intercomVersion = SdkNotGiven::Value, ?RequestOptions $requestOptions = null): Newsfeed
     {
 
-        $sdkResponse = SdkClient::request('GET', "/news/newsfeeds/" . SdkClient::encodePathSegment($newsfeedId) . "", $clientConfig, returnType: Newsfeed::class, decoder: 'json', operationId: 'retrieveNewsfeed', extraHeaders: ["Intercom-Version" => SdkClient::headerValue($intercomVersion, false)], requestOptions: $requestOptions, errors: [401 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class)]);
+        $sdkResponse = SdkClient::request('GET', "/news/newsfeeds/" . SdkClient::encodePathSegment($newsfeedId) . "", $clientConfig, returnType: Newsfeed::class, decoder: 'json', operationId: 'retrieveNewsfeed', extraHeaders: ["Intercom-Version" => SdkClient::headerValue($intercomVersion, false)], requestOptions: $requestOptions, errors: [401 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => SdkClient::typedData($sdkResponse, Newsfeed::class));
     }
 }

@@ -203,18 +203,42 @@ class ExternalPage implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "type") || $data->type === null) { throw new SdkValidationError("type", 'required', "Required property 'type' is missing or null"); }
-        if (!property_exists($data, "id") || $data->id === null) { throw new SdkValidationError("id", 'required', "Required property 'id' is missing or null"); }
-        if (!property_exists($data, "title") || $data->title === null) { throw new SdkValidationError("title", 'required', "Required property 'title' is missing or null"); }
-        if (!property_exists($data, "html") || $data->html === null) { throw new SdkValidationError("html", 'required', "Required property 'html' is missing or null"); }
-        if (!property_exists($data, "ai_agent_availability") || $data->ai_agent_availability === null) { throw new SdkValidationError("ai_agent_availability", 'required', "Required property 'ai_agent_availability' is missing or null"); }
-        if (!property_exists($data, "ai_copilot_availability") || $data->ai_copilot_availability === null) { throw new SdkValidationError("ai_copilot_availability", 'required', "Required property 'ai_copilot_availability' is missing or null"); }
-        if (!property_exists($data, "locale") || $data->locale === null) { throw new SdkValidationError("locale", 'required', "Required property 'locale' is missing or null"); }
-        if (!property_exists($data, "source_id") || $data->source_id === null) { throw new SdkValidationError("source_id", 'required', "Required property 'source_id' is missing or null"); }
-        if (!property_exists($data, "external_id") || $data->external_id === null) { throw new SdkValidationError("external_id", 'required', "Required property 'external_id' is missing or null"); }
-        if (!property_exists($data, "created_at") || $data->created_at === null) { throw new SdkValidationError("created_at", 'required', "Required property 'created_at' is missing or null"); }
-        if (!property_exists($data, "updated_at") || $data->updated_at === null) { throw new SdkValidationError("updated_at", 'required', "Required property 'updated_at' is missing or null"); }
-        if (!property_exists($data, "last_ingested_at") || $data->last_ingested_at === null) { throw new SdkValidationError("last_ingested_at", 'required', "Required property 'last_ingested_at' is missing or null"); }
+        if (!property_exists($data, "type") || $data->type === null) {
+            throw new SdkValidationError("type", 'required', "Required property 'type' is missing or null");
+        }
+        if (!property_exists($data, "id") || $data->id === null) {
+            throw new SdkValidationError("id", 'required', "Required property 'id' is missing or null");
+        }
+        if (!property_exists($data, "title") || $data->title === null) {
+            throw new SdkValidationError("title", 'required', "Required property 'title' is missing or null");
+        }
+        if (!property_exists($data, "html") || $data->html === null) {
+            throw new SdkValidationError("html", 'required', "Required property 'html' is missing or null");
+        }
+        if (!property_exists($data, "ai_agent_availability") || $data->ai_agent_availability === null) {
+            throw new SdkValidationError("ai_agent_availability", 'required', "Required property 'ai_agent_availability' is missing or null");
+        }
+        if (!property_exists($data, "ai_copilot_availability") || $data->ai_copilot_availability === null) {
+            throw new SdkValidationError("ai_copilot_availability", 'required', "Required property 'ai_copilot_availability' is missing or null");
+        }
+        if (!property_exists($data, "locale") || $data->locale === null) {
+            throw new SdkValidationError("locale", 'required', "Required property 'locale' is missing or null");
+        }
+        if (!property_exists($data, "source_id") || $data->source_id === null) {
+            throw new SdkValidationError("source_id", 'required', "Required property 'source_id' is missing or null");
+        }
+        if (!property_exists($data, "external_id") || $data->external_id === null) {
+            throw new SdkValidationError("external_id", 'required', "Required property 'external_id' is missing or null");
+        }
+        if (!property_exists($data, "created_at") || $data->created_at === null) {
+            throw new SdkValidationError("created_at", 'required', "Required property 'created_at' is missing or null");
+        }
+        if (!property_exists($data, "updated_at") || $data->updated_at === null) {
+            throw new SdkValidationError("updated_at", 'required', "Required property 'updated_at' is missing or null");
+        }
+        if (!property_exists($data, "last_ingested_at") || $data->last_ingested_at === null) {
+            throw new SdkValidationError("last_ingested_at", 'required', "Required property 'last_ingested_at' is missing or null");
+        }
         return new self(
             type: SdkClient::hydrateStringEnumOrString($data->type, ExternalPageTypeEnum::class),
             id: SdkClient::stringValue($data->id),

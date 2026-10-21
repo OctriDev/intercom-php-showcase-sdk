@@ -65,9 +65,15 @@ class SnoozeConversationRequest implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "message_type") || $data->message_type === null) { throw new SdkValidationError("message_type", 'required', "Required property 'message_type' is missing or null"); }
-        if (!property_exists($data, "admin_id") || $data->admin_id === null) { throw new SdkValidationError("admin_id", 'required', "Required property 'admin_id' is missing or null"); }
-        if (!property_exists($data, "snoozed_until") || $data->snoozed_until === null) { throw new SdkValidationError("snoozed_until", 'required', "Required property 'snoozed_until' is missing or null"); }
+        if (!property_exists($data, "message_type") || $data->message_type === null) {
+            throw new SdkValidationError("message_type", 'required', "Required property 'message_type' is missing or null");
+        }
+        if (!property_exists($data, "admin_id") || $data->admin_id === null) {
+            throw new SdkValidationError("admin_id", 'required', "Required property 'admin_id' is missing or null");
+        }
+        if (!property_exists($data, "snoozed_until") || $data->snoozed_until === null) {
+            throw new SdkValidationError("snoozed_until", 'required', "Required property 'snoozed_until' is missing or null");
+        }
         return new self(
             messageType: SdkClient::hydrateEnum($data->message_type, SnoozeConversationRequestMessageTypeEnum::class),
             adminId: SdkClient::stringValue($data->admin_id),

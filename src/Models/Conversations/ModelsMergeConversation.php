@@ -45,7 +45,9 @@ class MergeConversationsRequest implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "merge_into_conversation_id") || $data->merge_into_conversation_id === null) { throw new SdkValidationError("merge_into_conversation_id", 'required', "Required property 'merge_into_conversation_id' is missing or null"); }
+        if (!property_exists($data, "merge_into_conversation_id") || $data->merge_into_conversation_id === null) {
+            throw new SdkValidationError("merge_into_conversation_id", 'required', "Required property 'merge_into_conversation_id' is missing or null");
+        }
         return new self(
             mergeIntoConversationId: SdkClient::intValue($data->merge_into_conversation_id),
         );

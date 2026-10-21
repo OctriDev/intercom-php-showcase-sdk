@@ -20,7 +20,7 @@ class Brands
     public static function listBrands(ClientConfig $clientConfig, IntercomVersion|SdkNotGiven $intercomVersion = SdkNotGiven::Value, ?RequestOptions $requestOptions = null): BrandList
     {
 
-        $sdkResponse = SdkClient::request('GET', "/brands", $clientConfig, returnType: BrandList::class, decoder: 'json', operationId: 'listBrands', extraHeaders: ["Intercom-Version" => SdkClient::headerValue($intercomVersion, false)], requestOptions: $requestOptions, errors: [401 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class)]);
+        $sdkResponse = SdkClient::request('GET', "/brands", $clientConfig, returnType: BrandList::class, decoder: 'json', operationId: 'listBrands', extraHeaders: ["Intercom-Version" => SdkClient::headerValue($intercomVersion, false)], requestOptions: $requestOptions, errors: [401 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => SdkClient::typedData($sdkResponse, BrandList::class));
     }
 
@@ -37,7 +37,7 @@ class Brands
     public static function retrieveBrand(ClientConfig $clientConfig, string $id, IntercomVersion|SdkNotGiven $intercomVersion = SdkNotGiven::Value, ?RequestOptions $requestOptions = null): Brand
     {
 
-        $sdkResponse = SdkClient::request('GET', "/brands/" . SdkClient::encodePathSegment($id) . "", $clientConfig, returnType: Brand::class, decoder: 'json', operationId: 'retrieveBrand', extraHeaders: ["Intercom-Version" => SdkClient::headerValue($intercomVersion, false)], requestOptions: $requestOptions, errors: [401 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class), 404 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class)]);
+        $sdkResponse = SdkClient::request('GET', "/brands/" . SdkClient::encodePathSegment($id) . "", $clientConfig, returnType: Brand::class, decoder: 'json', operationId: 'retrieveBrand', extraHeaders: ["Intercom-Version" => SdkClient::headerValue($intercomVersion, false)], requestOptions: $requestOptions, errors: [401 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class), 404 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => SdkClient::typedData($sdkResponse, Brand::class));
     }
 }

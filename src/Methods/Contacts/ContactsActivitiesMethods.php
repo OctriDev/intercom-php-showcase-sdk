@@ -26,7 +26,7 @@ trait ContactsActivitiesMethods
             Validation::validateRange('per_page', $perPage, min: 1, max: 150);
         }
 
-        $sdkResponse = SdkClient::request('GET', "/contacts/activities", $clientConfig, query: ['per_page' => new SdkQueryValue($perPage, "form", true), 'starting_after' => new SdkQueryValue($startingAfter, "form", true)], returnType: ContactActivityList::class, decoder: 'json', operationId: 'listContactActivities', extraHeaders: ["Intercom-Version" => SdkClient::headerValue($intercomVersion, false)], requestOptions: $requestOptions, errors: [401 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class)]);
+        $sdkResponse = SdkClient::request('GET', "/contacts/activities", $clientConfig, query: ['per_page' => new SdkQueryValue($perPage, "form", true), 'starting_after' => new SdkQueryValue($startingAfter, "form", true)], returnType: ContactActivityList::class, decoder: 'json', operationId: 'listContactActivities', extraHeaders: ["Intercom-Version" => SdkClient::headerValue($intercomVersion, false)], requestOptions: $requestOptions, errors: [401 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => SdkClient::typedData($sdkResponse, ContactActivityList::class));
     }
 }

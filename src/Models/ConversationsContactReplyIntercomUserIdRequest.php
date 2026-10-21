@@ -123,10 +123,18 @@ class ContactReplyIntercomUserIdRequest implements ContactReplyConversationReque
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "message_type") || $data->message_type === null) { throw new SdkValidationError("message_type", 'required', "Required property 'message_type' is missing or null"); }
-        if (!property_exists($data, "type") || $data->type === null) { throw new SdkValidationError("type", 'required', "Required property 'type' is missing or null"); }
-        if (!property_exists($data, "body") || $data->body === null) { throw new SdkValidationError("body", 'required', "Required property 'body' is missing or null"); }
-        if (!property_exists($data, "intercom_user_id") || $data->intercom_user_id === null) { throw new SdkValidationError("intercom_user_id", 'required', "Required property 'intercom_user_id' is missing or null"); }
+        if (!property_exists($data, "message_type") || $data->message_type === null) {
+            throw new SdkValidationError("message_type", 'required', "Required property 'message_type' is missing or null");
+        }
+        if (!property_exists($data, "type") || $data->type === null) {
+            throw new SdkValidationError("type", 'required', "Required property 'type' is missing or null");
+        }
+        if (!property_exists($data, "body") || $data->body === null) {
+            throw new SdkValidationError("body", 'required', "Required property 'body' is missing or null");
+        }
+        if (!property_exists($data, "intercom_user_id") || $data->intercom_user_id === null) {
+            throw new SdkValidationError("intercom_user_id", 'required', "Required property 'intercom_user_id' is missing or null");
+        }
         return new self(
             messageType: SdkClient::hydrateStringEnumOrString($data->message_type, ContactReplyIntercomUserIdRequestMessageTypeEnum::class),
             type: SdkClient::hydrateStringEnumOrString($data->type, ContactReplyIntercomUserIdRequestTypeEnum::class),
@@ -147,11 +155,26 @@ final readonly class ContactReplyUserIdRequestMessageTypeEnum implements SdkOpen
 {
     public const COMMENT = "comment";
     private function __construct(public string $value) {}
-    public static function from(string|int $value): static { return new self((string) $value); }
-    public static function tryFrom(string|int|null $value): ?static { return $value === null ? null : self::from($value); }
-    public function getValue(): string { return $this->value; }
-    public function jsonSerialize(): string { return $this->value; }
-    public function __toString(): string { return (string) $this->value; }
+    public static function from(string|int $value): static
+    {
+        return new self((string) $value);
+    }
+    public static function tryFrom(string|int|null $value): ?static
+    {
+        return $value === null ? null : self::from($value);
+    }
+    public function getValue(): string
+    {
+        return $this->value;
+    }
+    public function jsonSerialize(): string
+    {
+        return $this->value;
+    }
+    public function __toString(): string
+    {
+        return (string) $this->value;
+    }
 }
 
 /**
@@ -161,11 +184,26 @@ final readonly class ContactReplyUserIdRequestTypeEnum implements SdkOpenEnum
 {
     public const USER = "user";
     private function __construct(public string $value) {}
-    public static function from(string|int $value): static { return new self((string) $value); }
-    public static function tryFrom(string|int|null $value): ?static { return $value === null ? null : self::from($value); }
-    public function getValue(): string { return $this->value; }
-    public function jsonSerialize(): string { return $this->value; }
-    public function __toString(): string { return (string) $this->value; }
+    public static function from(string|int $value): static
+    {
+        return new self((string) $value);
+    }
+    public static function tryFrom(string|int|null $value): ?static
+    {
+        return $value === null ? null : self::from($value);
+    }
+    public function getValue(): string
+    {
+        return $this->value;
+    }
+    public function jsonSerialize(): string
+    {
+        return $this->value;
+    }
+    public function __toString(): string
+    {
+        return (string) $this->value;
+    }
 }
 
 /**
@@ -216,8 +254,12 @@ class ContactReplyUserIdRequestReplyOptionsItem implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "text") || $data->text === null) { throw new SdkValidationError("text", 'required', "Required property 'text' is missing or null"); }
-        if (!property_exists($data, "uuid") || $data->uuid === null) { throw new SdkValidationError("uuid", 'required', "Required property 'uuid' is missing or null"); }
+        if (!property_exists($data, "text") || $data->text === null) {
+            throw new SdkValidationError("text", 'required', "Required property 'text' is missing or null");
+        }
+        if (!property_exists($data, "uuid") || $data->uuid === null) {
+            throw new SdkValidationError("uuid", 'required', "Required property 'uuid' is missing or null");
+        }
         return new self(
             text: SdkClient::stringValue($data->text),
             uuid: SdkClient::stringValue($data->uuid),

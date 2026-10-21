@@ -15,11 +15,26 @@ final readonly class CreateOfficeHoursExceptionRequestRequestExceptionTypeEnum i
     public const CLOSED = "closed";
     public const CUSTOM_HOURS = "custom_hours";
     private function __construct(public string $value) {}
-    public static function from(string|int $value): static { return new self((string) $value); }
-    public static function tryFrom(string|int|null $value): ?static { return $value === null ? null : self::from($value); }
-    public function getValue(): string { return $this->value; }
-    public function jsonSerialize(): string { return $this->value; }
-    public function __toString(): string { return (string) $this->value; }
+    public static function from(string|int $value): static
+    {
+        return new self((string) $value);
+    }
+    public static function tryFrom(string|int|null $value): ?static
+    {
+        return $value === null ? null : self::from($value);
+    }
+    public function getValue(): string
+    {
+        return $this->value;
+    }
+    public function jsonSerialize(): string
+    {
+        return $this->value;
+    }
+    public function __toString(): string
+    {
+        return (string) $this->value;
+    }
 }
 
 /**
@@ -106,8 +121,12 @@ class CreateOfficeHoursExceptionRequestRequest implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "exception_date") || $data->exception_date === null) { throw new SdkValidationError("exception_date", 'required', "Required property 'exception_date' is missing or null"); }
-        if (!property_exists($data, "exception_type") || $data->exception_type === null) { throw new SdkValidationError("exception_type", 'required', "Required property 'exception_type' is missing or null"); }
+        if (!property_exists($data, "exception_date") || $data->exception_date === null) {
+            throw new SdkValidationError("exception_date", 'required', "Required property 'exception_date' is missing or null");
+        }
+        if (!property_exists($data, "exception_type") || $data->exception_type === null) {
+            throw new SdkValidationError("exception_type", 'required', "Required property 'exception_type' is missing or null");
+        }
         return new self(
             exceptionDate: SdkClient::stringValue($data->exception_date),
             exceptionType: SdkClient::hydrateStringEnumOrString($data->exception_type, CreateOfficeHoursExceptionRequestRequestExceptionTypeEnum::class),

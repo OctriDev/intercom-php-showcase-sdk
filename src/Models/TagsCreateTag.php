@@ -57,7 +57,9 @@ class CreateOrUpdateTagRequest implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "name") || $data->name === null) { throw new SdkValidationError("name", 'required', "Required property 'name' is missing or null"); }
+        if (!property_exists($data, "name") || $data->name === null) {
+            throw new SdkValidationError("name", 'required', "Required property 'name' is missing or null");
+        }
         return new self(
             name: SdkClient::stringValue($data->name),
             id: (property_exists($data, "id") && $data->id !== null ? SdkClient::stringValue($data->id) : SdkNotGiven::Value),
@@ -172,8 +174,12 @@ class TagCompanyRequest implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "name") || $data->name === null) { throw new SdkValidationError("name", 'required', "Required property 'name' is missing or null"); }
-        if (!property_exists($data, "companies") || $data->companies === null) { throw new SdkValidationError("companies", 'required', "Required property 'companies' is missing or null"); }
+        if (!property_exists($data, "name") || $data->name === null) {
+            throw new SdkValidationError("name", 'required', "Required property 'name' is missing or null");
+        }
+        if (!property_exists($data, "companies") || $data->companies === null) {
+            throw new SdkValidationError("companies", 'required', "Required property 'companies' is missing or null");
+        }
         return new self(
             name: SdkClient::stringValue($data->name),
             companies: array_values(array_map(static fn($item) => SdkClient::hydrateClass($item, TagCompanyRequestCompaniesItem::class), SdkClient::arrayValue($data->companies))),

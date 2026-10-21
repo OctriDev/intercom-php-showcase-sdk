@@ -12,11 +12,26 @@ final readonly class ListDataAttributesModel implements SdkOpenEnum
     public const CONTACT = "contact";
     public const COMPANY = "company";
     private function __construct(public string $value) {}
-    public static function from(string|int $value): static { return new self((string) $value); }
-    public static function tryFrom(string|int|null $value): ?static { return $value === null ? null : self::from($value); }
-    public function getValue(): string { return $this->value; }
-    public function jsonSerialize(): string { return $this->value; }
-    public function __toString(): string { return (string) $this->value; }
+    public static function from(string|int $value): static
+    {
+        return new self((string) $value);
+    }
+    public static function tryFrom(string|int|null $value): ?static
+    {
+        return $value === null ? null : self::from($value);
+    }
+    public function getValue(): string
+    {
+        return $this->value;
+    }
+    public function jsonSerialize(): string
+    {
+        return $this->value;
+    }
+    public function __toString(): string
+    {
+        return (string) $this->value;
+    }
 }
 
 final readonly class CreateDataAttributeModel implements SdkOpenEnum
@@ -24,11 +39,26 @@ final readonly class CreateDataAttributeModel implements SdkOpenEnum
     public const CONTACT = "contact";
     public const COMPANY = "company";
     private function __construct(public string $value) {}
-    public static function from(string|int $value): static { return new self((string) $value); }
-    public static function tryFrom(string|int|null $value): ?static { return $value === null ? null : self::from($value); }
-    public function getValue(): string { return $this->value; }
-    public function jsonSerialize(): string { return $this->value; }
-    public function __toString(): string { return (string) $this->value; }
+    public static function from(string|int $value): static
+    {
+        return new self((string) $value);
+    }
+    public static function tryFrom(string|int|null $value): ?static
+    {
+        return $value === null ? null : self::from($value);
+    }
+    public function getValue(): string
+    {
+        return $this->value;
+    }
+    public function jsonSerialize(): string
+    {
+        return $this->value;
+    }
+    public function __toString(): string
+    {
+        return (string) $this->value;
+    }
 }
 
 class DataAttributes
@@ -46,7 +76,7 @@ class DataAttributes
     public static function listDataAttributes(ClientConfig $clientConfig, ListDataAttributesModel|SdkNotGiven $model = SdkNotGiven::Value, bool|SdkNotGiven $includeArchived = SdkNotGiven::Value, IntercomVersion|SdkNotGiven $intercomVersion = SdkNotGiven::Value, ?RequestOptions $requestOptions = null): DataAttributeList
     {
 
-        $sdkResponse = SdkClient::request('GET', "/data_attributes", $clientConfig, query: ['model' => new SdkQueryValue($model, "form", true), 'include_archived' => new SdkQueryValue($includeArchived, "form", true)], returnType: DataAttributeList::class, decoder: 'json', operationId: 'listDataAttributes', extraHeaders: ["Intercom-Version" => SdkClient::headerValue($intercomVersion, false)], requestOptions: $requestOptions, errors: [401 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class), 422 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class)]);
+        $sdkResponse = SdkClient::request('GET', "/data_attributes", $clientConfig, query: ['model' => new SdkQueryValue($model, "form", true), 'include_archived' => new SdkQueryValue($includeArchived, "form", true)], returnType: DataAttributeList::class, decoder: 'json', operationId: 'listDataAttributes', extraHeaders: ["Intercom-Version" => SdkClient::headerValue($intercomVersion, false)], requestOptions: $requestOptions, errors: [401 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class), 422 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => SdkClient::typedData($sdkResponse, DataAttributeList::class));
     }
 
@@ -66,7 +96,7 @@ class DataAttributes
     public static function createDataAttribute(ClientConfig $clientConfig, string $name, CreateDataAttributeModel $model, IntercomVersion|SdkNotGiven $intercomVersion = SdkNotGiven::Value, string|SdkNotGiven $description = SdkNotGiven::Value, bool|SdkNotGiven $messengerWritable = SdkNotGiven::Value, ?RequestOptions $requestOptions = null): DataAttribute
     {
 
-        $sdkResponse = SdkClient::request('POST', "/data_attributes", $clientConfig, body: ['name' => $name, 'model' => $model, 'description' => $description, 'messenger_writable' => $messengerWritable], returnType: DataAttribute::class, decoder: 'json', operationId: 'createDataAttribute', extraHeaders: ["Intercom-Version" => SdkClient::headerValue($intercomVersion, false)], requestOptions: $requestOptions, errors: [400 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class), 401 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class)]);
+        $sdkResponse = SdkClient::request('POST', "/data_attributes", $clientConfig, body: ['name' => $name, 'model' => $model, 'description' => $description, 'messenger_writable' => $messengerWritable], returnType: DataAttribute::class, decoder: 'json', operationId: 'createDataAttribute', extraHeaders: ["Intercom-Version" => SdkClient::headerValue($intercomVersion, false)], requestOptions: $requestOptions, errors: [400 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class), 401 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => SdkClient::typedData($sdkResponse, DataAttribute::class));
     }
 
@@ -86,7 +116,7 @@ class DataAttributes
     public static function updateDataAttribute(ClientConfig $clientConfig, int $dataAttributeId, IntercomVersion|SdkNotGiven $intercomVersion = SdkNotGiven::Value, bool|SdkNotGiven $archived = SdkNotGiven::Value, string|SdkNotGiven $description = SdkNotGiven::Value, bool|SdkNotGiven $messengerWritable = SdkNotGiven::Value, ?RequestOptions $requestOptions = null): DataAttribute
     {
 
-        $sdkResponse = SdkClient::request('PUT', "/data_attributes/" . SdkClient::encodePathSegment($dataAttributeId) . "", $clientConfig, body: ['archived' => $archived, 'description' => $description, 'messenger_writable' => $messengerWritable], returnType: DataAttribute::class, decoder: 'json', operationId: 'updateDataAttribute', extraHeaders: ["Intercom-Version" => SdkClient::headerValue($intercomVersion, false)], requestOptions: $requestOptions, errors: [400 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class), 401 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class), 404 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class), 422 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class)]);
+        $sdkResponse = SdkClient::request('PUT', "/data_attributes/" . SdkClient::encodePathSegment($dataAttributeId) . "", $clientConfig, body: ['archived' => $archived, 'description' => $description, 'messenger_writable' => $messengerWritable], returnType: DataAttribute::class, decoder: 'json', operationId: 'updateDataAttribute', extraHeaders: ["Intercom-Version" => SdkClient::headerValue($intercomVersion, false)], requestOptions: $requestOptions, errors: [400 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class), 401 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class), 404 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class), 422 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => SdkClient::typedData($sdkResponse, DataAttribute::class));
     }
 }

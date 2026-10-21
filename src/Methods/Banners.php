@@ -21,7 +21,7 @@ class Banners
     public static function listContactBanners(ClientConfig $clientConfig, string $id, IntercomVersion|SdkNotGiven $intercomVersion = SdkNotGiven::Value, ?RequestOptions $requestOptions = null): BannerList
     {
 
-        $sdkResponse = SdkClient::request('GET', "/contacts/" . SdkClient::encodePathSegment($id) . "/banners", $clientConfig, returnType: BannerList::class, decoder: 'json', operationId: 'listContactBanners', extraHeaders: ["Intercom-Version" => SdkClient::headerValue($intercomVersion, false)], requestOptions: $requestOptions, errors: [404 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class)]);
+        $sdkResponse = SdkClient::request('GET', "/contacts/" . SdkClient::encodePathSegment($id) . "/banners", $clientConfig, returnType: BannerList::class, decoder: 'json', operationId: 'listContactBanners', extraHeaders: ["Intercom-Version" => SdkClient::headerValue($intercomVersion, false)], requestOptions: $requestOptions, errors: [404 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => SdkClient::typedData($sdkResponse, BannerList::class));
     }
 
@@ -39,7 +39,7 @@ class Banners
     public static function dismissContactBanner(ClientConfig $clientConfig, string $id, string $viewId, IntercomVersion|SdkNotGiven $intercomVersion = SdkNotGiven::Value, ?RequestOptions $requestOptions = null): BannerDismiss
     {
 
-        $sdkResponse = SdkClient::request('POST', "/contacts/" . SdkClient::encodePathSegment($id) . "/banners/" . SdkClient::encodePathSegment($viewId) . "/dismiss", $clientConfig, returnType: BannerDismiss::class, decoder: 'json', operationId: 'dismissContactBanner', extraHeaders: ["Intercom-Version" => SdkClient::headerValue($intercomVersion, false)], requestOptions: $requestOptions, errors: [404 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class)]);
+        $sdkResponse = SdkClient::request('POST', "/contacts/" . SdkClient::encodePathSegment($id) . "/banners/" . SdkClient::encodePathSegment($viewId) . "/dismiss", $clientConfig, returnType: BannerDismiss::class, decoder: 'json', operationId: 'dismissContactBanner', extraHeaders: ["Intercom-Version" => SdkClient::headerValue($intercomVersion, false)], requestOptions: $requestOptions, errors: [404 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => SdkClient::typedData($sdkResponse, BannerDismiss::class));
     }
 }

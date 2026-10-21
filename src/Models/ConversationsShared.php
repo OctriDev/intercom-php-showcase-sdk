@@ -14,11 +14,26 @@ final readonly class ConversationListTypeEnum implements SdkOpenEnum
 {
     public const CONVERSATION_LIST = "conversation.list";
     private function __construct(public string $value) {}
-    public static function from(string|int $value): static { return new self((string) $value); }
-    public static function tryFrom(string|int|null $value): ?static { return $value === null ? null : self::from($value); }
-    public function getValue(): string { return $this->value; }
-    public function jsonSerialize(): string { return $this->value; }
-    public function __toString(): string { return (string) $this->value; }
+    public static function from(string|int $value): static
+    {
+        return new self((string) $value);
+    }
+    public static function tryFrom(string|int|null $value): ?static
+    {
+        return $value === null ? null : self::from($value);
+    }
+    public function getValue(): string
+    {
+        return $this->value;
+    }
+    public function jsonSerialize(): string
+    {
+        return $this->value;
+    }
+    public function __toString(): string
+    {
+        return (string) $this->value;
+    }
 }
 
 /**
@@ -154,8 +169,12 @@ class ConversationParticipantsResponseCustomersItem implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "type") || $data->type === null) { throw new SdkValidationError("type", 'required', "Required property 'type' is missing or null"); }
-        if (!property_exists($data, "id") || $data->id === null) { throw new SdkValidationError("id", 'required', "Required property 'id' is missing or null"); }
+        if (!property_exists($data, "type") || $data->type === null) {
+            throw new SdkValidationError("type", 'required', "Required property 'type' is missing or null");
+        }
+        if (!property_exists($data, "id") || $data->id === null) {
+            throw new SdkValidationError("id", 'required', "Required property 'id' is missing or null");
+        }
         return new self(
             type: SdkClient::stringValue($data->type),
             id: SdkClient::stringValue($data->id),
@@ -201,7 +220,9 @@ class ConversationParticipantsResponse implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "customers") || $data->customers === null) { throw new SdkValidationError("customers", 'required', "Required property 'customers' is missing or null"); }
+        if (!property_exists($data, "customers") || $data->customers === null) {
+            throw new SdkValidationError("customers", 'required', "Required property 'customers' is missing or null");
+        }
         return new self(
             customers: array_values(array_map(static fn($item) => SdkClient::hydrateClass($item, ConversationParticipantsResponseCustomersItem::class), SdkClient::arrayValue($data->customers))),
         );

@@ -13,11 +13,26 @@ final readonly class CreateMessageMessageType implements SdkOpenEnum
     public const EMAIL = "email";
     public const WHATSAPP = "whatsapp";
     private function __construct(public string $value) {}
-    public static function from(string|int $value): static { return new self((string) $value); }
-    public static function tryFrom(string|int|null $value): ?static { return $value === null ? null : self::from($value); }
-    public function getValue(): string { return $this->value; }
-    public function jsonSerialize(): string { return $this->value; }
-    public function __toString(): string { return (string) $this->value; }
+    public static function from(string|int $value): static
+    {
+        return new self((string) $value);
+    }
+    public static function tryFrom(string|int|null $value): ?static
+    {
+        return $value === null ? null : self::from($value);
+    }
+    public function getValue(): string
+    {
+        return $this->value;
+    }
+    public function jsonSerialize(): string
+    {
+        return $this->value;
+    }
+    public function __toString(): string
+    {
+        return (string) $this->value;
+    }
 }
 
 /**
@@ -27,11 +42,26 @@ final readonly class CreateMessageFromTypeEnum implements SdkOpenEnum
 {
     public const ADMIN = "admin";
     private function __construct(public string $value) {}
-    public static function from(string|int $value): static { return new self((string) $value); }
-    public static function tryFrom(string|int|null $value): ?static { return $value === null ? null : self::from($value); }
-    public function getValue(): string { return $this->value; }
-    public function jsonSerialize(): string { return $this->value; }
-    public function __toString(): string { return (string) $this->value; }
+    public static function from(string|int $value): static
+    {
+        return new self((string) $value);
+    }
+    public static function tryFrom(string|int|null $value): ?static
+    {
+        return $value === null ? null : self::from($value);
+    }
+    public function getValue(): string
+    {
+        return $this->value;
+    }
+    public function jsonSerialize(): string
+    {
+        return $this->value;
+    }
+    public function __toString(): string
+    {
+        return (string) $this->value;
+    }
 }
 
 /**
@@ -82,8 +112,12 @@ class CreateMessageFrom implements \JsonSerializable
 
     public static function fromObject(object $data): self
     {
-        if (!property_exists($data, "type") || $data->type === null) { throw new SdkValidationError("type", 'required', "Required property 'type' is missing or null"); }
-        if (!property_exists($data, "id") || $data->id === null) { throw new SdkValidationError("id", 'required', "Required property 'id' is missing or null"); }
+        if (!property_exists($data, "type") || $data->type === null) {
+            throw new SdkValidationError("type", 'required', "Required property 'type' is missing or null");
+        }
+        if (!property_exists($data, "id") || $data->id === null) {
+            throw new SdkValidationError("id", 'required', "Required property 'id' is missing or null");
+        }
         return new self(
             type: SdkClient::hydrateStringEnumOrString($data->type, CreateMessageFromTypeEnum::class),
             id: SdkClient::intValue($data->id),
@@ -114,7 +148,7 @@ class Messages
     public static function createMessage(ClientConfig $clientConfig, IntercomVersion|SdkNotGiven $intercomVersion = SdkNotGiven::Value, CreateMessageMessageType|SdkNotGiven $messageType = SdkNotGiven::Value, string|SdkNotGiven $subject = SdkNotGiven::Value, string|SdkNotGiven $body = SdkNotGiven::Value, string|SdkNotGiven $template = SdkNotGiven::Value, CreateMessageFrom|SdkNotGiven $from = SdkNotGiven::Value, Recipient|array|SdkNotGiven $to = SdkNotGiven::Value, Recipient|array|SdkNotGiven $cc = SdkNotGiven::Value, Recipient|array|SdkNotGiven $bcc = SdkNotGiven::Value, int|SdkNotGiven $createdAt = SdkNotGiven::Value, bool|SdkNotGiven $createConversationWithoutContactReply = SdkNotGiven::Value, ?RequestOptions $requestOptions = null): Message
     {
 
-        $sdkResponse = SdkClient::request('POST', "/messages", $clientConfig, body: ['message_type' => $messageType, 'subject' => $subject, 'body' => $body, 'template' => $template, 'from' => $from, 'to' => $to, 'cc' => $cc, 'bcc' => $bcc, 'created_at' => $createdAt, 'create_conversation_without_contact_reply' => $createConversationWithoutContactReply], returnType: Message::class, decoder: 'json', operationId: 'createMessage', extraHeaders: ["Intercom-Version" => SdkClient::headerValue($intercomVersion, false)], requestOptions: $requestOptions, errors: [400 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class), 401 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class), 403 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class), 422 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class)]);
+        $sdkResponse = SdkClient::request('POST', "/messages", $clientConfig, body: ['message_type' => $messageType, 'subject' => $subject, 'body' => $body, 'template' => $template, 'from' => $from, 'to' => $to, 'cc' => $cc, 'bcc' => $bcc, 'created_at' => $createdAt, 'create_conversation_without_contact_reply' => $createConversationWithoutContactReply], returnType: Message::class, decoder: 'json', operationId: 'createMessage', extraHeaders: ["Intercom-Version" => SdkClient::headerValue($intercomVersion, false)], requestOptions: $requestOptions, errors: [400 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class), 401 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class), 403 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class), 422 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => SdkClient::typedData($sdkResponse, Message::class));
     }
 
@@ -131,7 +165,7 @@ class Messages
     public static function retrieveWhatsAppMessageStatus(ClientConfig $clientConfig, string $messageId, IntercomVersion|SdkNotGiven $intercomVersion = SdkNotGiven::Value, ?RequestOptions $requestOptions = null): WhatsappMessageStatus
     {
 
-        $sdkResponse = SdkClient::request('GET', "/messages/whatsapp/status", $clientConfig, query: ['message_id' => new SdkQueryValue($messageId, "form", true)], returnType: WhatsappMessageStatus::class, decoder: 'json', operationId: 'retrieveWhatsAppMessageStatus', extraHeaders: ["Intercom-Version" => SdkClient::headerValue($intercomVersion, false)], requestOptions: $requestOptions, errors: [400 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class), 401 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class), 404 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class)]);
+        $sdkResponse = SdkClient::request('GET', "/messages/whatsapp/status", $clientConfig, query: ['message_id' => new SdkQueryValue($messageId, "form", true)], returnType: WhatsappMessageStatus::class, decoder: 'json', operationId: 'retrieveWhatsAppMessageStatus', extraHeaders: ["Intercom-Version" => SdkClient::headerValue($intercomVersion, false)], requestOptions: $requestOptions, errors: [400 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class), 401 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class), 404 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => SdkClient::typedData($sdkResponse, WhatsappMessageStatus::class));
     }
 
@@ -154,7 +188,7 @@ class Messages
             Validation::validateRange('per_page', $perPage, max: 100);
         }
 
-        $sdkResponse = SdkClient::request('GET', "/messages/status", $clientConfig, query: ['ruleset_id' => new SdkQueryValue($rulesetId, "form", true), 'per_page' => new SdkQueryValue($perPage, "form", true), 'starting_after' => new SdkQueryValue($startingAfter, "form", true)], returnType: WhatsappMessageStatusList::class, decoder: 'json', operationId: 'getWhatsAppMessageStatus', extraHeaders: ["Intercom-Version" => SdkClient::headerValue($intercomVersion, false)], requestOptions: $requestOptions, errors: [400 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class), 401 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class), 403 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class), 500 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class)]);
+        $sdkResponse = SdkClient::request('GET', "/messages/status", $clientConfig, query: ['ruleset_id' => new SdkQueryValue($rulesetId, "form", true), 'per_page' => new SdkQueryValue($perPage, "form", true), 'starting_after' => new SdkQueryValue($startingAfter, "form", true)], returnType: WhatsappMessageStatusList::class, decoder: 'json', operationId: 'getWhatsAppMessageStatus', extraHeaders: ["Intercom-Version" => SdkClient::headerValue($intercomVersion, false)], requestOptions: $requestOptions, errors: [400 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class), 401 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class), 403 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class), 500 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => SdkClient::typedData($sdkResponse, WhatsappMessageStatusList::class));
     }
 }

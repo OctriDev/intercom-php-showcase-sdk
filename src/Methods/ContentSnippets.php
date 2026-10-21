@@ -115,7 +115,7 @@ class ContentSnippets
 
         Validation::validateLength('title', $title, max: 255);
 
-        $sdkResponse = SdkClient::request('POST', "/content_snippets", $clientConfig, body: ['title' => $title, 'json_blocks' => $jsonBlocks, 'body_markdown' => $bodyMarkdown, 'locale' => $locale, 'audience_ids' => $audienceIds, 'ai_chatbot_availability' => $aiChatbotAvailability, 'ai_copilot_availability' => $aiCopilotAvailability, 'ai_sales_agent_availability' => $aiSalesAgentAvailability], returnType: ContentSnippet::class, decoder: 'json', operationId: 'createContentSnippet', extraHeaders: ["Intercom-Version" => SdkClient::headerValue($intercomVersion, false)], requestOptions: $requestOptions, errors: [404 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class), 422 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class)]);
+        $sdkResponse = SdkClient::request('POST', "/content_snippets", $clientConfig, body: ['title' => $title, 'json_blocks' => $jsonBlocks, 'body_markdown' => $bodyMarkdown, 'locale' => $locale, 'audience_ids' => $audienceIds, 'ai_chatbot_availability' => $aiChatbotAvailability, 'ai_copilot_availability' => $aiCopilotAvailability, 'ai_sales_agent_availability' => $aiSalesAgentAvailability], returnType: ContentSnippet::class, decoder: 'json', operationId: 'createContentSnippet', extraHeaders: ["Intercom-Version" => SdkClient::headerValue($intercomVersion, false)], requestOptions: $requestOptions, errors: [404 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class), 422 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => SdkClient::typedData($sdkResponse, ContentSnippet::class));
     }
 
@@ -132,7 +132,7 @@ class ContentSnippets
     public static function getContentSnippet(ClientConfig $clientConfig, string $id, IntercomVersion|SdkNotGiven $intercomVersion = SdkNotGiven::Value, ?RequestOptions $requestOptions = null): ContentSnippet
     {
 
-        $sdkResponse = SdkClient::request('GET', "/content_snippets/" . SdkClient::encodePathSegment($id) . "", $clientConfig, returnType: ContentSnippet::class, decoder: 'json', operationId: 'getContentSnippet', extraHeaders: ["Intercom-Version" => SdkClient::headerValue($intercomVersion, false)], requestOptions: $requestOptions, errors: [404 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class)]);
+        $sdkResponse = SdkClient::request('GET', "/content_snippets/" . SdkClient::encodePathSegment($id) . "", $clientConfig, returnType: ContentSnippet::class, decoder: 'json', operationId: 'getContentSnippet', extraHeaders: ["Intercom-Version" => SdkClient::headerValue($intercomVersion, false)], requestOptions: $requestOptions, errors: [404 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => SdkClient::typedData($sdkResponse, ContentSnippet::class));
     }
 
@@ -161,7 +161,7 @@ class ContentSnippets
             Validation::validateLength('title', $title, max: 255);
         }
 
-        $sdkResponse = SdkClient::request('PUT', "/content_snippets/" . SdkClient::encodePathSegment($id) . "", $clientConfig, body: ['title' => $title, 'json_blocks' => $jsonBlocks, 'body_markdown' => $bodyMarkdown, 'locale' => $locale, 'audience_ids' => $audienceIds, 'ai_chatbot_availability' => $aiChatbotAvailability, 'ai_copilot_availability' => $aiCopilotAvailability, 'ai_sales_agent_availability' => $aiSalesAgentAvailability], returnType: ContentSnippet::class, decoder: 'json', operationId: 'updateContentSnippet', extraHeaders: ["Intercom-Version" => SdkClient::headerValue($intercomVersion, false)], requestOptions: $requestOptions, errors: [404 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class), 422 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class)]);
+        $sdkResponse = SdkClient::request('PUT', "/content_snippets/" . SdkClient::encodePathSegment($id) . "", $clientConfig, body: ['title' => $title, 'json_blocks' => $jsonBlocks, 'body_markdown' => $bodyMarkdown, 'locale' => $locale, 'audience_ids' => $audienceIds, 'ai_chatbot_availability' => $aiChatbotAvailability, 'ai_copilot_availability' => $aiCopilotAvailability, 'ai_sales_agent_availability' => $aiSalesAgentAvailability], returnType: ContentSnippet::class, decoder: 'json', operationId: 'updateContentSnippet', extraHeaders: ["Intercom-Version" => SdkClient::headerValue($intercomVersion, false)], requestOptions: $requestOptions, errors: [404 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class), 422 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => SdkClient::typedData($sdkResponse, ContentSnippet::class));
     }
 
@@ -177,7 +177,7 @@ class ContentSnippets
     public static function deleteContentSnippet(ClientConfig $clientConfig, string $id, IntercomVersion|SdkNotGiven $intercomVersion = SdkNotGiven::Value, ?RequestOptions $requestOptions = null): mixed
     {
 
-        return SdkClient::request('DELETE', "/content_snippets/" . SdkClient::encodePathSegment($id) . "", $clientConfig, decoder: 'empty', operationId: 'deleteContentSnippet', extraHeaders: ["Intercom-Version" => SdkClient::headerValue($intercomVersion, false)], requestOptions: $requestOptions, errors: [404 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class), 422 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class)])->data;
+        return SdkClient::request('DELETE', "/content_snippets/" . SdkClient::encodePathSegment($id) . "", $clientConfig, decoder: 'empty', operationId: 'deleteContentSnippet', extraHeaders: ["Intercom-Version" => SdkClient::headerValue($intercomVersion, false)], requestOptions: $requestOptions, errors: [404 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class), 422 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class)])->data;
     }
 
 
@@ -195,7 +195,7 @@ class ContentSnippets
     public static function attachContentSnippetsTag(ClientConfig $clientConfig, string $contentSnippetId, string $id, IntercomVersion|SdkNotGiven $intercomVersion = SdkNotGiven::Value, string|null|SdkNotGiven $adminId = SdkNotGiven::Value, ?RequestOptions $requestOptions = null): Tag
     {
 
-        $sdkResponse = SdkClient::request('POST', "/content_snippets/" . SdkClient::encodePathSegment($contentSnippetId) . "/tags", $clientConfig, body: ['id' => $id, 'admin_id' => $adminId], returnType: Tag::class, decoder: 'json', operationId: 'attachContentSnippetsTag', extraHeaders: ["Intercom-Version" => SdkClient::headerValue($intercomVersion, false)], requestOptions: $requestOptions, errors: [401 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class), 403 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class), 404 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class)]);
+        $sdkResponse = SdkClient::request('POST', "/content_snippets/" . SdkClient::encodePathSegment($contentSnippetId) . "/tags", $clientConfig, body: ['id' => $id, 'admin_id' => $adminId], returnType: Tag::class, decoder: 'json', operationId: 'attachContentSnippetsTag', extraHeaders: ["Intercom-Version" => SdkClient::headerValue($intercomVersion, false)], requestOptions: $requestOptions, errors: [401 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class), 403 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class), 404 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => SdkClient::typedData($sdkResponse, Tag::class));
     }
 
@@ -213,7 +213,7 @@ class ContentSnippets
     public static function detachContentSnippetsTag(ClientConfig $clientConfig, string $contentSnippetId, string $id, IntercomVersion|SdkNotGiven $intercomVersion = SdkNotGiven::Value, ?RequestOptions $requestOptions = null): Tag
     {
 
-        $sdkResponse = SdkClient::request('DELETE', "/content_snippets/" . SdkClient::encodePathSegment($contentSnippetId) . "/tags/" . SdkClient::encodePathSegment($id) . "", $clientConfig, returnType: Tag::class, decoder: 'json', operationId: 'detachContentSnippetsTag', extraHeaders: ["Intercom-Version" => SdkClient::headerValue($intercomVersion, false)], requestOptions: $requestOptions, errors: [401 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class), 403 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class), 404 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class)]);
+        $sdkResponse = SdkClient::request('DELETE', "/content_snippets/" . SdkClient::encodePathSegment($contentSnippetId) . "/tags/" . SdkClient::encodePathSegment($id) . "", $clientConfig, returnType: Tag::class, decoder: 'json', operationId: 'detachContentSnippetsTag', extraHeaders: ["Intercom-Version" => SdkClient::headerValue($intercomVersion, false)], requestOptions: $requestOptions, errors: [401 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class), 403 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class), 404 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => SdkClient::typedData($sdkResponse, Tag::class));
     }
 }

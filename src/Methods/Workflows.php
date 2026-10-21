@@ -21,7 +21,7 @@ class Workflows
     public static function exportWorkflow(ClientConfig $clientConfig, string $id, IntercomVersion|SdkNotGiven $intercomVersion = SdkNotGiven::Value, ?RequestOptions $requestOptions = null): WorkflowExport
     {
 
-        $sdkResponse = SdkClient::request('GET', "/export/workflows/" . SdkClient::encodePathSegment($id) . "", $clientConfig, returnType: WorkflowExport::class, decoder: 'json', operationId: 'exportWorkflow', extraHeaders: ["Intercom-Version" => SdkClient::headerValue($intercomVersion, false)], requestOptions: $requestOptions, errors: [403 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class), 404 => static fn (mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class)]);
+        $sdkResponse = SdkClient::request('GET', "/export/workflows/" . SdkClient::encodePathSegment($id) . "", $clientConfig, returnType: WorkflowExport::class, decoder: 'json', operationId: 'exportWorkflow', extraHeaders: ["Intercom-Version" => SdkClient::headerValue($intercomVersion, false)], requestOptions: $requestOptions, errors: [403 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class), 404 => static fn(mixed $value): mixed => SdkClient::hydrateClass($value, Error2::class)]);
         return SdkClient::decoded($sdkResponse, static fn() => SdkClient::typedData($sdkResponse, WorkflowExport::class));
     }
 }
