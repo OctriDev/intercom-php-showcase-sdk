@@ -9,5 +9,5 @@ namespace octridev_intercom;
 
 class ReportingDataExport
 {
-    use ReportingDataExportMethodsPart1;
+    use ReportingDataExportMethods;
 }

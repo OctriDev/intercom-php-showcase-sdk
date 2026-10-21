@@ -9,5 +9,5 @@ namespace octridev_intercom;
 
 class Content
 {
-    use ContentMethodsPart1;
+    use ContentMethods;
 }

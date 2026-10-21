@@ -9,5 +9,5 @@ namespace octridev_intercom;
 
 class FinAgent
 {
-    use FinAgentMethodsPart1;
+    use FinAgentMethods;
 }

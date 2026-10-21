@@ -9,6 +9,19 @@ namespace octridev_intercom;
 
 class Contacts
 {
-    use ContactsMethodsPart1;
-    use ContactsMethodsPart2;
+    use ContactsCompaniesMethods;
+    use ContactsSegmentsMethods;
+    use ContactsSubscriptionsMethods;
+    use ContactsTagsMethods;
+    use ContactsDeletedMethods;
+    use ContactsMethods;
+    use ContactsMergeMethods;
+    use ContactsSearchMethods;
+    use ContactsActivitiesMethods;
+    use ContactsFindByExternalIdMethods;
+    use ContactsArchiveMethods;
+    use ContactsUnarchiveMethods;
+    use ContactsBlockMethods;
+    use ContactsMergeHistoryMethods;
+    use ContactsBulkMethods;
 }
